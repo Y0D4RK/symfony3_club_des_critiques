@@ -1,0 +1,4 @@
+home:
+    path: /
+    defaults: { _controller: "AppBundle:Club:index" }
+    methods:  [GET]

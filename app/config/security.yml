@@ -1,24 +1,60 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/security.html
+
 security:
+    encoders:
+        # defini le protocole de cryptage des mot de passes - indispensable
+        FOS\UserBundle\Model\UserInterface: bcrypt
 
-    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    # cette clÃ© dÃ©fini les role au sein de notre application - gere les autorisation (ROLE_ADMIN => propre Ã  FosUser)
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        # ROLE_ADMIN:       ROLE_USER, ROLE_BIDON - role hÃ©ritÃ©.
+        # sf3 fos:user:demote  user1@mail.com ROLE_ADMIN
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    # Fourni les utilisateurs - c'est lui qui part d'un login et d'un mdp pour recup un user et ses droits
     providers:
-        in_memory:
-            memory: ~
+        #in_memory:
+            #memory: =>  lorsque les users sont dÃ©fini directement dans le fichier security.yml
+        fos_userbundle:
+            id: fos_user.user_provider.username
 
+    # parefeu - gere le filtrage du user, donc son authentification
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
-        dev:
+        dev: # aucune sÃ©curitÃ© pour la dev lorsque nous accÃ¨dons Ã  ->
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
-            anonymous: ~
-            # activate different ways to authenticate
+        main: # identique au nom defini dans config.yml
+            # pattern : url qui declenche la mise en oeuvre du parefeu '^/' -> tous ce qui commence par un / mobile le parefeu
+            pattern: ^/
+            # IMPORTANT : car indique qu'on utilise un formulaire login pour s'authentifier
+            form_login:
+                # sans bundle, nous declarons la page de login et la page de redirection
+                # mais nous utilisons FosUserBundle
+                provider: fos_userbundle
+                default_target_path: /
+                # class qui gÃ©nÃ¨re le token
+                csrf_token_generator: security.csrf.token_manager
+                # if you are using Symfony < 2.8, use the following config instead:
+                # csrf_provider: form.csrf_provider
+                always_use_default_target_path: false
+                use_referer: true
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            # permet la deconnexion
+            logout:       true
+            # permet au anonyme de bÃ©nÃ©ficier du parefeu
+            anonymous:    true
 
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    # liste d'url, qui vont repondre Ã  des conditions d'accÃ¨s en fonction du role du user - connectÃ© ou non connectÃ©
+    access_control:
+        # chemin (regex) - toutes les URL qui commence par '/' et termine par login - necessite le role ...
+        # par defaut tout les user son anonyme sur symfony
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+#        - { path: ^/games, role: ROLE_ADMIN }
+#        - { path: ^/game, role: ROLE_ADMIN }
