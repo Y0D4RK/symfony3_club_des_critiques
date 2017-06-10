@@ -1,0 +1,50 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+    <div class="col-lg-12">
+        <h1 class="page-header">Games list</h1>
+    </div>
+
+    <table class="table table-stripped table-bordered table-hover">
+        <thead class="thead-inverse">
+            <tr>
+                <th>iGameId</th>
+                <th>Nom de domaine</th>
+                <th>En production</th>
+                <th>iAffiliatis</th>
+                <th>endPositioning</th>
+                <th>sGoogleAnalytics</ th>
+                <th>Derniere modification/By</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for game in games %}
+            <tr>
+                <td>{{ game.iGameId }}</td>
+                <td><a href="{{ path('game_show', { 'id': game.id }) }}">{{ game.domainName }}</a></td>
+                <td>{% if game.inProd == 0 %}  Non {% else %} Oui {% endif %}</td>
+                <td>{{ game.iAffiliatisId }}</td>
+                <td>{{ game.endPositioningId }}</td>
+                <td>{{ game.sGoogleAnalytics }}</td>
+                <td>{% if game.updatedAt %}{{ game.updatedAt|date('Y-m-d H:i:s') }} par {% endif %}</td>
+                <td>
+                    <ul class="list-group">
+                        <li class="list-group-item"> <i class="fa fa-eye" aria-hidden="true"></i> <a href="{{ path('game_show', { 'id': game.id }) }}">show</a> </li>
+                        <li class="list-group-item"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <a href="{{ path('game_edit', { 'id': game.id }) }}">edit</a> </li>
+                        <li class="list-group-item"> <i class="fa fa-rocket" aria-hidden="true"></i> <a href="{{ path('game_make', { 'id': game.id }) }}">make the game</a> </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(games) }}
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('game_new') }}">Create a new game</a>
+        </li>
+    </ul>
+{% endblock %}

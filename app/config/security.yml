@@ -9,7 +9,6 @@ security:
     # cette clÃ© dÃ©fini les role au sein de notre application - gere les autorisation (ROLE_ADMIN => propre Ã  FosUser)
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
-        # ROLE_ADMIN:       ROLE_USER, ROLE_BIDON - role hÃ©ritÃ©.
         # sf3 fos:user:demote  user1@mail.com ROLE_ADMIN
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
@@ -23,6 +22,9 @@ security:
     # parefeu - gere le filtrage du user, donc son authentification
     firewalls:
         dev: # aucune sÃ©curitÃ© pour la dev lorsque nous accÃ¨dons Ã  ->
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        prod: # aucune sÃ©curitÃ© pour la dev lorsque nous accÃ¨dons Ã  ->
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
@@ -51,10 +53,11 @@ security:
     access_control:
         # chemin (regex) - toutes les URL qui commence par '/' et termine par login - necessite le role ...
         # par defaut tout les user son anonyme sur symfony
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-
         - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, role: ROLE_ADMIN }
 
 #        - { path: ^/games, role: ROLE_ADMIN }
 #        - { path: ^/game, role: ROLE_ADMIN }
