@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:600,400,300,200,200italic,100');
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Raleway';
+}
+
+hr {
+    border-color: #d43f3a;
+    border-width: 3px;
+    max-width: 50px;
+}
+
+hr.light {
+    border-color: white;
+}
+a {
+    -webkit-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    transition: all 0.35s;
+    color: #F05F40;
+}
+
+p {
+    font-size: 14px;
+}
+
+header {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-position: center;
+    background-image: url('../images/fond.jpg');
+    background-attachment: fixed;
+    text-align: center;
+    color: white;
+}
+
+header .header-content {
+    position: relative;
+    text-align: center;
+    padding: 100px 15px 100px;
+    width: 100%;
+}
+
+
+.form-horizontal{
+    display: flex;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.bg-primary {
+    background-color: #69F0AE;
+}
+
+/* Temoignage */
+
+
+.temoignage .container {
+    position: relative;
+    margin: auto;
+    top: 0;
+    margin-bottom: 14px;
+    margin-top: 14px;
+    left: 0;
+    right: 0;
+    max-width: 500px;
+    height: 150px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.fa-quote-left{
+    position: absolute;
+    padding: 20px;
+    top: -10px;
+    margin-left: -250px;
+    font-size: 30px;
+    color: #50e499;
+}
+
+.fa-quote-right{
+    position:absolute;
+    padding:20px;
+    top:80px;
+    left:430px;
+    font-size:30px;
+    color:#50e499;
+}
+
+.text-container {
+    position: relative;
+    left:0px;
+    max-width: calc(500px * 4);
+    font-size: 0;
+    transition: left 0.5s ease-in-out;
+}
+
+.text {
+    max-width: 400px;
+    height: auto;
+    color: #333;
+    text-align: center;
+    line-height: 20px;
+    font-family: 'Raleway';
+    font-weight: 500;
+    font-size: 14px;
+    overflow: hidden;
+    margin-left: 40px;
+    padding-top: 40px;
+}
+
+/*Deuxième section*/
+
+.bg-secondary .container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.bg-secondary h2 {
+    padding-top: 30px;
+}
+
+/*Troisième section */
+
+.bg-tertiary {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-position: center;
+    background-image: url('../images/fond.jpg');
+    background-attachment: fixed;
+    text-align: center;
+    color: white;
+}
+
+.bg-tertiary .header-content {
+    position: relative;
+    text-align: center;
+    padding: 50px 15px 50px;
+    width: 100%;
+}
+
+/* Footer : Contact */
+
+.contact {
+    background-color: #222222;
+}
+
+.contact .container {
+    max-width: 500px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.contact .form {
+    max-width:420px;
+    margin:50px auto;
+}
+
+.feedback-input {
+    color:white;
+    font-weight:100;
+    border-radius: 5px;
+    background-color: transparent;
+    border:1px solid #69F0AE;
+    transition: all 0.3s;
+    padding: 13px;
+    margin-bottom: 15px;
+    width:100%;
+    box-sizing: border-box;
+    outline:0;
+}
+
+.contact [type="submit"] {
+    width: 100%;
+    background:#69f0ae;
+    border-radius:5px;
+    border:0;
+    cursor:pointer;
+    color:white;
+    padding-top:10px;
+    padding-bottom:10px;
+    transition: all 0.3s;
+    margin-top:-4px;
+}
+.contact [type="submit"]:hover { background:#00E676; }

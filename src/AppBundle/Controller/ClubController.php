@@ -12,7 +12,7 @@ class ClubController extends Controller
     {
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
-            'var' => "YO LES PELOS ! Ici les l'acceuil."
+            'var' => "YO LES PELOS ! Ici c'est l'acceuil."
         ]);
     }
 
