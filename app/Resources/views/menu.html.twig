@@ -1,37 +1,33 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
+<nav class="navbar navbar-inverse navbar-static-top menu">
+    <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar6">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ path('home') }}">GameGen - 1.0</a>
+            <a class="navbar-brand text-hide" href="{{ path('home') }}">Brand Text
+            </a>
         </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-1">
-            {#{{ knp_menu_render('AppBundle:Builder:mainMenu', {'currentClass': 'active'}) }}#}
+        <div id="navbar6" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <!-- /.dropdown -->
+                <li class="active"><a href="#">Acceuil</a></li>
+                <li><a href="#">Oeuvres</a></li>
+                <li><a href="#">Salons</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user fa-fw"></i>  </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-user fa-fw"></i> Mon profile </a>
-                        </li>
-                        <li><a href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-gear fa-fw"></i> ParamÃ¨tres </a>
-                        </li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mon compte <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Publications</a></li>
+                        <li><a href="#">Oeuvres</a></li>
                         <li class="divider"></li>
-                        <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out fa-fw"></i> Se dÃ©connecter </a>
-                        </li>
+                        <li><a href="#">Déconnexion</a></li>
                     </ul>
-                    <!-- /.dropdown-user -->
                 </li>
-                <!-- /.dropdown -->
             </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+    <!--/.container-fluid -->
 </nav>

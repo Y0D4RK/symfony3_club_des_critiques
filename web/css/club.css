@@ -51,6 +51,60 @@ p {
 }
 /* end navbar */
 
+/*Modal*/
+#login {
+    margin-top: 100px;
+    padding-top: 50px;
+    background-color: #F7F7F7;
+    width: 500px;
+}
+
+@media screen and (min-width: 400px) and (max-width: 640px) {
+    #login  {
+        width: 100%;
+    }
+}
+
+#login .form-wrap {
+    width: 70%;
+    margin: 0 auto;
+}
+#login h1 {
+    color: #1fa67b;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+#login .form-group {
+    margin-bottom: 25px;
+}
+#login .checkbox {
+    margin-bottom: 20px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+#login .btn.btn-custom {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+#login .forget {
+    font-size: 13px;
+    text-align: center;
+    display: block;
+}
+
+#login .close{
+    position: absolute;
+    right: 10px;
+    top: -40px;
+}
+/*End modal*/
+
 header {
     position: relative;
     width: 100%;
@@ -85,8 +139,6 @@ header .header-content {
 }
 
 /* Temoignage */
-
-
 .temoignage .container {
     position: relative;
     margin: auto;
