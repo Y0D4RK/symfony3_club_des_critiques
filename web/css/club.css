@@ -27,6 +27,30 @@ p {
     font-size: 14px;
 }
 
+/* navbar */
+.navbar{
+    position: fixed;
+    width: 100%;
+}
+.navbar-brand {
+    padding: 0px;
+}
+.navbar-brand>img {
+    height: 100%;
+    padding: 15px;
+    width: auto;
+}
+
+.menu .navbar-brand{
+    background: url('../images/logo.png') center / contain no-repeat;
+    width: 200px;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+/* end navbar */
+
 header {
     position: relative;
     width: 100%;
@@ -152,8 +176,67 @@ header .header-content {
     width: 100%;
 }
 
-/* Footer : Contact */
+/* Section latest */
 
+#latest * {
+    z-index: 2;
+}
+
+.latest{
+    margin: 0 0 30px;
+}
+
+.section-subheading{
+    margin-bottom: 50px;
+}
+
+.box-link{
+    display: block;
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.box-hover{
+    background: rgba(105, 240, 174, 0.59);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all ease .5s;
+    -webkit-transition: all ease .5s;
+    -moz-transition: all ease .5s;
+}
+
+.box-hover:hover{
+    opacity: 1;
+}
+
+.box-hover-content {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    font-size: 20px;
+    text-align: center;
+    top: 50%;
+    margin-top: -12px;
+    color: #fff;
+}
+
+.box-caption {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    text-align: center;
+    padding: 25px;
+}
+
+.box-caption h4{
+    color: #222;
+}
+/* Fin section latest */
+
+/* Footer : Contact */
 .contact {
     background-color: #222222;
 }
@@ -196,3 +279,8 @@ header .header-content {
     margin-top:-4px;
 }
 .contact [type="submit"]:hover { background:#00E676; }
+
+footer {
+    padding: 25px 0;
+    text-align: center;
+}
