@@ -10,11 +10,10 @@
     <meta name="author" content="">
     <link rel="icon" type="image/x-icon" href="{{ asset('/favicon.ico') }}" />
 
-    <title>{% block title %}Generator - V1.0{% endblock %}</title>
+    <title>{% block title %}Club des critiques{% endblock %}</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css">
     <!-- MetisMenu CSS -->
     <link href="{{ asset('css/metisMenu.min.css') }}" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
@@ -25,6 +24,8 @@
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <!-- Icon fav. -->
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <!-- Fichier css -->
+    <link href="{{ asset('css/club.css') }}" rel="stylesheet" type="text/css" >
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,32 +36,51 @@
 
 </head>
 
-<body>
+<body id="page-top">
 
 <div id="wrapper">
 
-    <!-- Navigation -->
-    {% include 'menu.html.twig' %}
+    <!-- if user pas connecté -->
+    {% include 'empty.html.twig' %}
+    <!-- else user connecté -->
+    {#{% include 'menu.html.twig' %}#}
 
-    <div id="page-wrapper" class="container-custom">
-        {#Pop up info.#}
-        {% for flash_message in app.session.flashBag.get('notice-success') %}
-            <div class="panel panel-default panel-notice">
-                <span class="success"> {{ flash_message }} </span>
-            </div>
-        {% endfor %}
 
-        {% for flash_message in app.session.flashBag.get('notice-error') %}
-            <div class="panel panel-default panel-notice">
-                <span class="erreur"> {{ flash_message }} </span>
-            </div>
-        {% endfor %}
-
+    <!-- /.row -->
+    <div class="row">
         {% block content %}
         {% endblock %}
     </div>
 
+
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    Le club des critiques
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Conditions générales</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </div>
+<!-- /#wrapper -->
 
 {% block javascripts %}
     <script src="{{ asset('js/jquery.min.js') }}"></script>
