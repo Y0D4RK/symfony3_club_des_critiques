@@ -19,3 +19,9 @@ book:
     path: /book
     defaults: { _controller: "AppBundle:Club:book" }
     methods:  [GET]
+
+
+contents:
+    path: /contents
+    defaults: { _controller: "AppBundle:Club:contents" }
+    methods:  [GET]

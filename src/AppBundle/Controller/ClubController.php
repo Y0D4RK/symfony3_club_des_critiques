@@ -34,12 +34,22 @@ class ClubController extends Controller
         ]);
     }
 
+
     /** Page exposition **/
     public function expositionAction(Request $request)
     {
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
             'var' => "EXPOSITION X !"
+        ]);
+    }
+
+    /** Page contents **/
+    public function contentsAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('club/contents.html.twig', [
+            'var' => "BOOKs X !"
         ]);
     }
 
