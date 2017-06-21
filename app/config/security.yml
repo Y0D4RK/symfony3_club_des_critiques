@@ -8,9 +8,9 @@ security:
 
     # cette clÃ© dÃ©fini les role au sein de notre application - gere les autorisation (ROLE_ADMIN => propre Ã  FosUser)
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
+        ROLE_ADMIN:       ROLE_ADMIN, ROLE_MODO
         # sf3 fos:user:demote  user1@mail.com ROLE_ADMIN
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_SUPER_ADMIN: ROLE_SUPER_ADMIN,
 
     # Fourni les utilisateurs - c'est lui qui part d'un login et d'un mdp pour recup un user et ses droits
     providers:
