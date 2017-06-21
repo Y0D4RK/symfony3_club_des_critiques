@@ -25,3 +25,8 @@ contents:
     path: /contents
     defaults: { _controller: "AppBundle:Club:contents" }
     methods:  [GET]
+
+content:
+    path: /content
+    defaults: { _controller: "AppBundle:Club:content" }
+    methods:  [GET]

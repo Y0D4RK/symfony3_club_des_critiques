@@ -49,7 +49,16 @@ class ClubController extends Controller
     {
         // replace this example code with whatever you need
         return $this->render('club/contents.html.twig', [
-            'var' => "BOOKs X !"
+            'var' => "contents X !"
+        ]);
+    }
+
+    /** Page content **/
+    public function contentAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('club/content.html.twig', [
+            'var' => "content X !"
         ]);
     }
 

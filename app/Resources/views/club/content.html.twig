@@ -1,0 +1,130 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+
+    <header id="content">
+        <div class="container">
+            <div class="row">
+                <div class="content-title col-lg-12">
+                    <div class="col-md-3">
+                        <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                    </div>
+                    <div class="col-md-7">
+                        <h1>Titre de l'oeuvre</h1>
+                        <p class="text-muted">Auteur de l'oeuvre</p>
+                        <p><span style="font-size: 22px;"><strong>Description rapide de l'oeuvre, Lorem ipsum dolor sit amet</strong></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="description">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <h3>Resumé</h3>
+                    <div class="description">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                            nulla pariatur.</p>
+                    </div>
+                    <!--Commentaires-->
+                    <h3>Commentaires récents</h3>
+                    <div id="comments">
+                        <div class="comment-wrap">
+                            <div class="photo">
+                                <div class="avatar" style="background-image: url('../images/moi.jpg')"></div>
+                            </div>
+                            <div class="comment-block">
+                                <form action="">
+                                    <textarea name="" id="" cols="30" rows="3" placeholder="Ajouter un avis..."></textarea>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="comment-wrap">
+                            <div class="photo">
+                                <div class="avatar" style="background-image: url('../images/moi.jpg')"></div>
+                            </div>
+                            <div class="comment-block">
+                                <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam reprehenderit quasi
+                                    sapiente modi tempora at perspiciatis mollitia, dolores voluptate. Cumque, corrupti?</p>
+                                <div class="bottom-comment">
+                                    <div class="comment-date">23 Juin 2017, 12h00</div>
+                                    <ul class="comment-actions">
+                                        <li class="complain">Signaler</li>
+                                        <li class="reply">Répondre</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="comment-wrap">
+                            <div class="photo">
+                                <div class="avatar" style="background-image: url('../images/moi.jpg')"></div>
+                            </div>
+                            <div class="comment-block">
+                                <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam.</p>
+                                <div class="bottom-comment">
+                                    <div class="comment-date">23 Juin 2017, 12h00</div>
+                                    <ul class="comment-actions">
+                                        <li class="complain">Signaler</li>
+                                        <li class="reply">Répondre</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <h3 class="text-center">Œuvre Similaires</h3>
+                    <div class="similar">
+                        <a href="" class="box-link">
+                            <div class="box-hover">
+                                <div class="box-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                        </a>
+                        <div class="box-caption">
+                            <h4>Titre de l'oeuvre</h4>
+                            <p class="text-muted">Auteur</p>
+                        </div>
+                    </div>
+                    <div class="similar">
+                        <a href="" class="box-link">
+                            <div class="box-hover">
+                                <div class="box-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                        </a>
+                        <div class="box-caption">
+                            <h4>Titre de l'oeuvre</h4>
+                            <p class="text-muted">Auteur</p>
+                        </div>
+                    </div>
+                    <div class="similar">
+                        <a href="" class="box-link">
+                            <div class="box-hover">
+                                <div class="box-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                        </a>
+                        <div class="box-caption">
+                            <h4>Titre de l'oeuvre</h4>
+                            <p class="text-muted">Auteur</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
