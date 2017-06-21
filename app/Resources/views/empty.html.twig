@@ -1,62 +1,60 @@
-<!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-static-top menu">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar6">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand text-hide" href="#">Brand Text
-            </a>
-        </div>
-        <div id="navbar6" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">Acceuil</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Œuvre<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Livres</a></li>
-                        <li><a href="#">Films</a></li>
-                        <li><a href="#">Expositions</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Salons</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#login-modal">Connexion</a></li>
-            </ul>
-        </div>
-        <!--/.nav-collapse -->
-    </div>
-    <!--/.container-fluid -->
-</nav>
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- modal login -->
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div id="login" class="container">
-        <div class="row">
-            <div class="col-xs-12 text-center">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">×</span>
-                    <span class="sr-only">Fermer</span>
-                </button>
-                <div class="form-wrap">
-                    <h1>Connectez-vous</h1>
-                    <form role="form" action="javascript:;" method="post" id="login-form" autocomplete="off">
-                        <div class="form-group">
-                            <label for="email" class="sr-only">Email</label>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="email@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="key" class="sr-only">Mot de passe</label>
-                            <input type="password" name="key" id="key" class="form-control" placeholder="Mot de passe">
-                        </div>
-                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Se connecter">
-                    </form>
-                    <a href="javascript:;" class="forget" data-toggle="modal" data-target=".forget-modal">Mot de passe oublié ?</a>
-                    <hr>
-                </div>
-            </div> <!-- /.col-xs-12 -->
-        </div> <!-- /.row -->
-    </div> <!-- /.container -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" href="{{ asset('/favicon.ico') }}" />
+
+    <title>{% block title %}Club des critiques{% endblock %}</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <!-- MetisMenu CSS -->
+    <link href="{{ asset('css/metisMenu.min.css') }}" rel="stylesheet" type="text/css">
+    <!-- Custom CSS -->
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet" type="text/css">
+    <!-- Morris Charts CSS -->
+    <link href="{{ asset('css/morris.css') }}" rel="stylesheet" type="text/css">
+    <!-- Custom Fonts -->
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <!-- Icon fav. -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <!-- Fichier css -->
+    <link href="{{ asset('css/club.css') }}" rel="stylesheet" type="text/css" >
+
+</head>
+
+<body>
+
+<div id="wrap">
+
+    {% include './includes/header.html.twig' %}
+
+    <div id="wrapper" class="container">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+
+    {% include "./includes/footer.html.twig" %}
+
 </div>
+<!-- /#wrapper -->
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('js/raphael.min.js') }}"></script>
+    <script src="{{ asset('js/sb-admin-2.js') }}"></script>
+{% endblock javascripts %}
+
+</body>
+
+</html>

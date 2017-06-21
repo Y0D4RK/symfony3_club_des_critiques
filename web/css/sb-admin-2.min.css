@@ -13,17 +13,24 @@ body {
     background-color: #f8f8f8
 }
 
-#wrapper {
+#wrap {
     width: 100%
 }
 
-#page-wrapper {
-    margin-top: 40px;
-    padding: 0 15px;
-    min-height: 568px;
+#wrapper {
     background-color: #fff;
-    border: 1px solid #e7e7e7;
+    padding-top: 100px;
+    /*
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-position: center;
+    background-image: url('../images/fond.jpg');
+    background-attachment: fixed;
+    text-align: center;*/
 }
+
 .panel-body{
     background-color: #f6f6f6;
 }

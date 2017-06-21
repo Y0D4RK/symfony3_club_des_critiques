@@ -27,57 +27,35 @@
     <!-- Fichier css -->
     <link href="{{ asset('css/club.css') }}" rel="stylesheet" type="text/css" >
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
-<body id="page-top">
+<body>
 
-<div id="wrapper">
+<div id="wrap">
 
-    <!-- if user pas connecté -->
-    {% include 'empty.html.twig' %}
-    <!-- else user connecté -->
-    {#{% include 'menu.html.twig' %}#}
+    {% include './includes/header.html.twig' %}
 
+    <div id="wrapper">
+        {#Pop up info.#}
+        {% for flash_message in app.session.flashBag.get('notice-success') %}
+            <div class="panel panel-default panel-notice">
+                <span class="success"> {{ flash_message }} </span>
+            </div>
+        {% endfor %}
 
-    <!-- /.row -->
-    <div class="row">
+        {% for flash_message in app.session.flashBag.get('notice-error') %}
+            <div class="panel panel-default panel-notice">
+                <span class="erreur"> {{ flash_message }} </span>
+            </div>
+        {% endfor %}
+
         {% block content %}
+
         {% endblock %}
     </div>
 
 
-    <!-- footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    Le club des critiques
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                        <li><a href="#">Conditions générales</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
+    {% include "./includes/footer.html.twig" %}
 
 </div>
 <!-- /#wrapper -->
