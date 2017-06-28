@@ -24,30 +24,30 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=50)
      */
     private $name;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="createdAt", type="datetime", nullable=true)
-     */
-    private $createdAt;
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
     private $description;
 
     /**
-     * @var bool
+     * @var string
      *
-     * @ORM\Column(name="useApi", type="boolean")
+     * @ORM\Column(name="api_url", type="string", length=255, nullable=true)
      */
-    private $useApi;
+    private $apiUrl;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
 
 
     /**
@@ -85,30 +85,6 @@ class Category
     }
 
     /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Category
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
      * Set description
      *
      * @param string $description
@@ -133,27 +109,51 @@ class Category
     }
 
     /**
-     * Set useApi
+     * Set apiUrl
      *
-     * @param boolean $useApi
+     * @param string $apiUrl
      *
      * @return Category
      */
-    public function setUseApi($useApi)
+    public function setApiUrl($apiUrl)
     {
-        $this->useApi = $useApi;
+        $this->apiUrl = $apiUrl;
 
         return $this;
     }
 
     /**
-     * Get useApi
+     * Get apiUrl
      *
-     * @return bool
+     * @return string
      */
-    public function getUseApi()
+    public function getApiUrl()
     {
-        return $this->useApi;
+        return $this->apiUrl;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return Category
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 }
 

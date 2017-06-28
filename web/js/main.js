@@ -1,7 +1,6 @@
 function bookSearch(){
     // console.log('this function runs !');
     var search = $("#search").val();
-    $("#results").append("");
     console.log(search);
 
     $.ajax({
@@ -32,4 +31,7 @@ function bookSearch(){
     });
 }
 
-$("#button").click(function(){bookSearch()});
+$("#button").click(function(){
+    $("#results").empty();
+    bookSearch()
+});

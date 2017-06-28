@@ -1,32 +1,32 @@
 #page d'accueil, elle comprend une liste des oeuvres classable avec des filtres.
 home:
     path: /
-    defaults: { _controller: "AppBundle:Club:index" }
+    defaults: { _controller: "AppBundle:Landing:index" }
     methods:  [GET]
 
 #pages des catégories
-movie:
-    path: /movie
-    defaults: { _controller: "AppBundle:Club:movie" }
-    methods:  [GET]
-
-exposition:
-    path: /exposition
-    defaults: { _controller: "AppBundle:Club:exposition" }
-    methods:  [GET]
-
-book:
-    path: /book
-    defaults: { _controller: "AppBundle:Club:book" }
-    methods:  [GET]
-
-
-contents:
-    path: /contents
-    defaults: { _controller: "AppBundle:Club:contents" }
-    methods:  [GET]
-
-content:
-    path: /content
-    defaults: { _controller: "AppBundle:Club:content" }
-    methods:  [GET]
+#movie:
+#    path: /movie
+#    defaults: { _controller: "AppBundle:Club:movie" }
+#    methods:  [GET]
+#
+#exposition:
+#    path: /exposition
+#    defaults: { _controller: "AppBundle:Club:exposition" }
+#    methods:  [GET]
+#
+#book:
+#    path: /book
+#    defaults: { _controller: "AppBundle:Club:book" }
+#    methods:  [GET]
+#
+#
+#contents:
+#    path: /contents
+#    defaults: { _controller: "AppBundle:Club:contents" }
+#    methods:  [GET]
+#
+#content:
+#    path: /content
+#    defaults: { _controller: "AppBundle:Club:content" }
+#    methods:  [GET]
