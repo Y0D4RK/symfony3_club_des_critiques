@@ -21,9 +21,9 @@ class Builder implements ContainerAwareInterface
             )
         ));
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
-            $menu->addChild('Dashboard', array('route' => 'home'));
-            $menu->addChild('Templates', array('route' => 'game_template'));
-            $menu->addChild('Jeux', array('route' => 'game_index'));
+            $menu->addChild('Home', array('route' => 'home'));
+            $menu->addChild('Catégories', array('route' => 'game_template'));
+            $menu->addChild('Salons', array('route' => 'game_index'));
         }else {
             $menu->addChild('Dashboard', array('route' => 'home'));
         }

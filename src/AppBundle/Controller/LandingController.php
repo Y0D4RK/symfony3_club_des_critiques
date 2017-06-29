@@ -14,8 +14,9 @@ class LandingController extends Controller
         return $this->render('default/index.html.twig', [
             'title' => "Le Club des Critiques",
             'label_email' => "Rejoignez notre club en saisissant simplement votre email",
-            'label_email' => "Rejoignez notre club en saisissant simplement votre email",
-            'label_email' => "Rejoignez notre club en saisissant simplement votre email",
+            'title_idea' => "Nos idées",
+            'explanations' => "Lorem ipsum...",
+            'citation' => "Lorem ipsum...bis",
         ]);
     }
 
