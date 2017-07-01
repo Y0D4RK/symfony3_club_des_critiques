@@ -64,12 +64,12 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
+    transport: "smtp"
     encryption: "ssl"
     port:      "465"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
+    host:      "smtp.gmail.com"
+    username:  "esgigroupeone@gmail.com"
+    password:  "pwdGROUPE1"
     spool:     { type: memory }
 
 fos_user:
@@ -77,21 +77,21 @@ fos_user:
     firewall_name: main
     user_class: UserBundle\Entity\User
     from_email:
-        address: "%mailer_user%"
-        sender_name: "%mailer_user%"
+        address: "esgigroupeone@gmail.com"
+        sender_name: "esgigroupeone@gmail.com"
     registration:
         confirmation:
             enabled: true
             template: FOSUserBundle:Registration:email.txt.twig
             from_email:
-                address: "%mailer_user%"
-                sender_name: "%mailer_user%"
+                address: "esgigroupeone@gmail.com"
+                sender_name: "Club des Critiques"
     resetting:
         email:
             template:   email/password_resetting.email.twig
             from_email:
-                address: "%mailer_user%"
-                sender_name: "%mailer_user%"
+                address: "esgigroupeone@gmail.com"
+                sender_name: "Club des Critiques"
     service:
         mailer: fos_user.mailer.twig_swift
 
