@@ -5,9 +5,9 @@ home:
     methods:  [GET]
 
 #pages des catégories
-movie:
-    path: /movie
-    defaults: { _controller: "AppBundle:Club:movie" }
+category:
+    path: /category/{id}
+    defaults: { _controller: 'AppBundle:Category:List' }
     methods:  [GET]
 
 #exposition:

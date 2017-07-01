@@ -2,6 +2,7 @@
 
 namespace AppBundle\Menu;
 
+use AppBundle\AppBundle;
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
@@ -20,15 +21,27 @@ class Builder implements ContainerAwareInterface
                 'class'             => 'nav navbar-nav',
             )
         ));
-        if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+        if ($this->container->get('security.authorization_checker')->isGranted('ROLE_USER')) {
             $menu->addChild('Accueil', array('route' => 'home'));
-            $menu->addChild('Catégories', array('route' => ''));
+
+            $em = $this->container->get('doctrine.orm.entity_manager');
+            $repository = $em->getRepository('AppBundle:Category');
+            $categories = $repository->findAll();
+
+            foreach($categories as $category){
+                $menu->addChild($category->getName(), array(
+                    'route' => '',
+                    'routeParameters' => array('id' => $category->getId())
+                ));
+            }
+
             $menu->addChild('Salons', array('route' => ''));
         }else {
             $menu->addChild('Accueil', array('route' => 'home'));
         }
         return $menu;
     }
+
     public function logMenu(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root', array(
