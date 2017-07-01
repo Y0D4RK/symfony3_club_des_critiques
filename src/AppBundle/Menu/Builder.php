@@ -21,11 +21,11 @@ class Builder implements ContainerAwareInterface
             )
         ));
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
-            $menu->addChild('Home', array('route' => 'home'));
-            $menu->addChild('Catégories', array('route' => 'game_template'));
-            $menu->addChild('Salons', array('route' => 'game_index'));
+            $menu->addChild('Accueil', array('route' => 'home'));
+            $menu->addChild('Catégories', array('route' => ''));
+            $menu->addChild('Salons', array('route' => ''));
         }else {
-            $menu->addChild('Dashboard', array('route' => 'home'));
+            $menu->addChild('Accueil', array('route' => 'home'));
         }
         return $menu;
     }
@@ -36,12 +36,11 @@ class Builder implements ContainerAwareInterface
                 'class'             => 'nav navbar-nav navbar-right',
             )
         ));
-
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_USER')) {
             $menu->addChild('Log out', array('route' => 'fos_user_security_logout'));
             /** @var \UserBundle\Entity\User $userLogged */
             $userLogged = $this->container->get('security.token_storage')->getToken()->getUser();
-            $menu->addChild($userLogged->getName(), array('route' => 'fos_user_profile_edit'));
+            $menu->addChild($userLogged->getUsername(), array('route' => 'fos_user_profile_edit'));
         }else{
             $menu->addChild('login', array('route' => 'fos_user_security_login'));
         }
