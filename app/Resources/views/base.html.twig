@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 
@@ -14,29 +14,23 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-    <!-- MetisMenu CSS -->
-    <link href="{{ asset('css/metisMenu.min.css') }}" rel="stylesheet" type="text/css">
-    <!-- Custom CSS -->
-    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet" type="text/css">
-    <!-- Morris Charts CSS -->
-    <link href="{{ asset('css/morris.css') }}" rel="stylesheet" type="text/css">
     <!-- Custom Fonts -->
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <!-- Icon fav. -->
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     <!-- Fichier css -->
-    <link href="{{ asset('css/club.css') }}" rel="stylesheet" type="text/css" >
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" >
 
 </head>
 
 <body>
 
 <div id="wrap">
-
     {% include './includes/header.html.twig' %}
 
     <div id="wrapper">
-        {#Pop up info.#}
+
+        {# popup info #}
         {% for flash_message in app.session.flashBag.get('notice-success') %}
             <div class="panel panel-default panel-notice">
                 <span class="success"> {{ flash_message }} </span>
@@ -49,16 +43,17 @@
             </div>
         {% endfor %}
 
+        {# block content #}
         {% block content %}
 
         {% endblock %}
     </div>
 
 
+    {# footer #}
     {% include "./includes/footer.html.twig" %}
 
 </div>
-<!-- /#wrapper -->
 
 {% block javascripts %}
     <script src="{{ asset('js/jquery.min.js') }}"></script>

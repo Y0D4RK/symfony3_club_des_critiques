@@ -4,9 +4,18 @@ html,
 body {
     height: 100%;
     width: 100%;
-    font-family: 'Raleway';
+    font-family: 'Raleway', Arial, sans-serif;
 }
-
+.divSpace{
+    height: 5px;
+}
+#body-empty{
+    background: url('../images/fond.jpg');
+    background-size: cover;
+}
+#wrapper-empty{
+    padding-top: 200px;
+}
 .row {
     margin-right: 0;
 }
@@ -109,10 +118,9 @@ p {
 }
 /*End modal*/
 
-header {
+#header {
     position: relative;
     width: 100%;
-    min-height: auto;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -124,7 +132,7 @@ header {
     color: white;
 }
 
-header .header-content {
+#header .header-content {
     position: relative;
     text-align: center;
     padding: 100px 15px 100px;
@@ -213,7 +221,6 @@ header .header-content {
 .bg-tertiary {
     position: relative;
     width: 100%;
-    min-height: auto;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -398,7 +405,6 @@ footer {
 #content {
     position: relative;
     width: 100%;
-    min-height: auto;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -534,3 +540,111 @@ footer {
 .comment-actions li:hover {
     color: #0095ff;
 }
+
+
+/* ---------------------------------- Salons ------------------------------------- */
+
+#liste-salons{
+    background-image: url('../images/salons.jpg');
+    background-attachment: fixed;
+}
+
+#liste-salons h1{
+    padding: 100px 0 70px 0;
+}
+
+#liste-salons .box-hover-content p{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#liste-salons .title-contents .fa-comments-o {
+    position: absolute;
+    top: 50%;
+    margin-left: 60px;
+}
+
+/* Note */
+.ratings {
+    width: 85px;
+    height: 17px;
+    display: inline-block;
+    position: relative;
+}
+.ratings:before, .ratings:after {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.ratings:before {
+    color: #F9C8D3;
+    content: "\f006\f006\f006\f006\f006";
+}
+.ratings:after {
+    color: #efcc1c;
+    content: "\f005\f005\f005\f005\f005";
+    overflow: hidden;
+}
+
+.ratings.one:after {
+    content: "\f005";
+}
+
+.ratings.onehalf:after {
+    content: "\f005\f089";
+}
+
+.ratings.two:after {
+    content: "\f005\f005";
+}
+
+.ratings.twohalf:after {
+    content: "\f005\f005\f089";
+}
+
+.ratings.three:after {
+    content: "\f005\f005\f005";
+}
+
+.ratings.threehalf:after {
+    content: "\f005\f005\f005\f089";
+}
+
+.ratings.four:after {
+    content: "\f005\f005\f005\f005";
+}
+
+.ratings.fourhalf:after {
+    content: "\f005\f005\f005\f005\f089";
+}
+
+/*Salon close*/
+.box-close{
+    opacity: 0.7;
+}
+
+.box-close .box-hover{
+    background: rgba(217, 83, 79, 0.82);
+}
+
+/* ---------------------------------- Salon ------------------------------------- */
+
+#salon {
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-position: center;
+    background-image: url('../images/library2.jpg');
+    background-attachment: fixed;
+    text-align: left;
+    color: white;
+}
+

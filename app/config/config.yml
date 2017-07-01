@@ -7,7 +7,7 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
 
 framework:
     #esi:             ~
@@ -65,8 +65,8 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
-#   encryption: "%mailer_encryption%"
-#   port:      "%mailer_port%"
+    encryption: "ssl"
+    port:      "465"
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
@@ -81,6 +81,8 @@ fos_user:
         sender_name: "%mailer_user%"
     registration:
         confirmation:
+            enabled: true
+            template: FOSUserBundle:Registration:email.txt.twig
             from_email:
                 address: "%mailer_user%"
                 sender_name: "%mailer_user%"
