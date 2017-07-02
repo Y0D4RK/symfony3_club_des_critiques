@@ -23,6 +23,21 @@ class Builder implements ContainerAwareInterface
         ));
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_USER')) {
             $menu->addChild('Accueil', array('route' => 'home'));
+            $menu->addChild('Salons', array('route' => 'salon'));
+        }else {
+            $menu->addChild('Accueil', array('route' => 'home'));
+        }
+        return $menu;
+    }
+
+    public function categoryMenu(FactoryInterface $factory, array $options)
+    {
+        $menu = $factory->createItem('root', array(
+            'childrenAttributes'    => array(
+                'class'             => 'dropdown-menu',
+            )
+        ));
+        if ($this->container->get('security.authorization_checker')->isGranted('ROLE_USER')) {
 
             $em = $this->container->get('doctrine.orm.entity_manager');
             $repository = $em->getRepository('AppBundle:Category');
@@ -30,14 +45,10 @@ class Builder implements ContainerAwareInterface
 
             foreach($categories as $category){
                 $menu->addChild($category->getName(), array(
-                    'route' => '',
+                    'route' => 'category',
                     'routeParameters' => array('id' => $category->getId())
                 ));
             }
-
-            $menu->addChild('Salons', array('route' => ''));
-        }else {
-            $menu->addChild('Accueil', array('route' => 'home'));
         }
         return $menu;
     }
@@ -50,12 +61,12 @@ class Builder implements ContainerAwareInterface
             )
         ));
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_USER')) {
-            $menu->addChild('Log out', array('route' => 'fos_user_security_logout'));
+            $menu->addChild('Se deconnecter', array('route' => 'fos_user_security_logout'));
             /** @var \UserBundle\Entity\User $userLogged */
             $userLogged = $this->container->get('security.token_storage')->getToken()->getUser();
             $menu->addChild($userLogged->getUsername(), array('route' => 'fos_user_profile_edit'));
         }else{
-            $menu->addChild('login', array('route' => 'fos_user_security_login'));
+            $menu->addChild('Se connecter', array('route' => 'fos_user_security_login'));
         }
 
         return $menu;

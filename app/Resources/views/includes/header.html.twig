@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-static-top menu">
+<nav class="navbar navbar-inverse navbar-fixed-top menu">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -12,12 +12,16 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
-        </div>
 
-        <div id="navbar" class="navbar-collapse collapse">
+            {%  %}
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Category <span class="caret"></span></a>
+                    {{ knp_menu_render('AppBundle:Builder:categoryMenu') }}
+                </li>
+            </ul>
             {{ knp_menu_render('AppBundle:Builder:logMenu') }}
-        </div>
         <!--/.nav-collapse -->
-    </div>
+        </div>
     <!--/.container-fluid -->
 </nav>
