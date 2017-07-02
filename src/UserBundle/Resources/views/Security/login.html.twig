@@ -3,75 +3,37 @@
 {% block content %}
     {% trans_default_domain 'FOSUserBundle' %}
 
-    <div class="panel panel-primary">
-        <div class="panel-heading"> S'Identifier </div>
-        <div class="panel-body">
-            {% if error %}
-                <div class="text-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
-            <form action="{{ path("fos_user_security_check") }}" method="POST">
 
-                {% if csrf_token %}
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                {% endif %}
-
-                <div class="row">
-                    <div class="col-xs-3 col-xs-offset-3">
-                        <label for="username">{{ 'security.login.username'|trans }}</label>
-                    </div>
-                    <div class="col-xs-5">
-                        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
-                    </div>
-                </div>
-                <div class="divSpace"></div>
-                <div class="row">
-                    <div class="col-xs-3 col-xs-offset-3">
-                        <label for="password">{{ 'security.login.password'|trans }}</label>
-                    </div>
-                    <div class="col-xs-5">
-                        <input type="password" id="password" name="_password" required="required" />
-                    </div>
-                </div>
-                <div class="divSpace"></div>
-                <div class="row">
-                    <div class="col-xs-3 col-xs-offset-3">
-                        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-                    </div>
-                    <div class="col-xs-5">
-                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                    </div>
-                </div>
-                <div class="divSpace"></div>
-                <div class="row">
-                    <div class="col-xs-6 col-xs-offset-6">
-                        <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-primary"/>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="panel-footer">
-            <div class="row text-center">
-                <div class="col-sm-4">
+    <div id="login" class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div class="form-wrap">
+                    <h1>Connectez-vous</h1>
+                    {% if error %}
+                        <div class="text-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    <form role="form" action="{{ path("fos_user_security_check") }}" method="POST" id="login-form" autocomplete="off">
+                        {% if csrf_token %}
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        {% endif %}
+                        <div class="form-group">
+                            <label for="username" class="sr-only">{{ 'security.login.username'|trans }}</label>
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="Nom d'utilisateur" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="sr-only">{{ 'security.login.password'|trans }}</label>
+                            <input type="password" id="password" name="_password" class="form-control" placeholder="Mot de passe" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                        </div>
+                        <input type="submit" id="_submit" name="_submit" class="btn btn-custom btn-lg btn-block" value="{{ 'security.login.submit'|trans }}" />
+                    </form>
                     <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
+                    <hr>
                 </div>
-                <div class="col-sm-4">
-                    <a href="#">Conditions générales</a>
-                </div>
-                <div class="col-sm-4">
-                    <ul class="list-inline social-buttons">
-                        <li>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div>
+            </div> <!-- /.col-xs-12 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
 {% endblock content %}

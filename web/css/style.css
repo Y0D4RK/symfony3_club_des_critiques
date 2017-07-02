@@ -13,9 +13,7 @@ body {
     background: url('../images/fond.jpg');
     background-size: cover;
 }
-#wrapper-empty{
-    padding-top: 200px;
-}
+
 .row {
     margin-right: 0;
 }
