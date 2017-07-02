@@ -7,14 +7,19 @@ home:
 #pages des catégories
 category:
     path: /category/{id}
-    defaults: { _controller: 'AppBundle:Category:List' }
+    defaults: { _controller: 'AppBundle:Category:show' }
     methods:  [GET]
 
-#exposition:
-#    path: /exposition
-#    defaults: { _controller: "AppBundle:Club:exposition" }
-#    methods:  [GET]
-#
+categories:
+    path: /categories
+    defaults: { _controller: 'AppBundle:Category:index' }
+    methods:  [GET]
+
+salon:
+    path: /salon
+    defaults: { _controller: "AppBundle:Salon:index" }
+    methods:  [GET]
+
 #book:
 #    path: /book
 #    defaults: { _controller: "AppBundle:Club:book" }

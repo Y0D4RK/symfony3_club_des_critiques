@@ -1,50 +1,132 @@
 {% extends '::base.html.twig' %}
 
 {% block content %}
-    <div class="col-lg-12">
-        <h1 class="page-header">Games list</h1>
-    </div>
 
-    <table class="table table-stripped table-bordered table-hover">
-        <thead class="thead-inverse">
-            <tr>
-                <th>iGameId</th>
-                <th>Nom de domaine</th>
-                <th>En production</th>
-                <th>iAffiliatis</th>
-                <th>endPositioning</th>
-                <th>sGoogleAnalytics</ th>
-                <th>Derniere modification/By</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for game in games %}
-            <tr>
-                <td>{{ game.iGameId }}</td>
-                <td><a href="{{ path('game_show', { 'id': game.id }) }}">{{ game.domainName }}</a></td>
-                <td>{% if game.inProd == 0 %}  Non {% else %} Oui {% endif %}</td>
-                <td>{{ game.iAffiliatisId }}</td>
-                <td>{{ game.endPositioningId }}</td>
-                <td>{{ game.sGoogleAnalytics }}</td>
-                <td>{% if game.updatedAt %}{{ game.updatedAt|date('Y-m-d H:i:s') }} par {% endif %}</td>
-                <td>
-                    <ul class="list-group">
-                        <li class="list-group-item"> <i class="fa fa-eye" aria-hidden="true"></i> <a href="{{ path('game_show', { 'id': game.id }) }}">show</a> </li>
-                        <li class="list-group-item"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <a href="{{ path('game_edit', { 'id': game.id }) }}">edit</a> </li>
-                        <li class="list-group-item"> <i class="fa fa-rocket" aria-hidden="true"></i> <a href="{{ path('game_make', { 'id': game.id }) }}">make the game</a> </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <div class="navigation">
-        {{ knp_pagination_render(games) }}
-    </div>
-    <ul>
-        <li>
-            <a href="{{ path('game_new') }}">Create a new game</a>
-        </li>
-    </ul>
+
+    <section id="header">
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1 id="homeHeading">{{ title }}</h1>
+                <hr>
+                <p><span style="font-size: 26px;"><strong>{{ label_email }}</strong></span></p>
+                <form class="form-horizontal">
+                    <input type="text" class="form-control" name="email" placeholder="Entrez votre email" />
+                    <button type="submit" class="btn btn-danger fa fa-check"></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">{{ title_idea }}</h2>
+                    <hr class="light">
+                    <p class="text-faded">{{ explanations }}</p>
+                    <div class="temoignage">
+                        <div class="container">
+                            <div class="text-container">
+                                <div class="text">{{ citation }}</div>
+                            </div>
+                            <span><div class="fa fa-quote-left"></div></span>
+                            <span><div class="fa fa-quote-right"></div></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-secondary" id="concept">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="col-lg-4 text-center">
+                        <h2>Notre concept</h2>
+                    </div>
+                    <div class="col-lg-offset-1 col-lg-7">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-tertiary" id="latest">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">À la une</h2>
+                    <h3 class="section-subheading text-muted">Retrouvrez nos dérnieres oeuvres</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 latest">
+                    <a href="" class="box-link">
+                        <div class="box-hover">
+                            <div class="box-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                    </a>
+                    <div class="box-caption">
+                        <h4>Titre de l'oeuvre</h4>
+                        <p class="text-muted">Auteur</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 latest">
+                    <a href="" class="box-link">
+                        <div class="box-hover">
+                            <div class="box-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                    </a>
+                    <div class="box-caption">
+                        <h4>Titre de l'oeuvre</h4>
+                        <p class="text-muted">Auteur</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 latest">
+                    <a href="" class="box-link">
+                        <div class="box-hover">
+                            <div class="box-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                    </a>
+                    <div class="box-caption">
+                        <h4>Titre de l'oeuvre</h4>
+                        <p class="text-muted">Auteur</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Écrivez nous !</h2>
+                </div>
+            </div>
+            <div class="row">
+                <form>
+                    <input name="name" type="text" class="feedback-input" placeholder="Votre Nom" />
+                    <input name="email" type="text" class="feedback-input" placeholder="Votre Email" />
+                    <textarea name="text" class="feedback-input" placeholder="Votre commentaire"></textarea>
+                    <input type="submit" value="Envoyer"/>
+                </form>
+            </div>
+        </div>
+    </section>
+
 {% endblock %}
+
