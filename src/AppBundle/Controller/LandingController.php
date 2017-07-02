@@ -11,7 +11,7 @@ class LandingController extends Controller
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
+        return $this->render('club/index.html.twig', [
             'title' => "Le Club des Critiques",
             'label_email' => "Rejoignez notre club en saisissant simplement votre email",
             'title_idea' => "Nos idées",

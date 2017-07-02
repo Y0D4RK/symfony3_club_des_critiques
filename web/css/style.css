@@ -547,6 +547,8 @@ footer {
 #liste-salons{
     background-image: url('../images/salons.jpg');
     background-attachment: fixed;
+    background-position: top left;
+    background-repeat: no-repeat;
 }
 
 #liste-salons h1{
