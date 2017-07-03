@@ -2,8 +2,13 @@
 
 namespace UserBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
+
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * User
@@ -13,6 +18,27 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
+
+
+    /**
+     * @Assert\Image(
+     *     maxSize="30000000",
+     *     mimeTypes={"image/png", "image/jpeg", "image/jpg"}
+     * )
+     * @Vich\UploadableField(mapping="user_avatar", fileNameProperty="avatarName")
+     *
+     * @var File
+     */
+    protected $avatar;
+
+    /**
+     *
+     * @ORM\Column(name="avatarName", type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    protected $avatarName;
+
     /**
      * @var int
      *
@@ -21,6 +47,7 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
 
     public function __construct()
     {
@@ -36,6 +63,7 @@ class User extends BaseUser
     {
         return $this->id;
     }
+
 
 
 }

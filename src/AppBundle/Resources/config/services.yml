@@ -1,0 +1,9 @@
+services:
+#    app.game.maker:
+#        class: AppBundle\Service\GameMaker
+#        arguments: [%template_path%, %new_game_path%, %web_path%]
+
+    app.cover.namer:
+        class: AppBundle\Service\CoverImageNamer
+        tags:
+            - { name: namer }

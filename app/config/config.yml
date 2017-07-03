@@ -3,11 +3,12 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@UserBundle/Resources/config/services.yml" }
+    - { resource: "@AppBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: fr
+    locale: en
 
 framework:
     #esi:             ~
@@ -104,3 +105,13 @@ knp_menu:
     templating: false
     # the renderer to use, list is also available by default
     default_renderer: twig
+
+
+# VICH UPLOADER
+vich_uploader:
+    db_driver: orm
+    mappings:
+        cover_image:
+            uri_prefix:         /upload
+            upload_destination: %kernel.root_dir%/../web/upload
+            namer:              app.cover.namer

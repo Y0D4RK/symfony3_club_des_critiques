@@ -22,7 +22,7 @@ class SalonController extends Controller
 
         $salons = $em->getRepository('AppBundle:Salon')->findAll();
 
-        return $this->render('salon/index.html.twig', array(
+        return $this->render('club/salon/salons.html.twig', array(
             'salons' => $salons,
         ));
     }
@@ -59,7 +59,7 @@ class SalonController extends Controller
     {
         $deleteForm = $this->createDeleteForm($salon);
 
-        return $this->render('salon/show.html.twig', array(
+        return $this->render('club/salon/salon.html.twig', array(
             'salon' => $salon,
             'delete_form' => $deleteForm->createView(),
         ));

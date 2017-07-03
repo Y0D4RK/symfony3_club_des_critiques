@@ -45,7 +45,7 @@ class Builder implements ContainerAwareInterface
 
             foreach($categories as $category){
                 $menu->addChild($category->getName(), array(
-                    'route' => 'category_show',
+                    'route' => 'artwork_index',
                     'routeParameters' => array('id' => $category->getId())
                 ));
             }
@@ -68,9 +68,26 @@ class Builder implements ContainerAwareInterface
         }else{
             $menu->addChild('Se connecter', array('route' => 'fos_user_security_login'));
             $menu->addChild('S\'inscrire', array('route' => 'fos_user_registration_register'));
-
         }
 
         return $menu;
+    }
+
+    public function adminMenu(FactoryInterface $factory, array $options)
+    {
+        if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+
+            $menu = $factory->createItem('root', array(
+                'childrenAttributes'    => array(
+                    'class'             => 'nav navbar-nav navbar-right',
+                )
+            ));
+
+            $menu->addChild('Admin.', array('route' => 'admin'));
+
+            return $menu;
+        }else{
+            return false;
+        }
     }
 }

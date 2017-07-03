@@ -1,0 +1,96 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+
+    <header id="content">
+        <div class="container">
+            <div class="row">
+                <div class="content-title col-lg-12">
+                    <div class="col-md-3">
+                        <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                    </div>
+                    <div class="col-md-7">
+                        <h1>{{ artwork.name }}</h1>
+                        <p class="text-muted">{{ artwork.author }}</p>
+                        <p><span style="font-size: 22px;"><strong> {{ artwork }}</strong></span></p>
+                        <p>{% if artwork.createdAt %}{{ artwork.createdAt|date('Y-m-d H:i:s') }}{% endif %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="description">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <h3>Resumé</h3>
+                    <div class="description">
+                        <p>{{ artwork.description }}</p>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <h3 class="text-center">Œuvre Similaires</h3>
+                    <div class="similar">
+                        <a href="" class="box-link">
+                            <div class="box-hover">
+                                <div class="box-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                        </a>
+                        <div class="box-caption">
+                            <h4>Titre de l'oeuvre similaire 1</h4>
+                            <p class="text-muted">Auteur</p>
+                        </div>
+                    </div>
+                    <div class="similar">
+                        <a href="" class="box-link">
+                            <div class="box-hover">
+                                <div class="box-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                        </a>
+                        <div class="box-caption">
+                            <h4>Titre de l'oeuvre similaire 2</h4>
+                            <p class="text-muted">Auteur</p>
+                        </div>
+                    </div>
+                    <div class="similar">
+                        <a href="" class="box-link">
+                            <div class="box-hover">
+                                <div class="box-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                        </a>
+                        <div class="box-caption">
+                            <h4>Titre de l'oeuvre similaire 3</h4>
+                            <p class="text-muted">Auteur</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <ul>
+            <li>
+                <a href="{{ path('artwork_index') }}">Back to the list</a>
+            </li>
+            <li>
+                <a href="{{ path('artwork_edit', { 'id': artwork.id }) }}">Edit</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+    </section>
+
+{% endblock %}
