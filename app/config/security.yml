@@ -58,6 +58,3 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, role: ROLE_ADMIN }
-
-#        - { path: ^/games, role: ROLE_ADMIN }
-#        - { path: ^/game, role: ROLE_ADMIN }

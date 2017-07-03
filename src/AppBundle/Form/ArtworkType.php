@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+
 class ArtworkType extends AbstractType
 {
     /**
@@ -18,7 +19,7 @@ class ArtworkType extends AbstractType
             ->add('createdAt')
             ->add('user')
             ->add('category')
-            ->add('image1', VichFileType::class, [
+            ->add('cover', VichFileType::class, [
                 'allow_delete' => false,
                 'download_link' => true,
                 'required' => false,

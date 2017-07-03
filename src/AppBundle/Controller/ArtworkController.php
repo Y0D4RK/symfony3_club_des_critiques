@@ -16,13 +16,13 @@ class ArtworkController extends Controller
      * Lists all artwork entities.
      *
      */
-    public function indexAction()
+    public function indexAction($categoryId)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $artworks = $em->getRepository('AppBundle:Artwork')->findAll();
+        $artworks = $em->getRepository('AppBundle:Artwork')->findAllByCategory($categoryId);
 
-        return $this->render('artwork/index.html.twig', array(
+        return $this->render('club/artwork/index.html.twig', array(
             'artworks' => $artworks,
         ));
     }

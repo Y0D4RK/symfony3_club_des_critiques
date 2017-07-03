@@ -6,7 +6,7 @@ home:
 
 # ROUTING CATEGORY #
 category_index:
-    path:     /category
+    path:     /categories
     defaults: { _controller: "AppBundle:Category:index" }
     methods:  GET
 
@@ -32,22 +32,22 @@ category_delete:
 
 # ROUTING ARTWORK #
 artwork_index:
-    path:     /
+    path:     /artworks/{id}
     defaults: { _controller: "AppBundle:Artwork:index" }
     methods:  GET
 
 artwork_show:
-    path:     /{id}/show
+    path:     /artwork/{id}/show
     defaults: { _controller: "AppBundle:Artwork:show" }
     methods:  GET
 
 artwork_new:
-    path:     /new
+    path:     /artwork/new
     defaults: { _controller: "AppBundle:Artwork:new" }
     methods:  [GET, POST]
 
 artwork_edit:
-    path:     /{id}/edit
+    path:     /artwork/{id}/edit
     defaults: { _controller: "AppBundle:Artwork:edit" }
     methods:  [GET, POST]
 
@@ -58,27 +58,27 @@ artwork_delete:
 
 # ROUTING SALONS #
 salon_index:
-    path:     /
+    path:     /salons
     defaults: { _controller: "AppBundle:Salon:index" }
     methods:  GET
 
 salon_show:
-    path:     /{id}/show
+    path:     /salon/{id}/show
     defaults: { _controller: "AppBundle:Salon:show" }
     methods:  GET
 
 salon_new:
-    path:     /new
+    path:     /salon/new
     defaults: { _controller: "AppBundle:Salon:new" }
     methods:  [GET, POST]
 
 salon_edit:
-    path:     /{id}/edit
+    path:     /salon/{id}/edit
     defaults: { _controller: "AppBundle:Salon:edit" }
     methods:  [GET, POST]
 
 salon_delete:
-    path:     /{id}/delete
+    path:     /salon/{id}/delete
     defaults: { _controller: "AppBundle:Salon:delete" }
     methods:  DELETE
 

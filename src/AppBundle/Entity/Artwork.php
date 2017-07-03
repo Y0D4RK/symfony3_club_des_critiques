@@ -4,11 +4,19 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
+
 /**
  * Artwork
  *
  * @ORM\Table(name="artwork")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ArtworkRepository")
+ *
+ * @Vich\Uploadable
  */
 class Artwork
 {
@@ -292,4 +300,53 @@ class Artwork
     {
         return $this->edithor;
     }
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     *
+     * @return Artwork
+     */
+    public function setCover(File $image = null)
+    {
+        $this->cover = $image;
+
+        if ($image) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getCover()
+    {
+        return $this->cover;
+    }
+
+    /**
+     * Set coverName
+     *
+     * @param string $coverName
+     *
+     * @return Game
+     */
+    public function setCoverName($imageName)
+    {
+        $this->coverName = $imageName;
+
+        return $this;
+    }
+
+    /**
+     * Get coverName
+     *
+     * @return string
+     */
+    public function getCoverName()
+    {
+        return $this->coverName;
+    }
 }
+

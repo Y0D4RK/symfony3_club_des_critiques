@@ -1,48 +1,96 @@
-{% extends 'base.html.twig' %}
+{% extends '::base.html.twig' %}
 
-{% block body %}
-    <h1>Artwork</h1>
+{% block content %}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ artwork.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ artwork.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ artwork.description }}</td>
-            </tr>
-            <tr>
-                <th>Createdat</th>
-                <td>{% if artwork.createdAt %}{{ artwork.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>User</th>
-                <td>{{ artwork.user }}</td>
-            </tr>
-            <tr>
-                <th>Category</th>
-                <td>{{ artwork.category }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <header id="content">
+        <div class="container">
+            <div class="row">
+                <div class="content-title col-lg-12">
+                    <div class="col-md-3">
+                        <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                    </div>
+                    <div class="col-md-7">
+                        <h1>{{ artwork.name }}</h1>
+                        <p class="text-muted">{{ artwork.author }}</p>
+                        <p><span style="font-size: 22px;"><strong> {{ artwork }}</strong></span></p>
+                        <p>{% if artwork.createdAt %}{{ artwork.createdAt|date('Y-m-d H:i:s') }}{% endif %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <ul>
-        <li>
-            <a href="{{ path('artwork_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('artwork_edit', { 'id': artwork.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
+    <section id="description">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <h3>Resumé</h3>
+                    <div class="description">
+                        <p>{{ artwork.description }}</p>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <h3 class="text-center">Œuvre Similaires</h3>
+                    <div class="similar">
+                        <a href="" class="box-link">
+                            <div class="box-hover">
+                                <div class="box-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                        </a>
+                        <div class="box-caption">
+                            <h4>Titre de l'oeuvre similaire 1</h4>
+                            <p class="text-muted">Auteur</p>
+                        </div>
+                    </div>
+                    <div class="similar">
+                        <a href="" class="box-link">
+                            <div class="box-hover">
+                                <div class="box-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                        </a>
+                        <div class="box-caption">
+                            <h4>Titre de l'oeuvre similaire 2</h4>
+                            <p class="text-muted">Auteur</p>
+                        </div>
+                    </div>
+                    <div class="similar">
+                        <a href="" class="box-link">
+                            <div class="box-hover">
+                                <div class="box-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                        </a>
+                        <div class="box-caption">
+                            <h4>Titre de l'oeuvre similaire 3</h4>
+                            <p class="text-muted">Auteur</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <ul>
+            <li>
+                <a href="{{ path('artwork_index') }}">Back to the list</a>
+            </li>
+            <li>
+                <a href="{{ path('artwork_edit', { 'id': artwork.id }) }}">Edit</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+    </section>
+
 {% endblock %}
