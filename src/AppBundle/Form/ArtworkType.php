@@ -13,7 +13,17 @@ class ArtworkType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('description')->add('createdAt')->add('user')->add('category')        ;
+        $builder->add('name')
+            ->add('description')
+            ->add('createdAt')
+            ->add('user')
+            ->add('category')
+            ->add('image1', VichFileType::class, [
+                'allow_delete' => false,
+                'download_link' => true,
+                'required' => false,
+                'label' => ' '
+            ]);
     }
     
     /**

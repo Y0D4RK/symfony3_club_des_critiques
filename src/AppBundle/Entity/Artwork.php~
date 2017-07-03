@@ -78,20 +78,6 @@ class Artwork
     private $edithor;
 
     /**
-     * @Vich\UploadableField(mapping="cover_image", fileNameProperty="coverName")
-     *
-     * @var File
-     */
-    private $cover;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="cover_name", type="string", length=255, nullable=true)
-     */
-    private $coverName;
-
-    /**
      * Get id
      *
      * @return int
@@ -267,29 +253,5 @@ class Artwork
     public function getPublishAt()
     {
         return $this->publishAt;
-    }
-
-    /**
-     * Set edithor
-     *
-     * @param string $edithor
-     *
-     * @return Artwork
-     */
-    public function setEdithor($edithor)
-    {
-        $this->edithor = $edithor;
-
-        return $this;
-    }
-
-    /**
-     * Get edithor
-     *
-     * @return string
-     */
-    public function getEdithor()
-    {
-        return $this->edithor;
     }
 }
