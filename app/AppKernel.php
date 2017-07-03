@@ -19,7 +19,6 @@ class AppKernel extends Kernel
             // bundles particuliers
             new FOS\UserBundle\FOSUserBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new Vich\UploaderBundle\VichUploaderBundle(),
 
             // mes bundles
             new AppBundle\AppBundle(),

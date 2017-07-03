@@ -108,10 +108,10 @@ knp_menu:
 
 
 # VICH UPLOADER
-vich_uploader:
-    db_driver: orm
-    mappings:
-        game_image:
-            uri_prefix:         /games_templates/tmp
-            upload_destination: %kernel.root_dir%/../web/upload/tmp
-            namer:              app.game.namer
+#vich_uploader:
+#    db_driver: orm
+#    mappings:
+#        game_image:
+#            uri_prefix:         /games_templates/tmp
+#            upload_destination: %kernel.root_dir%/../web/upload/tmp
+#            namer:              app.game.namer
