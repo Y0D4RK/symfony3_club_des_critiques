@@ -81,3 +81,9 @@ salon_delete:
     path:     /{id}/delete
     defaults: { _controller: "AppBundle:Salon:delete" }
     methods:  DELETE
+
+# ROUTING ADMIN #
+admin:
+    path: /administration
+    defaults: { _controller: "AppBundle:Salon:delete" }
+    methods:  [GET, POST, DELETE]

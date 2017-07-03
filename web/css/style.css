@@ -10,11 +10,11 @@ body {
     height: 5px;
 }
 #body-empty{
-    background: url('../images/fond.jpg');
+    background: url('../images/library2.jpg');
     background-size: cover;
 }
 #wrapper-empty{
-    padding-top: 200px;
+    padding-bottom: 100px;
 }
 .row {
     margin-right: 0;
@@ -346,6 +346,7 @@ p {
 footer {
     padding: 25px 0;
     text-align: center;
+    bottom: 0;
 }
 
 /* ---------------------------------- Contents ------------------------------------- */
@@ -547,8 +548,6 @@ footer {
 #liste-salons{
     background-image: url('../images/salons.jpg');
     background-attachment: fixed;
-    background-position: top left;
-    background-repeat: no-repeat;
 }
 
 #liste-salons h1{
@@ -650,3 +649,69 @@ footer {
     color: white;
 }
 
+/*------------------------------------ Profile ----------------------------------------- */
+
+@import url(https://fonts.googleapis.com/css?family=Lato:300);
+
+#profile {
+    max-width: 100%;
+    min-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5em;
+    background-color: #f2f2f2;
+    color: #444;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    line-height: 1;
+    text-align: center;
+}
+
+.profile-img {
+    display: block;
+    height: 7em;
+    margin-right: auto;
+    margin-left: auto;
+    border: .5em solid #f2f2f2;
+    border-radius: 100%;
+    box-shadow:  0 1px 0 0 rgba(0,0,0,.1);
+}
+
+.profile-text {
+    margin-top: -3.5em;
+    padding: 5em 1.5em 1.5em 1.5em;
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1)
+}
+
+.profile-name{
+    margin-right: -1em;
+    margin-bottom: .75em;
+    margin-left: -1em;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: .75em;
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+
+.profile-title {
+    color: #ccc;
+}
+
+.profile-btn {
+    position: absolute;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 7em;
+    background: #f05f40;
+    border: 1px solid #f2f2f2;
+    color: #fff;
+    outline: none;
+    border-radius: .6em .6em .6em .6em;
+    padding: 0.4em;
+    right: 75px;
+    top: 129px;
+
+}

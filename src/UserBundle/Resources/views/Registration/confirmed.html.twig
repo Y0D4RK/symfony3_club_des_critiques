@@ -4,8 +4,9 @@
 
 {% block content %}
 
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-    {% if targetUrl %}
-    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
-    {% endif %}
+<div id="login" class="container center-block">
+    <p class="text-center">{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+    <a href="{{ path('home') }}"><p class="text-center">{{ 'registration.back'|trans }}</p></a>
+    <br>
+</div>
 {% endblock content %}

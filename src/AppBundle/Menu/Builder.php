@@ -64,7 +64,7 @@ class Builder implements ContainerAwareInterface
             $menu->addChild('Se deconnecter', array('route' => 'fos_user_security_logout'));
             /** @var \UserBundle\Entity\User $userLogged */
             $userLogged = $this->container->get('security.token_storage')->getToken()->getUser();
-            $menu->addChild($userLogged->getUsername(), array('route' => 'fos_user_profile_edit'));
+            $menu->addChild($userLogged->getUsername(), array('route' => 'fos_user_profile_show'));
         }else{
             $menu->addChild('Se connecter', array('route' => 'fos_user_security_login'));
             $menu->addChild('S\'inscrire', array('route' => 'fos_user_registration_register'));
@@ -85,10 +85,9 @@ class Builder implements ContainerAwareInterface
 
             $menu->addChild('Admin.', array('route' => 'admin'));
 
+            return $menu;
         }else{
-
+            return false;
         }
-
-        return $menu;
     }
 }
