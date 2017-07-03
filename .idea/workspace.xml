@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46be1dd1-94d0-4270-8144-769e3ab62a76" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Resources/views/category/show.html.twig" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/artwork/edit.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/club/artwork/edit.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/artwork/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/club/artwork/index.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/artwork/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/club/artwork/new.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/artwork/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/club/artwork/show.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/category/edit.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/club/category/edit.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/category/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/club/category/index.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/category/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/club/category/new.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/salon/edit.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/club/salon/edit.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/salon/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/club/salon/index.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/salon/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/club/salon/new.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/salon/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/club/salon/show.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AppKernel.php" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/club/artwork/content.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/club/artwork/content.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/club/category/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/club/category/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/CategoryController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/CategoryController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Artwork.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Artwork.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/ArtworkType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/ArtworkType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Menu/Builder.php" afterPath="$PROJECT_DIR$/src/AppBundle/Menu/Builder.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../newop/.idea/newop.iml" afterPath="$PROJECT_DIR$/../../newop/.idea/newop.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../newop/src/AppBundle/Menu/Builder.php" afterPath="$PROJECT_DIR$/../../newop/src/AppBundle/Menu/Builder.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../newop/src/AppBundle/Resources/config/services.yml" afterPath="$PROJECT_DIR$/../../newop/src/AppBundle/Resources/config/services.yml" />
@@ -1189,12 +1169,12 @@
       <workItem from="1498833525324" duration="3231000" />
       <workItem from="1498838863115" duration="16479000" />
       <workItem from="1498873448378" duration="13201000" />
-      <workItem from="1499017888869" duration="14751000" />
+      <workItem from="1499017888869" duration="14869000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107186000" />
+    <option name="totallyTimeSpent" value="107304000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
