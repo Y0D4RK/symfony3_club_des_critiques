@@ -23,7 +23,7 @@ class Builder implements ContainerAwareInterface
         ));
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_USER')) {
             $menu->addChild('Accueil', array('route' => 'home'));
-            $menu->addChild('Salons', array('route' => 'salon'));
+            $menu->addChild('Salons', array('route' => 'salon_index'));
         }else {
             $menu->addChild('Accueil', array('route' => 'home'));
         }
@@ -45,7 +45,7 @@ class Builder implements ContainerAwareInterface
 
             foreach($categories as $category){
                 $menu->addChild($category->getName(), array(
-                    'route' => 'category',
+                    'route' => 'category_show',
                     'routeParameters' => array('id' => $category->getId())
                 ));
             }
@@ -67,6 +67,8 @@ class Builder implements ContainerAwareInterface
             $menu->addChild($userLogged->getUsername(), array('route' => 'fos_user_profile_edit'));
         }else{
             $menu->addChild('Se connecter', array('route' => 'fos_user_security_login'));
+            $menu->addChild('S\'inscrire', array('route' => 'fos_user_registration_register'));
+
         }
 
         return $menu;
