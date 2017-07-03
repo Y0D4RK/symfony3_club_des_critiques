@@ -10,10 +10,12 @@ body {
     height: 5px;
 }
 #body-empty{
-    background: url('../images/fond.jpg');
+    background: url('../images/library2.jpg');
     background-size: cover;
 }
-
+#wrapper-empty{
+    padding-bottom: 100px;
+}
 .row {
     margin-right: 0;
 }
@@ -344,6 +346,7 @@ p {
 footer {
     padding: 25px 0;
     text-align: center;
+    bottom: 0;
 }
 
 /* ---------------------------------- Contents ------------------------------------- */
@@ -545,8 +548,6 @@ footer {
 #liste-salons{
     background-image: url('../images/salons.jpg');
     background-attachment: fixed;
-    background-position: top left;
-    background-repeat: no-repeat;
 }
 
 #liste-salons h1{
