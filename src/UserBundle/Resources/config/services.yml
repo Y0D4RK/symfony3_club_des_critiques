@@ -1,6 +1,12 @@
 services:
+    # service pour overider le formulaire d'un user (fosuser)
     app.form.registration:
         class: AppBundle\Form\UserEditType
         tags:
             - { name: form.type, alias: app_user_profile_edit }
+    # service pour overider la methode de nommage de l'image (vichuploader)
+    app.avatar.namer:
+        class: UserBundle\Service\AvatarImageNamer
+        tags:
+            - { name: namer }
 

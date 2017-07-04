@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Service;
+namespace UserBundle\Service;
 
 use UserBundle\Entity\User;
 use Vich\UploaderBundle\Mapping\PropertyMapping;

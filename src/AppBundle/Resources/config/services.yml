@@ -1,13 +1,9 @@
 services:
-#    app.game.maker:
-#        class: AppBundle\Service\GameMaker
+#    app.voter:
+#        class: AppBundle\Service\Voter
 #        arguments: [%template_path%, %new_game_path%, %web_path%]
 
     app.cover.namer:
         class: AppBundle\Service\CoverImageNamer
-        tags:
-            - { name: namer }
-    app.avatar.namer:
-        class: AppBundle\Service\AvatarImageNamer
         tags:
             - { name: namer }
