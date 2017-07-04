@@ -95,6 +95,9 @@ fos_user:
                 sender_name: "Club des Critiques"
     service:
         mailer: fos_user.mailer.twig_swift
+    profile:
+        form:
+          type: UserBundle\Form\UserEditType
 
 # KNP MENU BUNDLE
 knp_menu:
@@ -111,7 +114,11 @@ knp_menu:
 vich_uploader:
     db_driver: orm
     mappings:
-        cover_image:
-            uri_prefix:         /upload
-            upload_destination: %kernel.root_dir%/../web/upload
-            namer:              app.cover.namer
+#        cover_image:
+#            uri_prefix:         /upload/cover
+#            upload_destination: %kernel.root_dir%/../web/upload/cover
+#            namer:              app.cover.namer
+        avatar_image:
+            uri_prefix:         /upload/avatar
+            upload_destination: %kernel.root_dir%/../web/upload/avatar
+            namer:              app.avatar.namer

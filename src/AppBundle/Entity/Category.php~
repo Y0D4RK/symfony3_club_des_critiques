@@ -165,38 +165,5 @@ class Category
     {
         return $this->createdAt;
     }
-
-    /**
-     * Add artwork
-     *
-     * @param \AppBundle\Entity\Artwork $artwork
-     *
-     * @return Category
-     */
-    public function addArtwork(\AppBundle\Entity\Artwork $artwork)
-    {
-        $this->artworks[] = $artwork;
-
-        return $this;
-    }
-
-    /**
-     * Remove artwork
-     *
-     * @param \AppBundle\Entity\Artwork $artwork
-     */
-    public function removeArtwork(\AppBundle\Entity\Artwork $artwork)
-    {
-        $this->artworks->removeElement($artwork);
-    }
-
-    /**
-     * Get artworks
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getArtworks()
-    {
-        return $this->artworks;
-    }
 }
+

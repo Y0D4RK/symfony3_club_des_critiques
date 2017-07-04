@@ -7,3 +7,7 @@ services:
         class: AppBundle\Service\CoverImageNamer
         tags:
             - { name: namer }
+    app.avatar.namer:
+        class: AppBundle\Service\AvatarImageNamer
+        tags:
+            - { name: namer }

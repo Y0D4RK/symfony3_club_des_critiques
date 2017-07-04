@@ -1,0 +1,6 @@
+services:
+    app.form.registration:
+        class: AppBundle\Form\UserEditType
+        tags:
+            - { name: form.type, alias: app_user_profile_edit }
+
