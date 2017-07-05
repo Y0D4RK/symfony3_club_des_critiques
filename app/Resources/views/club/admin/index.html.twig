@@ -1,0 +1,339 @@
+
+{% extends '::base.html.twig' %}
+
+{% block content %}
+
+    <div id="admin">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <div class="panel-group" id="accordion">
+                        <h1 id="adminHeading">Administration</h1>
+                        <hr>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#home">Page d'accueil</a>
+                                </h4>
+                            </div>
+                            <div id="home" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <form id="content_home" method="post">
+                                            <div class="col-md-4">
+                                                <label for="idea_home">Modifier Contenu :</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <textarea name="idea_home" id="idea_home" type="text" rows="2"  placeholder="Nos idées"></textarea>
+                                                <textarea name="concept_home" id="concept_home" type="text" rows="5"  placeholder="Notre concept"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-danger pull-right">Valider</button>
+                                        </form>
+                                    </div>
+                                    <div class="row latest_home">
+                                        <div class="col-md-4">
+                                            <label>Modifier À la une :</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="box-link">
+                                                        <div class="box-hover">
+                                                            <div class="box-hover-content">
+                                                                <h3>Titre</h3>
+                                                                <p>Auteur</p>
+                                                                <a href="#">Supprimer</a>
+                                                            </div>
+                                                        </div>
+                                                        <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="box-link">
+                                                        <div class="box-hover">
+                                                            <div class="box-hover-content">
+                                                                <h3>Titre</h3>
+                                                                <p>Auteur</p>
+                                                                <a href="#">Supprimer</a>
+                                                            </div>
+                                                        </div>
+                                                        <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="box-link">
+                                                        <div class="box-hover">
+                                                            <div class="box-hover-content">
+                                                                <h3>Titre</h3>
+                                                                <p>Auteur</p>
+                                                                <a href="#">Supprimer</a>
+                                                            </div>
+                                                        </div>
+                                                        <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="center-block add_artwork_link">
+                                                    <a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i> Ajouter une oeuvre</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#artwork">Artwork</a>
+                                </h4>
+                            </div>
+                            <div id="artwork" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li role="add"><a href="#add" aria-controls="1" role="tab" data-toggle="tab">Ajouter</a></li>
+                                        <li role="edit"><a href="#edit" aria-controls="2" role="tab" data-toggle="tab">Modifier</a></li>
+                                    </ul>
+                                    <!-- Content -->
+                                    <div class="tab-content">
+                                        <div role="add" class="tab-pane" id="add">
+                                            <div class="row">
+                                                <div class="col-lg-offset-4 col-lg-4">
+                                                    <ul class="nav nav-tabs">
+                                                        <li><a href="#auto" data-toggle="tab">Ajout automatique</a> </li>
+                                                        <li><a href="#manu" data-toggle="tab">Ajout manuel</a> </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="tab-content">
+                                                <div id="auto" class="tab-pane">
+                                                    <form id="add_artwork" class="add_artwork" method="post">
+                                                        <div class="col-lg-offset-3 col-lg-7 ">
+                                                            <label class="pull-left">Catégorie :</label>
+                                                            <select class="pull-right" name="categorie">
+                                                                <option value="livres">Livres</option>
+                                                                <option value="films">Films</option>
+                                                                <option value="expo">Expositions</option>
+                                                            </select>
+                                                            <input name="title_artwork" type="text" placeholder="URL">
+                                                            <button type="submit" class="btn btn-danger pull-right">Ajouter</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div id="manu" class="tab-pane">
+                                                    <form id="add_artwork" class="add_artwork" method="post">
+                                                        <div class="col-lg-offset-3 col-lg-7 ">
+                                                            <label class="pull-left">Catégorie :</label>
+                                                            <select name="categorie">
+                                                                <option value="livres">Livres</option>
+                                                                <option value="films">Films</option>
+                                                                <option value="expo">Expositions</option>
+                                                            </select>
+                                                            <input name="image_artwork" type="file">
+                                                            <input name="title_artwork" type="text" placeholder="Titre">
+                                                            <textarea name="description_artwork">Description</textarea>
+                                                            <button type="submit" class="btn btn-danger pull-right">Ajouter</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div role="edit" class="tab-pane" id="edit">
+                                            <div class="row">
+                                                <div class="col-lg-push-2 col-lg-8 center-block">
+                                                    <!-- Filter -->
+                                                    <div class="row">
+                                                        <div class="filter_artwork_admin">
+                                                            <form name="filter_form" method="get" id="filter_artwork_admin">
+                                                                <label>Triez par :</label>
+                                                                <select class="glyphicon glyphicon-search" name="categorie">
+                                                                    <option value="livres">Livres</option>
+                                                                    <option value="films">Films</option>
+                                                                    <option value="expo">Expositions</option>
+                                                                </select>
+                                                                <input type="text" class="text" name="text" placeholder="rechercher une oeuvre">
+                                                                <input type="submit" class="submit" value="Valider">
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <div class="box-link">
+                                                                <div class="box-hover">
+                                                                    <div class="box-hover-content">
+                                                                        <h3>Titre</h3>
+                                                                        <p>Auteur</p>
+                                                                        <a href="#">Supprimer</a>
+                                                                    </div>
+                                                                </div>
+                                                                <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="box-link">
+                                                                <div class="box-hover">
+                                                                    <div class="box-hover-content">
+                                                                        <h3>Titre</h3>
+                                                                        <p>Auteur</p>
+                                                                        <a href="#">Supprimer</a>
+                                                                    </div>
+                                                                </div>
+                                                                <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="box-link">
+                                                                <div class="box-hover">
+                                                                    <div class="box-hover-content">
+                                                                        <h3>Titre</h3>
+                                                                        <p>Auteur</p>
+                                                                        <a href="#">Supprimer</a>
+                                                                    </div>
+                                                                </div>
+                                                                <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                                                            </div>
+                                                        </div><div class="col-sm-4">
+                                                            <div class="box-link">
+                                                                <div class="box-hover">
+                                                                    <div class="box-hover-content">
+                                                                        <h3>Titre</h3>
+                                                                        <p>Auteur</p>
+                                                                        <a href="#">Supprimer</a>
+                                                                    </div>
+                                                                </div>
+                                                                <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#categories">Catégories & Pages</a>
+                                </h4>
+                            </div>
+                            <div id="categories" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li><a href="#category" aria-controls="1" role="tab" data-toggle="tab">Categorie</a></li>
+                                        <li><a href="#page" aria-controls="2" role="tab" data-toggle="tab">Page</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane" id="category">
+                                            <form id="add_category" method="post">
+                                                <div class="col-lg-offset-2 col-lg-10 add_category">
+                                                    <label class="pull-left">Nouvelle catégorie :</label>
+                                                    <input name="category" type="text" placeholder="Catégorie">
+                                                    <button type="submit" class="btn btn-danger">Ajouter</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="tab-pane" id="page">
+                                            <form id="add_page" class="add_page" method="post">
+                                                <div class="col-lg-offset-3 col-lg-7 ">
+                                                    <label class="pull-left">Catégorie :</label>
+                                                    <select name="categorie">
+                                                        <option value="livres">Livres</option>
+                                                        <option value="films">Films</option>
+                                                        <option value="expo">Expositions</option>
+                                                    </select>
+                                                    <input name="image_page" type="file">
+                                                    <input name="title_page" type="text" placeholder="Titre">
+                                                    <textarea name="content_page">Contenu</textarea>
+                                                    <button type="submit" class="btn btn-danger pull-right">Créer</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Salons</a>
+                                </h4>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse">
+                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#users">Utilisateurs</a>
+                                </h4>
+                            </div>
+                            <div id="users" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Nom</th>
+                                            <th>Date d'inscription</th>
+                                            <th>Email</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="ckbox">
+                                                    <input type="checkbox" id="checkbox1">
+                                                    <label for="checkbox1"></label>
+                                                </div>
+                                            </td>
+                                            <td>John</td>
+                                            <td>01/01/1996</td>
+                                            <td>john@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="ckbox">
+                                                    <input type="checkbox" id="checkbox2">
+                                                    <label for="checkbox2"></label>
+                                                </div>
+                                            </td>
+                                            <td>Mary</td>
+                                            <td>01/01/1996</td>
+                                            <td>mary@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="ckbox">
+                                                    <input type="checkbox" id="checkbox3">
+                                                    <label for="checkbox3"></label>
+                                                </div>
+                                            </td>
+                                            <td>July</td>
+                                            <td>01/01/1996</td>
+                                            <td>july@example.com</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="row">
+                                        <div class="col-lg-push-4 col-lg-4 center-block">
+                                            <button type="button" class="btn btn-info">Contacter</button>
+                                            <button type="button" class="btn btn-danger">Bannir</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
