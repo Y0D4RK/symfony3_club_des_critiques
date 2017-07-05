@@ -65,7 +65,7 @@ class ArtworkController extends Controller
     {
         $deleteForm = $this->createDeleteForm($artwork);
 
-        return $this->render('artwork/show.html.twig', array(
+        return $this->render('club/artwork/show.html.twig', array(
             'artwork' => $artwork,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -87,7 +87,7 @@ class ArtworkController extends Controller
             return $this->redirectToRoute('artwork_edit', array('id' => $artwork->getId()));
         }
 
-        return $this->render('artwork/edit.html.twig', array(
+        return $this->render('club/artwork/edit.html.twig', array(
             'artwork' => $artwork,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

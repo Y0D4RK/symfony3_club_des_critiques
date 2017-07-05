@@ -3,6 +3,9 @@ services:
 #        class: AppBundle\Service\Voter
 #        arguments: [%template_path%, %new_game_path%, %web_path%]
 
+    app.mail.sender:
+        class: AppBundle\Service\MailSender
+
     app.cover.namer:
         class: AppBundle\Service\CoverImageNamer
         tags:
