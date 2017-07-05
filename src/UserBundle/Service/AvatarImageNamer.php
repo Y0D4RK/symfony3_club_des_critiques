@@ -1,21 +1,21 @@
 <?php
 
-namespace AppBundle\Service;
+namespace UserBundle\Service;
 
-use AppBundle\Entity\Artwork;
+use UserBundle\Entity\User;
 use Vich\UploaderBundle\Mapping\PropertyMapping;
 use Vich\UploaderBundle\Naming\NamerInterface;
 
 /**
- * Cover Image Namer - Service
+ * Avatar Image Namer - Service
  *
  */
-class CoverImageNamer implements NamerInterface{
+class AvatarImageNamer implements NamerInterface{
 
     public function name($object, PropertyMapping $mapping)
     {
-        /** @var Artwork $object **/
-        $prefix = $object->getName();
+        /** @var User $object **/
+        $prefix = $object->getUsernameCanonical();
 
         $file = $mapping->getFile($object);
 

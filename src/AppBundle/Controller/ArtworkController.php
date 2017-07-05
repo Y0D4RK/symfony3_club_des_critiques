@@ -13,20 +13,26 @@ use Symfony\Component\HttpFoundation\Request;
 class ArtworkController extends Controller
 {
     /**
-     * Lists all artwork entities.
+     * Lists all artworks entities find by category.
      *
      */
-    public function indexAction($categoryId)
+    public function indexAction($name)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $artworks = $em->getRepository('AppBundle:Artwork')->findAllByCategory($categoryId);
+        $category = $em->getRepository('AppBundle:Category')->findBy(array('name'=>$name));
+
+        if (null === $category) {
+            throw new NotFoundHttpException("La cateogrie ".$name." n'existe pas.");
+        }
+
+        $artworks = $em->getRepository('AppBundle:Artwork')->findBy(array('category' => $category));
 
         return $this->render('club/artwork/index.html.twig', array(
-            'artworks' => $artworks,
+//            'categories' => $category,
+            'artworks' => $artworks
         ));
     }
-
     /**
      * Creates a new artwork entity.
      *
@@ -45,7 +51,7 @@ class ArtworkController extends Controller
             return $this->redirectToRoute('artwork_show', array('id' => $artwork->getId()));
         }
 
-        return $this->render('artwork/new.html.twig', array(
+        return $this->render('club/artwork/new.html.twig', array(
             'artwork' => $artwork,
             'form' => $form->createView(),
         ));
