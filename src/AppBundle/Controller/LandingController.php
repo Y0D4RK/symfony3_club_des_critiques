@@ -10,13 +10,27 @@ class LandingController extends Controller
     /** Page index **/
     public function indexAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $artworks = $em->getRepository('AppBundle:Artwork')->findAll();
+
+
+//        $em = $this->getDoctrine()->getManager();
+//        $interface = $em->getRepository('AppBundle:Interface')->findAll();
+
         // replace this example code with whatever you need
         return $this->render('club/index.html.twig', [
+            'artworks' => $artworks,
             'title' => "Le Club des Critiques",
-            'label_email' => "Rejoignez notre club en saisissant simplement votre email",
-            'title_idea' => "Nos idées",
-            'explanations' => "Lorem ipsum...",
-            'citation' => "Lorem ipsum...bis",
+            'slogan' => "Le cluuuuuuuuuuuuuuuuuuuuuuub de fouu",
+
+            'title1' => "Nos Idée",
+            'title2' => "Concept",
+            'title3' => "Lorem ipsum",
+
+            'text1' => "Lorem ipsum empty",
+            'text2' => "Le Club des Critiques",
+            'text3' => "Le Club des Critiques",
+            'text4' => "Le Club des Critiques"
         ]);
     }
 

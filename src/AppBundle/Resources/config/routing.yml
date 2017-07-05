@@ -6,7 +6,7 @@ home:
 
 # ROUTING CATEGORY #
 category_index:
-    path:     /categories
+    path:     /category/list
     defaults: { _controller: "AppBundle:Category:index" }
     methods:  GET
 
@@ -32,7 +32,8 @@ category_delete:
 
 # ROUTING ARTWORK #
 artwork_index:
-    path:     /artworks/{id}
+    #EXCEPTION, Controller category, car la pages des oeuvres dépend de la catégorie}
+    path:     /category/{name}
     defaults: { _controller: "AppBundle:Artwork:index" }
     methods:  GET
 

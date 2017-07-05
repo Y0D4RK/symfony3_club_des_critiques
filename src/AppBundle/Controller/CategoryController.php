@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 class CategoryController extends Controller
 {
     /**
-     * Lists all category entities.
+     * Lists all artwork entities.
      *
      */
     public function indexAction()

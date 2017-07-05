@@ -107,7 +107,7 @@ class User extends BaseUser
         $this->avatar = $image;
 
         if ($image) {
-            $this->updatedAt = new \DateTimeImmutable();
+            $this->lastLogin = new \Datetime('now');
         }
 
         return $this;

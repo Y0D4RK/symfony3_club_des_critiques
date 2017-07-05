@@ -46,7 +46,7 @@ class Builder implements ContainerAwareInterface
             foreach($categories as $category){
                 $menu->addChild($category->getName(), array(
                     'route' => 'artwork_index',
-                    'routeParameters' => array('id' => $category->getId())
+                    'routeParameters' => array('name' => $category->getName())
                 ));
             }
         }
