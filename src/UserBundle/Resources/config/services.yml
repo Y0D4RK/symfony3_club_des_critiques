@@ -1,4 +1,11 @@
 services:
+    # service pour aatribuer un role au user
+    app_user.registration_listener:
+        class: UserBundle\EventListener\RegistrationListener
+        arguments: []
+        tags:
+            - { name: kernel.event_subscriber }
+
     # service pour overider le formulaire d'un user (fosuser)
     app.form.registration:
         class: AppBundle\Form\UserEditType

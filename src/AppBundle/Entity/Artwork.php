@@ -51,9 +51,8 @@ class Artwork
     private $createdAt;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="user", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
@@ -97,6 +96,11 @@ class Artwork
      * @ORM\Column(name="cover_name", type="string", length=255, nullable=true)
      */
     private $coverName;
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     /**
      * Get id
@@ -329,7 +333,7 @@ class Artwork
      *
      * @param string $coverName
      *
-     * @return Game
+     * @return Artwork
      */
     public function setCoverName($imageName)
     {

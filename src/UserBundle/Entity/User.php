@@ -3,6 +3,8 @@
 namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
 use FOS\UserBundle\Model\User as BaseUser;
 
 use Symfony\Component\Validator\Constraints as Assert;
@@ -81,10 +83,20 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Artwork", mappedBy="user")
+     */
+    private $artworks;
+
+    public function __toString()
+    {
+        return $this->username;
+    }
 
     public function __construct()
     {
         parent::__construct();
+        $this->artworks = new ArrayCollection();
     }
 
     /**
