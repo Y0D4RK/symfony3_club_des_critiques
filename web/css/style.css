@@ -254,6 +254,13 @@ p {
     margin: 0 0 30px;
 }
 
+.latest .list-group-item-text{
+    height: 58px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .section-subheading{
     margin-bottom: 50px;
 }
