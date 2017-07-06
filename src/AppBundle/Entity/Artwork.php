@@ -51,7 +51,7 @@ class Artwork
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="artworks")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
