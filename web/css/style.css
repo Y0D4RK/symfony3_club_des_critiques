@@ -245,6 +245,11 @@ p {
     z-index: 2;
 }
 
+.latest img{
+    height: 20em;
+    width: 100%;
+}
+
 .latest{
     margin: 0 0 30px;
 }
