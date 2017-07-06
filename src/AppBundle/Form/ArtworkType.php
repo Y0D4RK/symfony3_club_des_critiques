@@ -23,8 +23,6 @@ class ArtworkType extends AbstractType
     {
         $builder->add('name')
             ->add('description')
-            ->add('createdAt')
-            ->add('user')
             ->add('category')
             ->add('cover', VichFileType::class, [
                 'allow_delete' => false,
