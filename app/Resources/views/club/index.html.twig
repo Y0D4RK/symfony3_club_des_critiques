@@ -57,10 +57,10 @@
                     <h3 class="section-subheading text-muted">{{ text4 }}</h3>
                 </div>
             </div>
-            {% for artwork in artworks %}
             <div class="row">
-                <div class="col-md-4 col-sm-6 latest">
-                    <a href="" class="box-link">
+                {% for artwork in artworks %}
+                    <div class="col-md-4 col-sm-6 latest">
+                        <a href="" class="box-link">
                         <div class="box-hover">
                             <div class="box-hover-content">
                                 <i class="fa fa-plus fa-3x"></i>
@@ -78,8 +78,8 @@
                         </ul>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </section>
 

@@ -659,7 +659,7 @@ footer {
     min-height: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding: 5em;
+    padding: 8em 5em;
     background-color: #f2f2f2;
     color: #444;
     font-family: 'Lato', sans-serif;
@@ -670,16 +670,16 @@ footer {
 
 .profile-img {
     display: block;
-    height: 7em;
+    height: 12em;
     margin-right: auto;
     margin-left: auto;
-    border: .5em solid #f2f2f2;
+    border: .5em solid rgba(98, 166, 155, 0.32);;
     border-radius: 100%;
     box-shadow:  0 1px 0 0 rgba(0,0,0,.1);
 }
 
 .profile-text {
-    margin-top: -3.5em;
+    margin-top: -4.5em;
     padding: 5em 1.5em 1.5em 1.5em;
     background: white;
     border-radius: 3px;
@@ -701,7 +701,6 @@ footer {
 }
 
 .profile-btn {
-    position: absolute;
     font-size: 13px;
     font-weight: bold;
     cursor: pointer;
@@ -712,7 +711,221 @@ footer {
     outline: none;
     border-radius: .6em .6em .6em .6em;
     padding: 0.4em;
-    right: 75px;
-    top: 129px;
+    right: 150px;
+    top: 254px;
 
+}
+
+
+/*---------------------------------------------------- Admin -----------------------------------------------*/
+
+#admin{
+    background-color: #30333b;
+}
+
+#adminHeading{
+    color: #dddddd;
+}
+
+#accordion{
+    position: relative;
+    text-align: center;
+    padding: 100px 15px 100px;
+    width: 100%;
+}
+
+#admin .panel-heading {
+    color: #dddddd !important;
+    background-color: #323640 !important;
+}
+
+#admin .panel-body{
+    background-color: #24262d;
+    color: #ddd;
+}
+
+#home textarea{
+    width: 100%;
+    border-image: none;
+    border-radius: 6px 6px 6px 6px;
+    border-style: none solid solid none;
+    border-width: medium 1px 1px medium;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+    resize:none;
+    padding: 10px 0 0 10px;
+    margin: 0.5em 0 0 0;
+}
+
+#content_home button{
+    margin: 15px;
+}
+
+.latest_home{
+    margin: 30px 10px 0 -7px;
+}
+
+#admin .box-hover{
+    background: rgba(176, 65, 62, 0.68);
+}
+
+#admin .box-hover-content{
+    top: 0;
+    margin-top: 0;
+}
+
+#admin .box-link{
+    margin-top: 20px;
+}
+
+.add_artwork_link{
+    padding: 25px 0 0 0 ;
+}
+
+
+/* Filter artwork */
+.filter_artwork_admin{
+    margin-top: 20px;
+}
+
+.filter_artwork_admin select{
+    background-color: rgb(10,10,10);
+    border: 1px solid #222;
+    color: #FFF;
+    padding: 8px 16px;
+    line-height: 20px;
+    margin-right: 20px;
+    -webkit-appearance: none;
+    appearance: none;
+    padding-right: 36px;
+    border-radius: 0px;
+}
+
+.filter_artwork_admin .text{
+    background-color: rgb(10,10,10);
+    border: 1px solid #222;
+    color: #FFF;
+    padding: 8px 16px;
+    line-height: 20px;
+    margin-right: 20px;
+    -webkit-appearance: none;
+    appearance: none;
+    padding-right: 36px;
+}
+
+.filter_artwork_admin .submit{
+    background-color: rgba(35,35,35,0);
+    border: none;
+    color: #FFF;
+    line-height: 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+}
+
+/* add artwork */
+
+#add {
+    margin: 10px;
+}
+
+#add .nav-tabs {
+    width: 280px;
+}
+
+.add_artwork{
+    margin: 20px;
+}
+
+.add_artwork label{
+
+}
+
+.add_artwork select{
+    width: 50%;
+    color: black;
+}
+
+.add_artwork input{
+    width: 100%;
+    border-radius: 6px 6px 6px 6px;
+    padding: 5px 0 5px 10px;
+    border-style: none;
+}
+
+.add_artwork textarea{
+    width: 100%;
+    border-radius: 6px 6px 6px 6px;
+    border-style: none solid solid none;
+    border-width: medium 1px 1px medium;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+    resize: none;
+    padding: 10px 0 0 10px;
+
+}
+
+.add_artwork label, select, input, textarea, button{
+    margin: 0.5em 0 0 0;
+}
+
+/* add category and page */
+.add_category{
+    margin: 1em 0 0 0;
+}
+
+.add_category label, input{
+    margin: 0.5em 0 0 0;
+}
+
+.add_category button{
+    margin: 0;
+}
+
+.add_category input{
+    width: 50%;
+    border-radius: 6px 6px 6px 6px;
+    padding: 5px 0 5px 10px;
+    border-style: none;
+}
+
+
+.add_page{
+    margin: 20px;
+}
+
+.add_page label{
+
+}
+
+.add_page select{
+    width: 50%;
+    color: black;
+}
+
+.add_page input{
+    width: 100%;
+    border-radius: 6px 6px 6px 6px;
+    padding: 5px 0 5px 10px;
+    border-style: none;
+}
+
+.add_page textarea{
+    width: 100%;
+    border-radius: 6px 6px 6px 6px;
+    border-style: none solid solid none;
+    border-width: medium 1px 1px medium;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+    resize: none;
+    padding: 10px 0 0 10px;
+
+}
+
+.add_page label, select, input, textarea, button{
+    margin: 0.5em 0 0 0;
+}
+
+/* Utilistaeurs */
+
+#users tr:hover {
+    background-color: rgb(176, 65, 62);
 }

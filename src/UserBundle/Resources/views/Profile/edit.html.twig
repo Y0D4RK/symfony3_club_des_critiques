@@ -2,20 +2,61 @@
 
 {% block content %}
     {% trans_default_domain 'FOSUserBundle' %}
-    <div class="container">
-        <br><br><br><br><br><br><br><br><br><br>
-        <div class="panel panel-primary">
-            <div class="pnael-heading"></div>
-            <div class="panel-body">
-                {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
-                {{ form_widget(form) }}
-                <div>
-                    <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+
+
+
+    <div id="login" class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <a href="{{ path('fos_user_profile_show') }}">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                    </button>
+                </a>
+                <div class="form-wrap">
+                    <h1>Modifiez votre profile</h1>
+                    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+                        <div class="form-group">
+                            {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'form.username'|trans } }) }}
+                            {{ form_errors(form.username) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_widget(form.current_password, { 'attr': {'class': 'form-control', 'placeholder': 'form.current_password'|trans } }) }}
+                            {{ form_errors(form.current_password) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'form.email'|trans } }) }}
+                            {{ form_errors(form.email) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_widget(form.firstname, { 'attr': {'class': 'form-control', 'placeholder': 'form.firstname'|trans } }) }}
+                            {{ form_errors(form.firstname) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_widget(form.lastname, { 'attr': {'class': 'form-control', 'placeholder': 'form.lastname'|trans } }) }}
+                            {{ form_errors(form.lastname) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_widget(form.birthdate, { 'attr': {'class': '', 'placeholder': 'form.birthdate'|trans } }) }}
+                            {{ form_errors(form.birthdate) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_widget(form.description, { 'attr': {'class': 'form-control', 'placeholder': 'form.description'|trans } }) }}
+                            {{ form_errors(form.description) }}
+                        </div>
+                        <div class="form-group avatar">
+                            {{ form_widget(form.avatar, { 'attr': {'class': 'form-control', 'placeholder': 'form.avatar'|trans } }) }}
+                            {{ form_errors(form.avatar) }}
+                        </div>
+                        {{ form_rest(form) }}
+                        <input type="submit" class="btn btn-custom btn-lg btn-block" value="{{ 'profile.edit.submit'|trans }}" />
+                    {{ form_end(form) }}
+                    <hr>
                 </div>
-                {{ form_end(form) }}
-            </div>
-        </div>
-    </div>
+            </div> <!-- /.col-xs-12 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
 
 
 

@@ -2,6 +2,7 @@
 
 namespace UserBundle\Form;
 
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 use Symfony\Component\Form\AbstractType;
@@ -29,7 +30,7 @@ class UserEditType extends AbstractType
             ->add('firstname', TextType::class, ['label'=>'Prenom', 'attr'=>array('placeholder'=>'John')])
             ->add('lastname', TextType::class, ['label'=>'Name', 'attr'=>array('placeholder'=>'Doe')])
             ->add('birthdate', DateType::class, ['label'=>'Date de naissance', 'attr'=>array('placeholder'=>'')])
-            ->add('description', TextType::class, ['label'=>'Description', 'attr'=>array('placeholder'=>'La la la ...')]);
+            ->add('description', TextareaType::class, ['label'=>'Description', 'attr'=>array('placeholder'=>'La la la ...', 'rows' => '5', 'style' => 'resize:none')]);
             #->remove('username');
     }
 

@@ -30,6 +30,7 @@ class ArtworkController extends Controller
 
         return $this->render('club/artwork/index.html.twig', array(
 //            'categories' => $category,
+            'name' => $name,
             'artworks' => $artworks
         ));
     }
