@@ -659,7 +659,7 @@ footer {
     min-height: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding: 5em;
+    padding: 8em 5em;
     background-color: #f2f2f2;
     color: #444;
     font-family: 'Lato', sans-serif;
@@ -670,7 +670,7 @@ footer {
 
 .profile-img {
     display: block;
-    height: 7em;
+    height: 12em;
     margin-right: auto;
     margin-left: auto;
     border: .5em solid #f2f2f2;
@@ -679,7 +679,7 @@ footer {
 }
 
 .profile-text {
-    margin-top: -3.5em;
+    margin-top: -4.5em;
     padding: 5em 1.5em 1.5em 1.5em;
     background: white;
     border-radius: 3px;
@@ -701,7 +701,6 @@ footer {
 }
 
 .profile-btn {
-    position: absolute;
     font-size: 13px;
     font-weight: bold;
     cursor: pointer;
@@ -712,8 +711,8 @@ footer {
     outline: none;
     border-radius: .6em .6em .6em .6em;
     padding: 0.4em;
-    right: 75px;
-    top: 129px;
+    right: 150px;
+    top: 254px;
 
 }
 
