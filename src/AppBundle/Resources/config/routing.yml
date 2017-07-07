@@ -1,3 +1,7 @@
+app_design:
+    resource: "@AppBundle/Resources/config/routing/design.yml"
+    prefix:   /design
+
 #page d'accueil, elle comprend une liste des oeuvres classable avec des filtres.
 home:
     path: /

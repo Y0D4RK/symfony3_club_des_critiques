@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Designs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Slogan</th>
+                <th>Title1</th>
+                <th>Title2</th>
+                <th>Title3</th>
+                <th>Text1</th>
+                <th>Text2</th>
+                <th>Text3</th>
+                <th>Text4</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for design in designs %}
+            <tr>
+                <td><a href="{{ path('design_show', { 'id': design.id }) }}">{{ design.id }}</a></td>
+                <td>{{ design.title }}</td>
+                <td>{{ design.slogan }}</td>
+                <td>{{ design.title1 }}</td>
+                <td>{{ design.title2 }}</td>
+                <td>{{ design.title3 }}</td>
+                <td>{{ design.text1 }}</td>
+                <td>{{ design.text2 }}</td>
+                <td>{{ design.text3 }}</td>
+                <td>{{ design.text4 }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('design_show', { 'id': design.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('design_edit', { 'id': design.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('design_new') }}">Create a new design</a>
+        </li>
+    </ul>
+{% endblock %}

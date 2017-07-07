@@ -15,7 +15,9 @@ class CoverImageNamer implements NamerInterface{
     public function name($object, PropertyMapping $mapping)
     {
         /** @var Artwork $object **/
-        $prefix = $object->getName();
+        $name = strtolower($object->getName());
+
+        $prefix = preg_replace("/[^a-zA-Z0-9]+/", "", $name);
 
         $file = $mapping->getFile($object);
 
