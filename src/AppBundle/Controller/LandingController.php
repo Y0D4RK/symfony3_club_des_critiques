@@ -10,7 +10,7 @@ class LandingController extends Controller
     /** Page index **/
     public function indexAction(Request $request)
     {
-        $limit = 3;
+        $limit = 5;
         $offset = 0;
         $em = $this->getDoctrine()->getManager();
         $artworks = $em->getRepository('AppBundle:Artwork')->findBy(array(), null, $limit, $offset);
@@ -21,6 +21,7 @@ class LandingController extends Controller
 
         // replace this example code with whatever you need
         return $this->render('club/index.html.twig', [
+            
             'artworks' => $artworks,
             'title' => "Le Club des Critiques",
             'slogan' => "Le cluuuuuuuuuuuuuuuuuuuuuuub de fouu",

@@ -66,7 +66,7 @@
                                 <i class="fa fa-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                        <img src="{{ vich_uploader_asset(artwork, 'cover') }}" alt="{{ artwork.name }}" class="img-responsive" width="180" height="180"/>
                     </a>
                     <div class="box-caption">
                         <h4>{{ artwork.name }}</h4>

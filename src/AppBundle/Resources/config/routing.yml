@@ -1,7 +1,3 @@
-app_design:
-    resource: "@AppBundle/Resources/config/routing/design.yml"
-    prefix:   /design
-
 #page d'accueil, elle comprend une liste des oeuvres classable avec des filtres.
 home:
     path: /
@@ -85,6 +81,27 @@ salon_edit:
 salon_delete:
     path:     /salon/{id}/delete
     defaults: { _controller: "AppBundle:Salon:delete" }
+    methods:  DELETE
+
+# ROUTING DESIGN #
+design_index:
+    path:     /design
+    defaults: { _controller: "AppBundle:Design:index" }
+    methods:  GET
+
+design_show:
+    path:     /design/{id}/show
+    defaults: { _controller: "AppBundle:Design:show" }
+    methods:  GET
+
+design_edit:
+    path:     /design/{id}/edit
+    defaults: { _controller: "AppBundle:Design:edit" }
+    methods:  [GET, POST]
+
+design_delete:
+    path:     /design/{id}/delete
+    defaults: { _controller: "AppBundle:Design:delete" }
     methods:  DELETE
 
 # ROUTING ADMIN #
