@@ -24,7 +24,9 @@
                     <div class="title-contents">
                         {# je recupere seulement la premiere oeuvre et je recupere sa category afin de l'afficher dans le titre #}
                         {# name pas fiable #}
-                        <h1><i class="fa fa-book fa-2x"></i> {{ artworks[1].category.name | capitalize }}</h1>
+                        {% if artworks is not empty %}
+                            <h1><i class="fa fa-book fa-2x"></i> {{ artworks[1].category.name | capitalize }}</h1>
+                        {% endif %}
                     </div>
                 </div>
             </div>
