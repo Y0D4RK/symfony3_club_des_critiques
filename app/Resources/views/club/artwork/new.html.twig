@@ -25,6 +25,18 @@
                         {{ form_widget(form.category, { 'attr': {'class': 'form-control', 'placeholder': 'form.category'|trans } }) }}
                         {{ form_errors(form.category) }}
                     </div>
+                    <div class="form-group">
+                        {{ form_widget(form.author, { 'attr': {'class': 'form-control', 'placeholder': 'form.author'|trans } }) }}
+                        {{ form_errors(form.author) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.edithor, { 'attr': {'class': 'form-control', 'placeholder': 'form.edithor'|trans } }) }}
+                        {{ form_errors(form.edithor) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.publishAt, { 'attr': {'class': '', 'placeholder': 'form.publishAt'|trans } }) }}
+                        {{ form_errors(form.publishAt) }}
+                    </div>
                     <div class="form-group avatar">
                         {{ form_widget(form.cover, { 'attr': {'class': 'form-control', 'placeholder': 'form.cover'|trans } }) }}
                         {{ form_errors(form.cover) }}
