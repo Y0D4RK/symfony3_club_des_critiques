@@ -17,10 +17,17 @@
             </div>
         </div>
     </div>
+
     <div class="panel">
         <div class="panel-heading"><h1>Mes oeuvres par categories</h1></div>
         <div class="panel-body">
-
+            <table class="table table-bordereds table-responsive">
+                <tr>
+                    {% for category in categories %}
+                        <td> category.name </td>
+                    {% endfor %}
+                </tr>
+            </table>
         </div>
         <div class="panel-footer">
 
