@@ -97,6 +97,11 @@ class Artwork
      */
     private $coverName;
 
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime('now');
+    }
+
     public function __toString()
     {
         return $this->name;
