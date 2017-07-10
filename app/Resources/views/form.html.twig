@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" href="{{ asset('/favicon.ico') }}" />
+
+    <title>{% block title %}Club des critiques{% endblock %}</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <!-- Custom Fonts -->
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <!-- Icon fav. -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <!-- Fichier css -->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" >
+
+</head>
+
+<body id="body-form">
+
+<div id="wrap">
+    {% include './includes/header.html.twig' %}
+
+    <div id="wrapper">
+
+        {# popup info #}
+        {% for flash_message in app.session.flashBag.get('notice-success') %}
+            <div class="panel panel-default panel-notice">
+                <span class="success"> {{ flash_message }} </span>
+            </div>
+        {% endfor %}
+
+        {% for flash_message in app.session.flashBag.get('notice-error') %}
+            <div class="panel panel-default panel-notice">
+                <span class="erreur"> {{ flash_message }} </span>
+            </div>
+        {% endfor %}
+
+        {# block content #}
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+
+    {# footer #}
+    {% include "./includes/footer.html.twig" %}
+
+</div>
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+{% endblock javascripts %}
+
+</body>
+
+</html>
