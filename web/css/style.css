@@ -13,6 +13,11 @@ body {
     background: url('../images/fond.jpg');
     background-size: cover;
 }
+
+#body-form{
+    background: url('../images/library2.jpg');
+    background-size: cover;
+}
 #wrapper-empty{
     padding-bottom: 100px;
 }
@@ -468,6 +473,7 @@ footer {
 #description .similar .box-caption {
     border-style: solid;
     border-width: 1px;
+    border-color: #e6e6e6;
 }
 
 /*Comments*/
