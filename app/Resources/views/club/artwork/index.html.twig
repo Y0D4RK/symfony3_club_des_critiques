@@ -19,14 +19,20 @@
 
     <section id="liste-contents">
         <div class="container">
+            <br><br><br><br><br><br><br>
             <div class="row">
-                <div class="col-lg-12 text-center">
+                <div class="col-md-6 text-left">
                     <div class="title-contents">
                         {# je recupere seulement la premiere oeuvre et je recupere sa category afin de l'afficher dans le titre #}
                         {# name pas fiable #}
                         {% if artworks is not empty %}
-                            <h1><i class="fa fa-book fa-2x"></i> {{ artworks[1].category.name | capitalize }}</h1>
+                            <h1><i class="fa fa-book fa-2x"></i> {{ artworks[0].category.name | capitalize }}</h1>
                         {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="">
+                        <a href="{{ path('artwork_new') }}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Ajouter une oeuvre </a>
                     </div>
                 </div>
             </div>
