@@ -22,7 +22,7 @@ class ArtworkType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name')
-            ->add('description')
+            ->add('description', TextareaType::class)
             ->add('category')
             ->add('category')
             ->add('category')

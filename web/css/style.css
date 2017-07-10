@@ -385,6 +385,15 @@ footer {
     margin-left: 60px;
 }
 
+.button_addArtwork{
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.78);
+    padding: 2em;
+    right: 0;
+    top: 75%;
+    z-index: 2;
+}
+
 /* Pagination */
 #pagination{
     width: 100%;
@@ -413,6 +422,8 @@ footer {
     background-color: #2ecc71;
     color: #fff;
 }
+
+
 
 /* ------------------------------------------ Content ----------------------------------------- */
 
@@ -454,6 +465,10 @@ footer {
     padding: 10% 0 0 7%;
 }
 
+#description .similar .box-caption {
+    border-style: solid;
+    border-width: 1px;
+}
 
 /*Comments*/
 

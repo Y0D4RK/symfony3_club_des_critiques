@@ -10,7 +10,7 @@ class LandingController extends Controller
     /** Page index **/
     public function indexAction(Request $request)
     {
-        $limit = 5;
+        $limit = 3;
         $offset = 0;
         $em = $this->getDoctrine()->getManager();
         $artworks = $em->getRepository('AppBundle:Artwork')->findBy(array(), null, $limit, $offset);
