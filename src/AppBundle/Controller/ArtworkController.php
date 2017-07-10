@@ -114,7 +114,8 @@ class ArtworkController extends Controller
             $em->flush($artwork);
         }
 
-        return $this->redirectToRoute('artwork_index');
+        $nameCategory = $artwork->getCategory();
+        return $this->redirectToRoute('artwork_index', array('name' => $nameCategory));
     }
 
     /**
