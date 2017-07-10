@@ -30,7 +30,6 @@ class ArtworkController extends Controller
 
         return $this->render('club/artwork/index.html.twig', array(
 //            'categories' => $category,
-            'name' => $name,
             'artworks' => $artworks
         ));
     }
@@ -64,9 +63,14 @@ class ArtworkController extends Controller
      */
     public function showAction(Artwork $artwork)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $artworksSimilary = $em->getRepository('AppBundle:Artwork')->findBy(array('category' => $artwork->getCategory()));
+
         $deleteForm = $this->createDeleteForm($artwork);
 
         return $this->render('club/artwork/show.html.twig', array(
+            'artworksSimilary' => $artworksSimilary,
             'artwork' => $artwork,
             'delete_form' => $deleteForm->createView(),
         ));

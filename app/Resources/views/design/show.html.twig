@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Design</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ design.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ design.title }}</td>
+            </tr>
+            <tr>
+                <th>Slogan</th>
+                <td>{{ design.slogan }}</td>
+            </tr>
+            <tr>
+                <th>Title1</th>
+                <td>{{ design.title1 }}</td>
+            </tr>
+            <tr>
+                <th>Title2</th>
+                <td>{{ design.title2 }}</td>
+            </tr>
+            <tr>
+                <th>Title3</th>
+                <td>{{ design.title3 }}</td>
+            </tr>
+            <tr>
+                <th>Text1</th>
+                <td>{{ design.text1 }}</td>
+            </tr>
+            <tr>
+                <th>Text2</th>
+                <td>{{ design.text2 }}</td>
+            </tr>
+            <tr>
+                <th>Text3</th>
+                <td>{{ design.text3 }}</td>
+            </tr>
+            <tr>
+                <th>Text4</th>
+                <td>{{ design.text4 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('design_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('design_edit', { 'id': design.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

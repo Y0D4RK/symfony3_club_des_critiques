@@ -96,6 +96,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+        $this->roles = array('ROLE_USER');
         $this->artworks = new ArrayCollection();
     }
 
