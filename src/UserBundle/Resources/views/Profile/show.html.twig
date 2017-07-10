@@ -7,7 +7,7 @@
             {% if vich_uploader_asset(user, 'avatar') is not empty %}
                 <img src="{{ vich_uploader_asset(user, 'avatar') }}" alt="{{ user.username }}" class="profile-img img-responsive" width="180" height="180"/>
             {% else %}
-                <img src="{{ asset('images/avatar/uknow_user.png') }}" class="profile-img img-responsive" width="180" height="180">
+                <img src="{{ asset('images/avatar/uknow_user.png') }}" alt="unknow" class="profile-img img-responsive" width="180" height="180">
             {% endif %}
             <div class="profile-text">
                 <a href="{{ path('fos_user_profile_edit') }}" class="profile-btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modifier</a>
