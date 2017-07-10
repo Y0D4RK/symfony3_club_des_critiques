@@ -24,7 +24,14 @@
             <table class="table table-bordereds table-responsive">
                 <tr>
                     {% for category in categories %}
-                        <td> category.name </td>
+                        <th> {{ category.name | capitalize }} </th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    {% for artwork in artworksUser %}
+                        <td> {{ artwork.name | capitalize }} </td>
+                        <td></td>
+                        <td></td>
                     {% endfor %}
                 </tr>
             </table>

@@ -18,8 +18,7 @@
     </ul>#}
 
         <div class="button_addArtwork center-block">
-            <p>Ajouter une nouvelle oeuvre</p>
-            <a href="{{ path('artwork_new') }}"><button class="btn btn-primary center-block"><i class="fa fa-plus" aria-hidden="true"></i> Ajouter</button></a>
+            <a href="{{ path('artwork_new') }}"><button class="btn btn-primary center-block"><i class="fa fa-plus" aria-hidden="true"></i> Ajouter une nouvelle oeuvre </button></a>
         </div>
         <section id="liste-contents">
             <div class="container">
@@ -64,7 +63,10 @@
                             </div>
                         {% endfor %}
                     {% else %}
-                        <h3 class="text-center">Il n'existe pas d'oeuvre dans cette catégorie pour l'instant</h3>
+                        <h3 class="text-center">Il n'existe pas d'oeuvre dans cette catégorie pour l'instant. </h3>
+                        <div class="button_addArtwork center-block">
+                            <a href="{{ path('artwork_new') }}"><button class="btn btn-primary center-block"><i class="fa fa-plus" aria-hidden="true"></i> Ajouter une nouvelle oeuvre </button></a>
+                        </div>
                     {% endif %}
                 </div>
             </div>
