@@ -17,13 +17,10 @@ class ProfileController extends BaseController
         }
 
         $em = $this->getDoctrine()->getManager();
-        $categories = $em->getRepository('AppBundle:Category')->findAll();
-
         $artworks = $em->getRepository('AppBundle:Artwork')->findBy(array('user' => $user));
 
         return $this->render('@FOSUser/Profile/show.html.twig', array(
             'artworksUser' => $artworks,
-            'categories' => $categories,
             'user' => $user,
         ));
     }

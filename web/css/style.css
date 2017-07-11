@@ -6,6 +6,10 @@ body {
     width: 100%;
     font-family: 'Raleway', Arial, sans-serif;
 }
+.navbar-inverse .navbar-nav>.active>a{
+    background-color: #1fa67b;
+    color: #fff;
+}
 .divSpace{
     height: 5px;
 }

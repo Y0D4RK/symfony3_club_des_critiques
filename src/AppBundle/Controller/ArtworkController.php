@@ -37,7 +37,7 @@ class ArtworkController extends Controller
      * Creates a new artwork entity.
      *
      */
-    public function newAction(Request $request, $name)
+    public function newAction(Request $request)
     {
         $artwork = new Artwork();
         $form = $this->createForm('AppBundle\Form\ArtworkType', $artwork);

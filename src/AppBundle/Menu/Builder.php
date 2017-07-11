@@ -44,7 +44,7 @@ class Builder implements ContainerAwareInterface
             $categories = $repository->findAll();
 
             foreach($categories as $category){
-                $menu->addChild($category->getName(), array(
+                $menu->addChild(ucfirst($category->getName()), array(
                     'route' => 'artwork_index',
                     'routeParameters' => array('name' => $category->getName())
                 ));
@@ -64,7 +64,7 @@ class Builder implements ContainerAwareInterface
             $menu->addChild('Se deconnecter', array('route' => 'fos_user_security_logout'));
             /** @var \UserBundle\Entity\User $userLogged */
             $userLogged = $this->container->get('security.token_storage')->getToken()->getUser();
-            $menu->addChild($userLogged->getUsername(), array('route' => 'fos_user_profile_show'));
+            $menu->addChild(ucfirst($userLogged->getUsername()), array('route' => 'fos_user_profile_show'));
         }else{
             $menu->addChild('Se connecter', array('route' => 'fos_user_security_login'));
             $menu->addChild('S\'inscrire', array('route' => 'fos_user_registration_register'));

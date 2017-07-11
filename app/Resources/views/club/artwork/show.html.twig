@@ -54,7 +54,7 @@
                                     <i class="fa fa-plus fa-3x"></i>
                                 </div>
                             </div>
-                            {% if vich_uploader_asset(artwork, 'cover') is not empty %}
+                            {% if vich_uploader_asset(artworkSim, 'cover') %}
                                 <img src="{{ vich_uploader_asset(artworkSim, 'cover') }}" alt="{{ artworkSim.name }}" class="img-responsive" width="180" height="180"/>
                             {% else %}
                                 <img src="{{ asset('images/cover/unknow_cover.jpg') }}" alt="unknow" class="img-responsive" width="180" height="180">
