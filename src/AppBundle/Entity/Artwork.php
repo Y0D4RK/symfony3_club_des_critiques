@@ -4,11 +4,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
-use UserBundle\Entity\User;
-use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
@@ -100,15 +97,8 @@ class Artwork
      */
     private $coverName;
 
-    private $container;
-
-    public function __construct(Container $container)
+    public function __construct()
     {
-
-        $userCo = $this->container->get('security.token_storage')->getToken()->getUser();
-        dump($userCo); exit();
-
-        $this->user = $userCo->getId();
         $this->createdAt = new \DateTime('now');
     }
 
