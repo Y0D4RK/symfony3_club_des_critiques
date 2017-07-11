@@ -16,6 +16,11 @@
                 <span class="profile-title">{{ user.description }}</span>
             </div>
         </div>
+        <div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path(admin) }}">Delete</a>
+            {% endif %}
+        </div>
     </div>
 
     <div class="panel">
