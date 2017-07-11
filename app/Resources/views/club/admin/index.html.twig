@@ -16,6 +16,12 @@
                                     <a data-toggle="collapse" data-parent="#accordion" href="#home">Page d'accueil</a>
                                 </h4>
                             </div>
+
+                            {{ form_start(edit_form) }}
+                            {{ form_widget(edit_form) }}
+                            <input type="submit" value="Edit" />
+                            {{ form_end(edit_form) }}
+
                             <div id="home" class="panel-collapse collapse in">
                                 <div class="panel-body">
                                     <div class="row">
