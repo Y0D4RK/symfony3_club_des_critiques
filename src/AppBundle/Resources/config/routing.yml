@@ -106,6 +106,6 @@ design_delete:
 
 # ROUTING ADMIN #
 admin:
-    path: /admin/
+    path: /admin
     defaults: { _controller: "AppBundle:Admin:index" }
     methods:  [GET, POST]

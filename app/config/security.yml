@@ -8,10 +8,9 @@ security:
 
     # cette clÃ© dÃ©fini les role au sein de notre application - gere les autorisation (ROLE_ADMIN => propre Ã  FosUser)
     role_hierarchy:
-        ROLE_USER: ROLE_USER
-        ROLE_ADMIN: ROLE_ADMIN
+        ROLE_ADMIN: ROLE_USER
         # sf3 fos:user:demote  user1@mail.com ROLE_ADMIN
-        ROLE_SUPER_ADMIN: ROLE_SUPER_ADMIN
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     # Fourni les utilisateurs - c'est lui qui part d'un login et d'un mdp pour recup un user et ses droits
     providers:
@@ -58,8 +57,6 @@ security:
         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-
         - { path: ^/category, roles: ROLE_ADMIN }
         - { path: ^/artwork, roles: ROLE_ADMIN }
-
-        - { path: ^/admin/*, roles: ROLE_SUPER_ADMIN }
+        - { path: ^/admin, roles: ROLE_SUPER_ADMIN }
