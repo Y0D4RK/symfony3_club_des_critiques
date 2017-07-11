@@ -10,20 +10,15 @@ class AdminController extends Controller
 {
     /** Page index admin**/
 
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, Design $design)
     {
-        $design = new  Design();
-
-        $em = $this->getDoctrine()->getManager();
-        $design = $em->getRepository('AppBundle:Design')->findAll();
-
         $editForm = $this->createForm('AppBundle\Form\DesignType', $design);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin');
+            return $this->redirectToRoute('admin', array('id' => $design->getId()));
         }
 
         return $this->render('club/admin/index.html.twig', array(
@@ -31,5 +26,4 @@ class AdminController extends Controller
             'edit_form' => $editForm->createView(),
         ));
     }
-
 }

@@ -824,6 +824,19 @@ footer {
     margin: 0.5em 0 0 0;
 }
 
+#home .form{
+    width: 100%;
+    color: black;
+    border-image: none;
+    border-radius: 6px 6px 6px 6px;
+    border-style: none solid solid none;
+    border-width: medium 1px 1px medium;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+    resize:none;
+    padding: 10px 0 0 10px;
+    margin: 0.5em 0 0 0;
+}
+
 #content_home button{
     margin: 15px;
 }

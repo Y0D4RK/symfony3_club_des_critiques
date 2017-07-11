@@ -16,75 +16,82 @@
                                     <a data-toggle="collapse" data-parent="#accordion" href="#home">Page d'accueil</a>
                                 </h4>
                             </div>
-
+{#
                             {{ form_start(edit_form) }}
                             {{ form_widget(edit_form) }}
                             <input type="submit" value="Edit" />
-                            {{ form_end(edit_form) }}
+                            {{ form_end(edit_form) }}#}
 
                             <div id="home" class="panel-collapse collapse in">
                                 <div class="panel-body">
                                     <div class="row">
-                                        <form id="content_home" method="post">
-                                            <div class="col-md-4">
-                                                <label for="idea_home">Modifier Contenu :</label>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <textarea name="idea_home" id="idea_home" type="text" rows="2"  placeholder="Nos idées"></textarea>
-                                                <textarea name="concept_home" id="concept_home" type="text" rows="5"  placeholder="Notre concept"></textarea>
-                                            </div>
-                                            <button type="submit" class="btn btn-danger pull-right">Valider</button>
-                                        </form>
-                                    </div>
-                                    <div class="row latest_home">
+                                        {{ form_start(edit_form) }}
                                         <div class="col-md-4">
-                                            <label>Modifier À la une :</label>
+                                            {{ form_label(edit_form.title) }}
                                         </div>
                                         <div class="col-md-8">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <div class="box-link">
-                                                        <div class="box-hover">
-                                                            <div class="box-hover-content">
-                                                                <h3>Titre</h3>
-                                                                <p>Auteur</p>
-                                                                <a href="#">Supprimer</a>
-                                                            </div>
-                                                        </div>
-                                                        <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="box-link">
-                                                        <div class="box-hover">
-                                                            <div class="box-hover-content">
-                                                                <h3>Titre</h3>
-                                                                <p>Auteur</p>
-                                                                <a href="#">Supprimer</a>
-                                                            </div>
-                                                        </div>
-                                                        <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="box-link">
-                                                        <div class="box-hover">
-                                                            <div class="box-hover-content">
-                                                                <h3>Titre</h3>
-                                                                <p>Auteur</p>
-                                                                <a href="#">Supprimer</a>
-                                                            </div>
-                                                        </div>
-                                                        <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="center-block add_artwork_link">
-                                                    <a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i> Ajouter une oeuvre</a>
-                                                </div>
-                                            </div>
+                                            {{ form_widget(edit_form.title, { 'attr': {'class': 'form', 'placeholder': 'edit_form.title'|trans } }) }}
+                                            {{ form_errors(edit_form.title) }}
                                         </div>
+                                        <div class="col-md-4">
+                                            {{ form_label(edit_form.slogan) }}
+                                        </div>
+                                        <div class="col-md-8">
+                                            {{ form_widget(edit_form.slogan, { 'attr': {'class': 'form', 'placeholder': 'edit_form.slogan'|trans } }) }}
+                                            {{ form_errors(edit_form.slogan) }}
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ form_label(edit_form.title1) }}
+                                        </div>
+                                        <div class="col-md-8">
+                                            {{ form_widget(edit_form.title1, { 'attr': {'class': 'form', 'placeholder': 'edit_form.title1'|trans } }) }}
+                                            {{ form_errors(edit_form.title1) }}
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ form_label(edit_form.title2) }}
+                                        </div>
+                                        <div class="col-md-8">
+                                            {{ form_widget(edit_form.title2, { 'attr': {'class': 'form', 'placeholder': 'edit_form.title2'|trans } }) }}
+                                            {{ form_errors(edit_form.title2) }}
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ form_label(edit_form.title3) }}
+                                        </div>
+                                        <div class="col-md-8">
+                                            {{ form_widget(edit_form.title3, { 'attr': {'class': 'form', 'placeholder': 'edit_form.title3'|trans } }) }}
+                                            {{ form_errors(edit_form.title3) }}
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ form_label(edit_form.text1) }}
+                                        </div>
+                                        <div class="col-md-8">
+                                            {{ form_widget(edit_form.text1, { 'attr': {'class': 'form', 'placeholder': 'edit_form.text1'|trans } }) }}
+                                            {{ form_errors(edit_form.text1) }}
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ form_label(edit_form.text2) }}
+                                        </div>
+                                        <div class="col-md-8">
+                                            {{ form_widget(edit_form.text2, { 'attr': {'class': 'form', 'placeholder': 'edit_form.text2'|trans } }) }}
+                                            {{ form_errors(edit_form.text2) }}
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ form_label(edit_form.text3) }}
+                                        </div>
+                                        <div class="col-md-8">
+                                            {{ form_widget(edit_form.text3, { 'attr': {'class': 'form', 'placeholder': 'edit_form.text3'|trans } }) }}
+                                            {{ form_errors(edit_form.text3) }}
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ form_label(edit_form.text4) }}
+                                        </div>
+                                        <div class="col-md-8">
+                                            {{ form_widget(edit_form.text4, { 'attr': {'class': 'form', 'placeholder': 'edit_form.text4'|trans } }) }}
+                                            {{ form_errors(edit_form.text4) }}
+                                        </div>
+                                        {{ form_rest(edit_form) }}
+                                        <button type="submit" class="btn btn-danger pull-right">{{ 'edit'|trans }}</button>
+                                        {{ form_end(edit_form) }}
                                     </div>
                                 </div>
                             </div>
