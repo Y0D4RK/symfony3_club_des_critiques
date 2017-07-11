@@ -110,7 +110,7 @@ knp_menu:
     default_renderer: twig
 
 
-# VICH UPLOADER
+# VICH UPLOADER BUNDLE
 vich_uploader:
     db_driver: orm
     mappings:
@@ -126,3 +126,10 @@ vich_uploader:
             namer:              app.avatar.namer
             delete_on_update:   true
             delete_on_remove:   true
+
+
+# VICH UPLOADER
+gos_web_socket:
+    server:
+        port: 8080        #The port the socket server will listen on
+        host: 127.0.0.1   #The host ip to bind to
