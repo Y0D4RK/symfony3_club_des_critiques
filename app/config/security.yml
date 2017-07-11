@@ -8,7 +8,6 @@ security:
 
     # cette clÃ© dÃ©fini les role au sein de notre application - gere les autorisation (ROLE_ADMIN => propre Ã  FosUser)
     role_hierarchy:
-        ROLE_USER: ROLE_USER
         ROLE_ADMIN: [ROLE_ADMIN, ROLE_USER]
         # sf3 fos:user:demote  user1@mail.com ROLE_ADMIN
         ROLE_SUPER_ADMIN: [ROLE_SUPER_ADMIN, ROLE_ADMIN, ROLE_USER]
