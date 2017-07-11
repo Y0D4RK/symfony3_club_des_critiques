@@ -19,19 +19,34 @@
     </div>
 
     <div class="panel">
-        <div class="panel-heading"><h1>Mes oeuvres par categories</h1></div>
+        <div class="panel-heading"><h1>Mes oeuvres</h1></div>
         <div class="panel-body">
-            <table class="table table-bordereds table-responsive">
+            <table class="table table-bordered table-responsive">
                 <tr>
-                    {% for category in categories %}
-                        <th> {{ category.name | capitalize }} </th>
-                    {% endfor %}
+                    <th> Catégorie </th>
+                    <th> Nom </th>
+                    <th> Auteur </th>
+                    <th> Editeur </th>
+                    <th> Créée </th>
+                    <th> Action </th>
                 </tr>
                 <tr>
                     {% for artwork in artworksUser %}
+                        <td> {{ artwork.category.name | capitalize }} </td>
                         <td> {{ artwork.name | capitalize }} </td>
-                        <td></td>
-                        <td></td>
+                        <td> {{ artwork.author | capitalize }} </td>
+                        <td> {{ artwork.edithor | capitalize }} </td>
+                        <td> {{ artwork.createdAt | date('d.m.Y à H:i:s') }} </td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('artwork_show', { 'id': artwork.id }) }}">Voir</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('artwork_edit', { 'id': artwork.id }) }}">Editer</a>
+                                </li>
+                            </ul>
+                        </td>
                     {% endfor %}
                 </tr>
             </table>
