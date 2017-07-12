@@ -106,6 +106,15 @@ design_delete:
 
 # ROUTING ADMIN #
 admin:
-    path: /admin/design/{id}/edit
+    path: /admin/{id}/
     defaults: { _controller: "AppBundle:Admin:index" }
     methods:  [GET, POST]
+
+admin_delete:
+    path:     /admin/artwork/{id}/delete
+    defaults: { _controller: "AppBundle:Admin:delete" }
+
+admin_delete_category:
+    path:     /admin/category/{id}/delete
+    defaults: { _controller: "AppBundle:Admin:deleteCategory" }
+

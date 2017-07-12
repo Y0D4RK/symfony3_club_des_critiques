@@ -16,12 +16,6 @@
                                     <a data-toggle="collapse" data-parent="#accordion" href="#home">Page d'accueil</a>
                                 </h4>
                             </div>
-{#
-                            {{ form_start(edit_form) }}
-                            {{ form_widget(edit_form) }}
-                            <input type="submit" value="Edit" />
-                            {{ form_end(edit_form) }}#}
-
                             <div id="home" class="panel-collapse collapse in">
                                 <div class="panel-body">
                                     <div class="row">
@@ -136,89 +130,74 @@
                                                     </form>
                                                 </div>
                                                 <div id="manu" class="tab-pane">
-                                                    <form id="add_artwork" class="add_artwork" method="post">
-                                                        <div class="col-lg-offset-3 col-lg-7 ">
-                                                            <label class="pull-left">Catégorie :</label>
-                                                            <select name="categorie">
-                                                                <option value="livres">Livres</option>
-                                                                <option value="films">Films</option>
-                                                                <option value="expo">Expositions</option>
-                                                            </select>
-                                                            <input name="image_artwork" type="file">
-                                                            <input name="title_artwork" type="text" placeholder="Titre">
-                                                            <textarea name="description_artwork">Description</textarea>
-                                                            <button type="submit" class="btn btn-danger pull-right">Ajouter</button>
+                                                    <div class="col-md-push-3 col-md-6 center-block">
+                                                        <div class="form-wrap">
+                                                            <h3>Ajouter une oeuvre</h3>
+                                                            {{ form_start(newArtform) }}
+                                                            <div class="form-group">
+                                                                {{ form_widget(newArtform.name, { 'attr': {'class': 'form-control', 'placeholder': 'form.name'|trans } }) }}
+                                                                {{ form_errors(newArtform.name) }}
+                                                            </div>
+                                                            <div class="form-group">
+                                                                {{ form_widget(newArtform.description, { 'attr': {'class': 'form-control', 'placeholder': 'form.description'|trans } }) }}
+                                                                {{ form_errors(newArtform.description) }}
+                                                            </div>
+                                                            <div class="form-group">
+                                                                {{ form_widget(newArtform.category, { 'attr': {'class': 'form-control', 'placeholder': 'form.category'|trans } }) }}
+                                                                {{ form_errors(newArtform.category) }}
+                                                            </div>
+                                                            <div class="form-group">
+                                                                {{ form_widget(newArtform.author, { 'attr': {'class': 'form-control', 'placeholder': 'form.author'|trans } }) }}
+                                                                {{ form_errors(newArtform.author) }}
+                                                            </div>
+                                                            <div class="form-group">
+                                                                {{ form_widget(newArtform.edithor, { 'attr': {'class': 'form-control', 'placeholder': 'form.edithor'|trans } }) }}
+                                                                {{ form_errors(newArtform.edithor) }}
+                                                            </div>
+                                                            <div class="form-group">
+                                                                {{ form_widget(newArtform.publishAt, { 'attr': {'class': '', 'placeholder': 'form.publishAt'|trans } }) }}
+                                                                {{ form_errors(newArtform.publishAt) }}
+                                                            </div>
+                                                            <div class="form-group avatar">
+                                                                {{ form_widget(newArtform.cover, { 'attr': {'class': 'form-control', 'placeholder': 'form.cover'|trans } }) }}
+                                                                {{ form_errors(newArtform.cover) }}
+                                                            </div>
+                                                            <hr>
+                                                            {{ form_rest(newArtform) }}
+                                                            <input type="submit" class="btn btn-danger btn-lg btn-block" value="{{ 'create'|trans }}" />
+                                                            {{ form_end(newArtform) }}
                                                         </div>
-                                                    </form>
+
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
                                         <div role="edit" class="tab-pane" id="edit">
                                             <div class="row">
                                                 <div class="col-lg-push-2 col-lg-8 center-block">
-                                                    <!-- Filter -->
                                                     <div class="row">
-                                                        <div class="filter_artwork_admin">
-                                                            <form name="filter_form" method="get" id="filter_artwork_admin">
-                                                                <label>Triez par :</label>
-                                                                <select class="glyphicon glyphicon-search" name="categorie">
-                                                                    <option value="livres">Livres</option>
-                                                                    <option value="films">Films</option>
-                                                                    <option value="expo">Expositions</option>
-                                                                </select>
-                                                                <input type="text" class="text" name="text" placeholder="rechercher une oeuvre">
-                                                                <input type="submit" class="submit" value="Valider">
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <div class="box-link">
-                                                                <div class="box-hover">
-                                                                    <div class="box-hover-content">
-                                                                        <h3>Titre</h3>
-                                                                        <p>Auteur</p>
-                                                                        <a href="#">Supprimer</a>
+                                                        {% if artworks is not empty %}
+                                                            {% for artwork in artworks %}
+                                                                <div class="col-sm-4">
+                                                                    <div class="box-link">
+                                                                        <div class="box-hover">
+                                                                            <div class="box-hover-content">
+                                                                                <h2>{{ artwork.category }}</h2>
+                                                                                <h3>{{ artwork.name }}</h3>
+                                                                                <p>{{ artwork.user }}</p>
+                                                                                <a href="{{ path('admin_delete', { 'id': artwork.id }) }}">Supprimer</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        {% if vich_uploader_asset(artwork, 'cover') is not empty %}
+                                                                            <img src="{{ vich_uploader_asset(artwork, 'cover') }}" alt="{{ artwork.name }}" width="160" height="200">
+                                                                        {% else %}
+                                                                            <img src="{{ asset('images/cover/unknow_cover.jpg') }}" alt="unknow" width="160" height="200">
+                                                                        {% endif %}
                                                                     </div>
                                                                 </div>
-                                                                <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                            <div class="box-link">
-                                                                <div class="box-hover">
-                                                                    <div class="box-hover-content">
-                                                                        <h3>Titre</h3>
-                                                                        <p>Auteur</p>
-                                                                        <a href="#">Supprimer</a>
-                                                                    </div>
-                                                                </div>
-                                                                <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                            <div class="box-link">
-                                                                <div class="box-hover">
-                                                                    <div class="box-hover-content">
-                                                                        <h3>Titre</h3>
-                                                                        <p>Auteur</p>
-                                                                        <a href="#">Supprimer</a>
-                                                                    </div>
-                                                                </div>
-                                                                <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
-                                                            </div>
-                                                        </div><div class="col-sm-4">
-                                                            <div class="box-link">
-                                                                <div class="box-hover">
-                                                                    <div class="box-hover-content">
-                                                                        <h3>Titre</h3>
-                                                                        <p>Auteur</p>
-                                                                        <a href="#">Supprimer</a>
-                                                                    </div>
-                                                                </div>
-                                                                <img src="{{ asset('images/livre.jpg') }}" class="img-responsive" alt="nom oeuvre">
-                                                            </div>
-                                                        </div>
+                                                            {% endfor %}
+                                                        {% endif %}
                                                     </div>
                                                 </div>
                                             </div>
@@ -230,40 +209,71 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#categories">Catégories & Pages</a>
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#categories">Catégories</a>
                                 </h4>
                             </div>
                             <div id="categories" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <ul class="nav nav-tabs" role="tablist">
-                                        <li><a href="#category" aria-controls="1" role="tab" data-toggle="tab">Categorie</a></li>
-                                        <li><a href="#page" aria-controls="2" role="tab" data-toggle="tab">Page</a></li>
+                                        <li><a href="#new" aria-controls="1" role="tab" data-toggle="tab">Ajouter</a></li>
+                                        <li><a href="#list" aria-controls="2" role="tab" data-toggle="tab">Liste</a></li>
                                     </ul>
                                     <div class="tab-content">
-                                        <div class="tab-pane" id="category">
-                                            <form id="add_category" method="post">
-                                                <div class="col-lg-offset-2 col-lg-10 add_category">
-                                                    <label class="pull-left">Nouvelle catégorie :</label>
-                                                    <input name="category" type="text" placeholder="Catégorie">
+                                        <div class="tab-pane" id="new">
+                                            <div class="col-md-push-3 col-md-6 center-block">
+                                                <div class="form-wrap">
+                                                    <h3>Ajouter une catégorie</h3>
+                                                    {{ form_start(formNewCategory) }}
+                                                    <div class="form-group">
+                                                        {{ form_widget(formNewCategory.name, { 'attr': {'class': 'form-control', 'placeholder': 'name'|trans } }) }}
+                                                        {{ form_errors(formNewCategory.name) }}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        {{ form_widget(formNewCategory.description, { 'attr': {'class': 'form-control', 'placeholder': 'description'|trans } }) }}
+                                                        {{ form_errors(formNewCategory.description) }}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        {{ form_widget(formNewCategory.apiUrl, { 'attr': {'class': 'form-control', 'placeholder': 'api Url'|trans } }) }}
+                                                        {{ form_errors(formNewCategory.apiUrl) }}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        {{ form_widget(formNewCategory.createdAt, { 'attr': { 'placeholder': 'created at'|trans } }) }}
+                                                        {{ form_errors(formNewCategory.createdAt) }}
+                                                    </div>
                                                     <button type="submit" class="btn btn-danger">Ajouter</button>
+                                                    {{ form_end(formNewCategory) }}
                                                 </div>
-                                            </form>
+                                            </div>
                                         </div>
-                                        <div class="tab-pane" id="page">
-                                            <form id="add_page" class="add_page" method="post">
-                                                <div class="col-lg-offset-3 col-lg-7 ">
-                                                    <label class="pull-left">Catégorie :</label>
-                                                    <select name="categorie">
-                                                        <option value="livres">Livres</option>
-                                                        <option value="films">Films</option>
-                                                        <option value="expo">Expositions</option>
-                                                    </select>
-                                                    <input name="image_page" type="file">
-                                                    <input name="title_page" type="text" placeholder="Titre">
-                                                    <textarea name="content_page">Contenu</textarea>
-                                                    <button type="submit" class="btn btn-danger pull-right">Créer</button>
+                                        <div class="tab-pane" id="list">
+
+                                                <div class="panel-body">
+                                                    <table class="table table-hover">
+                                                        <h3>Liste des catégories</h3>
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Nom</th>
+                                                            <th>Description</th>
+                                                            <th>API Url</th>
+                                                            <th>Date de création</th>
+                                                            <th></th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {% for category in categories %}
+                                                            <tr>
+                                                                <td>{{ category.name }}</td>
+                                                                <td>{{ category.description }}</td>
+                                                                <td>{{ category.apiUrl }}</td>
+                                                                <td>{% if category.createdAt %}{{ category.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                                                <td><a href="{{ path('admin_delete_category', { 'id': category.id }) }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+                                                    </table>
                                                 </div>
-                                            </form>
+
+
                                         </div>
                                     </div>
                                 </div>

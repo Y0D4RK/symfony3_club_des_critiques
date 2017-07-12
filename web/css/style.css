@@ -1007,6 +1007,7 @@ footer {
 
 /* Utilistaeurs */
 
-#users tr:hover {
-    background-color: rgb(176, 65, 62);
+
+.table-hover>tbody>tr:hover {
+    background-color: transparent;
 }
