@@ -43,7 +43,7 @@ artwork_show:
     methods:  GET
 
 artwork_new:
-    path:     /artwork/new
+    path:     /artwork/new/{name}
     defaults: { _controller: "AppBundle:Artwork:new" }
     methods:  [GET, POST]
 

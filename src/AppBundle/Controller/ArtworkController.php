@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Artwork;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Artwork controller.
@@ -37,7 +38,7 @@ class ArtworkController extends Controller
      * Creates a new artwork entity.
      *
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $name)
     {
         $artwork = new Artwork();
         $form = $this->createForm('AppBundle\Form\ArtworkType', $artwork);
@@ -45,13 +46,33 @@ class ArtworkController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
             $em->persist($artwork);
             $em->flush($artwork);
 
             return $this->redirectToRoute('artwork_show', array('id' => $artwork->getId()));
         }
 
+        $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository('AppBundle:Category')->findAll();
+
+        $tab_categories = [];
+        foreach($categories as $category){
+            $tab_categories[] = $category->getName();
+        }
+
+        $category = $request->get('name');
+
+
+        if(!in_array($category, $tab_categories, true)){
+            throw new NotFoundHttpException("La categorie ".$name." n'existe pas.");
+        }
+
+        //        $em = $this->getDoctrine()->getManager();
+        //        $categoryName = $this->getRepository('AppBundle:Category')->findAll();
+
         return $this->render('club/artwork/new.html.twig', array(
+            'categoryName' => $category,
             'artwork' => $artwork,
             'form' => $form->createView(),
         ));

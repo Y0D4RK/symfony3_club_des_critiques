@@ -76,7 +76,7 @@
                             <h4>{{ artwork.name }}</h4>
                             <hr>
                             <ul class="list-group black">
-                                <li class="list-group-item list-group-item-heading"> {{ artwork.category.name }}</li>
+                                <li class="list-group-item list-group-item-heading"> {{ artwork.category.name | capitalize }}</li>
                                 <li class="list-group-item list-group-item-text"> {{ artwork.description }}</li>
                             </ul>
                         </div>
