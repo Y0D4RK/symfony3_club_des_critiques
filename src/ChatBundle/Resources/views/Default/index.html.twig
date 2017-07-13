@@ -23,7 +23,7 @@
      * According to the configuration in Sockets/Chat.php , change the port if you need to.
      * @type WebSocket
      */
-    var conn = new WebSocket('ws://127.0.0.1:8000/chat');
+    var conn = new WebSocket('ws://localhost:8080/chat');
 
     conn.onopen = function(e) {
         console.info("Connection established succesfully");
@@ -41,7 +41,6 @@
         console.error(e);
     };
     // END SOCKET CONFIG
-
 
     /// Some code to add the messages to the list element and the message submit.
     document.getElementById("form-submit").addEventListener("click",function(){
