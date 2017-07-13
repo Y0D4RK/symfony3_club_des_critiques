@@ -302,54 +302,43 @@
                                     <table class="table table-hover">
                                         <thead>
                                         <tr>
-                                            <th></th>
+                                            <th>Surnom</th>
                                             <th>Nom</th>
-                                            <th>Date d'inscription</th>
+                                            <th>Prénom</th>
                                             <th>Email</th>
+                                            <th>État</th>
+                                            <th>Role</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="ckbox">
-                                                    <input type="checkbox" id="checkbox1">
-                                                    <label for="checkbox1"></label>
-                                                </div>
-                                            </td>
-                                            <td>John</td>
-                                            <td>01/01/1996</td>
-                                            <td>john@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="ckbox">
-                                                    <input type="checkbox" id="checkbox2">
-                                                    <label for="checkbox2"></label>
-                                                </div>
-                                            </td>
-                                            <td>Mary</td>
-                                            <td>01/01/1996</td>
-                                            <td>mary@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="ckbox">
-                                                    <input type="checkbox" id="checkbox3">
-                                                    <label for="checkbox3"></label>
-                                                </div>
-                                            </td>
-                                            <td>July</td>
-                                            <td>01/01/1996</td>
-                                            <td>july@example.com</td>
-                                        </tr>
+                                        {% for user in users %}
+                                            <tr>
+                                                <td>{{ user.username }}</td>
+                                                <td>{{ user.lastname }}</td>
+                                                <td>{{ user.firstname }}</td>
+                                                <td>{{ user.email }}</td>
+                                                <td>{% if user.enabled == 1 %}Actif
+                                                    {% else %}Désactivé
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                {% if is_granted("ROLE_ADMIN")  %}Admin
+                                                {% else %}user
+                                                {% endif %}
+                                                </td>
+                                                <td>
+                                                    <a href="{#{{ path('admin_bann_user', { 'id': user.id }) }}#}"><i class="fa fa-cog" aria-hidden="true"></i></a> |
+                                                    {% if user.enabled == 1 %}
+                                                    <a href="{{ path('admin_ban_user', { 'id': user.id }) }}#}"><i class="fa fa-user-times" aria-hidden="true"></i></a>
+                                                    {% else %}
+                                                    <a href="{{ path('admin_add_user', { 'id': user.id }) }}#}"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
                                         </tbody>
                                     </table>
-                                    <div class="row">
-                                        <div class="col-lg-push-4 col-lg-4 center-block">
-                                            <button type="button" class="btn btn-info">Contacter</button>
-                                            <button type="button" class="btn btn-danger">Bannir</button>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
