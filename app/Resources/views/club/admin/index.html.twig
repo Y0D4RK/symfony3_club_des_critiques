@@ -328,11 +328,16 @@
                                                 {% endif %}
                                                 </td>
                                                 <td>
-                                                    <a href="{#{{ path('admin_bann_user', { 'id': user.id }) }}#}"><i class="fa fa-cog" aria-hidden="true"></i></a> |
-                                                    {% if user.enabled == 1 %}
-                                                    <a href="{{ path('admin_ban_user', { 'id': user.id }) }}#}"><i class="fa fa-user-times" aria-hidden="true"></i></a>
+                                                    {% if user.hasRole('ROLE_ADMIN') %}
+                                                        <a href="{{ path('admin_to_user', { 'id': user.id }) }}"><i class="fa fa-minus-circle" aria-hidden="true"></i></a> |
                                                     {% else %}
-                                                    <a href="{{ path('admin_add_user', { 'id': user.id }) }}#}"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
+                                                        <a href="{{ path('user_to_admin', { 'id': user.id }) }}"><i class="fa fa-plus-circle" aria-hidden="true"></i></a> |
+                                                    {% endif %}
+
+                                                    {% if user.enabled == 1 %}
+                                                        <a href="{{ path('admin_ban_user', { 'id': user.id }) }}"><i class="fa fa-user-times" aria-hidden="true"></i></a>
+                                                    {% else %}
+                                                        <a href="{{ path('admin_activate_user', { 'id': user.id }) }}"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
                                                     {% endif %}
                                                 </td>
                                             </tr>

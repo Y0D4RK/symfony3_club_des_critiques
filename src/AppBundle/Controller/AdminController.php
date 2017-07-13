@@ -102,28 +102,45 @@ class AdminController extends Controller
     //Ban user
     public function banUserAction (User $user){
         $em = $this->getDoctrine()->getManager();
-
         $user->setEnabled(False);
 
         $em->persist($user);
-
         $em->flush();
 
         return $this->redirectToRoute('admin', array('id' => 1));
     }
 
-    //Add user
-    public function addUserAction (User $user){
+    //Activate user
+    public function activateUserAction (User $user){
         $em = $this->getDoctrine()->getManager();
-
         $user->setEnabled(True);
 
         $em->persist($user);
-
         $em->flush();
 
         return $this->redirectToRoute('admin', array('id' => 1));
     }
 
+    //Role user to admin
+    public function userToAdminAction (User $user){
+        $em = $this->getDoctrine()->getManager();
+        $user->setRoles(array('ROLE_ADMIN'));
+
+        $em->persist($user);
+        $em->flush();
+
+        return $this->redirectToRoute('admin', array('id' => 1));
+    }
+
+    //Role user to admin
+    public function adminToUserAction (User $user){
+        $em = $this->getDoctrine()->getManager();
+        $user->setRoles(array('ROLE_USER'));
+
+        $em->persist($user);
+        $em->flush();
+
+        return $this->redirectToRoute('admin', array('id' => 1));
+    }
 
 }
