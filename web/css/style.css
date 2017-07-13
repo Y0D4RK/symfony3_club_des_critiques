@@ -379,6 +379,7 @@ footer {
 #liste-contents{
     background-image: url('../images/library.jpg');
     background-attachment: fixed;
+    background-size: cover;
 }
 
 #liste-contents h1{
