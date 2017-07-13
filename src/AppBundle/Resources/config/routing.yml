@@ -122,7 +122,15 @@ admin_ban_user:
     path:     /admin/user/{id}/ban
     defaults: { _controller: "AppBundle:Admin:banUser" }
 
-admin_add_user:
-    path:     /admin/user/{id}/add
-    defaults: { _controller: "AppBundle:Admin:addUser" }
+admin_activate_user:
+    path:     /admin/user/{id}/activate
+    defaults: { _controller: "AppBundle:Admin:activateUser" }
+
+user_to_admin:
+  path: /admin/user/{id}/usertoadmin
+  defaults: {_controller: "AppBundle:Admin:userToAdmin" }
+
+admin_to_user:
+  path: /admin/user/{id}/admintouser
+  defaults: {_controller: "AppBundle:Admin:adminToUser" }
 

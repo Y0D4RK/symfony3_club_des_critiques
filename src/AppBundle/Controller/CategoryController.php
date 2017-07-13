@@ -39,6 +39,10 @@ class CategoryController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $now = new DateTime();
+            $category->setCreatedAt($now);
+
             $em->persist($category);
             $em->flush($category);
 

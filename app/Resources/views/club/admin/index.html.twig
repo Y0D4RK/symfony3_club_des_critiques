@@ -135,36 +135,36 @@
                                                             <h3>Ajouter une oeuvre</h3>
                                                             {{ form_start(newArtform) }}
                                                             <div class="form-group">
-                                                                {{ form_widget(newArtform.name, { 'attr': {'class': 'form-control', 'placeholder': 'form.name'|trans } }) }}
+                                                                {{ form_widget(newArtform.name, { 'attr': {'class': 'form-control', 'placeholder': 'nom'|trans } }) }}
                                                                 {{ form_errors(newArtform.name) }}
                                                             </div>
                                                             <div class="form-group">
-                                                                {{ form_widget(newArtform.description, { 'attr': {'class': 'form-control', 'placeholder': 'form.description'|trans } }) }}
+                                                                {{ form_widget(newArtform.description, { 'attr': {'class': 'form-control', 'placeholder': 'description'|trans } }) }}
                                                                 {{ form_errors(newArtform.description) }}
                                                             </div>
                                                             <div class="form-group">
-                                                                {{ form_widget(newArtform.category, { 'attr': {'class': 'form-control', 'placeholder': 'form.category'|trans } }) }}
+                                                                {{ form_widget(newArtform.category, { 'attr': {'class': 'form-control', 'placeholder': 'categorie'|trans } }) }}
                                                                 {{ form_errors(newArtform.category) }}
                                                             </div>
                                                             <div class="form-group">
-                                                                {{ form_widget(newArtform.author, { 'attr': {'class': 'form-control', 'placeholder': 'form.author'|trans } }) }}
+                                                                {{ form_widget(newArtform.author, { 'attr': {'class': 'form-control', 'placeholder': 'autheur'|trans } }) }}
                                                                 {{ form_errors(newArtform.author) }}
                                                             </div>
                                                             <div class="form-group">
-                                                                {{ form_widget(newArtform.edithor, { 'attr': {'class': 'form-control', 'placeholder': 'form.edithor'|trans } }) }}
+                                                                {{ form_widget(newArtform.edithor, { 'attr': {'class': 'form-control', 'placeholder': 'éditeur'|trans } }) }}
                                                                 {{ form_errors(newArtform.edithor) }}
                                                             </div>
                                                             <div class="form-group">
-                                                                {{ form_widget(newArtform.publishAt, { 'attr': {'class': '', 'placeholder': 'form.publishAt'|trans } }) }}
+                                                                {{ form_widget(newArtform.publishAt, { 'attr': {'class': '', 'placeholder': 'date de publication'|trans } }) }}
                                                                 {{ form_errors(newArtform.publishAt) }}
                                                             </div>
                                                             <div class="form-group avatar">
-                                                                {{ form_widget(newArtform.cover, { 'attr': {'class': 'form-control', 'placeholder': 'form.cover'|trans } }) }}
+                                                                {{ form_widget(newArtform.cover, { 'attr': {'class': 'form-control', 'placeholder': 'image'|trans } }) }}
                                                                 {{ form_errors(newArtform.cover) }}
                                                             </div>
                                                             <hr>
                                                             {{ form_rest(newArtform) }}
-                                                            <input type="submit" class="btn btn-danger btn-lg btn-block" value="{{ 'create'|trans }}" />
+                                                            <input type="submit" class="btn btn-danger btn-lg btn-block" value="{{ 'créer'|trans }}" />
                                                             {{ form_end(newArtform) }}
                                                         </div>
 
@@ -225,7 +225,7 @@
                                                     <h3>Ajouter une catégorie</h3>
                                                     {{ form_start(formNewCategory) }}
                                                     <div class="form-group">
-                                                        {{ form_widget(formNewCategory.name, { 'attr': {'class': 'form-control', 'placeholder': 'name'|trans } }) }}
+                                                        {{ form_widget(formNewCategory.name, { 'attr': {'class': 'form-control', 'placeholder': 'nom'|trans } }) }}
                                                         {{ form_errors(formNewCategory.name) }}
                                                     </div>
                                                     <div class="form-group">
@@ -235,10 +235,6 @@
                                                     <div class="form-group">
                                                         {{ form_widget(formNewCategory.apiUrl, { 'attr': {'class': 'form-control', 'placeholder': 'api Url'|trans } }) }}
                                                         {{ form_errors(formNewCategory.apiUrl) }}
-                                                    </div>
-                                                    <div class="form-group">
-                                                        {{ form_widget(formNewCategory.createdAt, { 'attr': { 'placeholder': 'created at'|trans } }) }}
-                                                        {{ form_errors(formNewCategory.createdAt) }}
                                                     </div>
                                                     <button type="submit" class="btn btn-danger">Ajouter</button>
                                                     {{ form_end(formNewCategory) }}
@@ -252,11 +248,11 @@
                                                         <h3>Liste des catégories</h3>
                                                         <thead>
                                                         <tr>
-                                                            <th>Nom</th>
-                                                            <th>Description</th>
-                                                            <th>API Url</th>
-                                                            <th>Date de création</th>
-                                                            <th></th>
+                                                            <th class="text-center">Nom</th>
+                                                            <th class="text-center">Description</th>
+                                                            <th class="text-center">API Url</th>
+                                                            <th class="text-center">Date de création</th>
+                                                            <th class="text-center">Supprimer</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -265,7 +261,7 @@
                                                                 <td>{{ category.name }}</td>
                                                                 <td>{{ category.description }}</td>
                                                                 <td>{{ category.apiUrl }}</td>
-                                                                <td>{% if category.createdAt %}{{ category.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                                                <td>{% if category.createdAt %}{{ category.createdAt|date('m-d-Y H:i:s') }}{% endif %}</td>
                                                                 <td><a href="{{ path('admin_delete_category', { 'id': category.id }) }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                                                             </tr>
                                                         {% endfor %}
@@ -302,13 +298,13 @@
                                     <table class="table table-hover">
                                         <thead>
                                         <tr>
-                                            <th>Surnom</th>
-                                            <th>Nom</th>
-                                            <th>Prénom</th>
-                                            <th>Email</th>
+                                            <th class="text-center">Surnom</th>
+                                            <th class="text-center">Nom</th>
+                                            <th class="text-center">Prénom</th>
+                                            <th class="text-center">Email</th>
+                                            <th class="text-center">Role</th>
                                             <th>État</th>
-                                            <th>Role</th>
-                                            <th></th>
+                                            <th class="text-center">Modifier</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -318,21 +314,26 @@
                                                 <td>{{ user.lastname }}</td>
                                                 <td>{{ user.firstname }}</td>
                                                 <td>{{ user.email }}</td>
+                                                <td>
+                                                    {% if user.hasRole('ROLE_ADMIN') %}  Administrateur
+                                                    {% else %} User
+                                                    {% endif %}
+                                                </td>
                                                 <td>{% if user.enabled == 1 %}Actif
                                                     {% else %}Désactivé
                                                     {% endif %}
                                                 </td>
                                                 <td>
-                                                {% if is_granted("ROLE_ADMIN")  %}Admin
-                                                {% else %}user
-                                                {% endif %}
-                                                </td>
-                                                <td>
-                                                    <a href="{#{{ path('admin_bann_user', { 'id': user.id }) }}#}"><i class="fa fa-cog" aria-hidden="true"></i></a> |
-                                                    {% if user.enabled == 1 %}
-                                                    <a href="{{ path('admin_ban_user', { 'id': user.id }) }}#}"><i class="fa fa-user-times" aria-hidden="true"></i></a>
+                                                    {% if user.hasRole('ROLE_ADMIN') %}
+                                                        <a href="{{ path('admin_to_user', { 'id': user.id }) }}"><i class="fa fa-minus-circle" aria-hidden="true"></i></a> |
                                                     {% else %}
-                                                    <a href="{{ path('admin_add_user', { 'id': user.id }) }}#}"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
+                                                        <a href="{{ path('user_to_admin', { 'id': user.id }) }}"><i class="fa fa-plus-circle" aria-hidden="true"></i></a> |
+                                                    {% endif %}
+
+                                                    {% if user.enabled == 1 %}
+                                                        <a href="{{ path('admin_ban_user', { 'id': user.id }) }}"><i class="fa fa-user-times" aria-hidden="true"></i></a>
+                                                    {% else %}
+                                                        <a href="{{ path('admin_activate_user', { 'id': user.id }) }}"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
                                                     {% endif %}
                                                 </td>
                                             </tr>

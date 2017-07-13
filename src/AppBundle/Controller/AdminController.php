@@ -6,6 +6,7 @@ use AppBundle\Entity\Design;
 use AppBundle\Entity\Artwork;
 use AppBundle\Entity\Category;
 use UserBundle\Entity\User;
+use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -31,6 +32,7 @@ class AdminController extends Controller
         $newArtform->handleRequest($request);
 
         if ($newArtform->isSubmitted() && $newArtform->isValid()) {
+            $artwork->setUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($artwork);
             $em->flush($artwork);
@@ -44,11 +46,14 @@ class AdminController extends Controller
 
         //New category
         $category = new Category();
+        $category->setCreatedAt(new \DateTime('now'));
+
         $formNewCategory = $this->createForm('AppBundle\Form\CategoryType', $category);
         $formNewCategory->handleRequest($request);
 
         if ($formNewCategory->isSubmitted() && $formNewCategory->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
             $em->persist($category);
             $em->flush($category);
 
@@ -101,28 +106,45 @@ class AdminController extends Controller
     //Ban user
     public function banUserAction (User $user){
         $em = $this->getDoctrine()->getManager();
-
         $user->setEnabled(False);
 
         $em->persist($user);
-
         $em->flush();
 
         return $this->redirectToRoute('admin', array('id' => 1));
     }
 
-    //Add user
-    public function addUserAction (User $user){
+    //Activate user
+    public function activateUserAction (User $user){
         $em = $this->getDoctrine()->getManager();
-
         $user->setEnabled(True);
 
         $em->persist($user);
-
         $em->flush();
 
         return $this->redirectToRoute('admin', array('id' => 1));
     }
 
+    //Role user to admin
+    public function userToAdminAction (User $user){
+        $em = $this->getDoctrine()->getManager();
+        $user->setRoles(array('ROLE_ADMIN'));
+
+        $em->persist($user);
+        $em->flush();
+
+        return $this->redirectToRoute('admin', array('id' => 1));
+    }
+
+    //Role user to admin
+    public function adminToUserAction (User $user){
+        $em = $this->getDoctrine()->getManager();
+        $user->setRoles(array('ROLE_USER'));
+
+        $em->persist($user);
+        $em->flush();
+
+        return $this->redirectToRoute('admin', array('id' => 1));
+    }
 
 }

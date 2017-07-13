@@ -30,7 +30,7 @@ class ArtworkController extends Controller
         $artworks = $em->getRepository('AppBundle:Artwork')->findBy(array('category' => $category));
 
         return $this->render('club/artwork/index.html.twig', array(
-//          'categories' => $category,
+          'category' => $category,
             'artworks' => $artworks
         ));
     }
@@ -45,6 +45,7 @@ class ArtworkController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $artwork->setUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
 
             $em->persist($artwork);

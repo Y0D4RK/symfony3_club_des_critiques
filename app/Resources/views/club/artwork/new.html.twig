@@ -14,35 +14,35 @@
                     <h1>Ajouter une oeuvre</h1>
                     {{ form_start(form) }}
                     <div class="form-group">
-                        {{ form_widget(form.name, { 'attr': {'class': 'form-control', 'placeholder': 'form.name'|trans } }) }}
+                        {{ form_widget(form.name, { 'attr': {'class': 'form-control', 'placeholder': 'nom'|trans } }) }}
                         {{ form_errors(form.name) }}
                     </div>
                     <div class="form-group">
-                        {{ form_widget(form.description, { 'attr': {'class': 'form-control', 'placeholder': 'form.description'|trans } }) }}
+                        {{ form_widget(form.description, { 'attr': {'class': 'form-control', 'placeholder': 'description'|trans } }) }}
                         {{ form_errors(form.description) }}
                     </div>
                     <div class="form-group">
-                        {{ form_widget(form.category, { 'attr': {'class': 'form-control', 'placeholder': 'form.category'|trans } }) }}
+                        {{ form_widget(form.category, { 'attr': {'class': 'form-control', 'placeholder': 'categorie'|trans } }) }}
                         {{ form_errors(form.category) }}
                     </div>
                     <div class="form-group">
-                        {{ form_widget(form.author, { 'attr': {'class': 'form-control', 'placeholder': 'form.author'|trans } }) }}
+                        {{ form_widget(form.author, { 'attr': {'class': 'form-control', 'placeholder': 'Autheur'|trans } }) }}
                         {{ form_errors(form.author) }}
                     </div>
                     <div class="form-group">
-                        {{ form_widget(form.edithor, { 'attr': {'class': 'form-control', 'placeholder': 'form.edithor'|trans } }) }}
+                        {{ form_widget(form.edithor, { 'attr': {'class': 'form-control', 'placeholder': 'éditeur'|trans } }) }}
                         {{ form_errors(form.edithor) }}
                     </div>
                     <div class="form-group">
-                        {{ form_widget(form.publishAt, { 'attr': {'class': '', 'placeholder': 'form.publishAt'|trans } }) }}
+                        {{ form_widget(form.publishAt, { 'attr': {'class': '', 'placeholder': 'date de publication'|trans } }) }}
                         {{ form_errors(form.publishAt) }}
                     </div>
                     <div class="form-group avatar">
-                        {{ form_widget(form.cover, { 'attr': {'class': 'form-control', 'placeholder': 'form.cover'|trans } }) }}
+                        {{ form_widget(form.cover, { 'attr': {'class': 'form-control', 'placeholder': 'image'|trans } }) }}
                         {{ form_errors(form.cover) }}
                     </div>
                     {{ form_rest(form) }}
-                    <input type="submit" class="btn btn-custom btn-lg btn-block" value="{{ 'create'|trans }}" />
+                    <input type="submit" class="btn btn-custom btn-lg btn-block" value="{{ 'créer'|trans }}" />
                     {{ form_end(form) }}
                     <hr>
                 </div>

@@ -2,24 +2,16 @@
 
 {% block content %}
 
-    {#<td><a href="{{ path('artwork_show', { 'id': artwork.id }) }}">{{ artwork.id }}</a></td>
-    <ul>
-        <li>
-            <a href="{{ path('artwork_show', { 'id': artwork.id }) }}">show</a>
-        </li>
-        <li>
-            <a href="{{ path('artwork_edit', { 'id': artwork.id }) }}">edit</a>
-        </li>
-    </ul>
-    <ul>
-        <li>
-            <a href="{{ path('artwork_new') }}">Create a new artwork</a>
-        </li>
-    </ul>#}
 
-        <div class="button_addArtwork center-block">
-            <a href="{{ path('artwork_new', {'name': artworks[0].category.name }) }}"><button class="btn btn-primary center-block"><i class="fa fa-plus" aria-hidden="true"></i> Ajouter une nouvelle oeuvre </button></a>
-        </div>
+        {% if artworks is not empty %}
+            <div class="button_addArtwork center-block">
+                <a href="{{ path('artwork_new', {'name': artworks[0].category.name }) }}"><button class="btn btn-primary center-block"><i class="fa fa-plus" aria-hidden="true"></i> Ajouter une nouvelle oeuvre </button></a>
+            </div>
+        {% else %}
+            <div class="button_addArtwork center-block">
+                <a href="{{ path('artwork_new', {'name': category[0].name }) }}"><button class="btn btn-primary center-block"><i class="fa fa-plus" aria-hidden="true"></i> Ajouter une nouvelle oeuvre </button></a>
+            </div>
+        {% endif %}
         <section id="liste-contents">
             <div class="container">
                 <div class="row">
@@ -30,7 +22,7 @@
                             {% if artworks is not empty %}
                                 <h1> {{ artworks[0].category.name | capitalize }}</h1>
                             {% else %}
-                                <h1>Catégorie</h1>
+                                <h1>{{ category[0].name }} </h1>
                             {% endif %}
                         </div>
                     </div>
@@ -63,9 +55,9 @@
                             </div>
                         {% endfor %}
                     {% else %}
-                        <h3 class="text-center">Il n'existe pas d'oeuvre dans cette catégorie pour l'instant. </h3>
+                        <h3 class="text-center">Il n'existe pas d'oeuvre dans "{{ category[0].name }}" pour l'instant. </h3>
                         <div class="button_addArtwork center-block">
-                            <a href="{{ path('artwork_new', {'name': artwork[0].category.name }) }}"><button class="btn btn-primary center-block"><i class="fa fa-plus" aria-hidden="true"></i> Ajouter une nouvelle oeuvre </button></a>
+                            <a href="{{ path('artwork_new', {'name': category[0].name }) }}"><button class="btn btn-primary center-block"><i class="fa fa-plus" aria-hidden="true"></i> Ajouter une nouvelle oeuvre </button></a>
                         </div>
                     {% endif %}
                 </div>
