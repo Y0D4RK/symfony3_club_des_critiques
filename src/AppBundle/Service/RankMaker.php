@@ -5,10 +5,10 @@ namespace AppBundle\Service;
 use AppBundle\Entity\Rank;
 
 /**
- * Game maker - Service
+ * Vote Maker
  *
  */
-class Vote{
+class RankMaker{
 
 //    private $templatePath;
 //    private $newGamePath;

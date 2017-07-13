@@ -8,9 +8,9 @@ security:
 
     # cette clÃ© dÃ©fini les role au sein de notre application - gere les autorisation (ROLE_ADMIN => propre Ã  FosUser)
     role_hierarchy:
-        ROLE_ADMIN: [ROLE_ADMIN, ROLE_USER]
+        ROLE_ADMIN: ROLE_USER
         # sf3 fos:user:demote  user1@mail.com ROLE_ADMIN
-        ROLE_SUPER_ADMIN: [ROLE_SUPER_ADMIN, ROLE_ADMIN, ROLE_USER]
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     # Fourni les utilisateurs - c'est lui qui part d'un login et d'un mdp pour recup un user et ses droits
     providers:
@@ -24,7 +24,6 @@ security:
         dev: # aucune sÃ©curitÃ© pour la dev lorsque nous accÃ¨dons Ã  ->
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
         prod: # aucune sÃ©curitÃ© pour la dev lorsque nous accÃ¨dons Ã  ->
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
@@ -54,12 +53,10 @@ security:
     access_control:
         # chemin (regex) - toutes les URL qui commence par '/' et termine par login - necessite le role ...
         # par defaut tout les user son anonyme sur symfony
-        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-
-        - { path: ^/category, role: ROLE_ADMIN }
-        - { path: ^/artwork, role: ROLE_ADMIN }
-
-        - { path: ^/admin/, role: ROLE_SUPER_ADMIN }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/category, roles: ROLE_ADMIN }
+        - { path: ^/artwork, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_SUPER_ADMIN }
