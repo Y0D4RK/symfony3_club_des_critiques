@@ -318,6 +318,9 @@ p {
 
 .box-caption h4{
     color: #222;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 /* Fin section latest */
 
@@ -753,6 +756,34 @@ footer {
 
 }
 
+/*Artwork share profile*/
+#artwork_share {
+    max-width: 100%;
+    min-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8em 5em;
+    background-color: #f2f2f2;
+    color: #444;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    line-height: 1;
+    text-align: center;
+}
+
+#artwork_share .content {
+    margin-top: -10.5em;
+    padding: 2em 1.5em 1.5em 1.5em;
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+#artwork_share .content .box-caption {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e6e6e6;
+}
 
 /*---------------------------------------------------- Admin -----------------------------------------------*/
 
@@ -783,6 +814,19 @@ footer {
 
 #home textarea{
     width: 100%;
+    border-image: none;
+    border-radius: 6px 6px 6px 6px;
+    border-style: none solid solid none;
+    border-width: medium 1px 1px medium;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+    resize:none;
+    padding: 10px 0 0 10px;
+    margin: 0.5em 0 0 0;
+}
+
+#home .form{
+    width: 100%;
+    color: black;
     border-image: none;
     border-radius: 6px 6px 6px 6px;
     border-style: none solid solid none;
@@ -963,6 +1007,7 @@ footer {
 
 /* Utilistaeurs */
 
-#users tr:hover {
-    background-color: rgb(176, 65, 62);
+
+.table-hover>tbody>tr:hover {
+    background-color: transparent;
 }
