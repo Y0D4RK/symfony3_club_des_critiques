@@ -83,7 +83,7 @@ class Builder implements ContainerAwareInterface
                 )
             ));
 
-            $menu->addChild('Admin.', array('route' => 'admin'));
+            $menu->addChild('Site web', array('route' => 'home'));
 
             return $menu;
         }else{

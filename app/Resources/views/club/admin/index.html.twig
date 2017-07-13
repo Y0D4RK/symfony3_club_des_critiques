@@ -325,15 +325,15 @@
                                                 </td>
                                                 <td>
                                                     {% if user.hasRole('ROLE_ADMIN') %}
-                                                        <a href="{{ path('admin_to_user', { 'id': user.id }) }}"><i class="fa fa-minus-circle" aria-hidden="true"></i></a> |
+                                                        <a href="{{ path('admin_to_user', { 'id': user.id }) }}">Rétrograder <i class="fa fa-minus-circle" aria-hidden="true"></i></a> |
                                                     {% else %}
-                                                        <a href="{{ path('user_to_admin', { 'id': user.id }) }}"><i class="fa fa-plus-circle" aria-hidden="true"></i></a> |
+                                                        <a href="{{ path('user_to_admin', { 'id': user.id }) }}">Promouvoir <i class="fa fa-plus-circle" aria-hidden="true"></i></a> |
                                                     {% endif %}
 
                                                     {% if user.enabled == 1 %}
-                                                        <a href="{{ path('admin_ban_user', { 'id': user.id }) }}"><i class="fa fa-user-times" aria-hidden="true"></i></a>
+                                                        <a href="{{ path('admin_ban_user', { 'id': user.id }) }}">Bannir <i class="fa fa-user-times" aria-hidden="true"></i></a>
                                                     {% else %}
-                                                        <a href="{{ path('admin_activate_user', { 'id': user.id }) }}"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
+                                                        <a href="{{ path('admin_activate_user', { 'id': user.id }) }}">Réactiver <i class="fa fa-user-plus" aria-hidden="true"></i></a>
                                                     {% endif %}
                                                 </td>
                                             </tr>

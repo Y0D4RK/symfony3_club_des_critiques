@@ -10,19 +10,24 @@
             <a class="navbar-brand text-hide" href="{{ path('home') }}">Brand Text
             </a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            {{ knp_menu_render('AppBundle:Builder:mainMenu', {'currentClass': 'active'}) }}
+        {% if app.request.get('_route') starts with 'admin' %}
+            {{ knp_menu_render('AppBundle:Builder:adminMenu', {'currentClass': 'active'}) }}
+        {% else %}
+            <div id="navbar" class="navbar-collapse collapse">
+                {{ knp_menu_render('AppBundle:Builder:mainMenu', {'currentClass': 'active'}) }}
 
-            {% if knp_menu_render('AppBundle:Builder:categoryMenu', {'currentClass': 'active'}) == true %}
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Categories <span class="caret"></span></a>
-                    {{ knp_menu_render('AppBundle:Builder:categoryMenu', {'currentClass': 'active'}) }}
-                </li>
-            </ul>
-            {% endif %}
-            {{ knp_menu_render('AppBundle:Builder:logMenu', {'currentClass': 'active'}) }}
-        <!--/.nav-collapse -->
-        </div>
+                {% if knp_menu_render('AppBundle:Builder:categoryMenu', {'currentClass': 'active'}) == true %}
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Categories <span class="caret"></span></a>
+                        {{ knp_menu_render('AppBundle:Builder:categoryMenu', {'currentClass': 'active'}) }}
+                    </li>
+                </ul>
+                {% endif %}
+                {{ knp_menu_render('AppBundle:Builder:logMenu', {'currentClass': 'active'}) }}
+            <!--/.nav-collapse -->
+            </div>
+        {% endif %}
     <!--/.container-fluid -->
+    </div>
 </nav>
