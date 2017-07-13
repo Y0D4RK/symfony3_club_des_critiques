@@ -17,7 +17,7 @@
             </div>
             <div>
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('admin') }}" class="btn btn-block btn-warning">Accéder à l'administration du site</a>
+                    <a href="{{ path('admin', {'id': 1}) }}" class="btn btn-block btn-warning">Accéder à l'administration du site</a>
                 {% endif %}
             </div>
         </div>
