@@ -1,7 +1,7 @@
 <?php
 // myapplication/src/sandboxBundle/Command/SocketCommand.php
 // Change the namespace according to your bundle
-namespace sandboxBundle\Command;
+namespace ChatBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -10,7 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 // Ratchet libs
 use Ratchet\App;
 // Chat instance
-use sandboxBundle\Sockets\Chat;
+use ChatBundle\Sockets\Chat;
 
 class SocketCommand extends Command
 {
@@ -20,7 +20,7 @@ class SocketCommand extends Command
             // the short description shown while running "php bin/console list"
             ->setHelp("Starts the chat socket")
             // the full command description shown when running the command with
-            ->setDescription("Starts the chat socket")
+            ->setDescription('Starts the chat socket')
         ;
     }
 
