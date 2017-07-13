@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Gos\Bundle\WebSocketBundle\GosWebSocketBundle(),
             new Gos\Bundle\PubSubRouterBundle\GosPubSubRouterBundle(),
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
 
             // mes bundles
             new AppBundle\AppBundle(),
