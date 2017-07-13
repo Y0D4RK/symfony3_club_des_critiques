@@ -45,6 +45,7 @@ class ArtworkController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $artwork->setUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
 
             $em->persist($artwork);

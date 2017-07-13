@@ -14,11 +14,12 @@
                 <h1 class="profile-name">{{ user.username }}</h1>
                 <h4 class="profile-title">{{ user.firstname }} • {{ user.birthdate|date("m-d-Y") }}</h4>
                 <span class="profile-title">{{ user.description }}</span>
-            </div>
-            <div>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('admin') }}" class="btn btn-block btn-warning">Accéder à l'administration du site</a>
-                {% endif %}
+                <hr>
+                <div>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('admin', { 'id': 1 }) }}" class="btn btn-block btn-warning">Accéder à l'administration du site</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
 

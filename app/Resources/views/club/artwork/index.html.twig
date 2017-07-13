@@ -55,7 +55,7 @@
                             </div>
                         {% endfor %}
                     {% else %}
-                        <h3 class="text-center">Il n'existe pas d'oeuvre dans {{ category[0].name }} pour l'instant. </h3>
+                        <h3 class="text-center">Il n'existe pas d'oeuvre dans "{{ category[0].name }}" pour l'instant. </h3>
                         <div class="button_addArtwork center-block">
                             <a href="{{ path('artwork_new', {'name': category[0].name }) }}"><button class="btn btn-primary center-block"><i class="fa fa-plus" aria-hidden="true"></i> Ajouter une nouvelle oeuvre </button></a>
                         </div>

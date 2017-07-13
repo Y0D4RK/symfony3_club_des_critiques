@@ -31,6 +31,7 @@ class AdminController extends Controller
         $newArtform->handleRequest($request);
 
         if ($newArtform->isSubmitted() && $newArtform->isValid()) {
+            $artwork->setUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($artwork);
             $em->flush($artwork);

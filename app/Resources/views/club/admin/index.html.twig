@@ -135,36 +135,36 @@
                                                             <h3>Ajouter une oeuvre</h3>
                                                             {{ form_start(newArtform) }}
                                                             <div class="form-group">
-                                                                {{ form_widget(newArtform.name, { 'attr': {'class': 'form-control', 'placeholder': 'form.name'|trans } }) }}
+                                                                {{ form_widget(newArtform.name, { 'attr': {'class': 'form-control', 'placeholder': 'nom'|trans } }) }}
                                                                 {{ form_errors(newArtform.name) }}
                                                             </div>
                                                             <div class="form-group">
-                                                                {{ form_widget(newArtform.description, { 'attr': {'class': 'form-control', 'placeholder': 'form.description'|trans } }) }}
+                                                                {{ form_widget(newArtform.description, { 'attr': {'class': 'form-control', 'placeholder': 'description'|trans } }) }}
                                                                 {{ form_errors(newArtform.description) }}
                                                             </div>
                                                             <div class="form-group">
-                                                                {{ form_widget(newArtform.category, { 'attr': {'class': 'form-control', 'placeholder': 'form.category'|trans } }) }}
+                                                                {{ form_widget(newArtform.category, { 'attr': {'class': 'form-control', 'placeholder': 'categorie'|trans } }) }}
                                                                 {{ form_errors(newArtform.category) }}
                                                             </div>
                                                             <div class="form-group">
-                                                                {{ form_widget(newArtform.author, { 'attr': {'class': 'form-control', 'placeholder': 'form.author'|trans } }) }}
+                                                                {{ form_widget(newArtform.author, { 'attr': {'class': 'form-control', 'placeholder': 'autheur'|trans } }) }}
                                                                 {{ form_errors(newArtform.author) }}
                                                             </div>
                                                             <div class="form-group">
-                                                                {{ form_widget(newArtform.edithor, { 'attr': {'class': 'form-control', 'placeholder': 'form.edithor'|trans } }) }}
+                                                                {{ form_widget(newArtform.edithor, { 'attr': {'class': 'form-control', 'placeholder': 'éditeur'|trans } }) }}
                                                                 {{ form_errors(newArtform.edithor) }}
                                                             </div>
                                                             <div class="form-group">
-                                                                {{ form_widget(newArtform.publishAt, { 'attr': {'class': '', 'placeholder': 'form.publishAt'|trans } }) }}
+                                                                {{ form_widget(newArtform.publishAt, { 'attr': {'class': '', 'placeholder': 'date de publication'|trans } }) }}
                                                                 {{ form_errors(newArtform.publishAt) }}
                                                             </div>
                                                             <div class="form-group avatar">
-                                                                {{ form_widget(newArtform.cover, { 'attr': {'class': 'form-control', 'placeholder': 'form.cover'|trans } }) }}
+                                                                {{ form_widget(newArtform.cover, { 'attr': {'class': 'form-control', 'placeholder': 'image'|trans } }) }}
                                                                 {{ form_errors(newArtform.cover) }}
                                                             </div>
                                                             <hr>
                                                             {{ form_rest(newArtform) }}
-                                                            <input type="submit" class="btn btn-danger btn-lg btn-block" value="{{ 'create'|trans }}" />
+                                                            <input type="submit" class="btn btn-danger btn-lg btn-block" value="{{ 'créer'|trans }}" />
                                                             {{ form_end(newArtform) }}
                                                         </div>
 
@@ -225,7 +225,7 @@
                                                     <h3>Ajouter une catégorie</h3>
                                                     {{ form_start(formNewCategory) }}
                                                     <div class="form-group">
-                                                        {{ form_widget(formNewCategory.name, { 'attr': {'class': 'form-control', 'placeholder': 'name'|trans } }) }}
+                                                        {{ form_widget(formNewCategory.name, { 'attr': {'class': 'form-control', 'placeholder': 'nom'|trans } }) }}
                                                         {{ form_errors(formNewCategory.name) }}
                                                     </div>
                                                     <div class="form-group">
@@ -237,7 +237,7 @@
                                                         {{ form_errors(formNewCategory.apiUrl) }}
                                                     </div>
                                                     <div class="form-group">
-                                                        {{ form_widget(formNewCategory.createdAt, { 'attr': { 'placeholder': 'created at'|trans } }) }}
+                                                        {{ form_widget(formNewCategory.createdAt, { 'attr': { 'placeholder': 'date de création'|trans } }) }}
                                                         {{ form_errors(formNewCategory.createdAt) }}
                                                     </div>
                                                     <button type="submit" class="btn btn-danger">Ajouter</button>
