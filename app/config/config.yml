@@ -4,6 +4,7 @@ imports:
     - { resource: services.yml }
     - { resource: "@UserBundle/Resources/config/services.yml" }
     - { resource: "@AppBundle/Resources/config/services.yml" }
+    - { resource: "@ChatBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -128,8 +129,8 @@ vich_uploader:
             delete_on_remove:   true
 
 
-# VICH UPLOADER
-gos_web_socket:
-    server:
-        port: 8080        #The port the socket server will listen on
-        host: 127.0.0.1   #The host ip to bind to
+# GOS BUNDLE
+#gos_web_socket:
+#    server:
+#        port: 8080        #The port the socket server will listen on
+#        host: 127.0.0.1   #The host ip to bind to

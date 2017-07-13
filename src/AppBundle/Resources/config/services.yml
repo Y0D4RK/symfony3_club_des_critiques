@@ -10,8 +10,3 @@ services:
         class: AppBundle\Service\CoverImageNamer
         tags:
             - { name: namer }
-
-    app.salon.maker:
-        class: AppBundle\Service\SalonMaker
-        tags:
-            - { name: gos_web_socket.topic }

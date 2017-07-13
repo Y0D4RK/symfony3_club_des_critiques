@@ -20,13 +20,12 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
-            new Gos\Bundle\WebSocketBundle\GosWebSocketBundle(),
-            new Gos\Bundle\PubSubRouterBundle\GosPubSubRouterBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
 
             // mes bundles
             new AppBundle\AppBundle(),
             new UserBundle\UserBundle(),
+            new ChatBundle\ChatBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

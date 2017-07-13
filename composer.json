@@ -33,7 +33,7 @@
         "knplabs/knp-menu-bundle": "^2.0",
         "doctrine/annotations": "^1.4",
         "vich/uploader-bundle": "^1.6",
-        "gos/web-socket-bundle": "^1.8",
+        "cboden/ratchet": "0.3.*",
         "symfony/assetic-bundle": "^2.8"
     },
     "require-dev": {
