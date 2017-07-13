@@ -19,9 +19,9 @@ class SocketCommand extends Command
     {
         $this->setName('sockets:start-chat')
             // the short description shown while running "php bin/console list"
-            ->setHelp("Starts the chat socket demo")
+            ->setHelp("Starts the chat socket")
             // the full command description shown when running the command with
-            ->setDescription('Starts the chat socket demo')
+            ->setDescription('Starts the chat socket')
         ;
     }
 
