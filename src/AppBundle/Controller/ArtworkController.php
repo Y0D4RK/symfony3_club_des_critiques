@@ -30,7 +30,7 @@ class ArtworkController extends Controller
         $artworks = $em->getRepository('AppBundle:Artwork')->findBy(array('category' => $category));
 
         return $this->render('club/artwork/index.html.twig', array(
-//          'categories' => $category,
+          'category' => $category,
             'artworks' => $artworks
         ));
     }
