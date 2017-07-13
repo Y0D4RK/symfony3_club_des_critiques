@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Design;
 use AppBundle\Entity\Artwork;
 use AppBundle\Entity\Category;
+use UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -56,8 +57,12 @@ class AdminController extends Controller
 
         //List category
         $em = $this->getDoctrine()->getManager();
-
         $categories = $em->getRepository('AppBundle:Category')->findAll();
+
+
+        //List users
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('UserBundle:User')->findAll();
 
 
         //return variables to admin view
@@ -68,6 +73,7 @@ class AdminController extends Controller
             'artworks' => $artworks,
             'formNewCategory' => $formNewCategory->createView(),
             'categories' => $categories,
+            'users' => $users,
         ));
     }
 
@@ -88,6 +94,32 @@ class AdminController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->remove($category);
         $em->flush($category);
+
+        return $this->redirectToRoute('admin', array('id' => 1));
+    }
+
+    //Ban user
+    public function banUserAction (User $user){
+        $em = $this->getDoctrine()->getManager();
+
+        $user->setEnabled(False);
+
+        $em->persist($user);
+
+        $em->flush();
+
+        return $this->redirectToRoute('admin', array('id' => 1));
+    }
+
+    //Add user
+    public function addUserAction (User $user){
+        $em = $this->getDoctrine()->getManager();
+
+        $user->setEnabled(True);
+
+        $em->persist($user);
+
+        $em->flush();
 
         return $this->redirectToRoute('admin', array('id' => 1));
     }

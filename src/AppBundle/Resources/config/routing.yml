@@ -118,3 +118,11 @@ admin_delete_category:
     path:     /admin/category/{id}/delete
     defaults: { _controller: "AppBundle:Admin:deleteCategory" }
 
+admin_ban_user:
+    path:     /admin/user/{id}/ban
+    defaults: { _controller: "AppBundle:Admin:banUser" }
+
+admin_add_user:
+    path:     /admin/user/{id}/add
+    defaults: { _controller: "AppBundle:Admin:addUser" }
+
