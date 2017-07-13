@@ -323,8 +323,8 @@
                                                     {% endif %}
                                                 </td>
                                                 <td>
-                                                {% if is_granted("ROLE_ADMIN")  %}Admin
-                                                {% else %}user
+                                                {% if user.hasRole('ROLE_ADMIN') %}  Administrateur
+                                                {% else %} User
                                                 {% endif %}
                                                 </td>
                                                 <td>
