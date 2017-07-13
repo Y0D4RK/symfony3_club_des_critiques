@@ -6,6 +6,7 @@ use AppBundle\Entity\Design;
 use AppBundle\Entity\Artwork;
 use AppBundle\Entity\Category;
 use UserBundle\Entity\User;
+use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -45,11 +46,14 @@ class AdminController extends Controller
 
         //New category
         $category = new Category();
+        $category->setCreatedAt(new \DateTime('now'));
+
         $formNewCategory = $this->createForm('AppBundle\Form\CategoryType', $category);
         $formNewCategory->handleRequest($request);
 
         if ($formNewCategory->isSubmitted() && $formNewCategory->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
             $em->persist($category);
             $em->flush($category);
 
