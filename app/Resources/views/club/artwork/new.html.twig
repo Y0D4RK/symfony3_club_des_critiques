@@ -34,7 +34,8 @@
                         {{ form_errors(form.edithor) }}
                     </div>
                     <div class="form-group">
-                        {{ form_widget(form.publishAt, { 'attr': {'class': '', 'placeholder': 'date de publication'|trans } }) }}
+                        <label>Date de parution</label>
+                        {{ form_widget(form.publishAt, { 'attr': {'class': 'input-append date form_datetime', 'placeholder': 'date de publication'|trans } }) }}
                         {{ form_errors(form.publishAt) }}
                     </div>
                     <div class="form-group avatar">

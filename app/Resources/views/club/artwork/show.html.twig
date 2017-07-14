@@ -24,7 +24,7 @@
                         <h1>{{ artwork.name }}</h1>
                         <p class="text-muted">{{ artwork.author }}</p>
                         <p><span style="font-size: 22px;"><strong> {{ artwork }}</strong></span></p>
-                        <p>{% if artwork.createdAt %}{{ artwork.createdAt|date('Y-m-d H:i:s') }}{% endif %}</p>
+                        <p>{% if artwork.publishAt %}Publié le{{ artwork.publishAt|date('m-d-Y') }}{% endif %}</p>
                         <p></p>
                         {% if artwork.user == currentUserName %}
                             {{ form_start(delete_form) }}
