@@ -20,7 +20,6 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
-            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
 
             // mes bundles
             new AppBundle\AppBundle(),

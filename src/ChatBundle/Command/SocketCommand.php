@@ -16,7 +16,7 @@ class SocketCommand extends Command
 {
     protected function configure()
     {
-        $this->setName('sockets:start-chat')
+        $this->setName('sockets:start')
             // the short description shown while running "php bin/console list"
             ->setHelp("Starts the chat socket")
             // the full command description shown when running the command with
