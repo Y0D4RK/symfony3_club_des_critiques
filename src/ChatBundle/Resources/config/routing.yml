@@ -1,0 +1,4 @@
+test:
+    path: /chat
+    defaults: { _controller: "ChatBundle:Default:index" }
+    methods:  [GET, POST]

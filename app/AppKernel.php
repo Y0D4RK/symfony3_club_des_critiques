@@ -25,6 +25,7 @@ class AppKernel extends Kernel
 
             // mes bundles
             new AppBundle\AppBundle(),
+            new ChatBundle\ChatBundle(),
             new UserBundle\UserBundle(),
         ];
 
