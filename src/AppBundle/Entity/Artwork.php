@@ -85,7 +85,7 @@ class Artwork
     private $edithor;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Rank", inversedBy="artworks")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Score", inversedBy="artworks")
      * @ORM\JoinColumn(name="rank_id", referencedColumnName="id")
      */
     private $score;

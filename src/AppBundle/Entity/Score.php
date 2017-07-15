@@ -5,9 +5,9 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Rank
+ * Score
  *
- * @ORM\Table(name="rank")
+ * @ORM\Table(name="score")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\RankRepository")
  */
 class Score
@@ -42,7 +42,7 @@ class Score
     private $createdAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Artwork", mappedBy="rank")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Artwork", mappedBy="rank")
      */
     private $artwork;
 
