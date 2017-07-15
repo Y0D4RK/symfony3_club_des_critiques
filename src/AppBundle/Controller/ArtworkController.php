@@ -91,7 +91,10 @@ class ArtworkController extends Controller
 
         $deleteForm = $this->createDeleteForm($artwork);
 
+        $user = $this->getUser();
+
         return $this->render('club/artwork/show.html.twig', array(
+            'user' => $user,
             'artworksSimilary' => $artworksSimilary,
             'artwork' => $artwork,
             'delete_form' => $deleteForm->createView(),
