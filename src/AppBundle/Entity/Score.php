@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="rank")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\RankRepository")
  */
-class Rank
+class Score
 {
     /**
      * @var int
@@ -29,6 +29,12 @@ class Rank
     private $user;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="user", type="string", length=255)
+     */
+    private $score;
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -38,15 +44,11 @@ class Rank
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Artwork", mappedBy="rank")
      */
-    private $artworks;
-
-    public function __construct(){
-        $this->artworks = new ArrayCollection();
-    }
+    private $artwork;
 
     public function __toString()
     {
-        return $this->name;
+        return $this->score;
     }
 
 

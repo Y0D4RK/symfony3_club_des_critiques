@@ -5,17 +5,15 @@ namespace AppBundle\Service;
 use AppBundle\Entity\Rank;
 
 /**
- * Vote Maker
+ * Service Voter
  *
  */
-class RankMaker{
+class Voter{
 
-//    private $templatePath;
-//    private $newGamePath;
-//    private $webPath;
+//    private $former_vote;
 //
 //    public function __construct($templatePath, $newGamePath, $webPath){
-//        $this->templatePath = $templatePath;
+//        $this->former_vote = $templatePath;
 //        $this->newGamePath = $newGamePath;
 //        $this->webPath = $webPath;
 //    }
