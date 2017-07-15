@@ -6,6 +6,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -26,7 +27,11 @@ class ArtworkType extends AbstractType
             ->add('category')
             ->add('author')
             ->add('edithor')
-            ->add('publishAt')
+            ->add('publishAt', DateType::class, array(
+                'widget' => 'single_text',
+                // this is actually the default format for single_text
+                'format' => 'yyyy-MM-dd',
+            ))
             ->add('cover', VichFileType::class, [
                 'allow_delete' => false,
                 'download_link' => true,
