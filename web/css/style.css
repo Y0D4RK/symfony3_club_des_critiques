@@ -785,6 +785,53 @@ footer {
     border-color: #e6e6e6;
 }
 
+/*Contact profile*/
+#contact_profile {
+    max-width: 100%;
+    min-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8em 5em;
+    background-color: #f2f2f2;
+    color: #444;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    line-height: 1;
+    text-align: center;
+}
+
+#contact_profile .content{
+    margin-top: -10.5em;
+    padding: 2em 1.5em 1.5em 1.5em;
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+#contact_profile .content form{
+    max-width: 500px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#contact_profile .content .feedback-input {
+    border: 1px solid #e6e6e6;
+    color: #828285;
+}
+
+#contact_profile [type="submit"] {
+    width: 100%;
+    background: #828285;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: all 0.3s;
+    margin-top: -4px;
+}
+
 /*---------------------------------------------------- Admin -----------------------------------------------*/
 
 #admin{

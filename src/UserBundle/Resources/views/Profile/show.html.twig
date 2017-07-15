@@ -66,6 +66,27 @@
 
             </div>
         </div>
+
+        <div id="contact_profile">
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="title-contents">
+                            <h2>Contacter {{ user.username }}</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <form class="center-block">
+                        <input name="name" type="text" class="feedback-input" placeholder="Votre Nom" />
+                        <input name="email" type="text" class="feedback-input" placeholder="Votre Email" />
+                        <textarea name="content" class="feedback-input" placeholder="Votre commentaire"></textarea>
+                        <input type="submit" value="Envoyer"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 {% endblock content %}
