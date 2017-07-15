@@ -12,7 +12,7 @@
             <div class="profile-text">
                 <a href="{{ path('fos_user_profile_edit') }}" class="profile-btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modifier</a>
                 <h1 class="profile-name">{{ user.username }}</h1>
-                <h4 class="profile-title">{{ user.firstname }} • {{ user.birthdate|date("m-d-Y") }}</h4>
+                <h4 class="profile-title">{{ user.firstname }} • {{ user.birthdate|date("d/m/Y") }}</h4>
                 <span class="profile-title">{{ user.description }}</span>
                 <hr>
                 <div>

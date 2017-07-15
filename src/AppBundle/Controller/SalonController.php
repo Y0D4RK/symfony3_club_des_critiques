@@ -22,7 +22,7 @@ class SalonController extends Controller
 
         $salons = $em->getRepository('AppBundle:Salon')->findAll();
 
-        return $this->render('club/salon/salons.html.twig', array(
+        return $this->render('club/salon/test.html.twig', array(
             'salons' => $salons,
         ));
     }
