@@ -60,7 +60,11 @@
             <div class="row">
                 {% for artwork in artworks %}
                     <div class="col-md-4 col-sm-6 latest">
+                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                         <a href="{{ path('artwork_show', { 'id': artwork.id }) }}" class="box-link">
+                        {% else %}
+                        <a href="{{ path('fos_user_security_login') }}" class="box-link">
+                        {% endif %}
                             <div class="box-hover">
                                 <div class="box-hover-content">
                                     <i class="fa fa-plus fa-3x"></i>
