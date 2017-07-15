@@ -29,25 +29,25 @@ class Rank
     private $user;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="category", type="string", length=255)
-     */
-    private $category;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="rank", type="string", length=255)
-     */
-    private $rank;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Artwork", mappedBy="rank")
+     */
+    private $artworks;
+
+    public function __construct(){
+        $this->artworks = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 
 
     /**

@@ -85,6 +85,12 @@ class Artwork
     private $edithor;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Rank", inversedBy="artworks")
+     * @ORM\JoinColumn(name="rank_id", referencedColumnName="id")
+     */
+    private $score;
+
+    /**
      * @Vich\UploadableField(mapping="cover_image", fileNameProperty="coverName")
      *
      * @var File

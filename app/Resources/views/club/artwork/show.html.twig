@@ -34,7 +34,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="vote is-score2{#round($post->score); #}" id="vote" data-ref="{{ artwork.category }}" data-ref_id="{{ artwork.id }}" data-user_id="{{ user.id }}">
+                    <div class="vote is-score2{# artwork | round #}" id="vote" data-ref="{{ artwork.category }}" data-ref_id="{{ artwork.id }}" data-user_id="{{ user.id }}">
                         <div class="vote_stars">
                             <span class="vote_star vote_star1" data-score="1"></span>
                             <span class="vote_star vote_star2" data-score="2"></span>

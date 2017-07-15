@@ -2,22 +2,18 @@
 $(document).ready(function(){
 
     var $vote = $('#vote');
-    $('.vote_like', $vote).click(function(e){
-        e.preventDefault();
-        vote(1, 'like.php');
-    });
-    $('.vote_dislike', $vote).click(function(e){
-        e.preventDefault();
-        vote(-1, 'like.php');
-    });
+
     $('.vote_star', $vote).click(function(e){
         e.preventDefault();
-        vote($(this).data('score'), 'vote.php')
-    })
+        var urlRoute = Routing.generate('artwork_show', {id: 'id'});
+        vote($(this).data('score'), urlRoute)
+    });
 
     function vote(value, url){
+
         $('.vote_loading', $vote).show();
         $('.vote_btns', $vote).hide();
+
         $.post(url, {
             ref: $vote.data('ref'),
             ref_id: $vote.data('ref_id'),

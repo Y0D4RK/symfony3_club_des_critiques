@@ -127,10 +127,13 @@ admin_activate_user:
     defaults: { _controller: "AppBundle:Admin:activateUser" }
 
 user_to_admin:
-  path: /admin/user/{id}/usertoadmin
-  defaults: {_controller: "AppBundle:Admin:userToAdmin" }
+    path: /admin/user/{id}/usertoadmin
+    defaults: {_controller: "AppBundle:Admin:userToAdmin" }
 
 admin_to_user:
-  path: /admin/user/{id}/admintouser
-  defaults: {_controller: "AppBundle:Admin:adminToUser" }
+    path: /admin/user/{id}/admintouser
+    defaults: {_controller: "AppBundle:Admin:adminToUser" }
 
+# ROUTING FOSJS #
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
