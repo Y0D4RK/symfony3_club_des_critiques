@@ -5,6 +5,7 @@ namespace ChatBundle\Controller;
 use ChatBundle\Entity\Room;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Room controller.
@@ -22,7 +23,7 @@ class RoomController extends Controller
 
         $rooms = $em->getRepository('ChatBundle:Room')->findAll();
 
-        return $this->render('room/index.html.twig', array(
+        return $this->render('ChatBundle:Room:index.html.twig', array(
             'rooms' => $rooms,
         ));
     }
@@ -45,7 +46,7 @@ class RoomController extends Controller
             return $this->redirectToRoute('room_show', array('id' => $room->getId()));
         }
 
-        return $this->render('room/new.html.twig', array(
+        return $this->render('ChatBundle:Room:new.html.twig', array(
             'room' => $room,
             'form' => $form->createView(),
         ));
@@ -57,9 +58,12 @@ class RoomController extends Controller
      */
     public function showAction(Room $room)
     {
+        $user = $this->getUser();
+
         $deleteForm = $this->createDeleteForm($room);
 
-        return $this->render('room/show.html.twig', array(
+        return $this->render('ChatBundle:Room:show.html.twig', array(
+            'user' => $user,
             'room' => $room,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -81,7 +85,7 @@ class RoomController extends Controller
             return $this->redirectToRoute('room_edit', array('id' => $room->getId()));
         }
 
-        return $this->render('room/edit.html.twig', array(
+        return $this->render('ChatBundle:Room:edit.html.twig', array(
             'room' => $room,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

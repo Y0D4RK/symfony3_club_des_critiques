@@ -23,7 +23,7 @@ class Builder implements ContainerAwareInterface
         ));
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_USER')) {
             $menu->addChild('Accueil', array('route' => 'home'));
-            $menu->addChild('Salons', array('route' => 'salon_index'));
+            $menu->addChild('Salons', array('route' => 'room_index'));
         }else {
             $menu->addChild('Accueil', array('route' => 'home'));
         }

@@ -372,4 +372,16 @@ class Artwork
     {
         return $this->coverName;
     }
+
+
+    public function getUniqRoute()
+    {
+        $artworkName = $this->name;
+
+    	$chaine = preg_replace('#[^A-Za-z0-9]+#', '-', $artworkName);
+	    $chaine = trim($chaine, '-');
+    	$chaine = strtolower($chaine);
+
+	    return $chaine;
+    }
 }

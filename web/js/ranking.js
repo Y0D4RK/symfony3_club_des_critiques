@@ -1,6 +1,8 @@
 
 $(document).ready(function(){
 
+//    alert('yoooooooooo');
+
     var $vote = $('#vote');
 
     $('.vote_star', $vote).click(function(e){

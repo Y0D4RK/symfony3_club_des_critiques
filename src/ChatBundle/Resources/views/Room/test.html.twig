@@ -1,15 +1,43 @@
-{% extends '::empty.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block content %}
-    <h1>Public chat</h1>
+{% block body %}
+    <h1>Salon {{ room.name }} - {{ room.artwork.name }}</h1>
 
-    <ul id="chat-list"></ul>
+    <table>
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ salon.id }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ salon.name }}</td>
+        </tr>
+        <tr>
+            <th>Artwork</th>
+            <td>{{ salon.artwork }}</td>
+        </tr>
+        </tbody>
+    </table>
 
-    <hr>
 
-    <textarea id="form-message" placeholder="Your public message here"></textarea>
-    <input type="button" id="form-submit" value="Send message"/>
 
+    <ul>
+        <li>
+            <a href="{{ path('salon_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('salon_edit', { 'id': salon.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
+
+{% block javascript %}
     <script>
         // This object will be sent everytime you submit a message in the sendMessage function.
         var clientInformation = {

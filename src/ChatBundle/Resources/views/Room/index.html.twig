@@ -1,7 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends '::base.html.twig' %}
 
-{% block body %}
-    <h1>Salons list</h1>
+{% block content %}
+
+    <h1>Rooms list</h1>
 
     <table>
         <thead>
@@ -9,22 +10,30 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Artwork</th>
+                <th>Startedat</th>
+                <th>Closedat</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for salon in salons %}
+        {% for room in rooms %}
             <tr>
-                <td><a href="{{ path('salon_show', { 'id': salon.id }) }}">{{ salon.id }}</a></td>
-                <td>{{ salon.name }}</td>
-                <td>{{ salon.artwork }}</td>
+                <td><a href="{{ path('room_show', { 'id': room.id }) }}">{{ room.id }}</a></td>
+
+                <td>{{ room.name }}</td>
+
+                <td>{{ room.artwork }}</td>
+                <td>{% if room.startedAt %}{{ room.startedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if room.closedAt %}{{ room.closedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ room.status }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('salon_show', { 'id': salon.id }) }}">show</a>
+                            <a href="{{ path('room_show', { 'id': room.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('salon_edit', { 'id': salon.id }) }}">edit</a>
+                            <a href="{{ path('room_edit', { 'id': room.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -35,7 +44,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('salon_new') }}">Create a new salon</a>
+            <a href="{{ path('room_new') }}">Create a new room</a>
         </li>
     </ul>
 {% endblock %}

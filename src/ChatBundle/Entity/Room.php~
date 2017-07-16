@@ -30,7 +30,7 @@ class Room
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Artwork", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Artwork", cascade={"persist"})
      */
     private $artwork;
 
@@ -222,29 +222,5 @@ class Room
     public function getCreator()
     {
         return $this->creator;
-    }
-
-    /**
-     * Set artwork
-     *
-     * @param \UserBundle\Entity\Artwork $artwork
-     *
-     * @return Room
-     */
-    public function setArtwork(\UserBundle\Entity\Artwork $artwork = null)
-    {
-        $this->artwork = $artwork;
-
-        return $this;
-    }
-
-    /**
-     * Get artwork
-     *
-     * @return \UserBundle\Entity\Artwork
-     */
-    public function getArtwork()
-    {
-        return $this->artwork;
     }
 }
