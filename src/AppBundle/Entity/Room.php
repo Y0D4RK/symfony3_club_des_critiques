@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Salon
+ * Room
  *
- * @ORM\Table(name="salon")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\SalonRepository")
+ * @ORM\Table(name="room")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\RoomRepository")
  */
-class Salon
+class Room
 {
     /**
      * @var int
@@ -81,6 +81,12 @@ class Salon
      */
     private $closedAt;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="started_at", type="datetime")
+     */
+    private $status;
 
     /**
      * Get id
@@ -97,7 +103,7 @@ class Salon
      *
      * @param string $name
      *
-     * @return Salon
+     * @return Room
      */
     public function setName($name)
     {
@@ -121,7 +127,7 @@ class Salon
      *
      * @param string $artwork
      *
-     * @return Salon
+     * @return Room
      */
     public function setArtwork($artwork)
     {
