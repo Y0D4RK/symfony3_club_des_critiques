@@ -29,11 +29,57 @@ class Salon
     private $name;
 
     /**
+     * @return \DateTime
+     */
+    public function getStartedAt()
+    {
+        return $this->startedAt;
+    }
+
+    /**
+     * @param \DateTime $startedAt
+     */
+    public function setStartedAt($startedAt)
+    {
+        $this->startedAt = $startedAt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getClosedAt()
+    {
+        return $this->closedAt;
+    }
+
+    /**
+     * @param \DateTime $closedAt
+     */
+    public function setClosedAt($closedAt)
+    {
+        $this->closedAt = $closedAt;
+    }
+
+    /**
      * @var string
      *
      * @ORM\Column(name="artwork", type="string", length=255)
      */
     private $artwork;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="started_at", type="datetime")
+     */
+    private $startedAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="closed_at", type="datetime")
+     */
+    private $closedAt;
 
 
     /**

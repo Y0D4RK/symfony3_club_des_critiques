@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Score
  *
  * @ORM\Table(name="score")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\RankRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ScoreRepository")
  */
 class Score
 {
@@ -22,18 +22,15 @@ class Score
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="user", type="string", length=255)
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Artwork")
+     */
+    private $artwork;
+
+    /**
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\User")
      */
     private $user;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="user", type="string", length=255)
-     */
-    private $score;
     /**
      * @var \DateTime
      *
@@ -41,105 +38,13 @@ class Score
      */
     private $createdAt;
 
-    /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Artwork", mappedBy="rank")
-     */
-    private $artwork;
-
-    public function __toString()
-    {
-        return $this->score;
-    }
-
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set user
-     *
-     * @param string $user
-     *
-     * @return Rank
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return string
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set category
-     *
-     * @param string $category
-     *
-     * @return Rank
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return string
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * Set rank
-     *
-     * @param string $rank
-     *
-     * @return Rank
-     */
-    public function setRank($rank)
-    {
-        $this->rank = $rank;
-
-        return $this;
-    }
-
-    /**
-     * Get rank
-     *
-     * @return string
-     */
-    public function getRank()
-    {
-        return $this->rank;
-    }
 
     /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
      *
-     * @return Rank
+     * @return Score
      */
     public function setCreatedAt($createdAt)
     {

@@ -10,16 +10,25 @@ use AppBundle\Entity\Rank;
  */
 class Voter{
 
-//    private $former_vote;
-//
-//    public function __construct($templatePath, $newGamePath, $webPath){
-//        $this->former_vote = $templatePath;
-//        $this->newGamePath = $newGamePath;
-//        $this->webPath = $webPath;
-//    }
-//
+    private $formerVote;
+    private $voter;
+    private $category;
+    private $artwork;
+
+    public function __construct($formerVote, $voter, $artwork, $category){
+        $this->formerVote = $formerVote;
+        $this->voter = $voter;
+        $this->artwork = $artwork;
+        $this->category = $category;
+    }
+
+    public function note($table, $record_id, $user_id, $note){
+        $vote = $this->vote($table, $record_id, $user_id, $note);
+        $this->updateVote($table, $record_id, true);
+        return $vote;
+    }
 //    /**
-//     * Creer les dossier necessaire à l'op
+//     * Créer les dossier necessaire à l'op
 //     *
 //     */
 //    public function makeDirDomain(Game $game){

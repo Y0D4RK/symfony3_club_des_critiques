@@ -1,0 +1,24 @@
+score_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Score:index" }
+    methods:  GET
+
+score_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Score:show" }
+    methods:  GET
+
+score_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Score:new" }
+    methods:  [GET, POST]
+
+score_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Score:edit" }
+    methods:  [GET, POST]
+
+score_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Score:delete" }
+    methods:  DELETE
