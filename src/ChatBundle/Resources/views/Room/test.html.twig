@@ -1,25 +1,16 @@
-{% extends '::base.html.twig' %}
+{% extends '::empty.html.twig' %}
 
 {% block content %}
+    <h1>Public chat</h1>
 
-<h1>SALON NAME - OEUVRES</h1>
+    <ul id="chat-list"></ul>
 
-<ul id="chat-list">
-    messages
-</ul>
+    <hr>
 
-<hr>
+    <textarea id="form-message" placeholder="Your public message here"></textarea>
+    <input type="button" id="form-submit" value="Send message"/>
 
-<textarea id="form-message" placeholder="Your public message here"></textarea>
-<input type="button" id="form-submit" value="Send message"/>
-
-{% endblock content %}
-
-{% block javascripts %}]
-    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script>
-
         // This object will be sent everytime you submit a message in the sendMessage function.
         var clientInformation = {
             username: new Date().getTime().toString()
@@ -91,4 +82,4 @@
         };
     </script>
 
-{% endblock javascripts %}
+{% endblock %}

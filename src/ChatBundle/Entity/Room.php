@@ -50,12 +50,18 @@ class Room
     private $closedAt;
 
     /**
-     * @var string
+     * @var bool
      *
-     * @ORM\Column(name="status", type="string", length=255)
+     * @ORM\Column(name="status" type="boolean")
      */
     private $status;
 
+    /**
+     * @var route
+     *
+     * @ORM\Column(name="route", type="string", length=255)
+     */
+    private $route;
 
     /**
      * Get id

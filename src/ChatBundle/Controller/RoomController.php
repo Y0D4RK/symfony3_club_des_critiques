@@ -22,7 +22,7 @@ class RoomController extends Controller
 
         $rooms = $em->getRepository('ChatBundle:Room')->findAll();
 
-        return $this->render('UserBundle/room/test.html.twig', array(
+        return $this->render('room/index.html.twig', array(
             'rooms' => $rooms,
         ));
     }
@@ -34,7 +34,7 @@ class RoomController extends Controller
     public function newAction(Request $request)
     {
         $room = new Room();
-        $form = $this->createForm('AppBundle\Form\RoomType', $room);
+        $form = $this->createForm('ChatBundle\Form\RoomType', $room);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -59,7 +59,7 @@ class RoomController extends Controller
     {
         $deleteForm = $this->createDeleteForm($room);
 
-        return $this->render('club/room/room.html.twig', array(
+        return $this->render('room/show.html.twig', array(
             'room' => $room,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -72,7 +72,7 @@ class RoomController extends Controller
     public function editAction(Request $request, Room $room)
     {
         $deleteForm = $this->createDeleteForm($room);
-        $editForm = $this->createForm('AppBundle\Form\RoomType', $room);
+        $editForm = $this->createForm('ChatBundle\Form\RoomType', $room);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

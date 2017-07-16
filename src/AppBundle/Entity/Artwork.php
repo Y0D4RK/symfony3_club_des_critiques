@@ -87,14 +87,14 @@ class Artwork
     /**
      * @var int
      *
-     * @ORM\Column(name="score", type="integer")
+     * @ORM\Column(name="score", type="integer", nullable=true)
      */
     private $score;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="vote_count", type="integer")
+     * @ORM\Column(name="vote_count", type="integer", nullable=true)
      */
     private $voteCount;
 
