@@ -2,61 +2,58 @@
 
 
 {% block content %}
-
     {% if room.status %}
-
-    <header id="salon">
-        <div class="container">
-            <div class="row">
-                <div class="salon content-title col-lg-12">
-                    <div class="col-md-7">
-                        <h1>Salon {{ room.name }} </h1>
-                        <h2></h2>
-                        <p class="text-muted">{{ room.creator }}</p>
-                        <p></p>
+        <header id="salon">
+            <div class="container">
+                <div class="row">
+                    <div class="salon content-title col-lg-12">
+                        <div class="col-md-7">
+                            <h1>Salon {{ room.name | capitalize }} </h1>
+                            <h1 class="text-warning"> {{ room.artwork.name | capitalize }} </h1>
+                            <p class="text-muted">Créé par {{ room.creator | capitalize }}</p>
+                            <p class="text-info"> Du {% if room.startedAt %}{{ room.startedAt|date('d/m/Y H:i:s') }}{% endif %} au {% if room.closedAt %}{{ room.closedAt|date('d/m/Y H:i:s') }}{% endif %} - {% if room.status %} {{ 'Ouvert' }} {% endif %}</p>
+                            <p>content</p>
+                        </div>
                     </div>
                 </div>
             </div>
+        </header>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul id="chat-list">
+                        ... Discussion
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <textarea id="form-message" placeholder="Ton message"></textarea>
+                    <input type="button" id="form-submit" value="Send message" class="btn btn-default"/>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul>
+                        <li>
+                            <a href="{{ path('room_index') }}">Back to the list</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('room_edit', { 'id': room.id }) }}">Edit</a>
+                        </li>
+                        <li>
+                            {{ form_start(delete_form) }}
+                            <input type="submit" value="Delete" class="btn btn-warning">
+                            {{ form_end(delete_form) }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </header>
-
-    <ul id="chat-list">
-        messages
-    </ul>
-
-    <hr>
-
-    <textarea id="form-message" placeholder="Your public message here"></textarea>
-    <input type="button" id="form-submit" value="Send message"/>
-
-    <table>
-        <tr>
-            <th>Startedat</th>
-            <td>{% if room.startedAt %}{{ room.startedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-        </tr>
-        <tr>
-            <th>Closedat</th>
-            <td>{% if room.closedAt %}{{ room.closedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-        </tr>
-        <tr>
-            <th>Status</th>
-            <td>{{ room.status }}</td>
-        </tr>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('room_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('room_edit', { 'id': room.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-            <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
     {% else %}
         <header id="salon">
             <div class="container">
@@ -79,7 +76,7 @@
     <script>
         // This object will be sent everytime you submit a message in the sendMessage function.
         var clientInformation = {
-            username: {{ user.username }}
+            username: '{{ user.username }}'
             // You can add more information in a static object
         };
 
@@ -89,7 +86,8 @@
          * According to the configuration in Sockets/Chat.php , change the port if you need to.
          * @type WebSocket
          */
-        var conn = new WebSocket('ws://localhost:8080/chat');
+
+        var conn = new WebSocket('ws://localhost:8080{{ room.route }}');
 
         conn.onopen = function(e) {
             console.info("Connection established succesfully");

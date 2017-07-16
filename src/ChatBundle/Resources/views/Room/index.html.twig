@@ -2,49 +2,50 @@
 
 {% block content %}
 
-    <h1>Rooms list</h1>
+    <section id="liste-salons">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="title-contents">
+                        <i class="fa fa-comments-o fa-3x"></i>
+                        <h1>Salons</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for room  in rooms %}
+                <div class="col-md-4 col-sm-6 latest">
+                    <a href="" class="box-link">
+                        <div class="box-hover">
+                            <div class="box-hover-content">
+                                <a href="{{ path('room_show', { 'id': room.id }) }}">Rejoindre</a>
+                            </div>
+                        </div>
+                        <img src="{{ asset('images/salon.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                    </a>
+                    <div class="box-caption">
+                        <h4>{{ room.name }}</h4>
+                        <p class="text-muted">{{ room.creator }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12"><a href="{{ path('room_new') }}" class="btn btn-info">Créer un nouveau salon</a></div>
+        </div>
+        <!-- pagination -->
+        <div id="pagination" class="pagination p">
+            <ul>
+                <a href="#"><li>1</li></a>
+                <a href="#"><li>2</li></a>
+                <a class="is-active" href="#"><li>3</li></a>
+                <a href="#"><li>4</li></a>
+                <a href="#"><li>5</li></a>
+                <a href="#"><li>6</li></a>
+            </ul>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Artwork</th>
-                <th>Startedat</th>
-                <th>Closedat</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for room in rooms %}
-            <tr>
-                <td><a href="{{ path('room_show', { 'id': room.id }) }}">{{ room.id }}</a></td>
+    </section>
 
-                <td>{{ room.name }}</td>
-
-                <td>{{ room.artwork }}</td>
-                <td>{% if room.startedAt %}{{ room.startedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if room.closedAt %}{{ room.closedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ room.status }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('room_show', { 'id': room.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('room_edit', { 'id': room.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('room_new') }}">Create a new room</a>
-        </li>
-    </ul>
 {% endblock %}

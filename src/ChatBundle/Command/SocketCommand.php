@@ -40,7 +40,7 @@ class SocketCommand extends Command
         // Domain as first parameter
         $app = new App('localhost', 8080,'0.0.0.0');
         // Add route to chat with the handler as second parameter
-        $app->route('/chat', new Chat);
+        $app->route('/room/1/show', new Chat);
 
         // To add another routes, then you can use :
         //$app->route('/america-chat', new AmericaChat);
