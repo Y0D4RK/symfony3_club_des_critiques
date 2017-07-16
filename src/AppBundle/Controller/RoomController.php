@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace ChatBundle\Controller;
 
-use AppBundle\Entity\Room;
+use ChatBundle\Entity\Room;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -20,9 +20,9 @@ class RoomController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $rooms = $em->getRepository('AppBundle:Room')->findAll();
+        $rooms = $em->getRepository('ChatBundle:Room')->findAll();
 
-        return $this->render('club/room/test.html.twig', array(
+        return $this->render('UserBundle/room/test.html.twig', array(
             'rooms' => $rooms,
         ));
     }

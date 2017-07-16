@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace ChatBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Room
  *
  * @ORM\Table(name="room")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\RoomRepository")
+ * @ORM\Entity(repositoryClass="ChatBundle\Repository\RoomRepository")
  */
 class Room
 {
@@ -29,38 +29,6 @@ class Room
     private $name;
 
     /**
-     * @return \DateTime
-     */
-    public function getStartedAt()
-    {
-        return $this->startedAt;
-    }
-
-    /**
-     * @param \DateTime $startedAt
-     */
-    public function setStartedAt($startedAt)
-    {
-        $this->startedAt = $startedAt;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getClosedAt()
-    {
-        return $this->closedAt;
-    }
-
-    /**
-     * @param \DateTime $closedAt
-     */
-    public function setClosedAt($closedAt)
-    {
-        $this->closedAt = $closedAt;
-    }
-
-    /**
      * @var string
      *
      * @ORM\Column(name="artwork", type="string", length=255)
@@ -70,23 +38,24 @@ class Room
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="started_at", type="datetime")
+     * @ORM\Column(name="startedAt", type="datetime")
      */
     private $startedAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="closed_at", type="datetime")
+     * @ORM\Column(name="closedAt", type="datetime")
      */
     private $closedAt;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="started_at", type="datetime")
+     * @ORM\Column(name="status", type="string", length=255)
      */
     private $status;
+
 
     /**
      * Get id
@@ -144,6 +113,78 @@ class Room
     public function getArtwork()
     {
         return $this->artwork;
+    }
+
+    /**
+     * Set startedAt
+     *
+     * @param \DateTime $startedAt
+     *
+     * @return Room
+     */
+    public function setStartedAt($startedAt)
+    {
+        $this->startedAt = $startedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get startedAt
+     *
+     * @return \DateTime
+     */
+    public function getStartedAt()
+    {
+        return $this->startedAt;
+    }
+
+    /**
+     * Set closedAt
+     *
+     * @param \DateTime $closedAt
+     *
+     * @return Room
+     */
+    public function setClosedAt($closedAt)
+    {
+        $this->closedAt = $closedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get closedAt
+     *
+     * @return \DateTime
+     */
+    public function getClosedAt()
+    {
+        return $this->closedAt;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return Room
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }
 

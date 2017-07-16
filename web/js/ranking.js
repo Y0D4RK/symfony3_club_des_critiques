@@ -12,7 +12,6 @@ $(document).ready(function(){
     function vote(value, url){
 
         $('.vote_loading', $vote).show();
-        $('.vote_btns', $vote).hide();
 
         $.post(url, {
             ref: $vote.data('ref'),
@@ -26,15 +25,6 @@ $(document).ready(function(){
                 if(data.score){
                     // On vote
                     $vote.addClass('is-score' + Math.round(data.score));
-                } else {
-                    // On like / Dislike
-                    if(value == 1){
-                        $vote.addClass('is-liked');
-                    } else{
-                        $vote.addClass('is-disliked');
-                    }
-                    var percentage = Math.round(100 * (data.like_count / (parseInt(data.dislike_count) + parseInt(data.like_count))));
-                    $('.vote_progress', $vote).css('width', percentage + '%');
                 }
             }
         }).fail(function( jqXHR, textStatus, errorThrown ) {

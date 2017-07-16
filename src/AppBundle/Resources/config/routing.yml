@@ -1,7 +1,3 @@
-app_score:
-    resource: "@AppBundle/Resources/config/routing/score.yml"
-    prefix:   /score
-
 #page d'accueil, elle comprend une liste des oeuvres classable avec des filtres.
 home:
     path: /
