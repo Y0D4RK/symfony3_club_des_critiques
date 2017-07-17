@@ -1,0 +1,62 @@
+/*!
+ *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+/* FONT PATH
+ * -------------------------- */
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('font-awesome.min.css');
+    font-weight: normal;
+    font-style: normal; }
+
+.fa, .vote_star {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0); }
+
+.fa.pull-left, .pull-left.vote_star {
+    margin-right: .3em; }
+.fa.pull-right, .pull-right.vote_star {
+    margin-left: .3em; }
+
+.fa-star:before, .vote_star:before {
+    content: "\f005"; }
+
+.vote {
+    width: 150px;
+    margin: 0px 40px;
+    height: 50px;
+}
+.vote form {
+    display: inline-block; }
+
+.vote_loading {
+    display: none; }
+
+/* Vote Stars
+   ========================================================================== */
+.vote_star {
+    font-size: 30px;
+    color: #fff741;
+    cursor: pointer;
+    float: left;
+}
+.vote_stars:hover .vote_star {
+    color: #fff741 !important; }
+.vote_stars:hover .vote_star:hover ~ .vote_star {
+    color: #262829 !important; }
+.is-score1 .vote_star1 ~ .vote_star {
+    color: #262829; }
+.is-score2 .vote_star2 ~ .vote_star {
+    color: #262829; }
+.is-score3 .vote_star3 ~ .vote_star {
+    color: #262829; }
+.is-score4 .vote_star4 ~ .vote_star {
+    color: #262829; }

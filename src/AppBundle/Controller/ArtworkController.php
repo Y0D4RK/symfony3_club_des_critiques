@@ -91,11 +91,14 @@ class ArtworkController extends Controller
 
         $deleteForm = $this->createDeleteForm($artwork);
 
+
         //Récupérer l'id de l'utilisaateur courrant
         $user = $this->getUser();
         $currentUserName = $user->getUsername();
 
+
         return $this->render('club/artwork/show.html.twig', array(
+            'user' => $user,
             'artworksSimilary' => $artworksSimilary,
             'artwork' => $artwork,
             'delete_form' => $deleteForm->createView(),
