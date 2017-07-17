@@ -69,6 +69,10 @@ class Room
      */
     private $route;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", cascade={"persist"})
+     */
+//    private $users;
 
     /**
      * Get id
