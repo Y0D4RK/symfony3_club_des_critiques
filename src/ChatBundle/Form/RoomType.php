@@ -13,7 +13,12 @@ class RoomType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('artwork')->add('startedAt')->add('closedAt')->add('status')        ;
+        $builder->add('name')
+                ->add('artwork')
+                ->add('startedAt')
+                ->add('closedAt')
+                ->add('status')
+        ;
     }
     
     /**

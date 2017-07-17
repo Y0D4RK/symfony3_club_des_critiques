@@ -3,6 +3,8 @@
 namespace ChatBundle\Controller;
 
 use ChatBundle\Entity\Room;
+use AppBundle\Entity\Artwork;
+use UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -45,6 +47,11 @@ class RoomController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $room->setCreator($this->getUser());
+            $room->setRoute("/room/".$room->getId().'/show');
+            $room->setCreator($this->getUser());
+
             $em->persist($room);
             $em->flush($room);
 

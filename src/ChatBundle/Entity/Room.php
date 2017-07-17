@@ -236,11 +236,11 @@ class Room
     /**
      * Set artwork
      *
-     * @param \UserBundle\Entity\Artwork $artwork
+     * @param \AppBundle\Entity\Artwork $artwork
      *
      * @return Room
      */
-    public function setArtwork(\UserBundle\Entity\Artwork $artwork = null)
+    public function setArtwork(\AppBundle\Entity\Artwork $artwork = null)
     {
         $this->artwork = $artwork;
 
@@ -250,10 +250,44 @@ class Room
     /**
      * Get artwork
      *
-     * @return \UserBundle\Entity\Artwork
+     * @return \AppBundle\Entity\Artwork
      */
     public function getArtwork()
     {
         return $this->artwork;
+    }
+
+    /**
+     * Add user
+     *
+     * @param \UserBundle\Entity\User $user
+     *
+     * @return Room
+     */
+    public function addUser(\UserBundle\Entity\User $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \UserBundle\Entity\User $user
+     */
+    public function removeUser(\UserBundle\Entity\User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }
