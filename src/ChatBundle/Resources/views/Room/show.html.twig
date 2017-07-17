@@ -120,15 +120,8 @@
 
         // Mini API to send a message with the socket and append a message in a UL element.
         var Chat = {
-            appendMessage: function(username,message){
-                var from;
-
-                if(username == clientInformation.username){
-                    from = "{{ user.username }}";
-                }else{
-                    from = clientInformation.username;
-                }
-
+            appendMessage: function(username, message){
+                var from = username;
                 // Append List Item
                 var ul = document.getElementById("chat-list");
                 var li = document.createElement("li");
@@ -140,6 +133,7 @@
                 // Send info as JSON
                 conn.send(JSON.stringify(clientInformation));
                 // Add my own message to the list
+                console.log(clientInformation.username);
                 this.appendMessage(clientInformation.username, clientInformation.message);
             }
         };
