@@ -37,6 +37,7 @@
                             {{ form_errors(form.lastname) }}
                         </div>
                         <div class="form-group">
+                            {{ form_label(form.birthdate) }}
                             {{ form_widget(form.birthdate, { 'attr': {'class': '', 'placeholder': 'form.birthdate'|trans } }) }}
                             {{ form_errors(form.birthdate) }}
                         </div>

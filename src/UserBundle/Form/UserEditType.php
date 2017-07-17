@@ -29,7 +29,12 @@ class UserEditType extends AbstractType
             ->add('email', EmailType::class, ['label'=>'Email', 'attr'=>array('placeholder'=>'j.doe@mail.com')])
             ->add('firstname', TextType::class, ['label'=>'Prenom', 'attr'=>array('placeholder'=>'John')])
             ->add('lastname', TextType::class, ['label'=>'Name', 'attr'=>array('placeholder'=>'Doe')])
-            ->add('birthdate', DateType::class, ['label'=>'Date de naissance', 'attr'=>array('placeholder'=>'')])
+            ->add('birthdate', DateType::class, array(
+                'label'=>'Date de naissance',
+                'widget' => 'single_text',
+                // this is actually the default format for single_text
+                'format' => 'yyyy-MM-dd',
+            ))
             ->add('description', TextareaType::class, ['label'=>'Description', 'attr'=>array('placeholder'=>'La la la ...', 'rows' => '5', 'style' => 'resize:none')]);
             #->remove('username');
     }
