@@ -22,7 +22,6 @@
             <div class="row">
                 <div class="col-xs-12">
                     <ul id="chat-list">
-                        ... Discussion
                     </ul>
                 </div>
             </div>
@@ -125,7 +124,7 @@
                 var from;
 
                 if(username == clientInformation.username){
-                    from = "me";
+                    from = "{{ user.username }}";
                 }else{
                     from = clientInformation.username;
                 }
