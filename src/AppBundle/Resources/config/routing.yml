@@ -137,6 +137,6 @@ admin_to_user:
 
 # ROUTING USER #
 fos_user_profile_show_name:
-  path: /profile/{username}
+  path: /profile/{username}/show
   defaults: {_controller: "FOSUserBundle:Profile:show" }
   methods:  GET
