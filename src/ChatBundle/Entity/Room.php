@@ -2,6 +2,7 @@
 
 namespace ChatBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -72,7 +73,11 @@ class Room
     /**
      * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", cascade={"persist"})
      */
-//    private $users;
+    private $users;
+
+    public function __construct(){
+        $this->users = new ArrayCollection();
+    }
 
     /**
      * Get id
