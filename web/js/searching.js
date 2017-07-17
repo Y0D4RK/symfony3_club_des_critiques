@@ -1,10 +1,10 @@
-function bookSearch(){
+function search(urlApi){
     // console.log('this function runs !');
     var search = $("#search").val();
     console.log(search);
 
     $.ajax({
-        url: "https://www.googleapis.com/books/v1/volumes?q=" + search,
+        url: urlApi + search,
         dataType: "json",
         type: "GET",
 
@@ -33,5 +33,5 @@ function bookSearch(){
 
 $("#button").click(function(){
     $("#results").empty();
-    bookSearch()
+    search("https://www.googleapis.com/books/v1/volumes?q=");
 });

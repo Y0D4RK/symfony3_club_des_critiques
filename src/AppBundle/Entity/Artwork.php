@@ -85,6 +85,20 @@ class Artwork
     private $edithor;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="score", type="integer", nullable=true)
+     */
+    private $score;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="vote_count", type="integer", nullable=true)
+     */
+    private $voteCount;
+
+    /**
      * @Vich\UploadableField(mapping="cover_image", fileNameProperty="coverName")
      *
      * @var File
@@ -357,5 +371,17 @@ class Artwork
     public function getCoverName()
     {
         return $this->coverName;
+    }
+
+
+    public function getUniqRoute()
+    {
+        $artworkName = $this->name;
+
+    	$chaine = preg_replace('#[^A-Za-z0-9]+#', '-', $artworkName);
+	    $chaine = trim($chaine, '-');
+    	$chaine = strtolower($chaine);
+
+	    return $chaine;
     }
 }

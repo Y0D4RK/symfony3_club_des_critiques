@@ -1,4 +1,4 @@
 services:
-#    chat.example:
-#        class: ChatBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+#    chat.socket.command:
+#        class: ChatBundle\Command\SocketCommand
+#        #arguments: [%logger%, %new_game_path%, %web_path%]

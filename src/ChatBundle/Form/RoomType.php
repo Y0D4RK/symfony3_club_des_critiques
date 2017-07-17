@@ -1,26 +1,24 @@
 <?php
 
-namespace AppBundle\Form;
+namespace ChatBundle\Form;
 
-
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-use Vich\UploaderBundle\Form\Type\VichFileType;
-
-class SalonType extends AbstractType
+class RoomType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('artwork')        ;
+        $builder->add('name')
+                ->add('artwork')
+                ->add('startedAt')
+                ->add('closedAt')
+                ->add('status')
+        ;
     }
     
     /**
@@ -29,7 +27,7 @@ class SalonType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Salon'
+            'data_class' => 'ChatBundle\Entity\Room'
         ));
     }
 
@@ -38,7 +36,7 @@ class SalonType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_salon';
+        return 'chatbundle_room';
     }
 
 

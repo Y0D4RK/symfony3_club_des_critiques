@@ -23,7 +23,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class User extends BaseUser
 {
 
-
     /**
      * @Assert\Image(
      *     maxSize="30000000",
@@ -139,7 +138,7 @@ class User extends BaseUser
      *
      * @param string $avatarName
      *
-     * @return Game
+     * @return User
      */
     public function setAvatarName($imageName)
     {
