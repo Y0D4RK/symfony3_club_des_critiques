@@ -36,11 +36,9 @@ class Room
     private $artwork;
 
     /**
-     *
-     * @ORM\OneToOne(targetEntity="UserBundle\Entity\User", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
      */
     private $creator;
-
 
     /**
      * @var \DateTime
