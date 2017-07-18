@@ -84,7 +84,7 @@
         // This object will be sent everytime you submit a message in the sendMessage function.
         var clientInformation = {
             username: '{{ user.username }}',
-            avatar:'<img src="{{ vich_uploader_asset(user, 'avatar')  }}">'
+            avatar:'<img src="{{ vich_uploader_asset(user, 'avatar')  }}" height="20" width="20" class="img-circle img-responsive">'
         };
 
         // START SOCKET CONFIG
@@ -129,21 +129,19 @@
 
         // Mini API to send a message with the socket and append a message in a UL element.
         var Chat = {
-            appendMessage: function(avatar, timing, username, message){
+            appendMessage: function(avatar, username, message){
                 var from = username;
                 var msg = message;
-                var currentDate = timing;
                 var imgProfile = avatar;
 
-//                var date = new Date();
-//                var timer = moment(date).format("DD.MM.YYYY HH:MM", "fr");
+                var date = new Date(Date.now());
 
                 // Append List Item
                 var ul = document.getElementById("chat-list");
 
                 var li = document.createElement("li");
 
-                li.appendChild(document.createTextNode(imgProfile+" - "+new Date(Date.now())+" - "+ from + " : "+ msg));
+                li.appendChild(document.createTextNode(imgProfile+" - "+ date +" - "+ from + " : "+ msg));
                 ul.appendChild(li);
             },
             sendMessage: function(text){
@@ -152,7 +150,7 @@
                 conn.send(JSON.stringify(clientInformation));
                 // Add my own message to the list
                 console.log(clientInformation.username);
-                this.appendMessage(clientInformation.avatar, clientInformation.timing, clientInformation.username, clientInformation.message);
+                this.appendMessage(clientInformation.avatar, clientInformation.username, clientInformation.message);
             }
         };
     </script>
