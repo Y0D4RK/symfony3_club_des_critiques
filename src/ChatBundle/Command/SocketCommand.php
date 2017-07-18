@@ -3,6 +3,7 @@
 // Change the namespace according to your bundle
 namespace ChatBundle\Command;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ChatBundle\Repository\RoomRepository;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -15,16 +16,6 @@ use ChatBundle\Sockets\Chat;
 
 class SocketCommand extends Command
 {
-
-    protected $roomRepository;
-
-    public function __construct(RoomRepository $roomRepository)
-    {
-        $this->roomRepository = $roomRepository;
-
-        parent::__construct();
-    }
-
     protected function configure()
     {
         $this->setName('sockets:start')
@@ -38,13 +29,13 @@ class SocketCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
 
-        $routes = $this->roomRepository->findAll();
-        dump($routes); exit();
+        $em = $this->getDoctine()->getManager();
+        $rooms = $em->getRepository('ChatBundle:RoomRepository')->findAll();
 
         $output->writeln([
             'Chat socket',// A line
             '============',// Another line
-            'Starting chat, open your browser.',// Empty line
+            'Starting chat, open your browser.'.$rooms,// Empty line
         ]);
 
         // The domain of your app as first parameter
@@ -55,9 +46,10 @@ class SocketCommand extends Command
         $app = new App('localhost', 8080,'0.0.0.0');
 
         // Add route to chat with the handler as second parameter
-//        foreach(){}
-        $app->route('/room/1/show', new Chat);
-
+//        foreach($rooms as $room){
+//            $app->route($room->getRoute(), new Chat);
+            $app->route('/room/1/show', new Chat);
+//        }
         // To add another routes, then you can use :
         //$app->route('/america-chat', new AmericaChat);
         //$app->route('/europe-chat', new EuropeChat);
