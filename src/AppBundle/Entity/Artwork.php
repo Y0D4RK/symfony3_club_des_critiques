@@ -128,10 +128,18 @@ class Artwork
      */
     private $coverUrl;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="enabled", type="boolean")
+     */
+    private $enabled;
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
         $this->createdAt = new \DateTime('now');
+        $this->enabled = false;
     }
 
     public function __toString()
@@ -451,5 +459,23 @@ class Artwork
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setEnabled($boolean)
+    {
+        $this->enabled = (bool) $boolean;
+
+        return $this;
     }
 }

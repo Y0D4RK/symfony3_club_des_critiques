@@ -30,31 +30,33 @@
                 <div class="row">
                     {% if artworks is not empty %}
                         {% for artwork in artworks %}
-                            <div class="col-md-4 col-sm-6 latest">
-                                <a href="{{ path('artwork_show', { 'id': artwork.id }) }}" class="box-link">
-                                    <div class="box-hover">
-                                        <div class="box-hover-content">
-                                            <i class="fa fa-plus fa-3x"></i>
+                            {% if artwork.enabled == true %}
+                                <div class="col-md-4 col-sm-6 latest">
+                                    <a href="{{ path('artwork_show', { 'id': artwork.id }) }}" class="box-link">
+                                        <div class="box-hover">
+                                            <div class="box-hover-content">
+                                                <i class="fa fa-plus fa-3x"></i>
+                                            </div>
                                         </div>
+                                        {% if vich_uploader_asset(artwork, 'cover') is not empty %}
+                                            <img src="{{ vich_uploader_asset(artwork, 'cover') }}" alt="{{ artwork.name }}" class="img-responsive" width="180" height="180"/>
+                                        {% elseif artwork.coverUrl is not empty %}
+                                            <img src="{{ artwork.coverUrl }}" alt="coverUrl" class="img-responsive" width="180" height="180">
+                                        {% else %}
+                                            <img src="{{ asset('images/cover/unknow_cover.jpg') }}" alt="unknow" class="img-responsive" width="180" height="180">
+                                        {% endif %}
+                                    </a>
+                                    <div class="box-caption">
+                                        <h4>{{ artwork.name }}</h4>
+                                        <p class="text-muted">{{ artwork.user }}</p>
+                                        <hr>
+                                        <ul class="list-group black">
+                                            {#<li class="list-group-item list-group-item-heading">{% if artwork.createdAt %}{{ artwork.createdAt|date('Y-m-d H:i:s') }}{% endif %}</li>#}
+                                            <li class="list-group-item list-group-item-text"> {{ artwork.description }}</li>
+                                        </ul>
                                     </div>
-                                    {% if vich_uploader_asset(artwork, 'cover') is not empty %}
-                                        <img src="{{ vich_uploader_asset(artwork, 'cover') }}" alt="{{ artwork.name }}" class="img-responsive" width="180" height="180"/>
-                                    {% elseif artwork.coverUrl is not empty %}
-                                        <img src="{{ artwork.coverUrl }}" alt="coverUrl" class="img-responsive" width="180" height="180">
-                                    {% else %}
-                                        <img src="{{ asset('images/cover/unknow_cover.jpg') }}" alt="unknow" class="img-responsive" width="180" height="180">
-                                    {% endif %}
-                                </a>
-                                <div class="box-caption">
-                                    <h4>{{ artwork.name }}</h4>
-                                    <p class="text-muted">{{ artwork.user }}</p>
-                                    <hr>
-                                    <ul class="list-group black">
-                                        {#<li class="list-group-item list-group-item-heading">{% if artwork.createdAt %}{{ artwork.createdAt|date('Y-m-d H:i:s') }}{% endif %}</li>#}
-                                        <li class="list-group-item list-group-item-text"> {{ artwork.description }}</li>
-                                    </ul>
                                 </div>
-                            </div>
+                            {% endif %}
                         {% endfor %}
                     {% else %}
                         <h3 class="text-center">Il n'existe pas d'oeuvre dans "{{ category[0].name }}" pour l'instant. </h3>
