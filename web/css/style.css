@@ -21,6 +21,7 @@ body {
 #body-form{
     background: url('../images/library.jpg');
     background-size: cover;
+    background-attachment: fixed;
 }
 #wrapper-empty{
     padding-bottom: 100px;

@@ -1,16 +1,47 @@
-{% extends '::base.html.twig' %}
+{% extends '::form.html.twig' %}
 
 {% block content %}
-    <h1>Room creation</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    <div id="login" class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <a href="{{ path('room_index') }}">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                    </button>
+                </a>
+                <div class="form-wrap">
+                    <h1>Créer un salon</h1>
+                    {{ form_start(form) }}
+                    <div class="form-group">
+                        {{ form_widget(form.name, { 'attr': {'class': 'form-control', 'placeholder': 'nom'|trans } }) }}
+                        {{ form_errors(form.name) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.artwork, { 'attr': {'class': 'form-control', 'placeholder': 'Oeuvres'|trans } }) }}
+                        {{ form_errors(form.artwork) }}
+                    </div>
+                    <div class="form-group">
+                        <label>Date de début</label>
+                        {{ form_widget(form.startedAt, { 'attr': {'class': '', 'placeholder': 'Commence à'|trans } }) }}
+                        {{ form_errors(form.startedAt) }}
+                    </div>
+                    <div class="form-group">
+                        <label>Date de fin</label>
+                        {{ form_widget(form.closedAt, { 'attr': {'class': '', 'placeholder': 'Se termine à'|trans } }) }}
+                        {{ form_errors(form.closedAt) }}
+                    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('room_index') }}">Back to the list</a>
-        </li>
-    </ul>
+                    {{ form_rest(form) }}
+                    <input type="submit" class="btn btn-custom btn-lg btn-block" value="{{ 'créer'|trans }}" />
+                    {{ form_end(form) }}
+                    <hr>
+                </div>
+            </div> <!-- /.col-xs-12 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
 {% endblock %}
+
+
+

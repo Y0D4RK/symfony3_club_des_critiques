@@ -32,7 +32,7 @@ class LandingController extends Controller
         }
 
         /** logique de base de la landing page **/
-        $limit = 6;
+        $limit = 3;
         $offset = 0;
         $em = $this->getDoctrine()->getManager();
         $artworks = $em->getRepository('AppBundle:Artwork')->findBy(array(), null, $limit, $offset);
@@ -48,22 +48,24 @@ class LandingController extends Controller
     }
 
     private function sendEmail($data){
-        $myappContactMail = 'esgigroupeone@gmail.com';
-        $myappContactPassword = 'pwdGROUPE1';
-
+        $contactMail = $this->container->getParameter('mailer_user');
+        $contactPassword = $this->container->getParameter('mailer_password');
 
         $transport = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465,'ssl')
-            ->setUsername($myappContactMail)
-            ->setPassword($myappContactPassword);
+            ->setUsername($contactMail)
+            ->setPassword($contactPassword);
 
         $mailer = \Swift_Mailer::newInstance($transport);
 
-        $message = \Swift_Message::newInstance("Our Code World Contact Form ". $data["subject"])
-            ->setFrom(array($myappContactMail => "Message by ".$data["name"]))
+        $text = "Email expéditeur: ".$data['email']."\n Message: ".$data['message'];
+
+        $message = \Swift_Message::newInstance("Formulaire de contact -". $data["subject"])
+            ->setFrom(array(
+                $contactMail => "Message envoyé par ".$data["name"]))
             ->setTo(array(
-                $myappContactMail => $myappContactMail
+                $contactMail => $contactMail
             ))
-            ->setBody($data["message"]."<br>ContactMail :".$data["email"]);
+            ->setBody($text);
 
         return $mailer->send($message);
     }

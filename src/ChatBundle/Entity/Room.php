@@ -75,6 +75,7 @@ class Room
 
     public function __construct(){
         $this->users = new ArrayCollection();
+        $this->status = true;
     }
 
     /**

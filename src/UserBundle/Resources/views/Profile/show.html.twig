@@ -74,7 +74,7 @@
         </div>
 
         {% if user == current_user %}
-            <div id="contact_profile">
+            <div id="artwork_share">
                 <div class="content">
                     <div class="row">
                         <div class="col-lg-12 text-center">
@@ -84,51 +84,27 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4 col-sm-6 latest">
-                            <a href="" class="box-link">
-                                <div class="box-hover">
-                                    <div class="box-hover-content">
-                                        <p>Rejoidnre le salon</p>
+                        {% if rooms is not empty %}
+                            {% for room in rooms %}
+                                <div class="col-md-4 col-sm-6 latest">
+                                    <a href="{{ path('room_show', { 'id': room.id }) }}" class="box-link">
+                                        <div class="box-hover">
+                                            <div class="box-hover-content">
+                                                <p>Rejoidnre le salon</p>
+                                            </div>
+                                        </div>
+                                        <img src="{{ asset('images/salons.jpg') }}" class="img-responsive" alt="nom oeuvre">
+                                    </a>
+                                    <div class="box-caption">
+                                        <h4>{{ room.name }}</h4>
+                                        <p class="text-muted">{{ room.creator }}</p>
+                                        <p>01-01-2017 • 02-01-2017</p>
                                     </div>
                                 </div>
-                                <img src="{{ asset('images/salon.jpg') }}" class="img-responsive" alt="nom oeuvre">
-                            </a>
-                            <div class="box-caption">
-                                <h4>Titre du salon</h4>
-                                <p class="text-muted">Auteur</p>
-                                <span class="ratings one"/>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 latest">
-                            <a href="" class="box-link">
-                                <div class="box-hover">
-                                    <div class="box-hover-content">
-                                        <p>Rejoidnre le salon</p>
-                                    </div>
-                                </div>
-                                <img src="{{ asset('images/salon.jpg') }}" class="img-responsive" alt="nom oeuvre">
-                            </a>
-                            <div class="box-caption">
-                                <h4>Titre du salon</h4>
-                                <p class="text-muted">Auteur</p>
-                                <span class="ratings threehalf"/>
-                            </div>
-                        </div>
-                        <div class="box-close col-md-4 col-sm-6 latest">
-                            <a href="" class="box-link">
-                                <div class="box-hover">
-                                    <div class="box-hover-content">
-                                        <p>Salon fermé</p>
-                                    </div>
-                                </div>
-                                <img src="{{ asset('images/salon.jpg') }}" class="img-responsive" alt="nom oeuvre">
-                            </a>
-                            <div class="box-caption">
-                                <h4>Titre du salon</h4>
-                                <p class="text-muted">Auteur</p>
-                                <span class="ratings four"/>
-                            </div>
-                        </div>
+                            {% endfor %}
+                        {% else %}
+                            <h3 class="text-center">Vous n'avez crée aucun salon</h3>
+                        {% endif %}
                     </div>
                 </div>
             </div>

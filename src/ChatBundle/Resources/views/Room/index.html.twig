@@ -17,7 +17,7 @@
                     <a href="{{ path('room_show', { 'id': room.id }) }}" class="box-link">
                         <div class="box-hover">
                             <div class="box-hover-content">
-                                <p>Rejoidnre ce salon</p>
+                                <p>Rejoindre ce salon</p>
                             </div>
                         </div>
                         <img src="{{ asset('images/salons.jpg') }}" class="img-responsive" alt="nom oeuvre">
@@ -25,7 +25,7 @@
                     <div class="box-caption">
                         <h4>{{ room.name }}</h4>
                         <p class="text-muted">{{ room.creator }}</p>
-                        <p>01-01-2017 • 02-01-2017</p>
+                        <p>{{ room.startedAt|date('d/m/Y') }} • {{ room.closedAt|date('d/m/Y') }}</p>
                     </div>
                 </div>
                 {% endfor %}
@@ -33,17 +33,6 @@
         </div>
         <div class="button_addArtwork center-block">
             <a href="{{ path('room_new') }}"><button class="btn btn-primary center-block"><i class="fa fa-plus" aria-hidden="true"></i> Créer un nouveau salon </button></a>
-        </div>
-        <!-- pagination -->
-        <div id="pagination" class="pagination p">
-            <ul>
-                <a href="#"><li>1</li></a>
-                <a href="#"><li>2</li></a>
-                <a class="is-active" href="#"><li>3</li></a>
-                <a href="#"><li>4</li></a>
-                <a href="#"><li>5</li></a>
-                <a href="#"><li>6</li></a>
-            </ul>
         </div>
     </section>
 

@@ -21,6 +21,10 @@ class ProfileController extends BaseController
         $em = $this->getDoctrine()->getManager();
         $artworks = $em->getRepository('AppBundle:Artwork')->findBy(array('user' => $user));
 
+        //Récupérer les salons créer par l'utilisateur
+        $rooms = $em->getRepository('ChatBundle:Room')->findBy(array('creator' => $user));
+
+
         //Utilisateur connecté
         $current_user = $this->getUser();
 
@@ -28,6 +32,7 @@ class ProfileController extends BaseController
             'artworksUser' => $artworks,
             'user' => $user,
             'current_user' => $current_user,
+            'rooms' => $rooms,
         ));
     }
 }

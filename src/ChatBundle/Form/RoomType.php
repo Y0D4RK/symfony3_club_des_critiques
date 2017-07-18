@@ -3,6 +3,7 @@
 namespace ChatBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,8 +17,16 @@ class RoomType extends AbstractType
         $builder->add('name')
                 ->add('artwork')
                 ->add('startedAt')
-                ->add('closedAt')
-                ->add('status')
+                ->add('startedAt', DateType::class, array(
+                'widget' => 'single_text',
+                // this is actually the default format for single_text
+                'format' => 'yyyy-MM-dd',
+            ))
+                ->add('closedAt', DateType::class, array(
+                'widget' => 'single_text',
+                // this is actually the default format for single_text
+                'format' => 'yyyy-MM-dd',
+            ))
         ;
     }
     
