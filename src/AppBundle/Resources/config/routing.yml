@@ -2,7 +2,7 @@
 home:
     path: /
     defaults: { _controller: "AppBundle:Landing:index" }
-    methods:  [GET]
+    methods:  [GET, POST]
 
 # ROUTING CATEGORY #
 category_index:

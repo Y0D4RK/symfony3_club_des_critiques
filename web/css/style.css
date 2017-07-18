@@ -647,6 +647,7 @@ footer {
 #liste-salons{
     background-image: url('../images/library.jpg');
     background-attachment: fixed;
+    background-size: cover;
 }
 
 #liste-salons h1{
