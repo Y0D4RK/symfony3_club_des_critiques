@@ -130,8 +130,10 @@ class Artwork
 
     /**
      * @var bool
+     *
+     * @ORM\Column(name="enabled", type="boolean")
      */
-    protected $enabled;
+    private $enabled;
 
     public function __construct()
     {
@@ -458,6 +460,10 @@ class Artwork
     {
         $this->updatedAt = $updatedAt;
     }
+
+    /**
+     * @return boolean
+     */
     public function isEnabled()
     {
         return $this->enabled;

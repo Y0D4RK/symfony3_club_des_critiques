@@ -185,13 +185,18 @@
                                                                         <div class="box-hover">
                                                                             <div class="box-hover-content">
                                                                                 <h2>{{ artwork.category }}</h2>
-                                                                                <h3>{{ artwork.name }}</h3>
+                                                                                <h3 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{ artwork.name }}</h3>
                                                                                 <p>{{ artwork.user }}</p>
-                                                                                <a href="{{ path('admin_delete', { 'id': artwork.id }) }}">Supprimer</a>
+                                                                                {% if artwork.enabled == false %}
+                                                                                    <a href="{{ path('admin_validate_artwork', { 'id': artwork.id }) }}"><i class="fa fa-check" style="font-size:48px;color:white"></i></a>
+                                                                                {% endif %}
+                                                                                <a href="{{ path('admin_delete', { 'id': artwork.id }) }}"><i class="fa fa-trash-o" style="font-size:48px;color:white"></i></a>
                                                                             </div>
                                                                         </div>
                                                                         {% if vich_uploader_asset(artwork, 'cover') is not empty %}
-                                                                            <img src="{{ vich_uploader_asset(artwork, 'cover') }}" alt="{{ artwork.name }}" width="160" height="200">
+                                                                            <img src="{{ vich_uploader_asset(artwork, 'cover') }}" alt="{{ artwork.name }}" width="160" height="200"/>
+                                                                        {% elseif artwork.coverUrl is not empty %}
+                                                                            <img src="{{ artwork.coverUrl }}" alt="coverUrl" width="160" height="200">
                                                                         {% else %}
                                                                             <img src="{{ asset('images/cover/unknow_cover.jpg') }}" alt="unknow" width="160" height="200">
                                                                         {% endif %}

@@ -116,6 +116,10 @@ admin_delete:
     path:     /admin/artwork/{id}/delete
     defaults: { _controller: "AppBundle:Admin:delete" }
 
+admin_validate_artwork:
+    path:     /admin/artwork/{id}/validate
+    defaults: { _controller: "AppBundle:Admin:validate" }
+
 admin_delete_category:
     path:     /admin/category/{id}/delete
     defaults: { _controller: "AppBundle:Admin:deleteCategory" }

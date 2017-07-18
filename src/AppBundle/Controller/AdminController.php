@@ -93,6 +93,18 @@ class AdminController extends Controller
     }
 
 
+    //Validate artwork
+    public function validateAction(Artwork $artwork)
+    {
+            $em = $this->getDoctrine()->getManager();
+            $artwork->setEnabled(True);
+            $em->persist($artwork);
+            $em->flush($artwork);
+
+        return $this->redirectToRoute('admin', array('id' => 1));
+    }
+
+
     //Delete category
     public function deleteCategoryAction(Category $category)
     {
