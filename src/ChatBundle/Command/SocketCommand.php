@@ -33,12 +33,12 @@ class SocketCommand extends Command
         ]);
 
         // The domain of your app as first parameter
-
         // Note : if you got problems during the initialization, add as third parameter '0.0.0.0'
         // to prevent any error related to localhost :
         // $app = new \Ratchet\App('sandbox', 8080,'0.0.0.0');
         // Domain as first parameter
         $app = new App('localhost', 8080,'0.0.0.0');
+
         // Add route to chat with the handler as second parameter
         $app->route('/room/1/show', new Chat);
 

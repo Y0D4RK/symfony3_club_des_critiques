@@ -52,6 +52,13 @@ class Artwork
     private $createdAt;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
+    /**
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="artworks")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
@@ -113,6 +120,13 @@ class Artwork
      * @ORM\Column(name="cover_name", type="string", length=255, nullable=true)
      */
     private $coverName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cover_url", type="string", length=255, nullable=true)
+     */
+    private $coverUrl;
 
     public function __construct()
     {
@@ -375,36 +389,7 @@ class Artwork
         return $this->coverName;
     }
 
-
-    public function getUniqRoute()
-    {
-        $artworkName = $this->name;
-
-    	$chaine = preg_replace('#[^A-Za-z0-9]+#', '-', $artworkName);
-	    $chaine = trim($chaine, '-');
-    	$chaine = strtolower($chaine);
-
-	    return $chaine;
-    }
-
-
     /**
-     * Set score
-     *
-     * @param int $score
-     *
-     * @return Artwork
-     */
-    public function setScore($score)
-    {
-        $this->score = $score;
-
-        return $this;
-    }
-
-    /**
-     * Get score
-     *
      * @return int
      */
     public function getScore()
@@ -413,8 +398,14 @@ class Artwork
     }
 
     /**
-     *Get voteCount
-     *
+     * @param int $score
+     */
+    public function setScore($score)
+    {
+        $this->score = $score;
+    }
+
+    /**
      * @return int
      */
     public function getVoteCount()
@@ -423,15 +414,42 @@ class Artwork
     }
 
     /**
-     * Set voteCount
-     *
      * @param int $voteCount
-     *
-     * @return Artwork
      */
     public function setVoteCount($voteCount)
     {
         $this->voteCount = $voteCount;
     }
 
+    /**
+     * @return string
+     */
+    public function getCoverUrl()
+    {
+        return $this->coverUrl;
+    }
+
+    /**
+     * @param string $coverUrl
+     */
+    public function setCoverUrl($coverUrl)
+    {
+        $this->coverUrl = $coverUrl;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param mixed $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
 }

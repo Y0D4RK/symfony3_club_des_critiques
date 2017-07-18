@@ -39,6 +39,8 @@
                                     </div>
                                     {% if vich_uploader_asset(artwork, 'cover') is not empty %}
                                         <img src="{{ vich_uploader_asset(artwork, 'cover') }}" alt="{{ artwork.name }}" class="img-responsive" width="180" height="180"/>
+                                    {% elseif artwork.coverUrl is not empty %}
+                                        <img src="{{ artwork.coverUrl }}" alt="coverUrl" class="img-responsive" width="180" height="180">
                                     {% else %}
                                         <img src="{{ asset('images/cover/unknow_cover.jpg') }}" alt="unknow" class="img-responsive" width="180" height="180">
                                     {% endif %}

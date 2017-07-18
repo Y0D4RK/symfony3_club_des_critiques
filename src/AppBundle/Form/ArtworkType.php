@@ -33,11 +33,12 @@ class ArtworkType extends AbstractType
                 'format' => 'yyyy-MM-dd',
             ))
             ->add('cover', VichFileType::class, [
-                'allow_delete' => false,
-                'download_link' => true,
+                'allow_delete' => true,
+                'download_link' => false,
                 'required' => false,
                 'label' => ' '
-            ]);
+            ])
+            ->add('coverUrl');
     }
     
     /**

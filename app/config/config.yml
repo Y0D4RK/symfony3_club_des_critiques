@@ -121,16 +121,11 @@ vich_uploader:
             namer:              app.cover.namer
             delete_on_update:   true
             delete_on_remove:   true
+            inject_on_load:     true
         avatar_image:
             uri_prefix:         /upload/avatar
             upload_destination: %kernel.root_dir%/../web/upload/avatar
             namer:              app.avatar.namer
             delete_on_update:   true
             delete_on_remove:   true
-
-
-# GOS BUNDLE
-#gos_web_socket:
-#    server:
-#        port: 8080        #The port the socket server will listen on
-#        host: 127.0.0.1   #The host ip to bind to
+            inject_on_load:     true
