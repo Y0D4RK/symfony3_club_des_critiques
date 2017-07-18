@@ -15,6 +15,8 @@
                             </div>
                             {% if vich_uploader_asset(artwork, 'cover') is not empty %}
                                 <img src="{{ vich_uploader_asset(artwork, 'cover') }}" alt="{{ artwork.name }}" class="img-responsive" width="180" height="180"/>
+                            {% elseif artwork.coverUrl is not empty %}
+                                <img src="{{ artwork.coverUrl }}" alt="coverUrl" class="img-responsive" width="180" height="180">
                             {% else %}
                                 <img src="{{ asset('images/cover/unknow_cover.jpg') }}" alt="unknow" class="img-responsive" width="180" height="180">
                             {% endif %}
@@ -22,9 +24,9 @@
                     </div>
                     <div class="col-md-7">
                         <h1>{{ artwork.name }}</h1>
-                        <p class="text-muted">Publié par {{ artwork.edithor }} {% if artwork.publishAt %} le {{ artwork.publishAt|date('d-m-Y') }}{% endif %}</p>
+                        <p class="text-muted">Publié par {{ artwork.edithor }} {% if artwork.publishAt %} le {{ artwork.publishAt|date('d/m/Y') }}{% endif %}</p>
                         <p><span style="font-size: 22px;"><strong> {{ artwork }}</strong></span></p>
-                        <p>{% if artwork.user %} Ajouté par  <a href="{{ path('fos_user_profile_show_name', {'username': artwork.user}) }}">{{ artwork.user }}</a>{% endif %} {% if artwork.publishAt %} le {{ artwork.createdAt|date('d-m-Y') }}{% endif %} </p>
+                        <p>{% if artwork.user %} Ajouté par  <a href="{{ path('fos_user_profile_show_name', {'username': artwork.user}) }}">{{ artwork.user }}</a>{% endif %} {% if artwork.publishAt %} le {{ artwork.createdAt|date('d/m/Y') }}{% endif %} </p>
                         <p></p>
                         {% if artwork.user == currentUserName %}
                             {{ form_start(delete_form) }}
@@ -73,6 +75,8 @@
                                 </div>
                                 {% if vich_uploader_asset(artworkSim, 'cover') is not empty %}
                                     <img src="{{ vich_uploader_asset(artworkSim, 'cover') }}" alt="{{ artworkSim.name }}" class="img-responsive" width="180" height="180"/>
+                                {% elseif artworkSim.coverUrl is not empty %}
+                                    <img src="{{ artworkSim.coverUrl }}" alt="cover" class="img-responsive" width="180" height="180">
                                 {% else %}
                                     <img src="{{ asset('images/cover/unknow_cover.jpg') }}" alt="unknow" class="img-responsive" width="180" height="180">
                                 {% endif %}

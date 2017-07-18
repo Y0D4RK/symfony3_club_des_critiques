@@ -13,6 +13,15 @@
                 </a>
                 <div class="form-wrap">
                     <h1>Modifier l'oeuvre</h1>
+                    <div class="form-group">
+                        {% if vich_uploader_asset(artwork, 'cover') is not empty %}
+                            <img src="{{ vich_uploader_asset(artwork, 'cover') }}" alt="{{ artwork.name }}" class="img-responsive" width="180" height="180"/>
+                        {% elseif artwork.coverUrl is not empty %}
+                            <img src="{{ artwork.coverUrl }}" alt="coverUrl" class="img-responsive" width="180" height="180">
+                        {% else %}
+                            <img src="{{ asset('images/cover/unknow_cover.jpg') }}" alt="unknow" class="img-responsive" width="180" height="180">
+                        {% endif %}
+                    </div>
                     {{ form_start(edit_form) }}
                     <div class="form-group">
                         {{ form_widget(edit_form.name, { 'attr': {'class': 'form-control', 'placeholder': 'edit_form.name'|trans } }) }}
@@ -43,6 +52,11 @@
                         {{ form_widget(edit_form.cover, { 'attr': {'class': 'form-control', 'placeholder': 'edit_form.cover'|trans } }) }}
                         {{ form_errors(edit_form.cover) }}
                     </div>
+                    <div class="form-group">
+                        {{ form_widget(edit_form.coverUrl, { 'attr': {'class': 'form-control', 'placeholder': 'Cover url'|trans } }) }}
+                        {{ form_errors(edit_form.coverUrl) }}
+                    </div>
+
                     {{ form_rest(edit_form) }}
                     <input type="submit" class="btn btn-custom btn-lg btn-block" value="{{ 'edit'|trans }}" />
                     {{ form_end(edit_form) }}
