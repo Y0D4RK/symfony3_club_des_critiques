@@ -103,19 +103,19 @@
                 {{ form_start(form) }}
 
                 <div>
-                    {{ form_widget(form.subject) }}
+                    {{ form_widget(form.subject, { 'attr': {'class': 'feedback-input', 'placeholder': 'Sujet'|trans } }) }}
                     {{ form_errors(form.subject) }}
                 </div>
                 <div>
-                    {{ form_widget(form.name) }}
+                    {{ form_widget(form.name, { 'attr': {'class': 'feedback-input', 'placeholder': 'Nom d\'utilisateur'|trans } }) }}
                     {{ form_errors(form.name) }}
                 </div>
                 <div>
-                    {{ form_widget(form.email) }}
+                    {{ form_widget(form.email, { 'attr': {'class': 'feedback-input', 'placeholder': 'Votre email'|trans } }) }}
                     {{ form_errors(form.email) }}
                 </div>
                 <div>
-                    {{ form_widget(form.message) }}
+                    {{ form_widget(form.message, { 'attr': {'class': 'feedback-input', 'placeholder': 'Votre message'|trans } }) }}
                     {{ form_errors(form.message) }}
                 </div>
 

@@ -32,7 +32,7 @@ class LandingController extends Controller
         }
 
         /** logique de base de la landing page **/
-        $limit = 6;
+        $limit = 3;
         $offset = 0;
         $em = $this->getDoctrine()->getManager();
         $artworks = $em->getRepository('AppBundle:Artwork')->findBy(array(), null, $limit, $offset);
