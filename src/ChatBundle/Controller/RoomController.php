@@ -9,9 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-use Symfony\Bundle\FrameworkBundle\Console\Application;
-use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Output\BufferedOutput;
+use ChatBundle\Command\SocketCommand;
 
 
 /**
@@ -70,6 +68,12 @@ class RoomController extends Controller
      */
     public function showAction(Room $room)
     {
+        $route = new SocketCommand();
+        $em = $this->getDoctrine()->getManager();
+        $rooms = $em->getRepository('ChatBundle:Room')->findAll();
+
+        dump($rooms);
+
         $user = $this->getUser();
 
         $deleteForm = $this->createDeleteForm($room);
