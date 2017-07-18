@@ -23,6 +23,7 @@ $(document).ready(function(){
             $vote.removeClass('is-liked is-disliked is-score1 is-score2 is-score3 is-score4 is-score5');
             if(data.success){
                 $vote.addClass('is-score' + Math.round(data.success));
+                alert(data.message);
             }
         }).fail(function( jqXHR, textStatus, errorThrown ) {
             alert(jqXHR.responseText);

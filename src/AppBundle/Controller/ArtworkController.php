@@ -108,25 +108,44 @@ class ArtworkController extends Controller
 
             $new_nb_votes = $nb_votes + 1;
 
-            //On insere le nouveau vote dans artwork et le nb_votes
-            $artwork->setScore($new_score);
-            $artwork->setVoteCount($new_nb_votes);
-            $em->persist($artwork);
-            $em->flush();
 
-            //On insere le vote dans la table score
-            $score = new Score();
-            $score->setArtwork($artwork);
-            $score->setUser($user);
-            $score->setCreatedAt(new \DateTime('now'));
-            $score->setVote($vote);
-            $em->persist($score);
-            $em->flush();
+            //Verifier si l'user a deja voté pour cette oeuvre
+            $scores = $em->getRepository('AppBundle:Score')->findAll();
+            $tmp = true;
+            $currentUser = $this->getUser(); // dump($scores);
+            foreach ($scores as $score){
+                if ($score->getUser()->getId() == $currentUser->getId()){
+                    if($score->getArtwork()->getId() == $artwork->getId()){
+                        $tmp = false;
+                    }
+                }
+            }
 
+            if ($tmp){
+                //On insere le nouveau vote dans artwork et le nb_votes
+                $artwork->setScore($new_score);
+                $artwork->setVoteCount($new_nb_votes);
+                $em->persist($artwork);
+                $em->flush();
+
+                //On insere le vote dans la table score
+                $score = new Score();
+                $score->setArtwork($artwork);
+                $score->setUser($user);
+                $score->setCreatedAt(new \DateTime('now'));
+                $score->setVote($vote);
+                $em->persist($score);
+                $em->flush();
+
+                $message = "Votre vote est prit en compte";
+            }else{
+                $message = "Vous avez déjà voté pour cette oeuvre";
+            }
 
             header('Content-type: application/json');
             $record = [];
             $record['success'] = $new_score;
+            $record['message'] = $message;
             die(json_encode($record));
 
         }
