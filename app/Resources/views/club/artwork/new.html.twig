@@ -42,6 +42,11 @@
                         {{ form_widget(form.cover, { 'attr': {'class': 'form-control', 'placeholder': 'image'|trans } }) }}
                         {{ form_errors(form.cover) }}
                     </div>
+                    <div class="form-group">
+                        {{ form_widget(form.coverUrl, { 'attr': {'class': 'form-control', 'placeholder': 'Cover url'|trans } }) }}
+                        {{ form_errors(form.coverUrl) }}
+                    </div>
+
                     {{ form_rest(form) }}
                     <input type="submit" class="btn btn-custom btn-lg btn-block" value="{{ 'créer'|trans }}" />
                     {{ form_end(form) }}

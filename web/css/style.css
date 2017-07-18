@@ -19,7 +19,7 @@ body {
 }
 
 #body-form{
-    background: url('../images/library2.jpg');
+    background: url('../images/library.jpg');
     background-size: cover;
 }
 #wrapper-empty{
@@ -644,7 +644,7 @@ footer {
 /* ---------------------------------- Salons ------------------------------------- */
 
 #liste-salons{
-    background-image: url('../images/salons.jpg');
+    background-image: url('../images/library.jpg');
     background-attachment: fixed;
 }
 
@@ -1114,4 +1114,17 @@ footer {
 
 .table-hover>tbody>tr:hover {
     background-color: transparent;
+}
+
+/* Chat */
+#chat-list{
+    min-width: 320px;
+    min-height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 30px 20px;
+}
+
+#chat-list > li{
+    list-style-type: none;
 }

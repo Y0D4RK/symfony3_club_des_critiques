@@ -8,28 +8,38 @@
                 <div class="row">
                     <div class="salon content-title col-lg-12">
                         <div class="col-md-7">
-                            <h1>Salon {{ room.name | capitalize }} </h1>
-                            <h1 class="text-warning"> {{ room.artwork.name | capitalize }} </h1>
+                            <h1>{{ room.artwork.name | capitalize }}</h1>
+                            <h3 class="text-warning">  {{ room.name | capitalize }} </h3>
                             <p class="text-muted">Créé par {{ room.creator | capitalize }}</p>
-                            <p class="text-info"> Du {% if room.startedAt %}{{ room.startedAt|date('d/m/Y H:i:s') }}{% endif %} au {% if room.closedAt %}{{ room.closedAt|date('d/m/Y H:i:s') }}{% endif %} - {% if room.status %} {{ 'Ouvert' }} {% endif %}</p>
-                            <p>content</p>
+                            <p class="text-info"> Du {% if room.startedAt %}{{ room.startedAt|date('d/m/Y H:i:s') }}{% endif %} au {% if room.closedAt %}{{ room.closedAt|date('d/m/Y H:i:s') }}{% endif %}</p>
+                            {% if room.status %}
+                                <p class="text-success">{{ 'Ouvert' }} </p>
+                            {% else %}
+                                <p class="text-danger">{{ 'Close' }} </p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
         </header>
         <div class="container">
+            <br><br>
             <div class="row">
                 <div class="col-xs-12">
                     <ul id="chat-list">
+                        {#message.message#}
                     </ul>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-xs-12">
-                    <textarea id="form-message" placeholder="Ton message"></textarea>
-                    <input type="button" id="form-submit" value="Send message" class="btn btn-default"/>
+                    <div class="form-group">
+                        <textarea id="chat-message" placeholder="Votre message" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="button" id="chat-submit" value="Envoyer" class="btn btn-default"/>
+                    </div>
                 </div>
             </div>
 
@@ -37,16 +47,13 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                    <ul>
-                        <li>
-                            <a href="{{ path('room_index') }}">Back to the list</a>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="{{ path('room_index') }}" class="btn btn-default">Retour à la liste des salons</a>
                         </li>
-                        <li>
-                            <a href="{{ path('room_edit', { 'id': room.id }) }}">Edit</a>
-                        </li>
-                        <li>
+                        <li class="list-group-item">
                             {{ form_start(delete_form) }}
-                            <input type="submit" value="Delete" class="btn btn-warning">
+                            <input type="submit" value="Delete" class="btn btn-danger">
                             {{ form_end(delete_form) }}
                         </li>
                     </ul>
@@ -71,12 +78,14 @@
 {% endblock %}
 
 {% block javascripts %}
-
+    <script src="{{ asset('js/moment.min.js') }}"></script>
+    <script src="{{ asset('js/moment.locale.fr.js') }}"></script>
     <script>
         // This object will be sent everytime you submit a message in the sendMessage function.
         var clientInformation = {
-            username: '{{ user.username }}'
-            // You can add more information in a static object
+            username: '{{ user.username }}',
+            timer: moment(new Date()),
+            avatar:'<img src="{{ vich_uploader_asset(user, 'avatar')  }}">'
         };
 
         // START SOCKET CONFIG
@@ -94,7 +103,7 @@
 
         conn.onmessage = function(e) {
             var data = JSON.parse(e.data);
-            Chat.appendMessage(data.username, data.message);
+            Chat.appendMessage(data.avatar, data.username, data.message);
 
             console.log(data);
         };
@@ -106,26 +115,37 @@
         // END SOCKET CONFIG
 
         /// Some code to add the messages to the list element and the message submit.
-        document.getElementById("form-submit").addEventListener("click",function(){
-            var msg = document.getElementById("form-message").value;
+        document.getElementById("chat-submit").addEventListener("click",function(){
+            var msg = document.getElementById("chat-message").value;
 
             if(!msg){
-                alert("Please send something on the chat");
+                alert("Veuillez entrer un message avant de valider.");
+            }else{
+                Chat.sendMessage(msg);
             }
 
-            Chat.sendMessage(msg);
             // Empty text area
-            document.getElementById("form-message").value = "";
+            document.getElementById("chat-message").value = "";
         }, false);
 
         // Mini API to send a message with the socket and append a message in a UL element.
         var Chat = {
-            appendMessage: function(username, message){
+            appendMessage: function(avatar, time, username, message){
                 var from = username;
+                var msg = message;
+                var currentDate = time;
+                var imgProfile = avatar;
+
+//                var date = new Date();
+//                var timer = moment(date).format("DD.MM.YYYY HH:MM", "fr");
+
                 // Append List Item
                 var ul = document.getElementById("chat-list");
+
                 var li = document.createElement("li");
-                li.appendChild(document.createTextNode(from + " : "+ message));
+                li
+                li.appendChild(document.createTextNode(imgProfile+" - "+currentDate+" - "+ from + " : "+ msg));
+
                 ul.appendChild(li);
             },
             sendMessage: function(text){
@@ -134,7 +154,7 @@
                 conn.send(JSON.stringify(clientInformation));
                 // Add my own message to the list
                 console.log(clientInformation.username);
-                this.appendMessage(clientInformation.username, clientInformation.message);
+                this.appendMessage(clientInformation.avatar, clientInformation.time, clientInformation.username, clientInformation.message);
             }
         };
     </script>
