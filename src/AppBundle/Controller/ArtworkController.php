@@ -139,6 +139,7 @@ class ArtworkController extends Controller
 
                 $message = "Votre vote est prit en compte";
             }else{
+                $new_score = $score = $artwork->getScore();     //Récupérer l'acien score pour le js
                 $message = "Vous avez déjà voté pour cette oeuvre";
             }
 
