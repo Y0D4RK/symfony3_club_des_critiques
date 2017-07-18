@@ -22,14 +22,86 @@ class Score
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Artwork")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Artwork")
      */
     private $artwork;
 
     /**
-     * @ORM\OneToOne(targetEntity="UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
      */
     private $user;
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="score", type="integer")
+     */
+    private $vote;
+
+    /**
+     * @return int
+     */
+    public function getVote()
+    {
+        return $this->vote;
+    }
+
+    /**
+     * @param int $vote
+     */
+    public function setVote($vote)
+    {
+        $this->vote = $vote;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArtwork()
+    {
+        return $this->artwork;
+    }
+
+    /**
+     * @param mixed $artwork
+     */
+    public function setArtwork($artwork)
+    {
+        $this->artwork = $artwork;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
 
     /**
      * @var \DateTime

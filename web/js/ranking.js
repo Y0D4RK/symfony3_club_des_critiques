@@ -7,7 +7,7 @@ $(document).ready(function(){
 
     $('.vote_star', $vote).click(function(e){
         e.preventDefault();
-        var urlRoute = Routing.generate('artwork_show', {id: 'id'});
+        var urlRoute = Routing.generate('artwork_show', {id: $vote.data('ref_id')});
         vote($(this).data('score'), urlRoute)
     });
 
@@ -20,14 +20,9 @@ $(document).ready(function(){
             ref_id: $vote.data('ref_id'),
             vote: value
         }).done(function(data, textStatus, jqXHR){
-            $('#dislike_count').text(data.dislike_count);
-            $('#like_count').text(data.like_count);
             $vote.removeClass('is-liked is-disliked is-score1 is-score2 is-score3 is-score4 is-score5');
             if(data.success){
-                if(data.score){
-                    // On vote
-                    $vote.addClass('is-score' + Math.round(data.score));
-                }
+                $vote.addClass('is-score' + Math.round(data.success));
             }
         }).fail(function( jqXHR, textStatus, errorThrown ) {
             alert(jqXHR.responseText);

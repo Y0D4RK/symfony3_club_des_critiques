@@ -40,7 +40,9 @@ artwork_index:
 artwork_show:
     path:     /artwork/{id}/show
     defaults: { _controller: "AppBundle:Artwork:show" }
-    methods:  GET
+    methods:  [GET, POST]
+    options:
+            expose: true
 
 artwork_new:
     path:     /artwork/new/{name}

@@ -91,12 +91,14 @@ class Artwork
      */
     private $score;
 
+
     /**
      * @var int
      *
      * @ORM\Column(name="vote_count", type="integer", nullable=true)
      */
     private $voteCount;
+
 
     /**
      * @Vich\UploadableField(mapping="cover_image", fileNameProperty="coverName")
@@ -384,4 +386,52 @@ class Artwork
 
 	    return $chaine;
     }
+
+
+    /**
+     * Set score
+     *
+     * @param int $score
+     *
+     * @return Artwork
+     */
+    public function setScore($score)
+    {
+        $this->score = $score;
+
+        return $this;
+    }
+
+    /**
+     * Get score
+     *
+     * @return int
+     */
+    public function getScore()
+    {
+        return $this->score;
+    }
+
+    /**
+     *Get voteCount
+     *
+     * @return int
+     */
+    public function getVoteCount()
+    {
+        return $this->voteCount;
+    }
+
+    /**
+     * Set voteCount
+     *
+     * @param int $voteCount
+     *
+     * @return Artwork
+     */
+    public function setVoteCount($voteCount)
+    {
+        $this->voteCount = $voteCount;
+    }
+
 }

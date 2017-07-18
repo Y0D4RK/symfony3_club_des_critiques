@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Artwork;
+use AppBundle\Entity\Score;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -83,7 +84,7 @@ class ArtworkController extends Controller
      * Finds and displays a artwork entity.
      *
      */
-    public function showAction(Artwork $artwork)
+    public function showAction(Request $request, Artwork $artwork)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -91,10 +92,44 @@ class ArtworkController extends Controller
 
         $deleteForm = $this->createDeleteForm($artwork);
 
-
         //Récupérer l'id de l'utilisaateur courrant
         $user = $this->getUser();
         $currentUserName = $user->getUsername();
+
+        //Vote artwork
+        $score = $artwork->getScore();      //Récupérer le score de l'artwork
+        $vote = $request->request->get('vote');     //Récupérer le vote en js
+        if (isset($vote)){
+            $score = $artwork->getScore();
+            $nb_votes = $artwork->getVoteCount();
+
+            $new_score = (($score * $nb_votes) + $vote) / ($nb_votes + 1);      //On calcule le nouveau score
+            $new_score = round($new_score);
+
+            $new_nb_votes = $nb_votes + 1;
+
+            //On insere le nouveau vote dans artwork et le nb_votes
+            $artwork->setScore($new_score);
+            $artwork->setVoteCount($new_nb_votes);
+            $em->persist($artwork);
+            $em->flush();
+
+            //On insere le vote dans la table score
+            $score = new Score();
+            $score->setArtwork($artwork);
+            $score->setUser($user);
+            $score->setCreatedAt(new \DateTime('now'));
+            $score->setVote($vote);
+            $em->persist($score);
+            $em->flush();
+
+
+            header('Content-type: application/json');
+            $record = [];
+            $record['success'] = $new_score;
+            die(json_encode($record));
+
+        }
 
 
         return $this->render('club/artwork/show.html.twig', array(
@@ -103,6 +138,7 @@ class ArtworkController extends Controller
             'artwork' => $artwork,
             'delete_form' => $deleteForm->createView(),
             'currentUserName' => $currentUserName,
+            'score' => $score,
         ));
     }
 
