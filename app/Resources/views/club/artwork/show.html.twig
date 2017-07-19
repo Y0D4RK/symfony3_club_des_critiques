@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-md-7">
                         <h1>{{ artwork.name }}</h1>
-                        <p class="text-muted">Publié par {{ artwork.edithor }} {% if artwork.publishAt %} le {{ artwork.publishAt|date('d/m/Y') }}{% endif %}</p>
+                        <p class="">Publié par {{ artwork.edithor }} {% if artwork.publishAt %} le {{ artwork.publishAt|date('d/m/Y') }}{% endif %}</p>
                         <p><span style="font-size: 22px;"><strong> {{ artwork }}</strong></span></p>
                         <p>{% if artwork.user %} Ajouté par  <a href="{{ path('fos_user_profile_show_name', {'username': artwork.user}) }}">{{ artwork.user }}</a>{% endif %} {% if artwork.publishAt %} le {{ artwork.createdAt|date('d/m/Y') }}{% endif %} </p>
                         <p></p>
