@@ -6,6 +6,9 @@
         "psr-4": {
             "": "src/"
         },
+        "psr-1": {
+            "": "src/"
+        },
         "classmap": [
             "app/AppKernel.php",
             "app/AppCache.php"
@@ -35,6 +38,7 @@
         "vich/uploader-bundle": "^1.6",
         "cboden/ratchet": "0.3.*",
         "symfony/assetic-bundle": "^2.8",
+        "react/zmq": "0.2.*|0.3.*",
         "friendsofsymfony/jsrouting-bundle": "^1.6"
     },
     "require-dev": {
