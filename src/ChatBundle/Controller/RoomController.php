@@ -5,6 +5,7 @@ namespace ChatBundle\Controller;
 use ChatBundle\Entity\Room;
 use AppBundle\Entity\Artwork;
 use UserBundle\Entity\User;
+use UserBundle\Entity\Score;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -72,15 +73,26 @@ class RoomController extends Controller
         $em = $this->getDoctrine()->getManager();
         $rooms = $em->getRepository('ChatBundle:Room')->findAll();
 
-        dump($rooms);
 
         $user = $this->getUser();
 
         $deleteForm = $this->createDeleteForm($room);
 
+        //Verifier si l'user a deja voté pour cette oeuvre
+        $scores = $em->getRepository('AppBundle:Score')->findAll();
+        $voted = false;
+        foreach ($scores as $score){
+            if ($score->getUser()->getId() == $user->getId()){
+                if($score->getArtwork()->getId() == $room->getArtwork()->getId()){
+                    $voted = true;
+                }
+            }
+        }
+
         return $this->render('ChatBundle:Room:show.html.twig', array(
             'user' => $user,
             'room' => $room,
+            'voted' => $voted,
             'delete_form' => $deleteForm->createView(),
         ));
     }

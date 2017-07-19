@@ -2,6 +2,9 @@
 
 
 {% block content %}
+    {% if voted == false %}
+    <div id="room-content">
+    {% endif %}
     {% if room.status %}
         <header id="salon">
             <div class="container">
@@ -73,12 +76,39 @@
             </div>
         </header>
     {% endif %}
+    </div>
+
+
+    {% if voted == false %}
+    <!-- modal conditions -->
+    <div class="modal " id="vote-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  data-show="true" style="display: block;">
+    <div id="conditions" class="container" style="height: auto;">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div class="form-wrap">
+                    <h1>{{ room.artwork }}</h1>
+                    <p>Vous devez voter cette oeuvre avant de pouvoir acceder au salon</p>
+                    <hr>
+                    <a href="{{ path('artwork_show', { 'id': room.artwork.id }) }}"><button class="btn btn-default">Voter pour cet oeuvre</button></a>
+                    <br><br><br>
+                </div>
+            </div> <!-- /.col-xs-12 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    {% endif %}
+
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/moment.min.js') }}"></script>
     <script src="{{ asset('js/moment.locale.fr.js') }}"></script>
+    <script>
+         $( document ).ready(function() {
+            document.getElementById("room-content").style.opacity = "0.5";
+            $("#vote-modal").modal();
+        });
+    </script>
     <script>
         // This object will be sent everytime you submit a message in the sendMessage function.
         var clientInformation = {
