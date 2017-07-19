@@ -17,48 +17,46 @@
                             {% else %}
                                 <p class="text-danger">{{ 'Close' }} </p>
                             {% endif %}
+                            <a href="{{ path('room_index') }}" class="btn btn-default">Retour à la liste des salons</a>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
-        <div class="container">
-            <br><br>
-            <div class="row">
-                <div class="col-xs-12">
-                    <ul id="chat-list">
-                        {#message.message#}
-                    </ul>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="form-group">
-                        <textarea id="chat-message" placeholder="Votre message" class="form-control"></textarea>
+        <div id="chat">
+            <div class="container">
+                <div class="row box-chat">
+                    <div class="col-xs-8">
+                        <h3>Chat du salon</h3>
+                        <ul id="chat-list">
+                            {#message.message#}
+                        </ul>
+                        <div class="form-group">
+                            <textarea id="chat-message" placeholder="Votre message" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="button" id="chat-submit" value="Envoyer" class="btn btn-default"/>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="button" id="chat-submit" value="Envoyer" class="btn btn-default"/>
+                    <div class="col-xs-4">
+                        <h3>Participants</h3>
+                        <div class="participants-list">
+                            <ul class="list-group">
+                                <li>err</li>
+                                <li>err</li>
+                                <li>err</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <hr>
-
-            <div class="row">
-                <div class="col-xs-12">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="{{ path('room_index') }}" class="btn btn-default">Retour à la liste des salons</a>
-                        </li>
-                        <li class="list-group-item">
-                            {{ form_start(delete_form) }}
-                            <input type="submit" value="Delete" class="btn btn-danger">
-                            {{ form_end(delete_form) }}
-                        </li>
-                    </ul>
-                </div>
             </div>
+           {#
+            <a href="{{ path('room_index') }}" class="btn btn-default">Retour à la liste des salons</a>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete" class="btn btn-danger">
+            {{ form_end(delete_form) }}#}
+
         </div>
     {% else %}
         <header id="salon">
