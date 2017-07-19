@@ -1,10 +1,7 @@
 <?php
-// myapplication/src/sandboxBundle/Command/SocketCommand.php
-// Change the namespace according to your bundle
+
 namespace ChatBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use ChatBundle\Repository\RoomRepository;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -29,13 +26,10 @@ class SocketCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
 
-        $em = $this->getDoctine()->getManager();
-        $rooms = $em->getRepository('ChatBundle:RoomRepository')->findAll();
-
         $output->writeln([
             'Chat socket',// A line
             '============',// Another line
-            'Starting chat, open your browser.'.$rooms,// Empty line
+            'Starting chat, open your browser.',// Empty line
         ]);
 
         // The domain of your app as first parameter
@@ -48,7 +42,7 @@ class SocketCommand extends Command
         // Add route to chat with the handler as second parameter
 //        foreach($rooms as $room){
 //            $app->route($room->getRoute(), new Chat);
-            $app->route('/room/1/show', new Chat);
+        $app->route('/room/1/show', new Chat);
 //        }
         // To add another routes, then you can use :
         //$app->route('/america-chat', new AmericaChat);
