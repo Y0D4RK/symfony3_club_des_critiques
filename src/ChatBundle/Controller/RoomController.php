@@ -10,7 +10,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-use ChatBundle\Command\SocketCommand;
+// Ratchet libs
+use Ratchet\App;
+// Chat instance
+use ChatBundle\Sockets\Chat;
 
 
 /**
@@ -69,10 +72,9 @@ class RoomController extends Controller
      */
     public function showAction(Room $room)
     {
-        $route = new SocketCommand();
+
         $em = $this->getDoctrine()->getManager();
         $rooms = $em->getRepository('ChatBundle:Room')->findAll();
-
 
         $user = $this->getUser();
 
