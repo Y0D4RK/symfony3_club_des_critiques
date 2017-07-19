@@ -15,32 +15,32 @@
                     <h1>Modifiez votre profile</h1>
                     {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
                         <div class="form-group">
-                            {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'form.username'|trans } }) }}
+                            {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'nom d\'utilisateur'|trans } }) }}
                             {{ form_errors(form.username) }}
                         </div>
                         <div class="form-group">
-                            {{ form_widget(form.current_password, { 'attr': {'class': 'form-control', 'placeholder': 'form.current_password'|trans } }) }}
+                            {{ form_widget(form.current_password, { 'attr': {'class': 'form-control', 'placeholder': 'mot de passe'|trans } }) }}
                             {{ form_errors(form.current_password) }}
                         </div>
                         <div class="form-group">
-                            {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'form.email'|trans } }) }}
+                            {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'email'|trans } }) }}
                             {{ form_errors(form.email) }}
                         </div>
                         <div class="form-group">
-                            {{ form_widget(form.firstname, { 'attr': {'class': 'form-control', 'placeholder': 'form.firstname'|trans } }) }}
+                            {{ form_widget(form.firstname, { 'attr': {'class': 'form-control', 'placeholder': 'Prénom'|trans } }) }}
                             {{ form_errors(form.firstname) }}
                         </div>
                         <div class="form-group">
-                            {{ form_widget(form.lastname, { 'attr': {'class': 'form-control', 'placeholder': 'form.lastname'|trans } }) }}
+                            {{ form_widget(form.lastname, { 'attr': {'class': 'form-control', 'placeholder': 'Nom'|trans } }) }}
                             {{ form_errors(form.lastname) }}
                         </div>
                         <div class="form-group">
                             {{ form_label(form.birthdate) }}
-                            {{ form_widget(form.birthdate, { 'attr': {'class': '', 'placeholder': 'form.birthdate'|trans } }) }}
+                            {{ form_widget(form.birthdate, { 'attr': {'class': '', 'placeholder': 'date de naissance'|trans } }) }}
                             {{ form_errors(form.birthdate) }}
                         </div>
                         <div class="form-group">
-                            {{ form_widget(form.description, { 'attr': {'class': 'form-control', 'placeholder': 'form.description'|trans } }) }}
+                            {{ form_widget(form.description, { 'attr': {'class': 'form-control', 'placeholder': 'description'|trans } }) }}
                             {{ form_errors(form.description) }}
                         </div>
                         <div class="form-group avatar">
