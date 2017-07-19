@@ -6,6 +6,7 @@ use AppBundle\Entity\Design;
 use AppBundle\Entity\Artwork;
 use AppBundle\Entity\Category;
 use UserBundle\Entity\User;
+use ChatBundle\Entity\Room;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -69,16 +70,43 @@ class AdminController extends Controller
         $em = $this->getDoctrine()->getManager();
         $users = $em->getRepository('UserBundle:User')->findAll();
 
+        //Form add room
+        $room = new Room();
+        $newRoomForm = $this->createForm('ChatBundle\Form\RoomType', $room);
+        $newRoomForm->handleRequest($request);
+
+        if ($newRoomForm->isSubmitted() && $newRoomForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+            $room->setCreator($this->getUser());
+            $room->setRoute("/room/".$room->getId().'/show');
+            $room->setCreator($this->getUser());
+
+            $em->persist($room);
+            $em->flush($room);
+
+            return $this->redirectToRoute('admin', array('id' => $design->getId()));
+        }
+
+        //List salon
+        $em = $this->getDoctrine()->getManager();
+        $rooms = $em->getRepository('ChatBundle:Room')->findAll();
+
+        //Date aujourd'hui
+        $now = new \DateTime('now');
 
         //return variables to admin view
         return $this->render('club/admin/index.html.twig', array(
             'design' => $design,
             'edit_form' => $editForm->createView(),
             'newArtform' => $newArtform->createView(),
+            'newRoomForm' => $newRoomForm->createView(),
             'artworks' => $artworks,
             'formNewCategory' => $formNewCategory->createView(),
             'categories' => $categories,
             'users' => $users,
+            'rooms' => $rooms,
+            'now' => $now,
         ));
     }
 
@@ -88,6 +116,16 @@ class AdminController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($artwork);
             $em->flush($artwork);
+
+        return $this->redirectToRoute('admin', array('id' => 1));
+    }
+
+    //Delete room
+    public function deleteRoomAction(Room $room)
+    {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($room);
+            $em->flush($room);
 
         return $this->redirectToRoute('admin', array('id' => 1));
     }
