@@ -106,29 +106,6 @@
                                     <!-- Content -->
                                     <div class="tab-content">
                                         <div role="add" class="tab-pane" id="add">
-                                            <div class="row">
-                                                <div class="col-lg-offset-4 col-lg-4">
-                                                    <ul class="nav nav-tabs">
-                                                        <li><a href="#auto" data-toggle="tab">Ajout automatique</a> </li>
-                                                        <li><a href="#manu" data-toggle="tab">Ajout manuel</a> </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="tab-content">
-                                                <div id="auto" class="tab-pane">
-                                                    <form id="add_artwork" class="add_artwork" method="post">
-                                                        <div class="col-lg-offset-3 col-lg-7 ">
-                                                            <label class="pull-left">Catégorie :</label>
-                                                            <select class="pull-right" name="categorie">
-                                                                <option value="livres">Livres</option>
-                                                                <option value="films">Films</option>
-                                                                <option value="expo">Expositions</option>
-                                                            </select>
-                                                            <input name="title_artwork" type="text" placeholder="URL">
-                                                            <button type="submit" class="btn btn-danger pull-right">Ajouter</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
                                                 <div id="manu" class="tab-pane">
                                                     <div class="col-md-push-3 col-md-6 center-block">
                                                         <div class="form-wrap">
@@ -172,7 +149,6 @@
                                                     </div>
 
                                                 </div>
-                                            </div>
                                         </div>
                                         <div role="edit" class="tab-pane" id="edit">
                                             <div class="row">
@@ -297,22 +273,29 @@
                                         <div class="tab-pane" id="newSalon">
                                             <div class="col-md-push-3 col-md-6 center-block">
                                                 <div class="form-wrap">
-                                                    <h3>Ajouter un salon</h3>{#
-                                                    {{ form_start(formNewCategory) }}
+                                                    <h3>Ajouter un salon</h3>{{ form_start(newRoomForm) }}
                                                     <div class="form-group">
-                                                        {{ form_widget(formNewCategory.name, { 'attr': {'class': 'form-control', 'placeholder': 'nom'|trans } }) }}
-                                                        {{ form_errors(formNewCategory.name) }}
+                                                        {{ form_widget(newRoomForm.name, { 'attr': {'class': 'form-control', 'placeholder': 'Nom Salon' } }) }}
+                                                        {{ form_errors(newRoomForm.name) }}
                                                     </div>
                                                     <div class="form-group">
-                                                        {{ form_widget(formNewCategory.description, { 'attr': {'class': 'form-control', 'placeholder': 'description'|trans } }) }}
-                                                        {{ form_errors(formNewCategory.description) }}
+                                                        {{ form_widget(newRoomForm.artwork, { 'attr': {'class': 'form-control', 'placeholder': 'Oeuvres'|trans } }) }}
+                                                        {{ form_errors(newRoomForm.artwork) }}
                                                     </div>
                                                     <div class="form-group">
-                                                        {{ form_widget(formNewCategory.apiUrl, { 'attr': {'class': 'form-control', 'placeholder': 'api Url'|trans } }) }}
-                                                        {{ form_errors(formNewCategory.apiUrl) }}
+                                                        <label>Date de début</label>
+                                                        {{ form_widget(newRoomForm.startedAt, { 'attr': {'class': '', 'placeholder': 'Commence à' } }) }}
+                                                        {{ form_errors(newRoomForm.startedAt) }}
                                                     </div>
-                                                    <button type="submit" class="btn btn-danger">Ajouter</button>
-                                                    {{ form_end(formNewCategory) }}#}
+                                                    <div class="form-group">
+                                                        <label>Date de fin</label>
+                                                        {{ form_widget(newRoomForm.closedAt, { 'attr': {'class': '', 'placeholder': 'Se termine à' } }) }}
+                                                        {{ form_errors(newRoomForm.closedAt) }}
+                                                    </div>
+
+                                                    {{ form_rest(newRoomForm) }}
+                                                    <input type="submit" class="btn btn-custom btn-lg btn-block" value="{{ 'créer' }}" />
+                                                    {{ form_end(newRoomForm) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -325,29 +308,32 @@
                                                         <th class="text-center">État</th>
                                                         <th class="text-center">Titre</th>
                                                         <th class="text-center">Oeuvre</th>
-                                                        <th class="text-center">Date</th>
-                                                        <th class="text-center">Nombre de participants</th>
+                                                        <th class="text-center">Date de debut</th>
+                                                        <th class="text-center">Date de fin</th>
+                                                        <th class="text-center">Nb de participants</th>
                                                         <th class="text-center">Modifier</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    {#{% for category in categories %}
+                                                    {% for room in rooms %}
                                                         <tr>
-                                                            <td>{{ category.name }}</td>
-                                                            <td>{{ category.description }}</td>
-                                                            <td>{{ category.apiUrl }}</td>
-                                                            <td>{% if category.createdAt %}{{ category.createdAt|date('m-d-Y H:i:s') }}{% endif %}</td>
-                                                            <td><a href="{{ path('admin_delete_category', { 'id': category.id }) }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                                            <td>
+                                                                {% if "now"|date('Ymd')  > room.closedAt|date('Ymd') %}
+                                                                    Fermé
+                                                                {% elseif "now"|date('Ymd')  <= room.closedAt|date('Ymd') and "now"|date('Ymd')  >= room.startedAt|date('Ymd')%}
+                                                                    Ouvert
+                                                                {% elseif "now"|date('Ymd')  < room.startedAt|date('Ymd')%}
+                                                                    À venir
+                                                                {% endif %}
+                                                            </td>
+                                                            <td>{{ room.name }}</td>
+                                                            <td>{{ room.artwork }}</td>
+                                                            <td>{{ room.startedAt|date('m-d-Y H:i:s') }}</td>
+                                                            <td>{{ room.closedAt|date('m-d-Y H:i:s') }}</td>
+                                                            <td>2</td>
+                                                            <td><a href="{{ path('admin_delete_room', { 'id': room.id }) }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                                                         </tr>
-                                                    {% endfor %}#}
-                                                        <tr>
-                                                            <td>En cours</td>
-                                                            <td>Salon 2</td>
-                                                            <td>Harry Poter</td>
-                                                            <td>01-02-2017</td>
-                                                            <td>10</td>
-                                                            <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-                                                        </tr>
+                                                    {% endfor %}
                                                     </tbody>
                                                 </table>
                                             </div>

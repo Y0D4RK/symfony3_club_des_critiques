@@ -2,6 +2,9 @@
 
 
 {% block content %}
+    {% if voted == false %}
+    <div id="room-content">
+    {% endif %}
     {% if room.status %}
         <header id="salon">
             <div class="container">
@@ -17,48 +20,46 @@
                             {% else %}
                                 <p class="text-danger">{{ 'Close' }} </p>
                             {% endif %}
+                            <a href="{{ path('room_index') }}" class="btn btn-default">Retour à la liste des salons</a>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
-        <div class="container">
-            <br><br>
-            <div class="row">
-                <div class="col-xs-12">
-                    <ul id="chat-list">
-                        {#message.message#}
-                    </ul>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="form-group">
-                        <textarea id="chat-message" placeholder="Votre message" class="form-control"></textarea>
+        <div id="chat">
+            <div class="container">
+                <div class="row box-chat">
+                    <div class="col-xs-8">
+                        <h3>Chat du salon</h3>
+                        <ul id="chat-list">
+                            {#message.message#}
+                        </ul>
+                        <div class="form-group">
+                            <textarea id="chat-message" placeholder="Votre message" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="button" id="chat-submit" value="Envoyer" class="btn btn-default"/>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="button" id="chat-submit" value="Envoyer" class="btn btn-default"/>
+                    <div class="col-xs-4">
+                        <h3>Participants</h3>
+                        <div class="participants-list">
+                            <ul class="list-group">
+                                <li>err</li>
+                                <li>err</li>
+                                <li>err</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <hr>
-
-            <div class="row">
-                <div class="col-xs-12">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="{{ path('room_index') }}" class="btn btn-default">Retour à la liste des salons</a>
-                        </li>
-                        <li class="list-group-item">
-                            {{ form_start(delete_form) }}
-                            <input type="submit" value="Delete" class="btn btn-danger">
-                            {{ form_end(delete_form) }}
-                        </li>
-                    </ul>
-                </div>
             </div>
+           {#
+            <a href="{{ path('room_index') }}" class="btn btn-default">Retour à la liste des salons</a>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete" class="btn btn-danger">
+            {{ form_end(delete_form) }}#}
+
         </div>
     {% else %}
         <header id="salon">
@@ -75,12 +76,39 @@
             </div>
         </header>
     {% endif %}
+    </div>
+
+
+    {% if voted == false %}
+    <!-- modal conditions -->
+    <div class="modal " id="vote-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  data-show="true" style="display: block;">
+    <div id="conditions" class="container" style="height: auto;">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div class="form-wrap">
+                    <h1>{{ room.artwork }}</h1>
+                    <p>Vous devez voter cette oeuvre avant de pouvoir acceder au salon</p>
+                    <hr>
+                    <a href="{{ path('artwork_show', { 'id': room.artwork.id }) }}"><button class="btn btn-default">Voter pour cet oeuvre</button></a>
+                    <br><br><br>
+                </div>
+            </div> <!-- /.col-xs-12 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    {% endif %}
+
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/moment.min.js') }}"></script>
     <script src="{{ asset('js/moment.locale.fr.js') }}"></script>
+    <script>
+         $( document ).ready(function() {
+            document.getElementById("room-content").style.opacity = "0.5";
+            $("#vote-modal").modal();
+        });
+    </script>
     <script>
         // This object will be sent everytime you submit a message in the sendMessage function.
         var clientInformation = {

@@ -733,6 +733,7 @@ footer {
     background: rgba(217, 83, 79, 0.82);
 }
 
+
 /* ---------------------------------- Salon ------------------------------------- */
 
 #salon {
@@ -749,6 +750,37 @@ footer {
     color: white;
 }
 
+/*show salon*/
+.box-chat {
+    padding: 5% 0 0 0%;
+}
+
+/* Chat */
+#chat-list{
+    min-width: 320px;
+    min-height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 30px 20px;
+    background-color: rgba(187, 226, 220, 0.4);
+}
+
+#chat-list > li{
+    list-style-type: none;
+}
+
+#chat .participants-list{
+    min-width: 320px;
+    min-height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 30px 20px;
+}
+
+#chat-submit{
+    display: flex;
+    float: right;
+}
 /*------------------------------------ Profile ----------------------------------------- */
 
 @import url(https://fonts.googleapis.com/css?family=Lato:300);
@@ -1116,17 +1148,4 @@ footer {
 
 .table-hover>tbody>tr:hover {
     background-color: transparent;
-}
-
-/* Chat */
-#chat-list{
-    min-width: 320px;
-    min-height: 200px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 30px 20px;
-}
-
-#chat-list > li{
-    list-style-type: none;
 }
