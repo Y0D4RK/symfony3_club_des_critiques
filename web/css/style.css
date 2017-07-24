@@ -86,7 +86,7 @@ p {
     -o-user-select: none;
     user-select: none;
 }
-#login .btn.btn-custom {
+.btn.btn-custom {
     font-size: 14px;
     background-color: #1fa67b;
     border-left: 3px solid #125740;
@@ -94,7 +94,7 @@ p {
     color: #FFF;
     margin-bottom: 20px;
 }
-#login .btn.btn-custom:hover{
+.btn.btn-custom:hover{
     background-color: #125740;
     color: #FFF;
 }
@@ -167,122 +167,6 @@ p {
 }
 /*End conditions modal*/
 
-#header {
-    position: relative;
-    width: 100%;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-    background-position: center;
-    background-image: url('../images/fond.jpg');
-    background-attachment: fixed;
-    text-align: center;
-    color: white;
-}
-
-#header .header-content {
-    position: relative;
-    text-align: center;
-    padding: 100px 15px 100px;
-    width: 100%;
-}
-
-
-.form-horizontal{
-    display: flex;
-    width: 300px;
-    margin: 0 auto;
-}
-
-.bg-primary {
-    background-color: #45c39a;
-}
-
-/* Temoignage */
-.temoignage .container {
-    position: relative;
-    margin: auto;
-    top: 0;
-    margin-bottom: 14px;
-    margin-top: 14px;
-    left: 0;
-    right: 0;
-    max-width: 500px;
-    height: 150px;
-    overflow: hidden;
-    background: #fff;
-}
-
-.fa-quote-left{
-    position: absolute;
-    padding: 20px;
-    top: -10px;
-    margin-left: -250px;
-    font-size: 30px;
-    color: #50e499;
-}
-
-.fa-quote-right{
-    position:absolute;
-    padding:20px;
-    top:80px;
-    left:430px;
-    font-size:30px;
-    color:#50e499;
-}
-
-.text-container {
-    position: relative;
-    left:0px;
-    max-width: calc(500px * 4);
-    font-size: 0;
-    transition: left 0.5s ease-in-out;
-}
-
-.text {
-    max-width: 400px;
-    height: auto;
-    color: #333;
-    text-align: center;
-    line-height: 20px;
-    font-family: 'Raleway';
-    font-weight: 500;
-    font-size: 14px;
-    overflow: hidden;
-    margin-left: 40px;
-    padding-top: 40px;
-}
-
-/*Deuxième section*/
-
-.bg-secondary .container {
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-/*Troisième section */
-
-.bg-tertiary {
-    position: relative;
-    width: 100%;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-    background-position: center;
-    background-image: url('../images/fond.jpg');
-    background-attachment: fixed;
-    text-align: center;
-    color: white;
-}
-
-.bg-tertiary .header-content {
-    position: relative;
-    text-align: center;
-    padding: 50px 15px 50px;
-    width: 100%;
-}
 
 /* Section latest */
 

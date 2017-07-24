@@ -6,36 +6,13 @@ body {
     width: 100%;
     font-family: 'Raleway', Arial, sans-serif;
 }
-#landing{
-    padding-top: 51px;
-    width: 100%;
-    background-position: center;
-    background-image: url(../images/copperhomog.jpg);
-    background-repeat: repeat;
-    background-attachment: fixed;
-    text-align: center;
-}
-section{
-    min-height: 300px;
-    padding: 50px;
-}
-#section-one{
-    background: rgba(255,255,255,0);
-    color: #FFF;
-}
-#section-two{
-    background: rgba(151,76,50,0.2);
-}
-#section-three{
-    background: rgba(255,255,255,0.2);
-}
 
 /* NAVBAR */
-
 .navbar{
     margin-bottom: 0;
     width: 100%;
-    background-color: #617F7A;
+    background-color: #333;
+    border-bottom: 1px solid #fff;
 }
 .navbar .navbar-brand{
     background: url('../images/logo.png') no-repeat;
@@ -48,8 +25,84 @@ section{
     padding: 15px;
     width: auto;
 }
-
 .navbar .navbar-nav>.active>a{
     background-color: #45c39a;
     color: #fff;
+}
+.navbar-nav>li>a{
+    font-weight: 800;
+    color: #fff;
+}
+.navbar-nav>li:hover,
+.navbar-nav>li>a:hover{
+    background-color: #45c39a;
+}
+/* LANDING */
+#landing{
+    padding-top: 51px;
+    width: 100%;
+    background-position: center;
+    background-size: 100%;
+    background-position-y: -350px;
+    background-image: url(../images/natural.jpg);
+    background-color: #B2D5CC;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    text-align: center;
+}
+#landing-title{
+    font-weight: 900;
+    font-size: 50px;
+}
+section{
+    min-height: 250px;
+    padding: 50px;
+}
+#section-one{
+    background: rgba(151,76,50,0);
+    color: #FFF;
+}
+#section-two{
+    background: rgba(31,161,123,.5);
+}
+#section-three{
+    background: rgba(255,255,255,0.5);
+}
+#section-four{
+    background: rgba(151,76,50,0);
+}
+#contact form{
+    padding: 0 400px;
+}
+#contact{
+    background: rgba(151,76,50,0.4);
+}
+.btn.btn-custom {
+    font-size: 14px;
+    background-color: #1fa67b;
+    border-left: 3px solid #125740;
+    border-bottom: 3px solid #125740;
+    color: #FFF;
+    margin-bottom: 20px;
+}
+.btn.btn-custom:hover{
+    background-color: #125740;
+    color: #FFF;
+}
+#section-two .testimonials{
+    margin-top: 40px;
+}
+#section-two .testimony{
+    background-color: #FFF;
+    border-radius: 4px;
+    padding: 40px;
+    margin-bottom: 20px;
+}
+.fa-quote-left{
+    color: #e47d4b;
+    padding: 10px;
+}
+.fa-quote-right{
+    color: #e47d4b;
+    padding: 10px;
 }

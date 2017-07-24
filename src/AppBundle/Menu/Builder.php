@@ -65,29 +65,22 @@ class Builder implements ContainerAwareInterface
             /** @var \UserBundle\Entity\User $userLogged */
             $userLogged = $this->container->get('security.token_storage')->getToken()->getUser();
             $menu->addChild(ucfirst($userLogged->getUsername()), array('route' => 'fos_user_profile_show'));
+
+            if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+
+                $em = $this->container->get('doctrine.orm.entity_manager');
+                $repository = $em->getRepository('AppBundle:Design');
+                $design = $repository->find('1');
+
+                $menu->addChild('Administration', array(
+                    'route' => 'admin',
+                    'routeParameters' => array('id' => $design->getId())));
+            }
         }else{
             $menu->addChild('Se connecter', array('route' => 'fos_user_security_login'));
             $menu->addChild('S\'inscrire', array('route' => 'fos_user_registration_register'));
         }
 
         return $menu;
-    }
-
-    public function adminMenu(FactoryInterface $factory, array $options)
-    {
-        if ($this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
-
-            $menu = $factory->createItem('root', array(
-                'childrenAttributes'    => array(
-                    'class'             => 'nav navbar-nav navbar-right',
-                )
-            ));
-
-            $menu->addChild('Site web', array('route' => 'home'));
-
-            return $menu;
-        }else{
-            return false;
-        }
     }
 }
