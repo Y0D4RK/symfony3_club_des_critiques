@@ -7,6 +7,9 @@ body {
     font-family: 'Raleway', Arial, sans-serif;
 }
 
+/*h1, h2, h3, h4, h5, h6{
+    font-weight: 800;
+}*/
 /* NAVBAR */
 .navbar{
     margin-bottom: 0;
@@ -71,9 +74,6 @@ section{
 #section-four{
     background: rgba(151,76,50,0);
 }
-#contact form{
-    padding: 0 400px;
-}
 #contact{
     background: rgba(151,76,50,0.4);
 }
@@ -105,4 +105,10 @@ section{
 .fa-quote-right{
     color: #e47d4b;
     padding: 10px;
+}
+
+footer {
+    padding: 25px 0;
+    text-align: center;
+    bottom: 0;
 }

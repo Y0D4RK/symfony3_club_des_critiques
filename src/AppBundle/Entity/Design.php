@@ -82,7 +82,14 @@ class Design
      *
      * @ORM\Column(name="text4", type="string", length=255, nullable=true)
      */
+
     private $text4;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="text5", type="string", length=255, nullable=true)
+     */
+    private $text5;
 
 
     /**
@@ -310,5 +317,23 @@ class Design
     {
         return $this->text4;
     }
+
+    /**
+     * @return string
+     */
+    public function getText5()
+    {
+        return $this->text5;
+    }
+
+    /**
+     * @param string $text5
+     */
+    public function setText5($text5)
+    {
+        $this->text5 = $text5;
+    }
+
+
 }
 

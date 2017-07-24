@@ -5,6 +5,7 @@
 {% block content %}
     <div id="login" class="container center-block">
         <p class="text-center">{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+        <a href="{{ path('home') }}"><p class="text-center">Retour à l'accueil</p></a>
         <br>
     </div>
 {% endblock content %}

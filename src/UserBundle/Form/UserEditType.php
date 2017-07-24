@@ -35,7 +35,7 @@ class UserEditType extends AbstractType
                 // this is actually the default format for single_text
                 'format' => 'yyyy-MM-dd',
             ))
-            ->add('description', TextareaType::class, ['label'=>'Description', 'attr'=>array('placeholder'=>'La la la ...', 'rows' => '5', 'style' => 'resize:none')])
+            ->add('description', TextareaType::class, ['label'=>'Description', 'attr'=>array('placeholder'=>'Ma biographie...', 'rows' => '4', 'style' => 'resize:none')])
             ->remove('current_password');
             #->remove('username');
     }

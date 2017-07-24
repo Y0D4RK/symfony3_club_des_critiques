@@ -37,6 +37,7 @@ class Builder implements ContainerAwareInterface
                 'class'             => 'dropdown-menu',
             )
         ));
+
         if ($this->container->get('security.authorization_checker')->isGranted('ROLE_USER')) {
 
             $em = $this->container->get('doctrine.orm.entity_manager');
@@ -50,6 +51,7 @@ class Builder implements ContainerAwareInterface
                 ));
             }
         }
+
         return $menu;
     }
 

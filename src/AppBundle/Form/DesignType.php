@@ -21,7 +21,9 @@ class DesignType extends AbstractType
             ->add('text1')
             ->add('text2')
             ->add('text3')
-            ->add('text4')        ;
+            ->add('text4')
+            ->add('text5')
+            ->add('text5');
     }
     
     /**

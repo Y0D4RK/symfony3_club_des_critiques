@@ -22,8 +22,8 @@
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
                         {% endif %}
                         <div class="form-group">
-                            <label for="username" class="sr-only">{{ 'security.login.username'|trans }}</label>
-                            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="Nom d'utilisateur" required="required" />
+                            <label for="email" class="sr-only">{{ 'security.login.email'|trans }}</label>
+                            <input type="text" id="email" name="_email" value="{{ last_username }}" class="form-control" placeholder="Email" required="required" />
                         </div>
                         <div class="form-group">
                             <label for="password" class="sr-only">{{ 'security.login.password'|trans }}</label>

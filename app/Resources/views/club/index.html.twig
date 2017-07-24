@@ -29,12 +29,12 @@
                     </div>
                     <div class="col-md-4">
                         <div class="testimony">
-                            <div class="text"><i class="fa fa-quote-left"></i>{{ design.text2 }}<i class="fa fa-quote-right"></i></div>
+                            <div class="text"><i class="fa fa-quote-left"></i>{{ design.text3 }}<i class="fa fa-quote-right"></i></div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="testimony">
-                            <div class="text"><i class="fa fa-quote-left"></i>{{ design.text2 }}<i class="fa fa-quote-right"></i></div>
+                            <div class="text"><i class="fa fa-quote-left"></i>{{ design.text4 }}<i class="fa fa-quote-right"></i></div>
                         </div>
                     </div>
                  </div>
@@ -45,13 +45,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h2>{{ design.title3 }}</h2>
-                        <h3 class="text-muted">{{ design.text4 }}</h3>
+                        <h2>{{ design.title2 }}</h2>
+                        <h3 class="text-muted">{{ design.text5 }}</h3>
                     </div>
+                    <h6 class="text-muted">{{ design.title3 }}</h6>
                 </div>
             </div>
         </section>
-
+        {% if artworks %}
         <section id="section-four" class="container-fluid">
             <div class="container">
                 <div class="row">
@@ -90,44 +91,49 @@
                 </div>
             </div>
         </section>
-
+        {% endif %}
         <section id="contact" class="container-fluid">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-12">
-                        <h3>Écrivez nous !</h3>
+                    <div class="col-xs-6 col-xs-offset-3">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h3>Écrivez nous!</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                {{ form_start(form) }}
+                                {{ form_widget(form.subject, { 'attr': {'class': 'form-control input-md', 'placeholder': 'Votre sujet'} }) }}
+                                {{ form_errors(form.subject) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                {{ form_widget(form.name, { 'attr': {'class': 'form-control input-md', 'placeholder': 'Votre nom'} }) }}
+                                {{ form_errors(form.name) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                {{ form_widget(form.email, { 'attr': {'class': 'form-control input-md', 'placeholder': 'Votre email'} }) }}
+                                {{ form_errors(form.email) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                {{ form_widget(form.message, { 'attr': {'class': 'form-control input-md', 'placeholder': 'Votre message'} }) }}
+                                {{ form_errors(form.message) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                {{ form_rest(form) }}
+                                <input type="submit" value="Envoyer cet email" class="btn btn-custom btn-block">
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    {{ form_start(form) }}
-
-                    <div>
-                        {{ form_widget(form.subject, { 'attr': {'class': 'form-control input-md', 'placeholder': 'Votre sujet'} }) }}
-                        {{ form_errors(form.subject) }}
-                    </div>
-                    <div>
-                        {{ form_widget(form.name, { 'attr': {'class': 'form-control input-md', 'placeholder': 'Votre nom'} }) }}
-                        {{ form_errors(form.name) }}
-                    </div>
-                    <div>
-                        {{ form_widget(form.email, { 'attr': {'class': 'form-control input-md', 'placeholder': 'Votre email'} }) }}
-                        {{ form_errors(form.email) }}
-                    </div>
-                    <div>
-                        {{ form_widget(form.message, { 'attr': {'class': 'form-control input-md', 'placeholder': 'Votre message'} }) }}
-                        {{ form_errors(form.message) }}
-                    </div>
-
-                    {# Render CSRF token etc .#}
-                    <div style="display:none">
-                        {{ form_rest(form) }}
-                    </div>
-
-                    <br>
-
-                    <input type="submit" value="Submit" class="btn btn-custom btn-block">
-
-                    {{ form_end(form) }}
                 </div>
             </div>
         </section>

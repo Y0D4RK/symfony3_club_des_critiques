@@ -20,9 +20,9 @@
                             {# je recupere seulement la premiere oeuvre et je recupere sa category afin de l'afficher dans le titre #}
                             {# name pas fiable #}
                             {% if artworks is not empty %}
-                                <h1> {{ artworks[0].category.name | capitalize }}</h1>
+                                <h1> {{ artworks[0].category.name |capitalize }}</h1>
                             {% else %}
-                                <h1>{{ category[0].name }} </h1>
+                                <h1> {{ category[0].name |capitalize }}</h1>
                             {% endif %}
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                                         <p class="text-muted">{{ artwork.user }}</p>
                                         <hr>
                                         <ul class="list-group black">
-                                            {#<li class="list-group-item list-group-item-heading">{% if artwork.createdAt %}{{ artwork.createdAt|date('Y-m-d H:i:s') }}{% endif %}</li>#}
+                                            <li class="list-group-item list-group-item-heading">{% if artwork.createdAt %}{{ artwork.createdAt|date('Y-m-d H:i:s') }}{% endif %}</li>
                                             <li class="list-group-item list-group-item-text"> {{ artwork.description }}</li>
                                         </ul>
                                     </div>
