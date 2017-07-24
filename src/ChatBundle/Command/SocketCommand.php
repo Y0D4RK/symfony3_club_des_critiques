@@ -32,6 +32,7 @@ class SocketCommand extends Command
             'Starting chat, open your browser.',// Empty line
         ]);
 
+
         // The domain of your app as first parameter
         // Note : if you got problems during the initialization, add as third parameter '0.0.0.0'
         // to prevent any error related to localhost :
@@ -42,7 +43,7 @@ class SocketCommand extends Command
         // Add route to chat with the handler as second parameter
 //        foreach($rooms as $room){
 //            $app->route($room->getRoute(), new Chat);
-        $app->route('/room/1/show', new Chat);
+                $app->route('/room/1/show', new Chat);
 //        }
         // To add another routes, then you can use :
         //$app->route('/america-chat', new AmericaChat);

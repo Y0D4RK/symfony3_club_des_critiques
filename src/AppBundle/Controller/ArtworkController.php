@@ -70,9 +70,6 @@ class ArtworkController extends Controller
             throw new NotFoundHttpException("La categorie ".$name." n'existe pas.");
         }
 
-        //        $em = $this->getDoctrine()->getManager();
-        //        $categoryName = $this->getRepository('AppBundle:Category')->findAll();
-
         return $this->render('club/artwork/new.html.twig', array(
             'categoryName' => $category,
             'artwork' => $artwork,
@@ -99,15 +96,15 @@ class ArtworkController extends Controller
         //Vote artwork
         $score = $artwork->getScore();      //Récupérer le score de l'artwork
         $vote = $request->request->get('vote');     //Récupérer le vote en js
+
         if (isset($vote)){
-            $score = $artwork->getScore();
-            $nb_votes = $artwork->getVoteCount();
+            $score = $artwork->getScore(); // 3 - car (5 + 1) / 2
+            $nb_votes = $artwork->getVoteCount(); // 2
 
             $new_score = (($score * $nb_votes) + $vote) / ($nb_votes + 1);      //On calcule le nouveau score
             $new_score = round($new_score);
 
             $new_nb_votes = $nb_votes + 1;
-
 
             //Verifier si l'user a deja voté pour cette oeuvre
             $scores = $em->getRepository('AppBundle:Score')->findAll();

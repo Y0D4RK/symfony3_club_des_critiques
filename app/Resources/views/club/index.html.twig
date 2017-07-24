@@ -3,137 +3,142 @@
 {% block content %}
 
 
-    <section id="header">
-        <div class="header-content">
-            <div class="header-content-inner">
-                <h1 id="homeHeading">{{ design.title }}</h1>
-                <hr>
-                <p><span style="font-size: 26px;"><strong>{{ design.slogan }}</strong></span></p>
+    <div id="landing">
+        <section id="section-one" class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <h1 id="landing-title" class="title">{{ design.title }}</h1>
+                    <hr>
+                    <h2><strong>{{ design.slogan }}</strong></h2>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="bg-primary" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">{{ design.title1 }}</h2>
-                    <hr class="light">
-                    <p class="text-faded">{{ design.text1 }}</p>
-                    <div class="temoignage">
-                        <div class="container">
-                            <div class="text-container">
-                                <div class="text">{{ design.text2 }}</div>
-                            </div>
-                            <span><div class="fa fa-quote-left"></div></span>
-                            <span><div class="fa fa-quote-right"></div></span>
+        <section id="section-two" class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <h1 class="title">{{ design.title1 }}</h1>
+                    <hr>
+                    <h6>{{ design.text1 }}</h6>
+                </div>
+                <div class="row temoignage">
+                    <div class="container">
+                        <div class="text-container">
+                            <div class="text">{{ design.text2 }}</div>
                         </div>
+                        <span><i class="fa fa-quote-left"></i></span>
+                        <span><i class="fa fa-quote-right"></i></span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="bg-secondary" id="concept">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="col-lg-4 text-center">
-                        <h2>{{ design.title2 }}</h2>
-                    </div>
-                    <div class="col-lg-offset-1 col-lg-7">
-                        <p>{{ design.text3 }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="bg-tertiary" id="latest">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">{{ design.title3 }}</h2>
-                    <h3 class="section-subheading text-muted">{{ design.text4 }}</h3>
-                </div>
-            </div>
-            <div class="row">
-                {% for artwork in artworks %}
-                    {% if artwork.enabled == true %}
-                        <div class="col-md-4 col-sm-6 latest">
-                            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                            <a href="{{ path('artwork_show', { 'id': artwork.id }) }}" class="box-link"></a>
-                            {% else %}
-                            <a href="{{ path('fos_user_security_login') }}" class="box-link">
-                            {% endif %}
-                                <div class="box-hover">
-                                    <div class="box-hover-content">
-                                        <i class="fa fa-plus fa-3x"></i>
-                                    </div>
+        <section id="section-three" class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 text-center">
+                        <h2 class="section-heading">{{ design.title1 }}</h2>
+                        <hr class="light">
+                        <p class="text-faded">{{ design.text1 }}</p>
+                        <div class="temoignage">
+                            <div class="container">
+                                <div class="text-container">
+                                    <div class="text">{{ design.text2 }}</div>
                                 </div>
-                                {% if vich_uploader_asset(artwork, 'cover') is not empty %}
-                                    <img src="{{ vich_uploader_asset(artwork, 'cover') }}" alt="{{ artwork.name }}" class="img-responsive" width="180" height="180"/>
-                                {% elseif artwork.coverUrl is not empty %}
-                                    <img src="{{ artwork.coverUrl }}" alt="coverUrl" class="img-responsive" width="180" height="180">
-                                {% else %}
-                                    <img src="{{ asset('images/cover/unknow_cover.jpg') }}" alt="unknow" class="img-responsive" width="180" height="180">
-                                {% endif %}
-                            </a>
-                            <div class="box-caption">
-                                <h4>{{ artwork.name }}</h4>
-                                <hr>
-                                <ul class="list-group black">
-                                    <li class="list-group-item list-group-item-heading"> {{ artwork.category.name | capitalize }}</li>
-                                    <li class="list-group-item list-group-item-text"> {{ artwork.description }}</li>
-                                </ul>
+                                <span><i class="fa fa-quote-left"></i></span>
+                                <span><i class="fa fa-quote-right"></i></span>
                             </div>
                         </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 style="color: white;">Écrivez nous !</h2>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                {{ form_start(form) }}
+        </section>
 
-                <div>
-                    {{ form_widget(form.subject, { 'attr': {'class': 'form-control input-md', 'placeholder': 'Votre sujet'} }) }}
-                    {{ form_errors(form.subject) }}
+        <section class="bg-tertiary" id="latest">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">{{ design.title3 }}</h2>
+                        <h3 class="section-subheading text-muted">{{ design.text4 }}</h3>
+                    </div>
                 </div>
-                <div>
-                    {{ form_widget(form.name, { 'attr': {'class': 'form-control input-md', 'placeholder': 'Votre nom'} }) }}
-                    {{ form_errors(form.name) }}
+                <div class="row">
+                    {% for artwork in artworks %}
+                        {% if artwork.enabled == true %}
+                            <div class="col-md-4 col-sm-6 latest">
+                                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                <a href="{{ path('artwork_show', { 'id': artwork.id }) }}" class="box-link"></a>
+                                {% else %}
+                                <a href="{{ path('fos_user_security_login') }}" class="box-link">
+                                {% endif %}
+                                    <div class="box-hover">
+                                        <div class="box-hover-content">
+                                            <i class="fa fa-plus fa-3x"></i>
+                                        </div>
+                                    </div>
+                                    {% if vich_uploader_asset(artwork, 'cover') is not empty %}
+                                        <img src="{{ vich_uploader_asset(artwork, 'cover') }}" alt="{{ artwork.name }}" class="img-responsive" width="180" height="180"/>
+                                    {% elseif artwork.coverUrl is not empty %}
+                                        <img src="{{ artwork.coverUrl }}" alt="coverUrl" class="img-responsive" width="180" height="180">
+                                    {% else %}
+                                        <img src="{{ asset('images/cover/unknow_cover.jpg') }}" alt="unknow" class="img-responsive" width="180" height="180">
+                                    {% endif %}
+                                </a>
+                                <div class="box-caption">
+                                    <h4>{{ artwork.name }}</h4>
+                                    <hr>
+                                    <ul class="list-group black">
+                                        <li class="list-group-item list-group-item-heading"> {{ artwork.category.name | capitalize }}</li>
+                                        <li class="list-group-item list-group-item-text"> {{ artwork.description }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
-                <div>
-                    {{ form_widget(form.email, { 'attr': {'class': 'form-control input-md', 'placeholder': 'Votre email'} }) }}
-                    {{ form_errors(form.email) }}
-                </div>
-                <div>
-                    {{ form_widget(form.message, { 'attr': {'class': 'form-control input-md', 'placeholder': 'Votre message'} }) }}
-                    {{ form_errors(form.message) }}
-                </div>
-
-                {# Render CSRF token etc .#}
-                <div style="display:none">
-                    {{ form_rest(form) }}
-                </div>
-
-                <br>
-
-                <input type="submit" value="Submit">
-
-                {{ form_end(form) }}
             </div>
-        </div>
-    </section>
+        </section>
 
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 style="color: white;">Écrivez nous !</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    {{ form_start(form) }}
+
+                    <div>
+                        {{ form_widget(form.subject, { 'attr': {'class': 'form-control input-md', 'placeholder': 'Votre sujet'} }) }}
+                        {{ form_errors(form.subject) }}
+                    </div>
+                    <div>
+                        {{ form_widget(form.name, { 'attr': {'class': 'form-control input-md', 'placeholder': 'Votre nom'} }) }}
+                        {{ form_errors(form.name) }}
+                    </div>
+                    <div>
+                        {{ form_widget(form.email, { 'attr': {'class': 'form-control input-md', 'placeholder': 'Votre email'} }) }}
+                        {{ form_errors(form.email) }}
+                    </div>
+                    <div>
+                        {{ form_widget(form.message, { 'attr': {'class': 'form-control input-md', 'placeholder': 'Votre message'} }) }}
+                        {{ form_errors(form.message) }}
+                    </div>
+
+                    {# Render CSRF token etc .#}
+                    <div style="display:none">
+                        {{ form_rest(form) }}
+                    </div>
+
+                    <br>
+
+                    <input type="submit" value="Submit">
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </section>
+    </div>
 {% endblock %}
 
