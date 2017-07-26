@@ -1,4 +1,4 @@
-{% extends '::empty.html.twig' %}
+{% extends '::base.html.twig' %}
 
 {% block content %}
     {% trans_default_domain 'FOSUserBundle' %}
@@ -35,23 +35,6 @@
                         <input type="submit" class="btn btn-custom btn-lg btn-block" value="{{ 'registration.submit'|trans }}" />
                     </form>
                     <hr>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="list-inline quicklinks">
-                            <li><a href="#">Conditions générales</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div> <!-- /.col-xs-12 -->
         </div> <!-- /.row -->

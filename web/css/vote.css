@@ -43,14 +43,16 @@
    ========================================================================== */
 .vote_star {
     font-size: 30px;
-    color: #fff741;
+    color: #F5C711;
     cursor: pointer;
     float: left;
 }
 .vote_stars:hover .vote_star {
-    color: #fff741 !important; }
+    color: #F5C711 !important; }
 .vote_stars:hover .vote_star:hover ~ .vote_star {
     color: #262829 !important; }
+.is-score0 .vote_star{
+    color: #262829; !important}
 .is-score1 .vote_star1 ~ .vote_star {
     color: #262829; }
 .is-score2 .vote_star2 ~ .vote_star {

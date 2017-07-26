@@ -83,12 +83,39 @@ section{
     border-left: 3px solid #125740;
     border-bottom: 3px solid #125740;
     color: #FFF;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 .btn.btn-custom:hover{
     background-color: #125740;
     color: #FFF;
 }
+.btn.btn-danger {
+    font-size: 14px;
+    background-color: #D9534F;
+    border: none;
+    border-left: 3px solid #AC2925;
+    border-bottom: 3px solid #AC2925;
+    color: #FFF;
+    margin-bottom: 10px;
+}
+.btn.btn-danger:hover{
+    background-color: #AC2925;
+    color: #FFF;
+}
+.btn.btn-warning {
+    font-size: 14px;
+    background-color: #F0AD4E;
+    border: none;
+    border-left: 3px solid #d58512;
+    border-bottom: 3px solid #d58512;
+    color: #FFF;
+    margin-bottom: 10px;
+}
+.btn.btn-warning:hover{
+    background-color: #d58512;
+    color: #FFF;
+}
+
 #section-two .testimonials{
     margin-top: 40px;
 }
@@ -105,6 +132,54 @@ section{
 .fa-quote-right{
     color: #e47d4b;
     padding: 10px;
+}
+
+#artwork{
+    padding-top: 51px;
+    width: 100%;
+    text-align: center;
+}
+
+#artwork header{
+    padding: 40px;
+    position: relative;
+    width: 100%;
+    background-size: cover;
+    background-image: url('../images/copperh.jpg');
+    background-attachment: fixed;
+    text-align: left;
+    color: #FFF;
+}
+#artwork #description{
+    padding: 5% 0 5% 7%;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+#artwork #description .similar{
+    padding: 4% 0 0 0;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+#artwork #description .box-caption {
+    padding: 5px;
+}
+
+#artwork #description .similar .box-caption {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e6e6e6;
+}
+
+.img-center{
+    display: block;
+    margin: 0 auto;
+}
+
+a{
+    transition: all 0.35s;
+    color: #444;
 }
 
 footer {

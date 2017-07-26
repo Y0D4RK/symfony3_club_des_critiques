@@ -20,7 +20,7 @@ $(document).ready(function(){
             ref_id: $vote.data('ref_id'),
             vote: value
         }).done(function(data, textStatus, jqXHR){
-            $vote.removeClass('is-liked is-disliked is-score1 is-score2 is-score3 is-score4 is-score5');
+            $vote.removeClass('is-score0 is-score1 is-score2 is-score3 is-score4 is-score5');
             if(data.success){
                 $vote.addClass('is-score' + Math.round(data.success));
                 alert(data.message);

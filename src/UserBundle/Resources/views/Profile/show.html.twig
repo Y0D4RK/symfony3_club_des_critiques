@@ -16,13 +16,6 @@
                 <h1 class="profil-name">{{ user.username }}</h1>
                 <h4 class="profil-title">{{ user.firstname }} {{ user.lastname }} • {% if user.birthdate is not empty %} {{ user.birthdate|date("d/m/Y") }}{% endif %}</h4>
                 <span class="profil-title">{{ user.description }}</span>
-                <div>
-                    {% if user == current_user %}
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <a href="{{ path('admin', { 'id': 1 }) }}" class="btn btn-block btn-warning">Accéder à l'administration du site</a>
-                        {% endif %}
-                    {% endif %}
-                </div>
             </div>
         </div>
 

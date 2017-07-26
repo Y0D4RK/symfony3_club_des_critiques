@@ -30,7 +30,7 @@ class ArtworkType extends AbstractType
             ->add('publishAt', DateType::class, array(
                 'widget' => 'single_text',
                 // this is actually the default format for single_text
-                'format' => 'dd/mm/YYYY',
+                'format' => 'yyyy-MM-dd',
             ))
             ->add('cover', VichFileType::class, [
                 'allow_delete' => true,

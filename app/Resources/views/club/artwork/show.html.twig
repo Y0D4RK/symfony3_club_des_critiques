@@ -2,101 +2,83 @@
 
 {% block content %}
 
-    <header id="content">
-        <div class="container">
-            <div class="row">
-                <div class="content-title col-lg-12">
-                    <div class="col-md-3 latest">
-                        <div class="box-link">
-                            <div class="box-hover">
-                                <div class="box-hover-content">
-                                    <div class="content">
-                                        <div class="center-block vote is-score{{ score }}" id="vote" data-ref="{{ artwork.category }}" data-ref_id="{{ artwork.id }}" data-user_id="{# user.id #}">
-                                            <div class="vote_stars center-block">
-                                                <span class="vote_star vote_star1" data-score="1"></span>
-                                                <span class="vote_star vote_star2" data-score="2"></span>
-                                                <span class="vote_star vote_star3" data-score="3"></span>
-                                                <span class="vote_star vote_star4" data-score="4"></span>
-                                                <span class="vote_star vote_star5" data-score="5"></span>
-                                            </div>
-                                            <div class="vote_loading">Chargement...</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {% if vich_uploader_asset(artwork, 'cover') is not empty %}
-                                <img src="{{ vich_uploader_asset(artwork, 'cover') }}" alt="{{ artwork.name }}" class="img-responsive" width="180" height="180"/>
-                            {% elseif artwork.coverUrl is not empty %}
-                                <img src="{{ artwork.coverUrl }}" alt="coverUrl" class="img-responsive" width="180" height="180">
-                            {% else %}
-                                <img src="{{ asset('images/cover/unknow_cover.jpg') }}" alt="unknow" class="img-responsive" width="180" height="180">
-                            {% endif %}
-                        </div>
+    <div id="artwork">
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-xs-12">
+                        {% if vich_uploader_asset(artwork, 'cover') is not empty %}
+                            <img src="{{ vich_uploader_asset(artwork, 'cover') }}" alt="{{ artwork.name }}" class="img-responsive img-center" width="180" height="180"/>
+                        {% elseif artwork.coverUrl is not empty %}
+                            <img src="{{ artwork.coverUrl }}" alt="cover" class="img-responsive img-center" width="180" height="180">
+                        {% else %}
+                            <img src="{{ asset('images/cover/unknow_cover.jpg') }}" alt="cover undefined" class="img-responsive img-center" width="180" height="180">
+                        {% endif %}
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-8 col-xs-12">
                         <h1>{{ artwork.name }}</h1>
-                        <p class="">Publié par {{ artwork.edithor }} {% if artwork.publishAt %} le {{ artwork.publishAt|date('d/m/Y') }}{% endif %}</p>
-                        <p><span style="font-size: 22px;"><strong> {{ artwork }}</strong></span></p>
-                        <p>{% if artwork.user %} Ajouté par  <a href="{{ path('fos_user_profile_show_name', {'username': artwork.user}) }}">{{ artwork.user }}</a>{% endif %} {% if artwork.publishAt %} le {{ artwork.createdAt|date('d/m/Y') }}{% endif %} </p>
-                        <p></p>
-                        {% if artwork.user == currentUserName %}
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <a href="{{ path('artwork_edit', { 'id': artwork.id }) }}" class="">
-                                        <button type="" class="btn btn-warning"><i class="fa fa-pencil-square-o"></i> Modifier</button>
-                                    </a>
-                                </div>
-                                <div class="col-md-2">
-                                    {{ form_start(delete_form) }}
-                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i> Supprimer</button>
-                                    {{ form_end(delete_form) }}
-                                </div>
+                        <p>Publié par {{ artwork.edithor }} {% if artwork.publishAt %} le {{ artwork.publishAt|date('d/m/Y') }}{% endif %}</p>
+                        <p>Ajouté par <a href="{{ path('fos_user_profile_show_name', {'username': artwork.user}) }}">{{ artwork.user }}</a> {% if artwork.createdAt %} le {{ artwork.createdAt|date('d/m/Y') }}{% endif %}</p>
+                        <div class="vote is-score{{ score }}" id="vote" data-ref="{{ artwork.category }}" data-ref_id="{{ artwork.id }}">
+                            <div class="vote_stars">
+                                <span class="vote_star vote_star1" data-score="1"></span>
+                                <span class="vote_star vote_star2" data-score="2"></span>
+                                <span class="vote_star vote_star3" data-score="3"></span>
+                                <span class="vote_star vote_star4" data-score="4"></span>
+                                <span class="vote_star vote_star5" data-score="5"></span>
                             </div>
+                            <div class="vote_loading">Chargement...</div>
+                        </div>
+                        {% if artwork.user == currentUserName %}
+                        <a href="{{ path('artwork_edit', { 'id': artwork.id }) }}" class="btn btn-warning">
+                            <i class="fa fa-pencil-square-o"></i> Modifier
+                        </a>
+                        {{ form_start(delete_form) }}
+                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i> Supprimer</button>
+                        {{ form_end(delete_form) }}
                         {% endif %}
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
-
-    <section id="description">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7">
-                    <h3>Resumé</h3>
-                    <div class="description">
+        </header>
+        <section id="description">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Synopsis</h3>
                         <p>{{ artwork.description }}</p>
                     </div>
                 </div>
-                <div class="col-lg-5">
-                    <h3 class="text-center">Œuvre Similaires</h3>
-                    {% for artworkSim in artworksSimilary %}
-                        {% if artworkSim.id != artwork.id %}
-                        <div class="similar latest">
-                            <a href="" class="box-link">
-                                <div class="box-hover">
-                                    <div class="box-hover-content">
-                                        <i class="fa fa-plus fa-3x"></i>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Œuvre Similaires</h3>
+                        {% for artworkSim in artworksSimilary %}
+                            {% if artworkSim.id != artwork.id %}
+                            <div class="similar">
+                                <a href="" class="box-link">
+                                    <div class="box-hover">
+                                        <div class="box-hover-content">
+                                            <i class="fa fa-plus fa-3x"></i>
+                                        </div>
                                     </div>
+                                    {% if vich_uploader_asset(artworkSim, 'cover') is not empty %}
+                                        <img src="{{ vich_uploader_asset(artworkSim, 'cover') }}" alt="{{ artworkSim.name }}" class="img-responsive" width="180" height="180"/>
+                                    {% elseif artworkSim.coverUrl is not empty %}
+                                        <img src="{{ artworkSim.coverUrl }}" alt="cover" class="img-responsive" width="180" height="180">
+                                    {% else %}
+                                        <img src="{{ asset('images/cover/unknow_cover.jpg') }}" alt="unknow" class="img-responsive" width="180" height="180">
+                                    {% endif %}
+                                </a>
+                                <div class="box-caption">
+                                    <h4>{{ artworkSim.name }}</h4>
+                                    <p class="text-muted">{{ artworkSim.author }}</p>
                                 </div>
-                                {% if vich_uploader_asset(artworkSim, 'cover') is not empty %}
-                                    <img src="{{ vich_uploader_asset(artworkSim, 'cover') }}" alt="{{ artworkSim.name }}" class="img-responsive" width="180" height="180"/>
-                                {% elseif artworkSim.coverUrl is not empty %}
-                                    <img src="{{ artworkSim.coverUrl }}" alt="cover" class="img-responsive" width="180" height="180">
-                                {% else %}
-                                    <img src="{{ asset('images/cover/unknow_cover.jpg') }}" alt="unknow" class="img-responsive" width="180" height="180">
-                                {% endif %}
-                            </a>
-                            <div class="box-caption">
-                                <h4>{{ artworkSim.name }}</h4>
-                                <p class="text-muted">{{ artworkSim.author }}</p>
                             </div>
-                        </div>
-                        {% endif %}
-                    {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
+        </section>
+    </div>
 {% endblock %}

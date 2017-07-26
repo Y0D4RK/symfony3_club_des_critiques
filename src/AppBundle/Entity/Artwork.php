@@ -140,6 +140,8 @@ class Artwork
         $this->category = new ArrayCollection();
         $this->createdAt = new \DateTime('now');
         $this->enabled = false;
+        $this->score = 0;
+        $this->voteCount = 0;
     }
 
     public function __toString()

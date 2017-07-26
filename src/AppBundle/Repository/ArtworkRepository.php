@@ -10,4 +10,14 @@ namespace AppBundle\Repository;
  */
 class ArtworkRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findBestArtwork()
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->select('a')
+            ->where('g.score = :max')
+            ->setParameter(':max', 4)
+            ->getQuery()
+            ->getResult();
+        return $qb;
+    }
 }
