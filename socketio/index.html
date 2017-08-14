@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>WebSockets - Simple chat avec Node.js</title>
+        <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="/components-font-awesome/css/font-awesome.css">
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <div id="modalSign" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h3 class="modal-title">WELCOME</h3>
+                        <p class="text-warning">Node.JS and Websocket.IO</p>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" id="formLogin" class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-xs-6 col-xs-offset-3">
+                                    <input type="text" id="username" name="username" class="form-control" placeholder="Nom d'utilisateur">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-6 col-xs-offset-3">
+                                    <input type="text" id="mail" name="mail" class="form-control" placeholder="E-mail">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-6 col-xs-offset-3">
+                                    <input type="submit" value="Se connecter" class="btn btn-primary btn-block">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-2 no-padding">
+                    <div id="users">
+                        <h3>En ligne</h3>
+                    </div>
+                </div>
+                <div class="col-xs-10 no-padding">
+                    <div id="messages">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <form action="" id="form" class="form-inline">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="input-group input-group-md">
+                                    <input type="text" id="message" class="form-control" placeholder="Message">
+                                    <div class="input-group-btn">
+                                        <input type="submit" id="send" class="btn" value="Envoyer">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/jquery/dist/jquery.js"></script>
+        <script src="/bootstrap/js/modal.js"></script>
+        <script>
+            var socket = io.connect('http://localhost:4200');
+            var lastmsg = false;
+
+            $(window).on('load',function(){
+                $('#modalSign').modal({
+                    show: true,
+                    backdrop: 'static',
+                    keyboard: false
+                });
+
+                if($('#messages').empty()){
+                    $('#messages').append('<h2 class="text-center h2">Aucun message</h2>');
+                }
+            });
+
+            $('#formLogin').submit(function(event){
+                event.preventDefault();
+                if(!$('#username').val()) {
+                    alert('Vous devez choisir un username valide')
+                }else{
+                    socket.emit('login', {
+                        username : $('#username').val(),
+                        mail     : $('#mail').val()
+                    });
+                }
+            });
+
+            socket.on('logged', function(){
+                $('#modalSign').modal('hide');
+                $('#message').focus();
+            });
+
+            $('#form').submit(function(event){
+                event.preventDefault();
+                socket.emit('newmsg', {message: $('#message').val()});
+                $('#message').val('');
+                $('#message').focus();
+            });
+
+            socket.on('newmsg', function(message){
+//                console.log(message.me);
+//                console.log(message.message);
+
+                if( lastmsg != message.me.username ){
+                    $('#messages').append('<div class="space"></div>');
+                    lastmsg = message.me.username;
+                }
+
+                $('.h2').remove();
+
+                $('#messages').append('<div class="message '+message.me.username+'">'+
+                                        '<img src="'+message.me.avatar+'" class="img-responsive img-rounded" width="50">'+
+                                        '<div class="info">'+
+                                            '<p class="username"><strong>'+message.me.username+'</strong></p>'+
+                                            '<p class="msgreceive">'+message.message+'</p>'+
+                                            '<span class="date">'+ message.h +':'+ message.min +'</span>'+
+                                        '</div><div class="both"></div>'+
+                                      '</div>'
+                );
+                $('.space').prev().css('border-bottom-left-radius', '10px');
+                $('.space').next().css('border-top-left-radius', '10px');
+
+
+
+                $('#messages').animate({scrollTop : $('#messages').prop('scrollHeight') }, 50);
+            });
+
+            socket.on('newuser', function(user){
+                $('#users').append('<img src="'+ user.avatar +'" id="'+user.id+'" class="img-responsive img-rounded center-block">');
+            });
+
+            socket.on('disuser', function(user){
+                $('#'+user.id).remove();
+            });
+        </script>
+    </body>
+</html>
