@@ -87,6 +87,14 @@ class User extends BaseUser
      */
     private $artworks;
 
+    /**
+     *
+     * @ORM\Column(name="token_tchat", type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    protected $tokenTchat;
+
     public function __toString()
     {
         return $this->username;
