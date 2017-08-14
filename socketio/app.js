@@ -43,14 +43,23 @@ io.on('connection', function(socket) {
     }
 
     socket.on('login', function(user){
-        console.log(getUserInfos(user.id));
         me = user;
+
         me.id = user.mail.replace('@', '-').replace('.', '-');
         me.mail = user.mail;
         me.username = user.username;
         me.avatar = 'https://gravatar.com/avatar/'+md5(user.mail)+ '?s=100';
+
         socket.emit('logged');
+
         users[me.id] = me;
+
+        // console.log( getUserInfos(me.email).then(
+        //     (user) => {
+        //         socket.user=user;
+        //     }
+        // ));
+
         io.sockets.emit('newuser', me)
     });
 
@@ -78,22 +87,23 @@ io.on('connection', function(socket) {
 
 });
 
-function getUserInfos(id){
-    return new Promise(function (fulfill, reject){
-        var sql = `SELECT u.id, u.username, u.avatarName
-                    FROM user u
-                    WHERE u.id = ${db.escape(id)}`;
-
-            db.query(sql,(err, rows, fields) => {
-
-            if (!err){
-                return fulfill(rows[0]);
-            }else{
-                reject(err);console.log('Erreur a la recup du user')
-            }
-        });
-    })
-}
+// function getUserInfos(email){
+//     return new Promise(function (resolve, reject){
+//         var sql = `SELECT u.id, u.username, u.avatarName, u.email_canonical
+//                     FROM user u
+//                     WHERE u.email_canonical = ${db.escape(email)}`;
+//
+//             db.query(sql,(err, rows, fields) => {
+//
+//             if (!err){
+//                 return resolve(rows[0]);
+//             }else{
+//                 reject(err);
+//                 console.log('Erreur a la recup du user');
+//             }
+//         });
+//     })
+// }
 
 
 server.listen(4200);
