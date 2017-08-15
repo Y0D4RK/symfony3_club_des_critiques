@@ -97,6 +97,8 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/socket.io.js') }}"></script>
     <script>
          $( document ).ready(function() {
@@ -108,7 +110,7 @@
             var startChat;
 
             $(function(){
-                var socket = io.connect('http://localhost:8222');
+                var socket = io.connect('http://localhost:4200');
                 var lastmsg = false;
 
                 $(window).on('load',function(){
@@ -146,13 +148,13 @@
                     })
                 }
 
-//
-//                $('#form').submit(function(event){
-//                    event.preventDefault();
-//                    socket.emit('newmsg', {message: $('#message').val()});
-//                    $('#message').val('');
-//                    $('#message').focus();
-//                });
+
+                $('#form').submit(function(event){
+                    event.preventDefault();
+                    socket.emit('newmsg', {message: $('#message').val()});
+                    $('#message').val('');
+                    $('#message').focus();
+                });
 
                 socket.on('newmsg', function(message){
     //                console.log(message.me);

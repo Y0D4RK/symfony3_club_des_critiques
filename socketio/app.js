@@ -21,9 +21,9 @@ var db = mysql.createConnection({
 app.use(express.static(__dirname + '/bower_components'));
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', function(req, res,next) {
+/*app.get('/', function(req, res, next) {
     res.sendFile(__dirname + '/index.html');
-});
+});*/
 
 var users = {};
 var messages = [];
@@ -33,9 +33,12 @@ io.on('connection', function(socket) {
 
     var me = false;
 
-    console.log('Nouveau user in the chat');
+    var id = 1;
+    console.log('Nouveau user in the chat '+id);
+
 
     for(var u in users){
+        id = id++;
         socket.emit('newuser', users[u]);
     }
     for(var m in messages){
