@@ -10,6 +10,11 @@ body {
 /*h1, h2, h3, h4, h5, h6{
     font-weight: 800;
 }*/
+h1{
+    font-size: 80px;
+    font-weight: 800;
+
+}
 /* NAVBAR */
 .navbar{
     margin-bottom: 0;
@@ -46,7 +51,6 @@ body {
     width: 100%;
     background-position: center;
     background-size: 100%;
-    background-position-y: -350px;
     background-image: url(../images/natural.jpg);
     background-color: #B2D5CC;
     background-repeat: no-repeat;

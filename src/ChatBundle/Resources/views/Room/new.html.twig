@@ -1,4 +1,4 @@
-{% extends '::form.html.twig' %}
+{% extends '::base.html.twig' %}
 
 {% block content %}
 
@@ -7,28 +7,28 @@
             <div class="col-xs-12 text-center">
                 <a href="{{ path('room_index') }}">
                     <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                        <span aria-hidden="true"><i class="fa fa-close" aria-hidden="true"></i></span>
                     </button>
                 </a>
                 <div class="form-wrap">
                     <h1>Créer un salon</h1>
                     {{ form_start(form) }}
                     <div class="form-group">
-                        {{ form_widget(form.name, { 'attr': {'class': 'form-control', 'placeholder': 'nom'|trans } }) }}
+                        {{ form_widget(form.name, { 'attr': {'class': 'form-control', 'placeholder': 'nom' } }) }}
                         {{ form_errors(form.name) }}
                     </div>
                     <div class="form-group">
-                        {{ form_widget(form.artwork, { 'attr': {'class': 'form-control', 'placeholder': 'Oeuvres'|trans } }) }}
+                        {{ form_widget(form.artwork, { 'attr': {'class': 'form-control', 'placeholder': 'Oeuvres' } }) }}
                         {{ form_errors(form.artwork) }}
                     </div>
                     <div class="form-group">
                         <label>Date de début</label>
-                        {{ form_widget(form.startedAt, { 'attr': {'class': '', 'placeholder': 'Commence à'|trans } }) }}
+                        {{ form_widget(form.startedAt, { 'attr': {'class': 'form-control ', 'placeholder': 'Commence à'} }) }}
                         {{ form_errors(form.startedAt) }}
                     </div>
                     <div class="form-group">
                         <label>Date de fin</label>
-                        {{ form_widget(form.closedAt, { 'attr': {'class': '', 'placeholder': 'Se termine à'|trans } }) }}
+                        {{ form_widget(form.closedAt, { 'attr': {'class': 'form-control', 'placeholder': 'Se termine à' } }) }}
                         {{ form_errors(form.closedAt) }}
                     </div>
 

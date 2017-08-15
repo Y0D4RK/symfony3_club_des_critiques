@@ -19,12 +19,12 @@ class RoomType extends AbstractType
                 ->add('startedAt', DateType::class, array(
                 'widget' => 'single_text',
                 // this is actually the default format for single_text
-                'format' => 'dd/MM/yyyy',
+                'format' => 'yyyy-MM-dd',
             ))
                 ->add('closedAt', DateType::class, array(
                 'widget' => 'single_text',
                 // this is actually the default format for single_text
-                'format' => 'dd/MM/yyyy',
+                'format' => 'yyyy-MM-dd',
             ))
         ;
     }

@@ -57,13 +57,15 @@ body{
 #message{
     width: 100%;
 }
+.msgreceive{
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    font-size: 12px;
+}
 .bordered{
     border: 1px solid #0f0f0f;
     border-radius: 0;
-}
-
-.message .info + p{
-    font-size: 12px;
 }
 .message img{
     display: inline-block;
@@ -72,6 +74,8 @@ body{
 }
 .message .info{
     display: inline-block;
+    width: 80%;
+    background-color: red;
 }
 .message .date{
     position: absolute;

@@ -2,16 +2,13 @@
 
 
 {% block content %}
-    {% if voted == false %}
-    <div id="room-content">
-    {% endif %}
     {% if room.status %}
         <header id="salon">
             <div class="container">
                 <div class="row">
                     <div class="salon content-title col-lg-12">
                         <div class="col-md-7">
-                            <h1>{{ room.artwork.name | capitalize }}</h1>
+                            <h2>{{ room.artwork.name | capitalize }}</h2>
                             <h3 class="text-warning">  {{ room.name | capitalize }} </h3>
                             <p class="text-muted">Créé par {{ room.creator | capitalize }}</p>
                             <p class="text-info"> Du {% if room.startedAt %}{{ room.startedAt|date('d/m/Y H:i:s') }}{% endif %} au {% if room.closedAt %}{{ room.closedAt|date('d/m/Y H:i:s') }}{% endif %}</p>
@@ -26,41 +23,42 @@
                 </div>
             </div>
         </header>
-        <div id="chat">
-            <div class="container">
-                <div class="row box-chat">
-                    <div class="col-xs-8">
-                        <h3>Chat du salon</h3>
-                        <ul id="chat-list">
-                            {#message.message#}
-                        </ul>
-                        <div class="form-group">
-                            <textarea id="chat-message" placeholder="Votre message" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input type="button" id="chat-submit" value="Envoyer" class="btn btn-default"/>
-                        </div>
-                    </div>
-                    <div class="col-xs-4">
-                        <h3>Participants</h3>
-                        <div class="participants-list">
-                            <ul class="list-group">
-                                <li>err</li>
-                                <li>err</li>
-                                <li>err</li>
-                            </ul>
-                        </div>
+        <div id="container">
+             <div class="row">
+                <div class="col-xs-2 no-padding">
+                    <div id="users">
+                        <h3>En ligne</h3>
                     </div>
                 </div>
+                <div class="col-xs-10 no-padding">
+                    <div id="messages">
 
+                    </div>
+                </div>
             </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <form action="" id="form" class="form-inline">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="input-group input-group-md">
+                                    <input type="text" id="message" class="form-control" placeholder="Message">
+                                    <div class="input-group-btn">
+                                        <input type="submit" id="send" class="btn" value="Envoyer">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
            {#
             <a href="{{ path('room_index') }}" class="btn btn-default">Retour à la liste des salons</a>
             {{ form_start(delete_form) }}
             <input type="submit" value="Delete" class="btn btn-danger">
             {{ form_end(delete_form) }}#}
-
-        </div>
     {% else %}
         <header id="salon">
             <div class="container">
@@ -69,14 +67,13 @@
                         <div class="col-md-7">
                             <h1>Salon {{ room.name }} </h1>
                             <p class="text-muted">{{ room.creator }}</p>
-                            <p></p>
+                            <p>Ce salon est fermé</p>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
     {% endif %}
-    </div>
 
 
     {% if voted == false %}
@@ -100,9 +97,7 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/moment.min.js') }}"></script>
-    <script src="{{ asset('js/moment.locale.fr.js') }}"></script>
+    <script src="{{ asset('js/socket.io.js') }}"></script>
     <script>
          $( document ).ready(function() {
             document.getElementById("room-content").style.opacity = "0.5";
@@ -110,74 +105,91 @@
         });
     </script>
     <script>
-        // This object will be sent everytime you submit a message in the sendMessage function.
-        var clientInformation = {
-            username: '<strong>{{ user.username | capitalize }}</strong>',
-            avatar:'<img src="{% if vich_uploader_asset(user, 'avatar') is not empty %} {{ vich_uploader_asset(user, 'avatar') }} {% else %} {{ asset('images/avatar/unknow_user.png') }} {% endif %}" height="30" width="30" class="img-circle img-responsive" style="display: inline-block">'
-        };
+            var startChat;
 
-        // START SOCKET CONFIG
-        /**
-         * Note that you need to change the "sandbox" for the URL of your project.
-         * According to the configuration in Sockets/Chat.php , change the port if you need to.
-         * @type WebSocket
-         */
+            $(function(){
+                var socket = io.connect('http://localhost:8222');
+                var lastmsg = false;
 
-        var conn = new WebSocket('ws://localhost:8080{{ room.route }}');
+                $(window).on('load',function(){
+                    $('#modalSign').modal({
+                        show: true,
+                        backdrop: 'static',
+                        keyboard: false
+                    });
 
-        conn.onopen = function(e) {
-            console.info("Connection established succesfully");
-        };
+                    if($('#messages').empty()){
+                        $('#messages').append('<h2 class="text-center h2">Aucun message</h2>');
+                    }
+                });
 
-        conn.onmessage = function(e) {
-            var data = JSON.parse(e.data);
-            Chat.appendMessage(data.avatar, data.username, data.message);
-            console.log(data);
-        };
+                $('#formLogin').submit(function(event){
+                    event.preventDefault();
+                    if(!$('#username').val()) {
+                        alert('Vous devez choisir un username valide')
+                    }else{
+                        socket.emit('login', {
+                            username : $('#username').val(),
+                            mail     : $('#mail').val()
+                        });
+                    }
+                });
 
-        conn.onerror = function(e){
-            alert("Erreur: quelque chose à mal tourné.");
-            console.error(e);
-        };
-        // END SOCKET CONFIG
+                socket.on('logged', function(){
+                    $('#modalSign').modal('hide');
+                    $('#message').focus();
+                });
 
-        /// Some code to add the messages to the list element and the message submit.
-        document.getElementById("chat-submit").addEventListener("click",function(){
-            var msg = $("#chat-message").val();
+                startChat = function(user_id){
+                    socket.emit('login', {
+                        user_id: user_id
+                    })
+                }
 
-            if(!msg){
-                alert("Veuillez entrer un message avant de valider.");
-            }else{
-                Chat.sendMessage(msg);
-            }
+//
+//                $('#form').submit(function(event){
+//                    event.preventDefault();
+//                    socket.emit('newmsg', {message: $('#message').val()});
+//                    $('#message').val('');
+//                    $('#message').focus();
+//                });
 
-            // Empty text area
-            // msg.value = "";
-        }, false);
+                socket.on('newmsg', function(message){
+    //                console.log(message.me);
+    //                console.log(message.message);
 
-        // Mini API to send a message with the socket and append a message in a UL element.
-        var Chat = {
-            appendMessage: function(avatar, username, message){
-                var from = username;
-                var msg = message;
-                var imgProfile = avatar;
+                    if( lastmsg != message.me.username ){
+                        $('#messages').append('<div class="space"></div>');
+                        lastmsg = message.me.username;
+                    }
 
-                var date = new Date(Date.now());
-                var dateFormat = moment(date).format("HH:MM:SS");
+                    $('.h2').remove();
 
-                // Append List Item
-                var ul = $("#chat-list");
-                ul.append("<li>"+dateFormat+" "+imgProfile+" - "+ from + " : "+msg+"</li>");
-            },
-            sendMessage: function(text){
-                clientInformation.message = text;
-                // Send info as JSON
-                conn.send(JSON.stringify(clientInformation));
-                // Add my own message to the list
-                console.log(clientInformation.username);
-                this.appendMessage(clientInformation.avatar, clientInformation.username, clientInformation.message);
-            }
-        };
-    </script>
+                    $('#messages').append('<div class="message '+message.me.username+'">'+
+                                            '<img src="'+message.me.avatar+'" class="img-responsive img-rounded" width="50">'+
+                                            '<div class="info">'+
+                                                '<p class="username"><strong>'+message.me.username+'</strong></p>'+
+                                                '<p class="msgreceive">'+message.message+'</p>'+
+                                                '<span class="date">'+ message.h +':'+ message.min +'</span>'+
+                                            '</div><div class="both"></div>'+
+                                          '</div>'
+                    );
+                    $('.space').prev().css('border-bottom-left-radius', '10px');
+                    $('.space').next().css('border-top-left-radius', '10px');
+
+
+
+                    $('#messages').animate({scrollTop : $('#messages').prop('scrollHeight') }, 50);
+                });
+
+                socket.on('newuser', function(user){
+                    $('#users').append('<img src="'+ user.avatar +'" id="'+user.id+'" class="img-responsive img-rounded center-block">');
+                });
+
+                socket.on('disuser', function(user){
+                    $('#'+user.id).remove();
+                });
+            });
+        </script>
 
 {% endblock %}
