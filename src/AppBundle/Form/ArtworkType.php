@@ -37,8 +37,7 @@ class ArtworkType extends AbstractType
                 'download_link' => false,
                 'required' => false,
                 'label' => ' '
-            ])
-            ->add('coverUrl');
+            ]);
     }
     
     /**
