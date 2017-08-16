@@ -17,6 +17,13 @@ var db = mysql.createConnection({
     password: 'root',
     database: 'club',
 });
+db.connect(function(error){
+    if(error){
+        console.error("Impossible de se connecter", error);
+    }else{
+        console.log("SQL connection : OK !")
+    }
+});
 
 app.use(express.static(__dirname + '/bower_components'));
 app.use(express.static(__dirname + '/public'));
@@ -33,37 +40,39 @@ io.on('connection', function(socket) {
 
     var me = false;
 
-    var id = 1;
-    console.log('Nouveau user in the chat '+id);
+    console.log('Nouveau utilisateur dans ce tchat');
 
 
     for(var u in users){
-        id = id++;
         socket.emit('newuser', users[u]);
     }
     for(var m in messages){
         socket.emit('newmsg', messages[m]);
     }
 
-    socket.on('login', function(user){
-        me = user;
+    socket.on('login', function(user) {
 
-        me.id = user.mail.replace('@', '-').replace('.', '-');
-        me.mail = user.mail;
-        me.username = user.username;
-        me.avatar = 'https://gravatar.com/avatar/'+md5(user.mail)+ '?s=100';
+        db.query('SELECT * FROM user WHERE id = ?', [user.id], function (err, rows, fields) {
+            if (err) {
+                io.sockets.emit('error', err.code);
+                return false;
+            }
+            if (rows.length === 1) {
+                me = {
+                    username: rows[0].username,
+                    id: rows[0].id,
+                    avatar: 'https://gravatar.com/avatar/' + md5(rows[0].email) + '?s=100',
+                };
 
-        socket.emit('logged');
 
-        users[me.id] = me;
+                socket.emit('logged');
 
-        // console.log( getUserInfos(me.email).then(
-        //     (user) => {
-        //         socket.user=user;
-        //     }
-        // ));
-
-        io.sockets.emit('newuser', me)
+                users[me.id] = me;
+                io.sockets.emit('newuser', me);
+            } else {
+                io.sockets.emit('error', 'Aucun utilisateur trouvé !');
+            }
+        });
     });
 
     /* On recoit un nouveau msg */
@@ -89,24 +98,23 @@ io.on('connection', function(socket) {
     });
 
 });
+/*
+function getUserInfos(){
+        var sql = `SELECT u.id, u.username, u.avatarName, u.email_canonical
+                    FROM user u
+                    WHERE u.username_canonical = ${db.escape(email)}`;
 
-// function getUserInfos(email){
-//     return new Promise(function (resolve, reject){
-//         var sql = `SELECT u.id, u.username, u.avatarName, u.email_canonical
-//                     FROM user u
-//                     WHERE u.email_canonical = ${db.escape(email)}`;
-//
-//             db.query(sql,(err, rows, fields) => {
-//
-//             if (!err){
-//                 return resolve(rows[0]);
-//             }else{
-//                 reject(err);
-//                 console.log('Erreur a la recup du user');
-//             }
-//         });
-//     })
-// }
+            db.query(sql,(err, rows, fields) => {
+
+            if (!err){
+                return resolve(rows[0]);
+            }else{
+                reject(err);
+                console.log('Erreur a la recup du user');
+            }
+        });
+    })
+}*/
 
 
 server.listen(4200);

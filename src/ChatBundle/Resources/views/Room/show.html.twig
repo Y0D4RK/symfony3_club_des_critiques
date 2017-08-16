@@ -107,25 +107,26 @@
         });
     </script>
     <script>
-            var startChat;
 
             $(function(){
+
+                var startChat;
                 var socket = io.connect('http://localhost:4200');
                 var lastmsg = false;
 
                 $(window).on('load',function(){
-                    $('#modalSign').modal({
-                        show: true,
+/*                    $('#modalSign').modal({
+                        show: false,
                         backdrop: 'static',
                         keyboard: false
-                    });
+                    });*/
 
                     if($('#messages').empty()){
                         $('#messages').append('<h2 class="text-center h2">Aucun message</h2>');
                     }
                 });
 
-                $('#formLogin').submit(function(event){
+                /*$('#formLogin').submit(function(event){
                     event.preventDefault();
                     if(!$('#username').val()) {
                         alert('Vous devez choisir un username valide')
@@ -135,7 +136,7 @@
                             mail     : $('#mail').val()
                         });
                     }
-                });
+                });*/
 
                 socket.on('logged', function(){
                     $('#modalSign').modal('hide');
@@ -144,9 +145,13 @@
 
                 startChat = function(user_id){
                     socket.emit('login', {
-                        user_id: user_id
-                    })
+                        id: user_id
+                    });
                 }
+
+                socket.on('error', function(err){
+                    alert(err);
+                });
 
 
                 $('#form').submit(function(event){
@@ -191,6 +196,8 @@
                 socket.on('disuser', function(user){
                     $('#'+user.id).remove();
                 });
+
+                startChat({{ app.user.id }});
             });
         </script>
 
