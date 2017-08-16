@@ -761,7 +761,7 @@ p {
     margin: 0.5em 0 0 0;
 }
 
-#home .form{
+.form-input{
     width: 100%;
     color: black;
     border-image: none;
