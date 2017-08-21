@@ -101,10 +101,10 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/socket.io.js') }}"></script>
     <script>
-         $( document ).ready(function() {
-            document.getElementById("room-content").style.opacity = "0.5";
+/*         $( document ).ready(function() {
+            $("#room-content").css('opacity',0.5);
             $("#vote-modal").modal();
-        });
+        });*/
     </script>
     <script>
 
@@ -138,11 +138,6 @@
                     }
                 });*/
 
-                socket.on('logged', function(){
-                    $('#modalSign').modal('hide');
-                    $('#message').focus();
-                });
-
                 startChat = function(user_id){
                     socket.emit('login', {
                         id: user_id
@@ -162,8 +157,14 @@
                 });
 
                 socket.on('newmsg', function(message){
-    //                console.log(message.me);
-    //                console.log(message.message);
+
+/*                    console.log(message.user);
+                    console.log(message.message);*/
+
+                    message.me = message.user;
+
+                    message.h = new Date(message.created_at).getHours();
+                    message.m = new Date(message.created_at).getMinutes();
 
                     if( lastmsg != message.me.username ){
                         $('#messages').append('<div class="space"></div>');
@@ -177,7 +178,7 @@
                                             '<div class="info">'+
                                                 '<p class="username"><strong>'+message.me.username+'</strong></p>'+
                                                 '<p class="msgreceive">'+message.message+'</p>'+
-                                                '<span class="date">'+ message.h +':'+ message.min +'</span>'+
+                                                '<span class="date">'+ message.h +':'+ message.m +'</span>'+
                                             '</div><div class="both"></div>'+
                                           '</div>'
                     );

@@ -13,11 +13,6 @@ body {
     height: 5px;
 }
 
-#body-empty{
-    background-size: cover;
-    background-position: 0 -350px;
-}
-
 #body-form{
     background: url('../images/library.jpg') fixed;
     background-size: cover;
@@ -562,8 +557,8 @@ p {
 #salon {
     position: relative;
     width: 100%;
+    background: url('../images/libraryldn.jpg');
     background-size: cover;
-    background: url('../images/salons.jpg') center fixed;
     text-align: left;
     color: white;
 }

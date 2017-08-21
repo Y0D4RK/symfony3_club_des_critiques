@@ -13,7 +13,7 @@
                     </button>
                 </a>
                 <div class="form-wrap">
-                    <h1>Connectez-vous</h1>
+                    <h1>Connectez-vous ?</h1>
                     {% if error %}
                         <div class="text-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                     {% endif %}
@@ -22,11 +22,9 @@
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
                         {% endif %}
                         <div class="form-group">
-                            <label for="username" class="sr-only">{{ 'security.login.username'|trans }}</label>
-                            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="Email ou Username" required="required" />
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="Username ou email" required="required" />
                         </div>
                         <div class="form-group">
-                            <label for="password" class="sr-only">{{ 'security.login.password'|trans }}</label>
                             <input type="password" id="password" name="_password" class="form-control" placeholder="Mot de passe" required="required" />
                         </div>
                         <div class="form-group">

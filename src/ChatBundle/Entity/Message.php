@@ -29,19 +29,41 @@ class Message
     private $message;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="users", type="string", length=255)
+     * @ORM\Column(name="user_id", type="integer")
      */
-    private $users;
+    private $userId;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="room", type="string", length=255)
+     * @ORM\Column(name="room_id", type="integer")
      */
-    private $room;
+    private $roomId;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
 
 
 
@@ -80,51 +102,37 @@ class Message
     }
 
     /**
-     * Set users
-     *
-     * @param string $users
-     *
-     * @return Message
+     * @return int
      */
-    public function setUsers($users)
+    public function getUserId()
     {
-        $this->users = $users;
-
-        return $this;
+        return $this->userId;
     }
 
     /**
-     * Get users
-     *
-     * @return string
+     * @param int $userId
      */
-    public function getUsers()
+    public function setUserId($userId)
     {
-        return $this->users;
+        $this->userId = $userId;
     }
 
     /**
-     * Set room
-     *
-     * @param string $room
-     *
-     * @return Message
+     * @return int
      */
-    public function setRoom($room)
+    public function getRoomId()
     {
-        $this->room = $room;
-
-        return $this;
+        return $this->roomId;
     }
 
     /**
-     * Get room
-     *
-     * @return string
+     * @param int $roomId
      */
-    public function getRoom()
+    public function setRoomId($roomId)
     {
-        return $this->room;
+        $this->roomId = $roomId;
     }
+
+
 }
 

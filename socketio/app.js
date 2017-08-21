@@ -33,28 +33,58 @@ app.use(express.static(__dirname + '/public'));
 });*/
 
 var users = {};
-var messages = [];
-var history = 2;
 
 io.on('connection', function(socket) {
 
     var me = false;
 
-    console.log('Nouveau utilisateur dans ce tchat');
+    var getLastMessages = function(){
+        var querySelect = db.query(''+
+            'SELECT user.id as user_id, user.username, user.email, message.message, UNIX_TIMESTAMP(message.created_at) as created_at '+
+            'FROM message '+
+            'LEFT JOIN user ON user.id = message.user_id '+
+            'LIMIT 10', function(err, rows){
+                if(err){
+                    socket.emit('error', err);
+                }
+
+                if (rows.length === 1) {
+                    rows.reverse();
+
+                    for (var k in rows) {
+
+                        var row = rows[k];
+
+                        var message = {
+                            message: row.message,
+                            created_at: row.created_at * 1000,
+                            user: {
+                                id: row.user_id,
+                                username: row.username,
+                                avatar: 'https://gravatar.com/avatar/' + md5(row.email) + '?s=100',
+                            }
+                        }
+                    }
+                    socket.emit('newmsg', message);
+                }
+            });
+        console.log(querySelect.sql);
+    };
+
+    console.log('*********************************\n' +
+        ' Nouveau utilisateur dans ce tchat\n' +
+        '***********************************');
 
 
     for(var u in users){
         socket.emit('newuser', users[u]);
-    }
-    for(var m in messages){
-        socket.emit('newmsg', messages[m]);
     }
 
     socket.on('login', function(user) {
 
         db.query('SELECT * FROM user WHERE id = ?', [user.id], function (err, rows, fields) {
             if (err) {
-                io.sockets.emit('error', err.code);
+                console.log(err.code);
                 return false;
             }
             if (rows.length === 1) {
@@ -63,12 +93,12 @@ io.on('connection', function(socket) {
                     id: rows[0].id,
                     avatar: 'https://gravatar.com/avatar/' + md5(rows[0].email) + '?s=100',
                 };
-
-
                 socket.emit('logged');
 
                 users[me.id] = me;
                 io.sockets.emit('newuser', me);
+
+                getLastMessages();
             } else {
                 io.sockets.emit('error', 'Aucun utilisateur trouvé !');
             }
@@ -77,15 +107,31 @@ io.on('connection', function(socket) {
 
     /* On recoit un nouveau msg */
     socket.on('newmsg', function(message){
-        message.me = me;
-        var date = new Date();
-        message.h = date.getHours();
-        message.min = date.getMinutes();
-        messages.push(message);
-        if(messages.length > history){
-            messages.shift();
+
+        if(message.message === ''){
+            return false;
         }
-        io.sockets.emit('newmsg', message);
+        console.log(message);
+
+        message.user = me;
+        message.created_at = Date.now();
+        message.room_id = 1;
+
+        var query = db.query('INSERT INTO message SET user_id=?, room_id=?, message=?, created_at=?', [
+            message.user.id,
+            message.room_id,
+            message.message,
+            new Date(message.created_at)
+        ], function(err){
+            if(err){
+                console.log(err);
+            }
+            io.sockets.emit('newmsg', message);
+        });
+
+        console.log(query.sql)
+
+
     });
 
 
