@@ -36,45 +36,13 @@ var users = {};
 
 io.on('connection', function(socket) {
 
+
+    console.log('' +
+        '/------------------------------------\n' +
+        '| Nouveau utilisateur dans ce tchat |\n' +
+        '------------------------------------/\n');
+
     var me = false;
-
-    var getLastMessages = function(){
-        var querySelect = db.query(''+
-            'SELECT user.id as user_id, user.username, user.email, message.message, UNIX_TIMESTAMP(message.created_at) as created_at '+
-            'FROM message '+
-            'LEFT JOIN user ON user.id = message.user_id '+
-            'LIMIT 10', function(err, rows){
-                if(err){
-                    socket.emit('error', err);
-                }
-
-                if (rows.length === 1) {
-                    rows.reverse();
-
-                    for (var k in rows) {
-
-                        var row = rows[k];
-
-                        var message = {
-                            message: row.message,
-                            created_at: row.created_at * 1000,
-                            user: {
-                                id: row.user_id,
-                                username: row.username,
-                                avatar: 'https://gravatar.com/avatar/' + md5(row.email) + '?s=100',
-                            }
-                        }
-                    }
-                    socket.emit('newmsg', message);
-                }
-            });
-        console.log(querySelect.sql);
-    };
-
-    console.log('*********************************\n' +
-        ' Nouveau utilisateur dans ce tchat\n' +
-        '***********************************');
-
 
     for(var u in users){
         socket.emit('newuser', users[u]);
@@ -111,6 +79,7 @@ io.on('connection', function(socket) {
         if(message.message === ''){
             return false;
         }
+
         console.log(message);
 
         message.user = me;
@@ -143,24 +112,36 @@ io.on('connection', function(socket) {
         io.sockets.emit('disuser', me);
     });
 
-});
-/*
-function getUserInfos(){
-        var sql = `SELECT u.id, u.username, u.avatarName, u.email_canonical
-                    FROM user u
-                    WHERE u.username_canonical = ${db.escape(email)}`;
+    var getLastMessages = function(){
+        var queryLastMsg = db.query(''+
+            'SELECT user.id as user_id, user.username, user.email, message.message, UNIX_TIMESTAMP(message.created_at) as created_at '+
+            'FROM message '+
+            'INNER JOIN user ON user.id = message.user_id '+
+            'LIMIT 10', function(err, rows){
+            if(err){
+                socket.emit('error', err.code);
+                return true;
+            }
 
-            db.query(sql,(err, rows, fields) => {
+            for (var k in rows) {
 
-            if (!err){
-                return resolve(rows[0]);
-            }else{
-                reject(err);
-                console.log('Erreur a la recup du user');
+                var row = rows[k];
+
+                var message = {
+                    message: row.message,
+                    created_at: row.created_at * 1000,
+                    user: {
+                        id: row.user_id,
+                        username: row.username,
+                        avatar: 'https://gravatar.com/avatar/' + md5(row.email) + '?s=100',
+                    }
+                };
+                socket.emit('newmsg', message);
             }
         });
-    })
-}*/
+        console.log(queryLastMsg.sql);
+    };
 
+});
 
 server.listen(4200);
