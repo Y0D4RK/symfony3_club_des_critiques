@@ -13,7 +13,7 @@
                             <p class="text-muted">Créé par {{ room.creator | capitalize }}</p>
                             <p class="text-info"> Du {% if room.startedAt %}{{ room.startedAt|date('d/m/Y H:i:s') }}{% endif %} au {% if room.closedAt %}{{ room.closedAt|date('d/m/Y H:i:s') }}{% endif %}</p>
                             {% if room.status %}
-                                <p class="text-success">{{ 'Ouvert' }} </p>
+                                <p class="text-success">{{ 'Ouvert' }}</p>
                             {% else %}
                                 <p class="text-danger">{{ 'Close' }} </p>
                             {% endif %}
@@ -138,9 +138,10 @@
                     }
                 });*/
 
-                startChat = function(user_id){
+                startChat = function(user_id, room_id){
                     socket.emit('login', {
-                        id: user_id
+                        user_id: user_id,
+                        room_id: room_id
                     });
                 }
 
@@ -198,7 +199,7 @@
                     $('#'+user.id).remove();
                 });
 
-                startChat({{ app.user.id }});
+                startChat({{ app.user.id }}, {{ room.id }});
             });
         </script>
 
