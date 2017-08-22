@@ -18,6 +18,10 @@
                     <div class="col-md-8 col-xs-12">
                         <h1>{{ artwork.name }}</h1>
                         <p>Publié par {{ artwork.edithor }} {% if artwork.publishAt %} le {{ artwork.publishAt|date('d/m/Y') }}{% endif %}</p>
+                        {% if artwork.isbn %}
+                          <p>ISBN: {{ artwork.isbn }}</p>
+                          <a href="https://www.amazon.fr/gp/search/ref=sr_adv_b/?field-isbn={{ artwork.isbn }}"><i class="fa fa-amazon"></i>Lien Amazon</a>
+                        {% endif %}
                         <p>Ajouté par <a href="{{ path('fos_user_profile_show_name', {'username': artwork.user}) }}">{{ artwork.user }}</a> {% if artwork.createdAt %} le {{ artwork.createdAt|date('d/m/Y') }}{% endif %}</p>
                         <div class="vote is-score{{ score }}" id="vote" data-ref="{{ artwork.category }}" data-ref_id="{{ artwork.id }}">
                             <div class="vote_stars">
@@ -49,12 +53,30 @@
                         <p>{{ artwork.description }}</p>
                     </div>
                 </div>
+                {% if artwork.category == 'Livres' %}
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Utilisateurs partageant ce livre</h3>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="text-center">
+                      <a href="" class="btn btn-primary">
+                        <i class="fa fa-retweet"></i> Je souhaite partager ce livre
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                {% if artworksSimilary > 1 %}
                 <div class="row">
                     <div class="col-lg-12">
                         <h3>Œuvre Similaires</h3>
                         {% for artworkSim in artworksSimilary %}
                             {% if artworkSim.id != artwork.id %}
-                            <div class="similar">
+                            <div class="col-md-4 col-sm-6 latest">
                                 <a href="" class="box-link">
                                     <div class="box-hover">
                                         <div class="box-hover-content">
@@ -78,6 +100,7 @@
                         {% endfor %}
                     </div>
                 </div>
+                {% endif %}
             </div>
         </section>
     </div>

@@ -2,71 +2,76 @@
 
 {% block content %}
 
-    <div id="artwork">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 text-center">
-                    <a href="{{ path('artwork_show', { 'id': artwork.id }) }}">
-                        <button type="button" class="close" data-dismiss="modal">
-                            <span aria-hidden="true"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                        </button>
-                    </a>
-                    <div class="form-wrap">
-                        <h1>Modifier l'oeuvre</h1>
-                        <div class="form-group">
-                            {% if vich_uploader_asset(artwork, 'cover') is not empty %}
-                                <img src="{{ vich_uploader_asset(artwork, 'cover') }}" alt="{{ artwork.name }}" class="img-responsive" width="180" height="180" style="margin: auto"/>
-                            {% elseif artwork.coverUrl is not empty %}
-                                <img src="{{ artwork.coverUrl }}" alt="coverUrl" class="img-responsive" width="180" height="180" style="margin: auto">
-                            {% else %}
-                                <img src="{{ asset('images/cover/unknow_cover.jpg') }}" alt="unknow" class="img-responsive" width="180" height="180" style="margin: auto">
-                            {% endif %}
-                        </div>
-                        {{ form_start(edit_form) }}
-                        <div class="form-group">
-                            {{ form_widget(edit_form.name, { 'attr': {'class': 'form-control', 'placeholder': 'Nom' } }) }}
-                            {{ form_errors(edit_form.name) }}
-                        </div>
-                        <div class="form-group">
-                            {{ form_widget(edit_form.description, { 'attr': {'class': 'form-control', 'placeholder': 'Description' } }) }}
-                            {{ form_errors(edit_form.description) }}
-                        </div>
-                        <div class="form-group">
-                            {{ form_widget(edit_form.category, { 'attr': {'class': 'form-control', 'placeholder': '' } }) }}
-                            {{ form_errors(edit_form.category) }}
-                        </div>
-                        <div class="form-group">
-                            {{ form_widget(edit_form.author, { 'attr': {'class': 'form-control', 'placeholder': 'Autheur' } }) }}
-                            {{ form_errors(edit_form.author) }}
-                        </div>
-                        <div class="form-group">
-                            {{ form_widget(edit_form.edithor, { 'attr': {'class': 'form-control', 'placeholder': 'Editeur' } }) }}
-                            {{ form_errors(edit_form.edithor) }}
-                        </div>
-                        <div class="form-group">
-                            <label>Date de parution</label>
-                            {{ form_widget(edit_form.publishAt, { 'attr': {'class': 'form-control', 'placeholder': '' } }) }}
-                            {{ form_errors(edit_form.publishAt) }}
-                        </div>
-                        <div class="form-group avatar">
-                            {{ form_widget(edit_form.cover, { 'attr': {'class': 'form-control', 'placeholder': '' } }) }}
-                            {{ form_errors(edit_form.cover) }}
-                        </div>
-                        <div class="form-group">
-                            {{ form_widget(edit_form.coverUrl, { 'attr': {'class': 'form-control', 'placeholder': 'Liens images' } }) }}
-                            {{ form_errors(edit_form.coverUrl) }}
-                        </div>
+    <div id="login" class="container">
+          <div class="row">
+              <div class="col-xs-12 text-center">
+                  <a href="{{ path('artwork_show', { 'id': artwork.id }) }}">
+                      <button type="button" class="close" data-dismiss="modal">
+                          <span aria-hidden="true"><i class="fa fa-close" aria-hidden="true"></i></span>
+                      </button>
+                  </a>
+                  <div class="form-wrap">
+                      <h1>Modifier l'oeuvre</h1>
+                      <div class="form-group">
+                          {% if vich_uploader_asset(artwork, 'cover') is not empty %}
+                              <img src="{{ vich_uploader_asset(artwork, 'cover') }}" alt="{{ artwork.name }}" class="img-responsive new_img" width="180" height="180" style="margin: auto"/>
+                          {% elseif artwork.coverUrl is not empty %}
+                              <img src="{{ artwork.coverUrl }}" alt="coverUrl" class="img-responsive new_img" width="180" height="180" style="margin: auto">
+                          {% else %}
+                              <img src="{{ asset('images/cover/unknow_cover.jpg') }}" alt="unknow" class="img-responsive new_img" width="180" height="180" style="margin: auto">
+                          {% endif %}
+                      </div>
+                      <input type="text" id="txtBookSearch" class='form-control' placeholder="Utilisez notre moteur de recherche d'oeuvre...">
+                      <hr>
+                      {{ form_start(edit_form) }}
+                      <div class="form-group">
+                          {{ form_widget(edit_form.name, { 'attr': {'class': 'form-control name_book', 'placeholder': 'Nom' } }) }}
+                          {{ form_errors(edit_form.name) }}
+                      </div>
+                      <div class="form-group">
+                          {{ form_widget(edit_form.description, { 'attr': {'class': 'form-control description_book', 'placeholder': 'Description' } }) }}
+                          {{ form_errors(edit_form.description) }}
+                      </div>
+                      <div class="form-group">
+                          {{ form_widget(edit_form.category, { 'attr': {'class': 'form-control category_book', 'placeholder': '' } }) }}
+                          {{ form_errors(edit_form.category) }}
+                      </div>
+                      <div class="form-group">
+                          {{ form_widget(edit_form.author, { 'attr': {'class': 'form-control author_book', 'placeholder': 'Auteur' } }) }}
+                          {{ form_errors(edit_form.author) }}
+                      </div>
+                      <div class="form-group">
+                          {{ form_widget(edit_form.edithor, { 'attr': {'class': 'form-control editor_book', 'placeholder': 'Éditeur' } }) }}
+                          {{ form_errors(edit_form.edithor) }}
+                      </div>
+                      <!-- AJOUT DE LA GESTION DE L'ISBN -->
+                      <div class="form-group">
+                          {{ form_widget(edit_form.isbn, { 'attr': {'class': 'form-control isbn_book', 'placeholder': 'ISBN' } }) }}
+                          {{ form_errors(edit_form.isbn) }}
+                      </div>
+                      <div class="form-group">
+                          <label>Date de parution</label>
+                          {{ form_widget(edit_form.publishAt, { 'attr': {'class': 'form-control date_book', 'placeholder': '' } }) }}
+                          {{ form_errors(edit_form.publishAt) }}
+                      </div>
+                      <div class="form-group avatar">
+                          {{ form_widget(edit_form.cover, { 'attr': {'class': 'form-control', 'placeholder': '' } }) }}
+                          {{ form_errors(edit_form.cover) }}
+                      </div>
+                      <div class="form-group">
+                          {{ form_widget(edit_form.coverUrl, { 'attr': {'class': 'form-control img_book', 'placeholder': 'Liens images' } }) }}
+                          {{ form_errors(edit_form.coverUrl) }}
+                      </div>
 
-                        {{ form_rest(edit_form) }}
-                            <input type="submit" class="btn btn-custom" value="{{ 'Modifier' }}" />
-                        {{ form_end(edit_form) }}
-                        <hr>
-                        {{ form_start(delete_form) }}
-                            <input type="submit" class="btn btn-danger" value="{{ 'Supprimer' }}" />
-                        {{ form_end(delete_form) }}
-                    </div>
-                </div> <!-- /.col-xs-12 -->
-            </div>
-        </div> <!-- /.row -->
+                      {{ form_rest(edit_form) }}
+                          <input type="submit" class="btn btn-custom" value="{{ 'Modifier' }}" />
+                      {{ form_end(edit_form) }}
+                      <hr>
+                      {{ form_start(delete_form) }}
+                          <input type="submit" class="btn btn-danger" value="{{ 'Supprimer' }}" />
+                      {{ form_end(delete_form) }}
+                  </div>
+              </div> <!-- /.col-xs-12 -->
+          </div> <!-- /.row -->
     </div> <!-- /.container -->
 {% endblock %}

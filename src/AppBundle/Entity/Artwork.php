@@ -38,9 +38,9 @@ class Artwork
     private $name;
 
     /**
-     * @var string
+     * @var text
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", type="text")
      */
     private $description;
 
@@ -135,6 +135,13 @@ class Artwork
      */
     private $enabled;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="isbn", type="string", nullable=true)
+     */
+    private $isbn;
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
@@ -186,7 +193,7 @@ class Artwork
     /**
      * Set description
      *
-     * @param string $description
+     * @param text $description
      *
      * @return Artwork
      */
@@ -200,7 +207,7 @@ class Artwork
     /**
      * Get description
      *
-     * @return string
+     * @return text
      */
     public function getDescription()
     {
@@ -480,4 +487,15 @@ class Artwork
 
         return $this;
     }
+
+
+    public function getIsbn()
+    {
+        return $this->isbn;
+    }
+    public function setIsbn($isbn)
+    {
+        $this->isbn = $isbn;
+    }
+
 }

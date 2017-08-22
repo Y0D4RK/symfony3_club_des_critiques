@@ -27,6 +27,7 @@ class ArtworkType extends AbstractType
             ->add('category')
             ->add('author')
             ->add('edithor')
+            ->add('isbn')
             ->add('publishAt', DateType::class, array(
                 'widget' => 'single_text',
                 // this is actually the default format for single_text
@@ -40,7 +41,7 @@ class ArtworkType extends AbstractType
             ])
             ->add('coverUrl');
     }
-    
+
     /**
      * {@inheritdoc}
      */
