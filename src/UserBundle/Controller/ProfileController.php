@@ -19,7 +19,7 @@ class ProfileController extends BaseController
         }
 
         $em = $this->getDoctrine()->getManager();
-        $artworks = $em->getRepository('AppBundle:Artwork')->findBy(array('user' => $user));
+        $artworksShared = $em->getRepository('AppBundle:Sharing')->findBy(array('user' => $user));
 
         //Récupérer les salons créer par l'utilisateur
         $rooms = $em->getRepository('ChatBundle:Room')->findBy(array('creator' => $user));

@@ -53,22 +53,17 @@
                         <p>{{ artwork.description }}</p>
                     </div>
                 </div>
-                {% if artwork.category == 'livres' %}
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h3>Utilisateurs partageant ce livre</h3>
-                        <p></p>
+                  {% if alreadyShared == false %}
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="text-center">
+                          <a href="{{ path('artwork_sharing', { 'id': artwork.id }) }}" class="btn btn-primary">
+                            <i class="fa fa-retweet"></i> Je souhaite partager ce livre
+                          </a>
+                        </div>
+                      </div>
                     </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="text-center">
-                      <a href="" class="btn btn-primary">
-                        <i class="fa fa-retweet"></i> Je souhaite partager ce livre
-                      </a>
-                    </div>
-                  </div>
-                </div>
+                  {% endif %}
                 {% endif %}
                 {% if artworksSimilary > 1 %}
                 <div class="row">
