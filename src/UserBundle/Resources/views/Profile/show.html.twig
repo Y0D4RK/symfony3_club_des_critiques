@@ -29,8 +29,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    {% if artworksUser is not empty %}
-                        {% for artwork in artworksUser %}
+                    {% if artworksShared is not empty %}
+                        {% for artwork in artworksShared %}
                             <div class="col-md-4 col-sm-6 latest">
                                 <a href="{{ path('artwork_show', { 'id': artwork.id }) }}" class="box-link">
                                     <div class="box-hover">
@@ -38,21 +38,21 @@
                                             <i class="fa fa-plus fa-3x"></i>
                                         </div>
                                     </div>
-                                    {% if vich_uploader_asset(artwork, 'cover') is not empty %}
-                                        <img src="{{ vich_uploader_asset(artwork, 'cover') }}" alt="{{ artwork.name }}" class="img-responsive" width="180" height="180"/>
-                                    {% elseif artwork.coverUrl is not empty %}
-                                        <img src="{{ artwork.coverUrl }}" alt="cover" class="img-responsive" width="180" height="180">
+                                    {% if vich_uploader_asset(artwork.artwork, 'cover') is not empty %}
+                                        <img src="{{ vich_uploader_asset(artwork.artwork, 'cover') }}" alt="{{ artwork.artwork.name }}" class="img-responsive" width="180" height="180"/>
+                                    {% elseif artwork.artwork.coverUrl is not empty %}
+                                        <img src="{{ artwork.artwork.coverUrl }}" alt="cover" class="img-responsive" width="180" height="180">
                                     {% else %}
                                         <img src="{{ asset('images/cover/unknow_cover.jpg') }}" alt="unknow" class="img-responsive" width="180" height="180">
                                     {% endif %}
                                 </a>
                                 <div class="box-caption">
-                                    <h4>{{ artwork.name }}</h4>
-                                    <p class="text-muted">{{ artwork.author | capitalize }}</p>
+                                    <h4>{{ artwork.artwork.name }}</h4>
+                                    <p class="text-muted">{{ artwork.artwork.author | capitalize }}</p>
                                     <hr>
                                     <ul class="list-group black">
-                                        <li class="list-group-item list-group-item-heading"> {{ artwork.category.name | capitalize }}</li>
-                                        <li class="list-group-item list-group-item-text"> {{ artwork.description | capitalize}}</li>
+                                        <li class="list-group-item list-group-item-heading"> {{ artwork.artwork.category.name | capitalize }}</li>
+                                        <li class="list-group-item list-group-item-text"> {{ artwork.artwork.description | capitalize}}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -126,4 +126,3 @@
     </div>
 
 {% endblock content %}
-
