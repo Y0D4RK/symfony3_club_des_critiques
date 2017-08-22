@@ -51,6 +51,7 @@ h1{
     width: 100%;
     background-position: center;
     background-size: 100%;
+    /* background-position-y: -350px; */
     background-image: url(../images/natural.jpg);
     background-color: #B2D5CC;
     background-repeat: no-repeat;

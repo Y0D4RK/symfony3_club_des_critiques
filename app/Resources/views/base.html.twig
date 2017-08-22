@@ -18,6 +18,8 @@
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <!-- Icon fav. -->
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <!-- JQuery UI CSS for Searching book function -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     <!-- Fichier css -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('css/stylebis.css') }}" rel="stylesheet" type="text/css" >
@@ -60,8 +62,11 @@
 
 {% block javascripts %}
     <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/ranking.js') }}"></script>
+    <script src="{{ asset('js/searching.js') }}"></script>
 
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>

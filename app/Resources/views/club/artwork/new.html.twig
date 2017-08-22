@@ -12,43 +12,57 @@
                 </a>
                 <div class="form-wrap">
                     <h1>Ajouter une oeuvre</h1>
+                    </div>
+                    <input type="text" id="txtBookSearch" class='form-control' placeholder="Utilisez notre moteur de recherche d'oeuvre...">
+                    <hr>
                     {{ form_start(form) }}
+
                     <div class="form-group">
-                        {{ form_widget(form.name, { 'attr': {'class': 'form-control', 'placeholder': 'nom' } }) }}
+                        {{ form_widget(form.name, { 'attr': {'class': 'form-control name_book', 'placeholder': 'Nom'} }) }}
                         {{ form_errors(form.name) }}
                     </div>
                     <div class="form-group">
-                        {{ form_widget(form.description, { 'attr': {'class': 'form-control', 'placeholder': 'description'|trans } }) }}
+                        {{ form_widget(form.description, { 'attr': {'class': 'form-control description_book', 'placeholder': 'Description'|trans } }) }}
                         {{ form_errors(form.description) }}
                     </div>
                     <div class="form-group">
-                        {{ form_widget(form.category, { 'attr': {'class': 'form-control', 'placeholder': 'categorie'|trans } }) }}
+                        {{ form_widget(form.category, { 'attr': {'class': 'form-control category_book', 'placeholder': 'Categorie'|trans } }) }}
                         {{ form_errors(form.category) }}
                     </div>
+
+                    <!-- Ajout de la gestion de la sous catégorie
+                    Ici -->
+
+
                     <div class="form-group">
-                        {{ form_widget(form.author, { 'attr': {'class': 'form-control', 'placeholder': 'Autheur'|trans } }) }}
+                        {{ form_widget(form.author, { 'attr': {'class': 'form-control author_book', 'placeholder': 'Auteur'|trans } }) }}
                         {{ form_errors(form.author) }}
                     </div>
                     <div class="form-group">
-                        {{ form_widget(form.edithor, { 'attr': {'class': 'form-control', 'placeholder': 'éditeur'|trans } }) }}
+                        {{ form_widget(form.edithor, { 'attr': {'class': 'form-control editor_book', 'placeholder': 'Éditeur'|trans } }) }}
                         {{ form_errors(form.edithor) }}
+                    </div>
+                    <!-- AJOUT DE LA GESTION DE L'ISBN -->
+                    <div class="form-group">
+                        {{ form_widget(form.isbn, { 'attr': {'class': 'form-control isbn_book', 'placeholder': 'ISBN'|trans } }) }}
+                        {{ form_errors(form.isbn) }}
                     </div>
                     <div class="form-group">
                         <label>Date de parution</label>
-                        {{ form_widget(form.publishAt, { 'attr': {'class': 'input-append date form_datetime', 'placeholder': 'date de publication'|trans } }) }}
+                        {{ form_widget(form.publishAt, { 'attr': {'class': 'input-append date form_datetime date_book', 'placeholder': 'Date de publication'|trans } }) }}
                         {{ form_errors(form.publishAt) }}
                     </div>
                     <div class="form-group avatar">
-                        {{ form_widget(form.cover, { 'attr': {'class': 'form-control', 'placeholder': 'image'|trans } }) }}
+                        {{ form_widget(form.cover, { 'attr': {'class': 'form-control', 'placeholder': 'Image'|trans } }) }}
                         {{ form_errors(form.cover) }}
                     </div>
                     <div class="form-group">
-                        {{ form_widget(form.coverUrl, { 'attr': {'class': 'form-control', 'placeholder': 'Cover url'|trans } }) }}
+                        {{ form_widget(form.coverUrl, { 'attr': {'class': 'form-control img_book', 'placeholder': 'Cover url'|trans } }) }}
                         {{ form_errors(form.coverUrl) }}
                     </div>
 
                     {{ form_rest(form) }}
-                    <input type="submit" class="btn btn-custom btn-lg btn-block" value="{{ 'créer'|trans }}" />
+                    <input type="submit" class="btn btn-custom btn-lg btn-block" value="{{ 'Créer'|trans }}" />
                     {{ form_end(form) }}
                     <hr>
                 </div>
