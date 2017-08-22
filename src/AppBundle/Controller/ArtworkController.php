@@ -4,7 +4,6 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Artwork;
 use AppBundle\Entity\Score;
-use AppBundle\Entity\Sharing;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -216,26 +215,5 @@ class ArtworkController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
-    }
-
-    /**
-     * Sharing an artwork on his profile.
-     *
-     */
-    public function sharingAction(Artwork $artwork)
-    {
-      $sharing = new Sharing();
-
-      $sharing->setUser($this->getUser());
-      $sharing->setArtwork($artwork);
-
-      $em = $this->getDoctrine()->getManager();
-
-      $em->persist($sharing);
-      $em->flush($sharing);
-
-      return $this->redirectToRoute('fos_user_profile_show');
-
-      //return $this->redirectToRoute('profile');
     }
 }

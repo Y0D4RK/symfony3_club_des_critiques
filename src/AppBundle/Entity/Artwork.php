@@ -106,11 +106,6 @@ class Artwork
      */
     private $voteCount;
 
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Sharing", mappedBy="artwork")
-     */
-    protected $booksShared;
-
 
     /**
      * @Vich\UploadableField(mapping="cover_image", fileNameProperty="coverName")

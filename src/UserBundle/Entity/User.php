@@ -95,12 +95,6 @@ class User extends BaseUser
      */
     protected $tokenTchat;
 
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Sharing", mappedBy="user")
-     */
-    protected $booksShared;
-
-
     public function __toString()
     {
         return $this->username;
