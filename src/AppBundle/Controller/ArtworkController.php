@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Artwork;
 use AppBundle\Entity\Score;
+use AppBundle\Entity\Sharing;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -87,11 +88,20 @@ class ArtworkController extends Controller
 
         $artworksSimilary = $em->getRepository('AppBundle:Artwork')->findBy(array('category' => $artwork->getCategory()));
 
+        $usersWhoShare = $em->getRepository('AppBundle:Sharing')->findBy(array('artwork' => $artwork));
+
         $deleteForm = $this->createDeleteForm($artwork);
 
         //Récupérer l'id de l'utilisaateur courrant
         $user = $this->getUser();
         $currentUserName = $user->getUsername();
+
+        $alreadyShared = FALSE;
+        foreach($usersWhoShare as $userBook){
+          if ($userBook->getUser()->getId() == $user->getId()){
+              $alreadyShared = TRUE;
+          }
+        }
 
         //Vote artwork
         $score = $artwork->getScore();      //Récupérer le score de l'artwork
@@ -156,6 +166,8 @@ class ArtworkController extends Controller
             'delete_form' => $deleteForm->createView(),
             'currentUserName' => $currentUserName,
             'score' => $score,
+            'usersWhoShare' => $usersWhoShare,
+            'alreadyShared'=> $alreadyShared
         ));
     }
 
@@ -215,5 +227,37 @@ class ArtworkController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * Sharing an artwork on his profile.
+     *
+     */
+    public function sharingAction(Artwork $artwork)
+    {
+      $sharing = new Sharing();
+
+      $sharing->setUser($this->getUser());
+      $sharing->setArtwork($artwork);
+
+      $em = $this->getDoctrine()->getManager();
+
+      $em->persist($sharing);
+      $em->flush($sharing);
+
+      return $this->redirectToRoute('fos_user_profile_show');
+    }
+
+    public function unsharingAction(Artwork $artwork)
+    {
+      $sharing = new Sharing();
+      $current_user = $this->getUser();
+
+      $em = $this->getDoctrine()->getManager();
+      //$sharing = $em->getRepository('AppBundle:Sharing')->findOneBy(array('user' => $current_user, 'artwork' => $artwork->getId()));
+      //dump($artwork->getId()); exit;
+
+      //$em->remove($sharing);
+      //$em->flush($sharing);
     }
 }

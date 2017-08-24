@@ -59,6 +59,16 @@ artwork_delete:
     defaults: { _controller: "AppBundle:Artwork:delete" }
     methods:  DELETE
 
+artwork_sharing:
+    path:     /artwork/{id}/sharing
+    defaults: { _controller: "AppBundle:Artwork:sharing" }
+    methods:  [GET, POST]
+
+artwork_unsharing:
+    path:     /artwork/{id}/unsharing
+    defaults: { _controller: "AppBundle:Artwork:unsharing" }
+    methods:  [GET, POST]
+
 # ROUTING SALONS #
 salon_index:
     path:     /salons
