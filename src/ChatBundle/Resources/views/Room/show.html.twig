@@ -138,10 +138,10 @@
                     }
                 });*/
 
-                startChat = function(user_id, room_id){
+                startChat = function(userId, roomId){
                     socket.emit('login', {
-                        user_id: user_id,
-                        room_id: room_id
+                        user_id: userId,
+                        room_id: roomId
                     });
                 }
 
@@ -161,7 +161,6 @@
 
 /*                    console.log(message.user);
                     console.log(message.message);*/
-
                     message.me = message.user;
 
                     message.h = new Date(message.created_at).getHours();

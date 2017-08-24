@@ -43,18 +43,20 @@ io.on('connection', function(socket) {
         '------------------------------------/\n');
 
     var me = false;
+    var salon = false;
 
     for(var u in users){
         socket.emit('newuser', users[u]);
     }
 
-    socket.on('login', function(user, room) {
-        getUser(user);
-        getLastMessagesRooms(room);
+    socket.on('login', function(data) {
+        getUserById(data.user_id);
+        getRoomById(data.room_id);
     });
 
     /* On recoit un nouveau msg */
     socket.on('newmsg', function(message){
+
         if(message.message === ''){
             return false;
         }
@@ -91,17 +93,18 @@ io.on('connection', function(socket) {
         console.log(query.sql)
     };
 
-    var getUser = function(user){
-        var queryUser = db.query('SELECT * FROM user WHERE id = ?',
+    var getUserById = function(userId){
+        console.log(userId);
+        var queryUserById = db.query('SELECT * FROM user WHERE id = ?',
 
-            [user.user_id],
+            [user.userId],
 
             function (err, rows, fields) {
                 if (err) {
                     console.log(err.code);
                     return false;
                 }
-
+                // console.log(rows);
                 if (rows.length === 1) {
                     me = {
                         username: rows[0].username,
@@ -112,46 +115,42 @@ io.on('connection', function(socket) {
 
                     users[me.id] = me;
                     io.sockets.emit('newuser', me);
-
-                    getLastMessagesRooms(1);
                 } else {
                     io.sockets.emit('error', 'Aucun utilisateur trouvé !');
                 }
             });
-        // console.log(queryUser.sql);
+        // console.log(queryUserById.sql);
     };
 
-    var getRoom = function(room){
-        var user = db.query('SELECT * FROM room WHERE id = ?',
+    var getRoomById = function(roomId){
+        console.log(roomId);
+        var queryRoomById = db.query('SELECT * FROM room WHERE id = ?',
 
-            [room.user_id],
+            [room.roomId],
 
             function (err, rows, fields) {
                 if (err) {
                     console.log(err.code);
                     return false;
                 }
-
+                // console.log(rows);
                 if (rows.length === 1) {
-                    me = {
-                        username: rows[0].username,
+                    salon = {
                         id: rows[0].id,
-                        avatar: 'https://gravatar.com/avatar/' + md5(rows[0].email) + '?s=100',
+                        name: rows[0].name
                     };
-                    socket.emit('logged');
 
-                    users[me.id] = me;
-                    io.sockets.emit('newuser', me);
+                    rooms[salon.id] = salon;
 
-                    getLastMessagesRooms(1);
+                    socket.join(salon.name);
                 } else {
-                    io.sockets.emit('error', 'Aucun utilisateur trouvé !');
+                    io.sockets.emit('error', 'Aucun salon trouvé !');
                 }
             });
-        // console.log(user.sql);
+        console.log(queryRoomById.sql);
     }
 
-    var getLastMessagesRooms = function(roomId){
+    var getLastMessagesRooms = function(room){
         var queryLastMsgRooms = db.query(''+
             'SELECT message.message, user.username, user.email, UNIX_TIMESTAMP(message.created_at) as created_at '+
             'FROM message '+
