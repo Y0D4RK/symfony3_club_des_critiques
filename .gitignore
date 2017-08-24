@@ -16,3 +16,4 @@
 /web/bundles/
 /.idea/
 /web/upload/
+/socketio/node_modules
