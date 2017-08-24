@@ -58,7 +58,7 @@
                 <div class="row">
                     {% for artwork in artworks %}
                         {% if artwork.enabled == true %}
-                            <div class="col-md-3 col-sm-6 latest no-padding">
+                            <div class="col-md-3 col-sm-6 latest">
                                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                                 <a href="{{ path('artwork_show', { 'id': artwork.id }) }}" class="box-link"></a>
                                 {% else %}
