@@ -35,9 +35,4 @@ class ProfileController extends BaseController
             'rooms' => $rooms,
         ));
     }
-
-    public function unshareAction(Artwork $artwork)
-    {
-      
-    }
 }

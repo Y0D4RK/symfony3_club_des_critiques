@@ -247,4 +247,17 @@ class ArtworkController extends Controller
 
       return $this->redirectToRoute('fos_user_profile_show');
     }
+
+    public function unsharingAction(Artwork $artwork)
+    {
+      $sharing = new Sharing();
+      $current_user = $this->getUser();
+
+      $em = $this->getDoctrine()->getManager();
+      //$sharing = $em->getRepository('AppBundle:Sharing')->findOneBy(array('user' => $current_user, 'artwork' => $artwork->getId()));
+      //dump($artwork->getId()); exit;
+
+      //$em->remove($sharing);
+      //$em->flush($sharing);
+    }
 }
