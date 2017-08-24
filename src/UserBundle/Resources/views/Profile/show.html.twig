@@ -54,6 +54,17 @@
                                         <li class="list-group-item list-group-item-heading"> {{ sharing.artwork.category.name | capitalize }}</li>
                                         <li class="list-group-item list-group-item-text"> {{ sharing.artwork.description | capitalize}}</li>
                                     </ul>
+                                    {% if user == current_user %}
+                                    <div class="row">
+                                      <div class="col-sm-12">
+                                        <div class="text-center">
+                                          <a href="" class="btn btn-danger">
+                                            <i class="fa fa-trash-o"></i> Supprimer
+                                          </a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         {% endfor %}
@@ -82,7 +93,7 @@
                                     <a href="{{ path('room_show', { 'id': room.id }) }}" class="box-link">
                                         <div class="box-hover">
                                             <div class="box-hover-content">
-                                                <p>Rejoidnre le salon</p>
+                                                <p>Rejoindre le salon</p>
                                             </div>
                                         </div>
                                         <img src="{{ asset('images/salons.jpg') }}" class="img-responsive" alt="nom oeuvre">
@@ -95,7 +106,7 @@
                                 </div>
                             {% endfor %}
                         {% else %}
-                            <h3 class="text-center">Vous n'avez crée aucun salon</h3>
+                            <h3 class="text-center">Vous n'avez créé aucun salon</h3>
                         {% endif %}
                     </div>
                 </div>
@@ -111,11 +122,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <form class="center-block">
-                            <input name="name" type="text" class="feedback-input" placeholder="Votre Nom" />
-                            <input name="email" type="text" class="feedback-input" placeholder="Votre Email" />
-                            <textarea name="content" class="feedback-input" placeholder="Votre commentaire"></textarea>
-                            <input type="submit" value="Envoyer"/>
+                        <form class="center-block contact-form">
+                            <input name="name" type="text" class="form-control" placeholder="Votre Nom" />
+                            <input name="email" type="text" class="form-control" placeholder="Votre Email" />
+                            <textarea name="content" class="form-control" placeholder="Votre commentaire"></textarea>
+                            <input type="submit" value="Envoyer" class="btn btn-custom"/>
                         </form>
                     </div>
                 </div>

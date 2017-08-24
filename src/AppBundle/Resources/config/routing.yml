@@ -59,6 +59,11 @@ artwork_delete:
     defaults: { _controller: "AppBundle:Artwork:delete" }
     methods:  DELETE
 
+artwork_sharing:
+    path:     /artwork/{id}/sharing
+    defaults: { _controller: "AppBundle:Artwork:sharing" }
+    methods:  [GET, POST]
+
 # ROUTING SALONS #
 salon_index:
     path:     /salons
@@ -149,6 +154,12 @@ fos_user_profile_show_name:
   path: /profile/{username}/show
   defaults: {_controller: "FOSUserBundle:Profile:show" }
   methods:  GET
+
+fos_user_profile_unshare:
+  path: /profile/{username}/unshare/
+  defaults: {_controller: "FOSUserBundle:Profile:unshare" }
+  methods:  DELETE
+
 
 # ROUTING FOSJS #
 fos_js_routing:

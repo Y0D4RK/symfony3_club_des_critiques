@@ -21,7 +21,7 @@ class ProfileController extends BaseController
         $em = $this->getDoctrine()->getManager();
         $artworksShared = $em->getRepository('AppBundle:Sharing')->findBy(array('user' => $user));
 
-        //Récupérer les salons créer par l'utilisateur
+        //Récupérer les salons crées par l'utilisateur
         $rooms = $em->getRepository('ChatBundle:Room')->findBy(array('creator' => $user));
 
 
@@ -29,10 +29,15 @@ class ProfileController extends BaseController
         $current_user = $this->getUser();
 
         return $this->render('@FOSUser/Profile/show.html.twig', array(
-            'artworksUser' => $artworks,
+            'artworksShared' => $artworksShared,
             'user' => $user,
             'current_user' => $current_user,
             'rooms' => $rooms,
         ));
+    }
+
+    public function unshareAction(Artwork $artwork)
+    {
+      
     }
 }
