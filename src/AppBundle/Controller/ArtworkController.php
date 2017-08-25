@@ -29,7 +29,7 @@ class ArtworkController extends Controller
             throw new NotFoundHttpException("La cateogrie ".$name." n'existe pas.");
         }
 
-        $artworks = $em->getRepository('AppBundle:Artwork')->findBy(array('category' => $category));
+        $artworks = $em->getRepository('AppBundle:Artwork')->findBy(array('category' => $category), ['name' => 'ASC']);
 
         return $this->render('club/artwork/index.html.twig', array(
           'category' => $category,
@@ -157,7 +157,6 @@ class ArtworkController extends Controller
             die(json_encode($record));
 
         }
-
 
         return $this->render('club/artwork/show.html.twig', array(
             'user' => $user,

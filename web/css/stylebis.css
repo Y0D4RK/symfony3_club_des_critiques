@@ -46,6 +46,15 @@ h1{
     background-color: #45c39a;
 }
 /* LANDING */
+
+.first_category h2, .first_category h4{
+  color: white;
+}
+
+.special-sizebox{
+  margin: 80px auto;
+}
+
 #landing{
     padding-top: 51px;
     width: 100%;
@@ -244,6 +253,10 @@ footer {
   color: white;
 }
 
+.search_salons_options{
+  margin: 10px 0;
+}
+
 .search_bar{
   background-image: url('../images/searchicon.png'); /* Add a search icon to input */
   background-size: 20px;
@@ -254,4 +267,37 @@ footer {
   padding: 12px 20px 12px 40px; /* Add some padding */
   border: 1px solid #ddd; /* Add a grey border */
   margin-bottom: 12px; /* Add some space below the input */
+}
+
+.item {
+  position: relative;
+  border: 1px solid #333;
+  margin: 2%;
+  overflow: hidden;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.item img {
+  max-width: 100%;
+  -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.item:hover img {
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.list-artworks {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.hr_full {
+  margin-top: -5px;
+  max-width: 100%;
 }
