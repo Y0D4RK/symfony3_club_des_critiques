@@ -239,8 +239,12 @@ footer {
   width:87%;
 }
 
+.search_user_options {
+  margin-bottom: 20px;
+  color: white;
+}
 
-#searchBar{
+.search_bar{
   background-image: url('../images/searchicon.png'); /* Add a search icon to input */
   background-size: 20px;
   background-position: 10px 12px; /* Position the search icon */

@@ -308,8 +308,14 @@
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="listSalons">
+                                            <div class="search_salons_options">
+                                              <label class="radio-inline"><input type="radio" name="searchSalonOption" onclick="callSalonSearchBar('titre')">Recherche par titre</label>
+                                              <label class="radio-inline"><input type="radio" name="searchSalonOption" onclick="callSalonSearchBar('oeuvre')">Recherche par oeuvre</label>
+                                            </div>
+                                            <div id="salonFilterBar">
+                                            </div>
                                             <div class="panel-body">
-                                                <table class="table table-hover">
+                                                <table id="tableSalons" class="table table-hover">
                                                     <h3>Liste des salons</h3>
                                                     <thead>
                                                     <tr>
@@ -358,17 +364,24 @@
                                 </h4>
                             </div>
                             <div id="users" class="panel-collapse collapse">
-                              <input type="text" id="searchBar" onkeyup="searchFunction()" placeholder="Search for names..">
+                              <div class="search_user_options">
+                                <label class="radio-inline"><input type="radio" name="searchUserOption" onclick="callUserSearchBar('surnom')">Recherche par pseudo</label>
+                                <label class="radio-inline"><input type="radio" name="searchUserOption" onclick="callUserSearchBar('nom')">Recherche par nom</label>
+                                <label class="radio-inline"><input type="radio" name="searchUserOption" onclick="callUserSearchBar('prenom')">Recherche par prénom</label>
+                                <label class="radio-inline"><input type="radio" name="searchUserOption" onclick="callUserSearchBar('email')">Recherche par email</label>
+                              </div>
+                              <div id="userFilterBar">
+                              </div>
                                 <div class="panel-body">
-                                    <table class="table table-hover">
+                                    <table id="tableUsers" class="table table-hover">
                                         <thead>
                                         <tr>
-                                            <th class="text-center">Surnom</th>
+                                            <th class="text-center">Pseudo</th>
                                             <th class="text-center">Nom</th>
                                             <th class="text-center">Prénom</th>
                                             <th class="text-center">Email</th>
                                             <th class="text-center">Role</th>
-                                            <th>État</th>
+                                            <th class="text-center">État</th>
                                             <th class="text-center">Modifier</th>
                                         </tr>
                                         </thead>

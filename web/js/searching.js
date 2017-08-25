@@ -63,4 +63,94 @@ $(document).ready(function () { // only begin once page has loaded
         },
         minLength: 2 // set minimum length of text the user must enter
     });
+
 });
+
+
+
+// Gestion du choix de l'admin pour le filtrage des salons
+function callSalonSearchBar(filter_name){
+  var filtername = filter_name;
+
+  if(filtername == 'titre'){
+    $('#salonFilterBar').empty();
+    $('#salonFilterBar').html('<input type="text" id="salonSearchBar" class="search_bar" onkeyup="salonSearchBarFunction(1)" placeholder="Recherche par titre...">');
+  } else if(filtername == 'oeuvre'){
+    $('#salonFilterBar').empty();
+    $('#salonFilterBar').html('<input type="text" id="salonSearchBar" class="search_bar" onkeyup="salonSearchBarFunction(2)" placeholder="Recherche par oeuvre...">');
+  } else {
+    alert("Erreur: Veuillez contacter l\'administration");
+  }
+}
+
+function salonSearchBarFunction(nbCell){
+  var choix = nbCell;
+
+  //Déclaration des variables
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("salonSearchBar");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("tableSalons");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop sur tout les rows, et cache ceux qui ne matchent pas la Recherche
+  for (i = 0; i < tr.length; i++){
+    // Recherche de la colonne spécifiée dans les crochets
+    td = tr[i].getElementsByTagName("td")[choix];
+    if (td) {
+       if (td.innerHTML.toUpperCase().indexOf(filter) > -1){
+         tr[i].style.display = "";
+       } else {
+         tr[i].style.display = "none";
+       }
+    }
+  }
+}
+
+
+
+
+// Gestion du choix de l'admin pour le filtrage des users
+function callUserSearchBar(filter_name){
+  var filtername = filter_name;
+
+  if(filtername == 'surnom'){
+    $('#userFilterBar').empty();
+    $('#userFilterBar').html('<input type="text" id="userSearchBar" class="search_bar" onkeyup="userSearchBarFunction(0)" placeholder="Recherche par pseudo...">');
+  } else if(filtername == 'nom'){
+    $('u#serFilterBar').empty();
+    $('#userFilterBar').html('<input type="text" id="userSearchBar" class="search_bar" onkeyup="userSearchBarFunction(1)" placeholder="Recherche par nom...">');
+  } else if(filtername == 'prenom'){
+    $('#userFilterBar').empty();
+    $('#userFilterBar').html('<input type="text" id="userSearchBar" class="search_bar" onkeyup="userSearchBarFunction(2)" placeholder="Recherche par prenom...">');
+  } else if(filtername == 'email'){
+    $('#userFilterBar').empty();
+    $('#userFilterBar').html('<input type="text" id="userSearchBar" class="search_bar" onkeyup="userSearchBarFunction(3)" placeholder="Recherche par email...">');
+  } else {
+    alert("Erreur: Veuillez contacter l\'administration");
+  }
+}
+
+function userSearchBarFunction(nbCell){
+  var choix = nbCell;
+
+  //Déclaration des variables
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("userSearchBar");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("tableUsers");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop sur tout les rows, et cache ceux qui ne matchent pas la Recherche
+  for (i = 0; i < tr.length; i++){
+    // Recherche de la colonne spécifiée dans les crochets
+    td = tr[i].getElementsByTagName("td")[choix];
+    if (td) {
+       if (td.innerHTML.toUpperCase().indexOf(filter) > -1){
+         tr[i].style.display = "";
+       } else {
+         tr[i].style.display = "none";
+       }
+    }
+  }
+}
