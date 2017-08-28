@@ -149,7 +149,7 @@ section{
 }
 
 #artwork{
-    padding-top: 51px;
+    /* padding-top: 51px; */
     width: 100%;
     text-align: center;
 }
@@ -228,7 +228,17 @@ footer {
 
 #admin{
     background-color: #FFF;
+    background-image: url('../images/administration.jpg');
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
+
+.title_admin{
+  margin-top: 150px;
+}
+
 #admin h1{
     color: #e5e5e5;
 }
@@ -300,4 +310,17 @@ footer {
 .hr_full {
   margin-top: -5px;
   max-width: 100%;
+}
+
+.history{
+  padding-top: 30px;
+  text-align: justify;
+}
+
+.indent {
+  text-indent: 30px;
+}
+
+.thinking{
+  width: 300px;
 }

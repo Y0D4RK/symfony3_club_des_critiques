@@ -24,21 +24,27 @@
                     </div>
                 </div>
                 <div class="row testimonials">
+                  {% if design.text2 is not empty %}
                     <div class="col-md-4">
                         <div class="testimony">
                             <div class="text"><i class="fa fa-quote-left"></i>{{ design.text2 }}<i class="fa fa-quote-right"></i></div>
                         </div>
                     </div>
+                  {% endif %}
+                  {% if design.text3 is not empty %}
                     <div class="col-md-4">
                         <div class="testimony">
                             <div class="text"><i class="fa fa-quote-left"></i>{{ design.text3 }}<i class="fa fa-quote-right"></i></div>
                         </div>
                     </div>
+                  {% endif %}
+                  {% if design.text4 is not empty %}
                     <div class="col-md-4">
                         <div class="testimony">
                             <div class="text"><i class="fa fa-quote-left"></i>{{ design.text4 }}<i class="fa fa-quote-right"></i></div>
                         </div>
                     </div>
+                  {% endif %}
                  </div>
             </div>
         </section>
@@ -49,9 +55,16 @@
                     <div class="col-xs-12">
                         <h2>{{ design.title2 }}</h2>
                         <hr>
-                        <h3 class="text-muted">{{ design.text5 }}</h3>
                     </div>
-                    <h6 class="text-muted">{{ design.title3 }}</h6>
+                    <div class="row">
+                        <div class="col-lg-5">
+                          <img src="{{ asset('images/thinking.png') }}" class="thinking">
+                        </div>
+                        <div class="col-lg-7 history">
+                          <h4 class="indent">{{ design.text5 }}</h4>
+                          <h4 class="indent">{{ design.title3 }}</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
