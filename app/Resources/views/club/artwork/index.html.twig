@@ -26,17 +26,20 @@
                             {% endif %}
                         </div>
                     </div>
+                    <input type="text" id="artworkSearchBar" class="search_bar" placeholder="Recherche d'une oeuvre...">
                 </div>
                   {% if artworks is not empty %}
                     <div class="row list-artworks">
                       {% for letter in 'a'|upper..'z'|upper %}
-                      <div class="col-md-12">
-                      <h3>{{ letter }}</h3>
-                      <hr class="hr_full">
+                      <div class="col-md-12 artworksByLetter">
+                        <div class="letterArtwork">
+                          <h3>{{ letter }}</h3>
+                          <hr class="hr_full">
+                        </div>
                         {% for artwork in artworks %}
                             {% if artwork.enabled == true %}
                               {% if artwork.name|first|upper == letter %}
-                                <div class="col-md-4 col-sm-6 latest">
+                                <div class="col-md-4 col-sm-6 latest oneArtwork">
                                     <a href="{{ path('artwork_show', { 'id': artwork.id }) }}" class="box-link">
                                       <div class="item">
                                         <div class="box-hover">
@@ -54,7 +57,7 @@
                                       </div>
                                     </a>
                                     <div class="box-caption">
-                                        <h4>{{ artwork.name }}</h4>
+                                        <a href="{{ path('artwork_show', { 'id': artwork.id }) }}"><h4 id="name">{{ artwork.name }}</h4></a>
                                         <p class="text-muted">{{ artwork.author }}</p>
                                         <hr>
                                         <ul class="list-group black">

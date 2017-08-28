@@ -64,6 +64,19 @@ $(document).ready(function () { // only begin once page has loaded
         minLength: 2 // set minimum length of text the user must enter
     });
 
+
+
+    $('#artworkSearchBar').keyup(function() {
+    var value = $(this).val();
+    var exp = new RegExp('^' + value, 'i');
+
+    $('.letterArtwork, .oneArtwork').each(function() {
+        var isMatch = exp.test($('#name', this).text());
+        $(this).toggle(isMatch);
+    });
+});
+
+
 });
 
 
