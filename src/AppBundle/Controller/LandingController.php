@@ -48,6 +48,7 @@ class LandingController extends Controller
     }
 
     private function sendEmail($data){
+
         $contactMail = $this->container->getParameter('mailer_user');
         $contactPassword = $this->container->getParameter('mailer_password');
 

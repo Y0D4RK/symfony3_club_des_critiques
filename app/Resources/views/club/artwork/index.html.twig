@@ -26,7 +26,9 @@
                             {% endif %}
                         </div>
                     </div>
-                    <input type="text" id="artworkSearchBar" class="search_bar" placeholder="Recherche d'une oeuvre...">
+                    {% if artworks is not empty %}
+                      <input type="text" id="artworkSearchBar" class="search_bar" placeholder="Recherche d'une oeuvre...">
+                    {% endif %}
                 </div>
                   {% if artworks is not empty %}
                     <div class="row list-artworks">
@@ -61,7 +63,7 @@
                                         <p class="text-muted">{{ artwork.author }}</p>
                                         <hr>
                                         <ul class="list-group black">
-                                            <li class="list-group-item list-group-item-heading">{% if artwork.createdAt %}{{ artwork.createdAt|date('Y-m-d H:i:s') }}{% endif %}</li>
+                                            <li class="list-group-item list-group-item-heading">{% if artwork.publishAt %}{{ artwork.publishAt|date('d/m/Y') }}{% endif %}</li>
                                             <li class="list-group-item list-group-item-text"> {{ artwork.description }}</li>
                                         </ul>
                                     </div>

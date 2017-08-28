@@ -35,4 +35,5 @@ class ProfileController extends BaseController
             'rooms' => $rooms,
         ));
     }
+    
 }

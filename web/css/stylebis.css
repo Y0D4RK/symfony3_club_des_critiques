@@ -165,7 +165,7 @@ section{
     color: #FFF;
 }
 #artwork #description{
-    padding: 5% 0 5% 7%;
+    /* padding: 5% 0 5% 7%; */
     text-align: justify;
     text-justify: inter-word;
 }
@@ -178,6 +178,9 @@ section{
 
 #artwork #description .box-caption {
     padding: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e6e6e6;
 }
 
 #artwork #description .similar .box-caption {
@@ -189,6 +192,7 @@ section{
 .img-center{
     display: block;
     margin: 0 auto;
+    padding-top: 32px;
 }
 
 a{

@@ -61,8 +61,10 @@
                           <img src="{{ asset('images/thinking.png') }}" class="thinking">
                         </div>
                         <div class="col-lg-7 history">
+                          <i class="fa fa-angle-double-left fa-5x fa-pull-left"></i>
                           <h4 class="indent">{{ design.text5 }}</h4>
                           <h4 class="indent">{{ design.title3 }}</h4>
+                          <i class="fa fa-angle-double-right fa-5x fa-pull-right"></i>
                         </div>
                     </div>
                 </div>
@@ -96,10 +98,11 @@
                                   </div>
                                 </a>
                                 <div class="box-caption">
-                                    <h4>{{ artwork.name }}</h4>
+                                    <a href="{{ path('artwork_show', { 'id': artwork.id }) }}"><h4>{{ artwork.name }}</h4></a>
+                                    <a href="{{ path('artwork_show', { 'id': artwork.id }) }}"><p class="text-muted">{{ artwork.author | capitalize }}</p></a>
                                     <hr>
                                     <ul class="list-group black">
-                                        <li class="list-group-item list-group-item-heading"> {{ artwork.category.name | capitalize }}</li>
+                                        <a href="{{ path('artwork_index', { 'name': artwork.category.name }) }}"><li class="list-group-item list-group-item-heading"> {{ artwork.category.name | capitalize }}</li></a>
                                         <li class="list-group-item list-group-item-text"> {{ artwork.description }}</li>
                                     </ul>
                                 </div>
