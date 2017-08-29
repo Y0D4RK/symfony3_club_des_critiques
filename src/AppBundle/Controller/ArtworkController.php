@@ -88,7 +88,7 @@ class ArtworkController extends Controller
 
         $artworksSimilary = $em->getRepository('AppBundle:Artwork')->findBy(array('category' => $artwork->getCategory()));
 
-        $usersWhoShare = $em->getRepository('AppBundle:Sharing')->findBy(array('artwork' => $artwork));
+        $artworkShared = $em->getRepository('AppBundle:Sharing')->findBy(array('artwork' => $artwork));
 
         $deleteForm = $this->createDeleteForm($artwork);
 
@@ -98,10 +98,13 @@ class ArtworkController extends Controller
 
         //Savoir si l'utilisateur a déja partagé cette oeuvre
         $alreadyShared = FALSE;
-        foreach($usersWhoShare as $userBook){
-          if ($userBook->getUser()->getId() == $user->getId()){
-              $alreadyShared = TRUE;
-          }
+
+        if(!$artworkShared){
+            foreach($artworkShared as $bookUser){
+              if ($bookUser->getUser()->getId() == $user->getId()){
+                  $alreadyShared = TRUE;
+              }
+            }
         }
 
         //Vote artwork
@@ -166,7 +169,7 @@ class ArtworkController extends Controller
             'delete_form' => $deleteForm->createView(),
             'currentUserName' => $currentUserName,
             'score' => $score,
-            'usersWhoShare' => $usersWhoShare,
+            'usersWhoShare' => $artworkShared,
             'alreadyShared'=> $alreadyShared
         ));
     }

@@ -312,8 +312,10 @@ footer {
 }
 
 .hr_full {
-  margin-top: -5px;
+  margin-top: 5px;
   max-width: 100%;
+  position: relative;
+  border: 1px solid #fff;
 }
 
 .history{
@@ -331,4 +333,10 @@ footer {
 
 .register-button {
   margin-top: 60px;
+}
+.letter{
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: #333333;
 }
