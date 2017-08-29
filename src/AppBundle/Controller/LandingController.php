@@ -35,7 +35,8 @@ class LandingController extends Controller
         $limit = 3;
         $offset = 0;
         $em = $this->getDoctrine()->getManager();
-        $artworks = $em->getRepository('AppBundle:Artwork')->findBy(array(), null, $limit, $offset);
+        // Recupération des trois dernières oeuvres crées
+        $artworks = $em->getRepository('AppBundle:Artwork')->findBy(array(), array('id' => 'desc'), $limit, $offset);
 
         $em = $this->getDoctrine()->getManager();
         $design = $em->getRepository('AppBundle:Design')->find(1);

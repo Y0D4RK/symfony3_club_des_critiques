@@ -65,6 +65,9 @@
                           <h4 class="indent">{{ design.text5 }}</h4>
                           <h4 class="indent">{{ design.title3 }}</h4>
                           <i class="fa fa-angle-double-right fa-5x fa-pull-right"></i>
+                          <div class="register-button">
+                            <a href="{{ path('fos_user_registration_register') }}" class="btn btn-success btn-block btn-lg"><i class="fa fa-user-plus"></i> Nous rejoindre</a>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -73,6 +76,10 @@
         {% if artworks %}
         <section id="section-four" class="container-fluid">
             <div class="container">
+              <div class="col-xs-12">
+                  <h2>Dernières oeuvres ajoutées:</h2>
+                  <hr>
+              </div>
                 <div class="row">
                     {% for artwork in artworks %}
                         {% if artwork.enabled == true %}

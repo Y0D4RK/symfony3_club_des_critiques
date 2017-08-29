@@ -96,6 +96,7 @@ class ArtworkController extends Controller
         $user = $this->getUser();
         $currentUserName = $user->getUsername();
 
+        //Savoir si l'utilisateur a déja partagé cette oeuvre
         $alreadyShared = FALSE;
         foreach($usersWhoShare as $userBook){
           if ($userBook->getUser()->getId() == $user->getId()){
