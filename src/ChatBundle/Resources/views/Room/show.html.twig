@@ -165,6 +165,7 @@
 
                     message.h = new Date(message.created_at).getHours();
                     message.m = new Date(message.created_at).getMinutes();
+                    message.room_id = room_id;
 
                     if( lastmsg != message.me.username ){
                         $('#messages').append('<div class="space"></div>');

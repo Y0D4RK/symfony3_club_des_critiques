@@ -33,6 +33,7 @@ app.use(express.static(__dirname + '/public'));
 });*/
 
 var users = {};
+var rooms = {};
 
 io.on('connection', function(socket) {
 
@@ -52,6 +53,7 @@ io.on('connection', function(socket) {
     socket.on('login', function(data) {
         getUserById(data.user_id);
         getRoomById(data.room_id);
+        getLastMessagesRooms(data.room_id);
     });
 
     /* On recoit un nouveau msg */
@@ -97,7 +99,7 @@ io.on('connection', function(socket) {
         console.log(userId);
         var queryUserById = db.query('SELECT * FROM user WHERE id = ?',
 
-            [user.userId],
+            [userId],
 
             function (err, rows, fields) {
                 if (err) {
@@ -126,7 +128,7 @@ io.on('connection', function(socket) {
         console.log(roomId);
         var queryRoomById = db.query('SELECT * FROM room WHERE id = ?',
 
-            [room.roomId],
+            [roomId],
 
             function (err, rows, fields) {
                 if (err) {
@@ -147,10 +149,10 @@ io.on('connection', function(socket) {
                     io.sockets.emit('error', 'Aucun salon trouvé !');
                 }
             });
-        console.log(queryRoomById.sql);
+        // console.log(queryRoomById.sql);
     }
 
-    var getLastMessagesRooms = function(room){
+    var getLastMessagesRooms = function(roomId){
         var queryLastMsgRooms = db.query(''+
             'SELECT message.message, user.username, user.email, UNIX_TIMESTAMP(message.created_at) as created_at '+
             'FROM message '+
