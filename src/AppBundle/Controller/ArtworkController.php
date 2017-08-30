@@ -257,10 +257,15 @@ class ArtworkController extends Controller
       $current_user = $this->getUser();
 
       $em = $this->getDoctrine()->getManager();
-      //$sharing = $em->getRepository('AppBundle:Sharing')->findOneBy(array('user' => $current_user, 'artwork' => $artwork->getId()));
-      //dump($artwork->getId()); exit;
+      $sharing = $em->getRepository('AppBundle:Sharing')->findBy(array('user' => $current_user, 'artwork' => $artwork->getId()));
 
-      //$em->remove($sharing);
-      //$em->flush($sharing);
+      foreach($sharing as $artworkToUnshare){
+        //dump($artworkToUnshare); exit();
+        $em->remove($artworkToUnshare);
+      }
+
+      $em->flush();
+
+      return $this->redirectToRoute('fos_user_profile_show');
     }
 }
