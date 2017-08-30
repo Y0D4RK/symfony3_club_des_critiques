@@ -33,10 +33,10 @@
                   {% if artworks is not empty %}
                     <div class="row">
                       {% for letter in 'a'|upper..'z'|upper %}
-                        <div class="row">
-                            <div
-                          <h3 class="letter">{{ letter }}</h3>
-                          <hr class="hr_full">
+                        <div class="row artworksByLetter">
+                            <div class="letterArtwork">
+                              <h3 class="letter">{{ letter }}</h3>
+                              <hr class="hr_full">
                         </div>
                         {% for artwork in artworks %}
                             {% if artwork.enabled == true %}
