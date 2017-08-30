@@ -152,7 +152,7 @@
 
                 $('#form').submit(function(event){
                     event.preventDefault();
-                    socket.emit('newmsg', {message: $('#message').val()});
+                    socket.emit('newmsg', {message: $('#message').val(), room_id: {{ room.id }} });
                     $('#message').val('');
                     $('#message').focus();
                 });
@@ -165,7 +165,7 @@
 
                     message.h = new Date(message.created_at).getHours();
                     message.m = new Date(message.created_at).getMinutes();
-                    message.room_id = room_id;
+                    message.room_id = {{ room.id }};
 
                     if( lastmsg != message.me.username ){
                         $('#messages').append('<div class="space"></div>');

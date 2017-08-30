@@ -62,12 +62,9 @@ io.on('connection', function(socket) {
         if(message.message === ''){
             return false;
         }
-        console.log(message);
 
         message.user = me;
         message.created_at = Date.now();
-        message.room_id = 1;
-
         saveMessage(message);
     });
 
@@ -92,11 +89,10 @@ io.on('connection', function(socket) {
             }
             io.sockets.emit('newmsg', message);
         });
-        console.log(query.sql)
+        console.log(query.sql);
     };
 
     var getUserById = function(userId){
-        console.log(userId);
         var queryUserById = db.query('SELECT * FROM user WHERE id = ?',
 
             [userId],
@@ -106,12 +102,13 @@ io.on('connection', function(socket) {
                     console.log(err.code);
                     return false;
                 }
-                // console.log(rows);
                 if (rows.length === 1) {
                     me = {
                         username: rows[0].username,
                         id: rows[0].id,
                         avatar: 'https://gravatar.com/avatar/' + md5(rows[0].email) + '?s=100',
+                        //avatar: 'web/upload/avatar/' + rows[0].avatarName;
+
                     };
                     socket.emit('logged');
 
