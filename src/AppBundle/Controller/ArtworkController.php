@@ -99,12 +99,10 @@ class ArtworkController extends Controller
         //Savoir si l'utilisateur a déja partagé cette oeuvre
         $alreadyShared = FALSE;
 
-        if(!$artworkShared){
-            foreach($artworkShared as $bookUser){
-              if ($bookUser->getUser()->getId() == $user->getId()){
-                  $alreadyShared = TRUE;
-              }
-            }
+        foreach($artworkShared as $bookUser){
+          if ($bookUser->getUser()->getId() == $user->getId()){
+              $alreadyShared = TRUE;
+          }
         }
 
         //Vote artwork
