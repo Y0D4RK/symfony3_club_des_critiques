@@ -31,17 +31,17 @@
                     {% endif %}
                 </div>
                   {% if artworks is not empty %}
-                    <div class="row list-artworks">
+                    <div class="row">
                       {% for letter in 'a'|upper..'z'|upper %}
-                      <div class="col-md-12 artworksByLetter">
-                        <div class="letterArtwork">
-                          <h3>{{ letter }}</h3>
+                        <div class="row">
+                            <div
+                          <h3 class="letter">{{ letter }}</h3>
                           <hr class="hr_full">
                         </div>
                         {% for artwork in artworks %}
                             {% if artwork.enabled == true %}
                               {% if artwork.name|first|upper == letter %}
-                                <div class="col-md-4 col-sm-6 latest oneArtwork">
+                                <div class="col-md-3 col-sm-6 latest oneArtwork">
                                     <a href="{{ path('artwork_show', { 'id': artwork.id }) }}" class="box-link">
                                       <div class="item">
                                         <div class="box-hover">

@@ -34,7 +34,7 @@
                             </div>
                             <div class="vote_loading">Chargement...</div>
                         </div>
-                        {% if artwork.user == currentUserName %}
+                        {% if artwork.user == app.user.username %}
                         <a href="{{ path('artwork_edit', { 'id': artwork.id }) }}" class="btn btn-warning">
                             <i class="fa fa-pencil-square-o"></i> Modifier
                         </a>
