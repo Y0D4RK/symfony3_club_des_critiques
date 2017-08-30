@@ -22,12 +22,12 @@ class Sharing
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", cascade={"remove"}, fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", cascade={"persist"}, fetch="EAGER")
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Artwork", cascade={"remove"}, fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Artwork", cascade={"persist"}, fetch="EAGER")
      */
     private $artwork;
 
