@@ -319,9 +319,8 @@ hr {
 
 .hr_full {
   margin-top: 5px;
-  max-width: 100%;
+  max-width: 97.5%;
   position: relative;
-  border: 1px solid #fff;
 }
 
 .history{
@@ -345,4 +344,5 @@ hr {
     margin-bottom: 10px;
     font-size: 30px;
     color: #333333;
+    padding: 0 15px;
 }
