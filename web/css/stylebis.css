@@ -307,15 +307,20 @@ footer {
   transform: scale(1.1);
 }
 
-.list-artworks {
+hr {
+    border: 1px solid #d43f3a;
+    max-width: 100px;
+}
+
+
+.artworksByLetter {
   background: rgba(255, 255, 255, 0.35);
 }
 
 .hr_full {
   margin-top: 5px;
-  max-width: 100%;
+  max-width: 97.5%;
   position: relative;
-  border: 1px solid #fff;
 }
 
 .history{
@@ -339,4 +344,5 @@ footer {
     margin-bottom: 10px;
     font-size: 30px;
     color: #333333;
+    padding: 0 15px;
 }
