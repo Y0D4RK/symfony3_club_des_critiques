@@ -86,7 +86,7 @@ class ArtworkController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $artworksSimilary = $em->getRepository('AppBundle:Artwork')->findBy(array('category' => $artwork->getCategory()));
+        $artworksSimilary = $em->getRepository('AppBundle:Artwork')->findBy(array('category' => $artwork->getCategory()), null , 3, null);
 
         $artworkShared = $em->getRepository('AppBundle:Sharing')->findBy(array('artwork' => $artwork));
 
