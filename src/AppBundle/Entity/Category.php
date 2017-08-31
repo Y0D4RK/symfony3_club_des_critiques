@@ -37,13 +37,6 @@ class Category
     private $description;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="api_url", type="string", length=255, nullable=true)
-     */
-    private $apiUrl;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -121,30 +114,6 @@ class Category
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set apiUrl
-     *
-     * @param string $apiUrl
-     *
-     * @return Category
-     */
-    public function setApiUrl($apiUrl)
-    {
-        $this->apiUrl = $apiUrl;
-
-        return $this;
-    }
-
-    /**
-     * Get apiUrl
-     *
-     * @return string
-     */
-    public function getApiUrl()
-    {
-        return $this->apiUrl;
     }
 
     /**

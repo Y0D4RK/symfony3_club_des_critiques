@@ -108,9 +108,9 @@ io.on('connection', function(socket) {
                         username: rows[0].username,
                         id: rows[0].id,
                         avatar: 'https://gravatar.com/avatar/' + md5(rows[0].email) + '?s=100',
-                        //avatar: 'web/upload/avatar/' + rows[0].avatarName
+                        //avatar: '/web/upload/avatar/' + rows[0].avatarName
                     };
-                    //console.log(me);
+                    console.log(me);
                     socket.emit('logged');
 
                     users[me.id] = me;
